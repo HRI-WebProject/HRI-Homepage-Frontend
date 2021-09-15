@@ -1,11 +1,12 @@
 import React from 'react'
+import styles from './Footer.module.css';
 
-function Footer() {
+function BottomFooter() {
     return (
-        <div>
-            footer
+        <div className={styles.footer}>
+            <font>HRILAB ©2021 Copyright</font>
         </div>
     )
 }
 
-export default Footer
+export default BottomFooter;
