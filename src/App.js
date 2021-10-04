@@ -6,6 +6,7 @@ import LoginPage from "./components/views/Login/Login";
 import ResearchArea from "./components/views/ResearchArea/ResearchArea";
 import Members from "./components/views/Members/Members";
 import Footer from "./components/views/Footer/Footer";
+import { BackTop } from "antd";
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
       <NavBar />
       <div
         style={{
-          padding: "100px 200px 30px 200px",
-          minHeight: "calc(200vh - 80px)",
+          padding: "100px 0px 30px 0px", // "100px 200px 30px 200px"
+          minHeight: "", // "calc(200vh - 80px)"
         }}
       >
         <Switch>
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/members" component={Members} />
         </Switch>
       </div>
+      <BackTop />
       <Footer />
     </BrowserRouter>
   );
