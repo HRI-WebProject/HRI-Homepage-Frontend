@@ -29,7 +29,7 @@ function ProfessorGrid({ professorData }) {
             >
               <Grid container spacing={1}>
                 <Grid item>
-                  <ButtonBase sx={{ width: 128, height: 128 }}>
+                  <ButtonBase sx={{ width: 256, height: 256 }}>
                     <Img alt="photo" src="/static/images/grid/complex.jpg" />
                   </ButtonBase>
                 </Grid>

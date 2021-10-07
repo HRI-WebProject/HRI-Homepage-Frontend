@@ -9,6 +9,7 @@ function NavBar(props) {
   const history = useHistory();
   const categories = [
     "Research Area",
+    "Professor",
     "Members",
     "Publicatons",
     "Projects",
@@ -17,6 +18,7 @@ function NavBar(props) {
   ];
   const path = [
     "/research-area",
+    "/professor",
     "/members",
     "/publications",
     "/projects",
@@ -36,7 +38,7 @@ function NavBar(props) {
           <div className={styles.logo} onClick={() => movePage("/")} />
           <div className={styles.menu}>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["0"]}>
-              {new Array(6).fill(null).map((_, index) => {
+              {new Array(7).fill(null).map((_, index) => {
                 const key = index + 1;
                 return (
                   <Menu.Item
