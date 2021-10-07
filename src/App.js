@@ -5,6 +5,7 @@ import NavBar from "./components/views/NavBar/NavBar";
 import LoginPage from "./components/views/Login/Login";
 import ResearchArea from "./components/views/ResearchArea/ResearchArea";
 import Members from "./components/views/Members/Members";
+import Board from "./components/views/Board/Board";
 import Footer from "./components/views/Footer/Footer";
 import { BackTop } from "antd";
 
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/research-area" component={ResearchArea} />
           <Route exact path="/members" component={Members} />
+          <Route exact path="/board" component={Board} />
         </Switch>
       </div>
       <BackTop />

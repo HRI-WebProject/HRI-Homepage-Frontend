@@ -1,3 +1,8 @@
+.container {
+  padding: 100px 200px 30px 200px;
+  min-height: calc(200vh - 80px);
+}
+
 .loginForm {
   text-align: center;
   margin-top: 10%;

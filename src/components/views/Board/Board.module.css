@@ -1,0 +1,14 @@
+.container {
+  padding: 0px 200px 30px 200px;
+  min-height: calc(100vh);
+}
+
+.datagrid {
+  height: 480px;
+  width: 100%;
+  background-color: white;
+}
+
+.datagrid_item {
+  cursor: pointer;
+}
