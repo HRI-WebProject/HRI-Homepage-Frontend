@@ -20,7 +20,7 @@ function NavBar(props) {
     "/members",
     "/publications",
     "/projects",
-    "/board/notice",
+    "/board",
     "/contact",
   ];
   const movePage = (url) => {

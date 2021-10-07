@@ -38,7 +38,7 @@ function Login(props) {
   useEffect(() => {}, []);
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.loginForm}>
         <Form
           name="basic"
@@ -86,7 +86,7 @@ function Login(props) {
           * 관리자 계정으로만 로그인이 가능합니다.
         </Form>
       </div>
-    </>
+    </div>
   );
 }
 
