@@ -7,6 +7,7 @@ import ResearchArea from "./components/views/ResearchArea/ResearchArea";
 import Members from "./components/views/Members/Members";
 import Professor from "./components/views/Professor/Professor";
 import Board from "./components/views/Board/Board";
+import Contact from "./components/views/Contact/Contact";
 import Footer from "./components/views/Footer/Footer";
 import { BackTop } from "antd";
 
@@ -27,6 +28,7 @@ function App() {
           <Route exact path="/members" component={Members} />
           <Route exact path="/professor" component={Professor} />
           <Route exact path="/board" component={Board} />
+          <Route exact path="/contact" component={Contact} />
         </Switch>
       </div>
       <BackTop />
