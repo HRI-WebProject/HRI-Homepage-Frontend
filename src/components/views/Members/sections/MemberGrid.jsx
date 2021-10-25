@@ -35,17 +35,17 @@ function MemberGrid({ memberData }) {
                 <Grid item xs={12} sm container>
                   <Grid item xs container direction="column" spacing={2}>
                     <Grid item xs>
-                      <Typography
-                        gutterBottom
-                        variant="subtitle1"
-                        component="div"
-                      >
+                      <Typography gutterBottom variant="body1" component="div">
                         {item.name} ({item.english})
                       </Typography>
-                      <Typography variant="body2" gutterBottom>
+                      <Typography variant="body1" gutterBottom>
                         # {item.research}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography
+                        variant="body1"
+                        color="text.secondary"
+                        paddingTop="6%"
+                      >
                         {item.email}
                       </Typography>
                     </Grid>

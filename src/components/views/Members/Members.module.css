@@ -2,3 +2,18 @@
   padding: 0px 200px 30px 200px;
   min-height: calc(100vh);
 }
+
+.lists {
+  margin-bottom: 3%;
+}
+
+.workplaceImg {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 85%;
+  height: 85%;
+  text-align: center;
+  margin: 0px auto;
+  display: block;
+}

@@ -2,3 +2,11 @@
   padding: 0px 200px 30px 200px;
   min-height: calc(100vh);
 }
+
+.contents font {
+  line-height: 0.5em;
+}
+
+font {
+  white-space: pre-line;
+}

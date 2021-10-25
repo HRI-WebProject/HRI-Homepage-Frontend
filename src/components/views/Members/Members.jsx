@@ -3,6 +3,7 @@ import MemberGrid from "./sections/MemberGrid";
 import { Tabs, Divider } from "antd";
 import styles from "./Members.module.css";
 import Typography from "@mui/material/Typography";
+import Alumni from "./sections/Alumni";
 import {
   phdMembers,
   masterMembers,
@@ -27,7 +28,9 @@ function Members() {
             <MemberGrid memberData={undergraduate} />
             <Divider dashed />
           </TabPane>
-          <TabPane tab="졸업생" key="2"></TabPane>
+          <TabPane tab="졸업생" key="2">
+            <Alumni />
+          </TabPane>
         </Tabs>
       </div>
     </>
