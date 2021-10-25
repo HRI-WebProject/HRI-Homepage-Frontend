@@ -23,31 +23,30 @@ function MemberGrid({ memberData }) {
               sx={{
                 p: 2,
                 margin: "20px 10px auto",
-                maxWidth: 500,
                 flexGrow: 1,
               }}
             >
               <Grid container spacing={1}>
                 <Grid item>
                   <ButtonBase sx={{ width: 128, height: 128 }}>
-                    <Img alt="photo" src="/static/images/grid/complex.jpg" />
+                    <Img alt="photo" src={item.img} />
                   </ButtonBase>
                 </Grid>
                 <Grid item xs={12} sm container>
                   <Grid item xs container direction="column" spacing={2}>
                     <Grid item xs>
+                      <Typography gutterBottom variant="body1" component="div">
+                        {item.name} ({item.english})
+                      </Typography>
+                      <Typography variant="body1" gutterBottom>
+                        # {item.research}
+                      </Typography>
                       <Typography
-                        gutterBottom
-                        variant="subtitle1"
-                        component="div"
+                        variant="body1"
+                        color="text.secondary"
+                        paddingTop="6%"
                       >
-                        Name (English Name)
-                      </Typography>
-                      <Typography variant="body2" gutterBottom>
-                        Degree
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Email
+                        {item.email}
                       </Typography>
                     </Grid>
                   </Grid>

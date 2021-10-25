@@ -1,36 +1,35 @@
 import React, { useState, useEffect } from "react";
 import MemberGrid from "./sections/MemberGrid";
-import { Tabs } from "antd";
+import { Tabs, Divider } from "antd";
 import styles from "./Members.module.css";
+import Typography from "@mui/material/Typography";
+import Alumni from "./sections/Alumni";
+import {
+  phdMembers,
+  masterMembers,
+  undergraduate,
+} from "./sections/MemberData.js";
 
 function Members() {
   const { TabPane } = Tabs;
-  const memberData = [];
-  for (let i = 0; i < 10; i++) {
-    memberData.push({
-      name: `${i + 1}`,
-      description: "courese",
-      content: "descriptions",
-    });
-  }
-  const graduateData = [];
-  for (let i = 0; i < 10; i++) {
-    graduateData.push({
-      name: `${i + 1}`,
-      description: "courese",
-      content: "descriptions",
-    });
-  }
 
   return (
     <>
       <div className={styles.container}>
         <Tabs tabPosition="left">
           <TabPane tab="구성원" key="1">
-            <MemberGrid memberData={memberData} />
+            <Typography variant="h6">박사 과정</Typography>
+            <MemberGrid memberData={phdMembers} />
+            <Divider dashed />
+            <Typography variant="h6">석사 과정</Typography>
+            <MemberGrid memberData={masterMembers} />
+            <Divider dashed />
+            <Typography variant="h6">학부 연구생</Typography>
+            <MemberGrid memberData={undergraduate} />
+            <Divider dashed />
           </TabPane>
           <TabPane tab="졸업생" key="2">
-            <MemberGrid memberData={graduateData} />
+            <Alumni />
           </TabPane>
         </Tabs>
       </div>
