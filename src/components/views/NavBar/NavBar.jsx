@@ -35,7 +35,11 @@ function NavBar(props) {
     <>
       <div className={styles.header}>
         <Header>
-          <div className={styles.logo} onClick={() => movePage("/")} />
+          <img
+            className={styles.logo}
+            src="/images/logo.png"
+            onClick={() => movePage("/")}
+          />
           <div className={styles.menu}>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["0"]}>
               {new Array(7).fill(null).map((_, index) => {
