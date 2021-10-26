@@ -1,25 +1,30 @@
 import React from "react";
-import { Tabs } from "antd";
 import styles from "./Publications.module.css";
+import { Paper, Typography } from "@mui/material";
+import { paperData } from "./PublicationsData";
 
 function Publications() {
-  const { TabPane } = Tabs;
   return (
     <div className={styles.container}>
-      <Tabs tabPosition="left">
-        <TabPane tab="학술지" key="1">
-          학술지
-        </TabPane>
-        <TabPane tab="학술대회" key="2">
-          학술대회
-        </TabPane>
-        <TabPane tab="특허" key="3">
-          특허
-        </TabPane>
-        <TabPane tab="도서" key="4">
-          도서
-        </TabPane>
-      </Tabs>
+      <Paper>
+        <div className={styles.contents}>
+          <Typography variant="h5" paddingTop="1%" paddingBottom="1%">
+            <b>Papers</b>
+          </Typography>
+          <Typography paddingBottom="1%">
+            {paperData.map((item, i) => (
+              <div key={item.idx}>
+                <Typography variant="body1" paddingBottom="0.7%">
+                  <font style={{ color: "#2f5597" }}>
+                    <b>[{item.idx}]</b>
+                  </font>{" "}
+                  {item.content}
+                </Typography>
+              </div>
+            ))}
+          </Typography>
+        </div>
+      </Paper>
     </div>
   );
 }
