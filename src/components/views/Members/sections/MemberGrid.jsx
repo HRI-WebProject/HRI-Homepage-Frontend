@@ -17,8 +17,8 @@ function MemberGrid({ memberData }) {
   return (
     <>
       <Row gutter={[16, 16]}>
-        {memberData.map((item) => (
-          <Col span={12}>
+        {memberData.map((item, idx) => (
+          <Col span={12} key={idx}>
             <Paper
               sx={{
                 p: 2,

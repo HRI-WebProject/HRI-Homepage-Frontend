@@ -18,8 +18,8 @@ function ProfessorGrid({ professorData }) {
   return (
     <>
       <Row>
-        {professorData.map((item) => (
-          <Col span={24}>
+        {professorData.map((item, idx) => (
+          <Col span={24} key={idx}>
             <Paper
               sx={{
                 p: 2,

@@ -3,6 +3,8 @@ import { Layout, Menu } from "antd";
 import "antd/dist/antd.css";
 import styles from "./NavBar.module.css";
 import { useHistory } from "react-router";
+import { PageHeader } from "antd";
+
 const { Header } = Layout;
 
 function NavBar(props) {
@@ -34,7 +36,7 @@ function NavBar(props) {
   return (
     <>
       <div className={styles.header}>
-        <Header>
+        <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
           <img
             className={styles.logo}
             src="/images/logo.png"
@@ -54,6 +56,14 @@ function NavBar(props) {
             </Menu>
           </div>
         </Header>
+        {/* {currentURI[currentURI.length - 1] !== "" && (
+          <PageHeader
+            className={styles.site_page_header}
+            onBack={() => window.history.back()}
+            title="Title"
+            subTitle="This is a subtitle"
+          />
+        )} */}
       </div>
     </>
   );
