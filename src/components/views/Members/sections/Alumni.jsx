@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { Paper } from "@mui/material";
-import styles from "../Members.module.css";
+import styles from "@members/Members.module.css";
 
 function Alumni() {
   return (
@@ -20,7 +20,7 @@ function Alumni() {
       <Paper elevation={3}>
         <img
           className={styles.workplaceImg}
-          src="/images/alumni/workplace.png"
+          src="/assets/alumni/workplace.png"
         />
       </Paper>
     </div>

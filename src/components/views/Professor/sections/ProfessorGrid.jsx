@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import ButtonBase from "@mui/material/ButtonBase";
 import { styled } from "@mui/material/styles";
 import { Row, Col } from "antd";
-import styles from "../Professor.module.css";
+import styles from "@professor/Professor.module.css";
 
 function ProfessorGrid({ professorData }) {
   const Img = styled("img")({
@@ -30,7 +30,7 @@ function ProfessorGrid({ professorData }) {
               <Grid container spacing={1}>
                 <Grid item>
                   <ButtonBase sx={{ width: 256, height: 256 }}>
-                    <Img alt="photo" src="/images/members/professor.png" />
+                    <Img alt="photo" src="/assets/members/professor.png" />
                   </ButtonBase>
                 </Grid>
                 <Grid item xs={12} sm container>

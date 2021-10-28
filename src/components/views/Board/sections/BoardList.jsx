@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { useHistory } from "react-router";
-import styles from "../Board.module.css";
+import styles from "@board/Board.module.css";
 
 function BoardList({ boardType }) {
   const history = useHistory();

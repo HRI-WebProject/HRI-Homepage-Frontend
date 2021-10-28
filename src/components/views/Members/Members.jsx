@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import MemberGrid from "./sections/MemberGrid";
+import MemberGrid from "@members/sections/MemberGrid";
 import { Tabs, Divider } from "antd";
-import styles from "./Members.module.css";
+import styles from "@members/Members.module.css";
 import Typography from "@mui/material/Typography";
-import Alumni from "./sections/Alumni";
+import Alumni from "@members/sections/Alumni";
 import {
   phdMembers,
   masterMembers,
   undergraduate,
-} from "./sections/MemberData.js";
+} from "@members/sections/MemberData.js";
 
 function Members() {
   const { TabPane } = Tabs;

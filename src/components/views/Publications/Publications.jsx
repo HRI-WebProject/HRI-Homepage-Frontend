@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./Publications.module.css";
+import styles from "@publications/Publications.module.css";
 import { Paper, Typography } from "@mui/material";
-import { paperData } from "./PublicationsData";
+import { paperData } from "@publications/sections/PublicationsData";
 
 function Publications() {
   return (

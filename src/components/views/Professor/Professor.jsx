@@ -1,6 +1,6 @@
 import React from "react";
-import ProfessorGrid from "./sections/ProfessorGrid";
-import styles from "./Professor.module.css";
+import ProfessorGrid from "@professor/sections/ProfessorGrid";
+import styles from "@professor/Professor.module.css";
 import { Tabs } from "antd";
 
 function Professor() {

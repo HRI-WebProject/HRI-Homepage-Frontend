@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Form, Input, Button, Checkbox } from "antd";
-import { loginUser } from "../../../_actions/user_action";
+import { loginUser } from "@actions/user_action";
 import { withRouter } from "react-router-dom";
-import styles from "./Login.module.css";
+import styles from "@login/Login.module.css";
 import { useHistory } from "react-router";
 
 function Login(props) {
