@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Tabs } from "antd";
-import styles from "./Board.module.css";
-import BoardList from "./sections/BoardList";
-import ImageDataList from "./sections/ImageDataList";
+import styles from "@board/Board.module.css";
+import BoardList from "@board/sections/BoardList";
+import ImageDataList from "@board/sections/ImageDataList";
 
 function Board() {
   const { TabPane } = Tabs;
