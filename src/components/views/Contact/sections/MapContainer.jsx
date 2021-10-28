@@ -1,6 +1,6 @@
 /* global kakao */
 import React, { useEffect } from "react";
-import styles from "../Contact.module.css";
+import styles from "@contact/Contact.module.css";
 
 const { kakao } = window;
 

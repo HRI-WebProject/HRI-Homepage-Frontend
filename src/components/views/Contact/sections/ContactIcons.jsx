@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Contact.module.css";
+import styles from "@contact/Contact.module.css";
 import { MailTwoTone, PhoneTwoTone } from "@ant-design/icons";
 import { Row, Col } from "antd";
 
