@@ -1,7 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Form, Input, Button } from "antd";
-import styles from "../Contact.module.css";
+import styles from "@contact/Contact.module.css";
 
 function ContactForm() {
   const layout = {
