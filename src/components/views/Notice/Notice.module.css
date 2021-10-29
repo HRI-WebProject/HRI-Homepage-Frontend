@@ -5,10 +5,3 @@
   min-height: calc(83vh);
   word-break: break-all;
 }
-.contents font {
-  line-height: 0.5em;
-}
-
-font {
-  white-space: pre-line;
-}

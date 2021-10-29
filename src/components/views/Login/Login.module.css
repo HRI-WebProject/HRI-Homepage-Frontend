@@ -1,6 +1,9 @@
 .container {
-  padding: 100px 200px 30px 200px;
-  min-height: calc(200vh - 80px);
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 2%;
+  min-height: calc(83vh);
+  word-break: break-all;
 }
 
 .loginForm {

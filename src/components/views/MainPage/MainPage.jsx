@@ -10,7 +10,7 @@ function MainPage() {
     "/assets/main/main3.png",
   ];
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.carousel}>
         <Carousel autoplay>
           {mainpage_list.map((item, idx) => (
@@ -20,7 +20,7 @@ function MainPage() {
           ))}
         </Carousel>
       </div>
-    </>
+    </div>
   );
 }
 

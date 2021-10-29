@@ -6,17 +6,21 @@ import styles from "@members/Members.module.css";
 function Alumni() {
   return (
     <div>
-      <Typography variant="h6">졸업생 현황</Typography>
+      <Typography variant="h6">
+        <b>졸업생 현황</b>
+      </Typography>
       <Typography variant="subtitle1" color="text.secondary">
         <div className={styles.lists}>
-          박사: 1명
+          <font color="#2f5597">박사</font>: 1명
           <br />
-          석사: 12명
+          <font color="#2f5597">석사</font>: 12명
           <br />
-          학부연구생: 10명+
+          <font color="#2f5597">학부연구생</font>: 10명+
         </div>
       </Typography>
-      <Typography variant="h6">Workplace</Typography>
+      <Typography variant="h6">
+        <b>Workplace</b>
+      </Typography>
       <Paper elevation={3}>
         <img
           className={styles.workplaceImg}
