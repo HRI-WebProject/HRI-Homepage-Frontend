@@ -1,13 +1,18 @@
-import React, { useEffect } from "react";
-import { Layout, Menu } from "antd";
+import React, { useState, useEffect } from "react";
+import { Layout, Menu, Dropdown } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import styles from "@navbar/NavBar.module.css";
 import { useHistory } from "react-router";
 import { PageHeader } from "antd";
+import LogoutIcon from "@mui/icons-material/Logout";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LoginIcon from "@mui/icons-material/Login";
 
 const { Header } = Layout;
 
 function NavBar(props) {
+  const [account, setAccount] = useState("user");
   const history = useHistory();
   const categories = [
     "Research Area",
@@ -29,9 +34,25 @@ function NavBar(props) {
   ];
   const movePage = (url) => {
     history.push(url);
-    if (url === "/") {
-    }
   };
+
+  const menu_default = (
+    <Menu>
+      <Menu.Item key="12" onClick={() => movePage("/login")}>
+        <LoginIcon className={styles.subitem_icon} />
+        Login
+      </Menu.Item>
+    </Menu>
+  );
+
+  const menu = (
+    <Menu>
+      <Menu.Item key="12">
+        <LogoutIcon className={styles.subitem_icon} />
+        Logout
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <>
@@ -44,15 +65,43 @@ function NavBar(props) {
           />
           <div className={styles.menu}>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["0"]}>
-              {new Array(7).fill(null).map((_, index) => {
-                const key = index + 1;
+              {new Array(7).fill(null).map((_, idx) => {
                 return (
                   <Menu.Item
-                    key={key}
-                    onClick={() => movePage(path[index])}
-                  >{`${categories[index]}`}</Menu.Item>
+                    key={idx + 1}
+                    onClick={() => movePage(path[idx])}
+                  >{`${categories[idx]}`}</Menu.Item>
                 );
               })}
+              {account === "user" && (
+                <Dropdown
+                  overlay={menu_default}
+                  trigger={["click"]}
+                  className={styles.dropdown}
+                >
+                  <div
+                    className="ant-dropdown-link"
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    Settings <DownOutlined />
+                  </div>
+                </Dropdown>
+              )}
+              {account === "admin" && (
+                <Dropdown
+                  overlay={menu}
+                  trigger={["click"]}
+                  className={styles.dropdown}
+                >
+                  <div
+                    className="ant-dropdown-link"
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    <AccountCircleIcon />
+                    &nbsp;&nbsp;Admin <DownOutlined />
+                  </div>
+                </Dropdown>
+              )}
             </Menu>
           </div>
         </Header>

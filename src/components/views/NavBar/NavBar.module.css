@@ -17,6 +17,20 @@
   cursor: pointer;
 }
 
+.dropdown {
+  position: absolute;
+  right: 2%;
+  cursor: pointer;
+}
+
+.subitem {
+  pointer-events: none;
+}
+
+.subitem_icon {
+  padding-right: 10px;
+}
+
 .site_page_header {
   background-color: #ffffff;
   padding-left: 10%;
