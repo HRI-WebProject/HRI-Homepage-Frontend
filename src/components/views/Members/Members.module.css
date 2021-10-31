@@ -1,9 +1,11 @@
 .container {
-  padding-left: 10%;
-  padding-right: 10%;
+  width: 1400px;
+  padding-bottom: 2%;
   min-height: calc(83vh);
   word-break: break-all;
+  margin: 0 auto;
 }
+
 .lists {
   margin-bottom: 3%;
 }
@@ -17,4 +19,9 @@
   text-align: center;
   margin: 0px auto;
   display: block;
+}
+
+.hashtag {
+  font-weight: bold;
+  color: #2f5597;
 }

@@ -1,10 +1,15 @@
 .container {
-  padding-left: 10%;
-  padding-right: 10%;
+  width: 1400px;
   padding-bottom: 2%;
   min-height: calc(83vh);
   word-break: break-all;
+  margin: 0 auto;
 }
+
+.inner_text {
+  padding-left: 3%;
+}
+
 .contents font {
   line-height: 0.5em;
 }

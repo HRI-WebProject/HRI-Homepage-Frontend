@@ -11,10 +11,10 @@ function Board() {
       <div className={styles.container}>
         <Tabs tabPosition="left">
           <TabPane tab="소식" key="1">
-            <BoardList boardType="notice" />
+            {/* <BoardList boardType="notice" /> */}
           </TabPane>
           <TabPane tab="활동" key="2">
-            <ImageDataList />
+            {/* <ImageDataList /> */}
           </TabPane>
         </Tabs>
       </div>
