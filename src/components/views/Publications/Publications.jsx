@@ -9,7 +9,7 @@ function Publications() {
       <Paper>
         <div className={styles.contents}>
           <Typography variant="h5" paddingTop="1%" paddingBottom="1%">
-            <b>Papers</b>
+            <b>Recent Publications</b>
           </Typography>
           <Typography paddingBottom="1%">
             {paperData.map((item, i) => (

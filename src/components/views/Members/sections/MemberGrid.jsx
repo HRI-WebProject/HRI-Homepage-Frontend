@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import ButtonBase from "@mui/material/ButtonBase";
 import { styled } from "@mui/material/styles";
 import { Row, Col } from "antd";
-
+import styles from "@members/Members.module.css";
 function MemberGrid({ memberData }) {
   const Img = styled("img")({
     margin: "auto",
@@ -36,10 +36,11 @@ function MemberGrid({ memberData }) {
                   <Grid item xs container direction="column" spacing={2}>
                     <Grid item xs>
                       <Typography gutterBottom variant="body1" component="div">
-                        {item.name} ({item.english})
+                        <b>{item.name}</b> ({item.english})
                       </Typography>
                       <Typography variant="body1" gutterBottom>
-                        # {item.research}
+                        <font className={styles.hashtag}>#</font>{" "}
+                        {item.research}
                       </Typography>
                       <Typography
                         variant="body1"

@@ -11,10 +11,10 @@ function Contact() {
     <div className={styles.container}>
       <Paper elevation={3} className={styles.paper}>
         <Row>
-          <Col span={12}>
+          <Col span={10}>
             <MapContainer />
           </Col>
-          <Col span={12} className={styles.col2}>
+          <Col span={14} className={styles.col2}>
             <div className={styles.namebox}>
               <font className={styles.part}>Professor</font>
               <font className={styles.name}>

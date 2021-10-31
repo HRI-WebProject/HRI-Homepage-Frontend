@@ -11,9 +11,8 @@
 
 .logo {
   float: left;
-  width: 100px;
-  height: 35px;
-  margin: 16px 30px 16px 0;
+  width: 120px;
+  margin: 6px 30px 16px 0;
   cursor: pointer;
 }
 
@@ -32,9 +31,20 @@
 }
 
 .site_page_header {
-  background-color: #ffffff;
+  position: fixed;
+  width: 100%;
+  background-color: #d5dde3;
+  color: black;
+  top: 60px;
+  height: 90px;
+}
+
+.header_contents {
   padding-left: 10%;
   padding-top: 1%;
-  padding-bottom: 1%;
-  top: 60px;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: bold;
 }

@@ -8,7 +8,7 @@ import Members from "@/components/views/Members/Members";
 import Professor from "@/components/views/Professor/Professor";
 import Board from "@/components/views/Board/Board";
 import Publications from "@/components/views/Publications/Publications";
-import Projects from "./components/views/Projects/Projects";
+import Projects from "@/components/views/Projects/Projects";
 import Contact from "@/components/views/Contact/Contact";
 import Footer from "@/components/views/Footer/Footer";
 import { BackTop } from "antd";

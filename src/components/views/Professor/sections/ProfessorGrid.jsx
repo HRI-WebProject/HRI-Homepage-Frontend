@@ -16,7 +16,7 @@ function ProfessorGrid({ professorData }) {
   });
 
   return (
-    <>
+    <div>
       <Row>
         {professorData.map((item, idx) => (
           <Col span={24} key={idx}>
@@ -36,60 +36,62 @@ function ProfessorGrid({ professorData }) {
                 <Grid item xs={12} sm container>
                   <Grid item xs container direction="column" spacing={2}>
                     <Grid item xs>
-                      <Typography
-                        gutterBottom
-                        variant="h6"
-                        component="div"
-                        paddingBottom="1.5%"
-                      >
-                        <b>정진우 (Jin-Woo Jung)</b>
-                      </Typography>
-                      <Typography variant="body1" paddingBottom="1.5%">
-                        <b>
-                          동국대학교 컴퓨터공학과/인공지능학과 교수,
-                          컴퓨터공학과 학과장
-                        </b>
-                        <br />
-                        국제저명학술지(IJFIS) 편집위원장
-                        <br />
-                        한국지능시스템학회 이사, 한국공학교육회
-                        이사,한국공학교육인증원 CAC 부위원장
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        gutterBottom
-                        paddingBottom="1.5%"
-                      >
-                        <div className={styles.contents}>
-                          <font>
-                            한국과학기술원(KAIST) 전기및전자공학과
-                            공학사/공학석사
-                            <br />
-                            한국과학기술원(KAIST) 전자전산학과 공학박사
-                            <br />
-                            일본 동경대학교 방문연구원, 미국 Purdue University
-                            방문교수
-                          </font>
-                        </div>
-                        <div></div>
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        gutterBottom
-                        paddingBottom="1.5%"
-                      >
-                        국제 저명(SCI급)학술지 게재 50여 편, 학술대회 논문 발표
-                        200여 편,특허 등록 20여 건, 기술이전 10여 건
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        color="text.secondary"
-                        paddingBottom="7%"
-                      >
-                        Research Area
-                        <br />
-                        <b>컴퓨터 비전 / 모바일 로봇 / 지능시스템응용</b>
-                      </Typography>
+                      <div className={styles.inner_text}>
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          component="div"
+                          paddingBottom="1.5%"
+                        >
+                          <b>정진우 (Jin-Woo Jung)</b>
+                        </Typography>
+                        <Typography variant="body1" paddingBottom="1.5%">
+                          <b>
+                            동국대학교 컴퓨터공학과/인공지능학과 교수,
+                            컴퓨터공학과 학과장
+                          </b>
+                          <br />
+                          국제저명학술지(IJFIS) 편집위원장
+                          <br />
+                          한국지능시스템학회 이사, 한국공학교육회
+                          이사,한국공학교육인증원 CAC 부위원장
+                        </Typography>
+                        <Typography
+                          variant="body1"
+                          gutterBottom
+                          paddingBottom="1.5%"
+                        >
+                          <div className={styles.contents}>
+                            <font>
+                              한국과학기술원(KAIST) 전기및전자공학과
+                              공학사/공학석사
+                              <br />
+                              한국과학기술원(KAIST) 전자전산학과 공학박사
+                              <br />
+                              일본 동경대학교 방문연구원, 미국 Purdue University
+                              방문교수
+                            </font>
+                          </div>
+                          <div></div>
+                        </Typography>
+                        <Typography
+                          variant="body1"
+                          gutterBottom
+                          paddingBottom="1.5%"
+                        >
+                          국제 저명(SCI급)학술지 게재 50여 편, 학술대회 논문
+                          발표 200여 편,특허 등록 20여 건, 기술이전 10여 건
+                        </Typography>
+                        <Typography
+                          variant="body1"
+                          color="text.secondary"
+                          paddingBottom="7%"
+                        >
+                          Research Area
+                          <br />
+                          <b>컴퓨터 비전 / 모바일 로봇 / 지능시스템응용</b>
+                        </Typography>
+                      </div>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -98,7 +100,7 @@ function ProfessorGrid({ professorData }) {
           </Col>
         ))}
       </Row>
-    </>
+    </div>
   );
 }
 
