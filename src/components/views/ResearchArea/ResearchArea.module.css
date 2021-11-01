@@ -1,0 +1,48 @@
+.container {
+  width: 1400px;
+  padding-bottom: 2%;
+  min-height: calc(83vh);
+  word-break: break-all;
+  margin: 0 auto;
+}
+
+.paper_upper {
+  margin-top: 1%;
+  margin-bottom: 3%;
+  padding-top: 1%;
+  padding-left: 1%;
+  padding-right: 2%;
+  padding-bottom: 1%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.title {
+  padding-left: 5%;
+  font-size: 1.3em;
+}
+
+.support_row {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+ul {
+  padding-bottom: 30px;
+}
+
+ul li {
+  padding-bottom: 10px;
+}
+
+.paper div {
+  padding-left: 5%;
+}
+
+.equipment_img {
+  width: 340px;
+}
+
+.support_img {
+  width: 300px;
+}
