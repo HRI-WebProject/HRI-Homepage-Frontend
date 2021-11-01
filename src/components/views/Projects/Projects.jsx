@@ -18,8 +18,8 @@ function Projects() {
       </Typography>
       <Row gutter={[16, 16]} className={styles.out_row}>
         {ongoingList.map((item, idx) => (
-          <Col span={12} key={idx}>
-            <OngoingProject item={item} />
+          <Col span={24} key={idx}>
+            <OngoingProject item={item} col_idx={idx} />
           </Col>
         ))}
       </Row>

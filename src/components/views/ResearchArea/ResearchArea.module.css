@@ -1,5 +1,5 @@
 .container {
-  width: 1400px;
+  width: 1200px;
   padding-bottom: 2%;
   min-height: calc(83vh);
   word-break: break-all;
@@ -40,7 +40,7 @@ ul li {
 }
 
 .equipment_img {
-  width: 340px;
+  width: 285px;
 }
 
 .support_img {

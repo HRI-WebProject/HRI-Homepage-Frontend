@@ -7,7 +7,7 @@ function Research() {
   return (
     <div>
       <Paper elevation={1} className={styles.paper_upper}>
-        연구 분야 소개
+        (연구 분야 소개 이미지 추가 예정)
       </Paper>
     </div>
   );

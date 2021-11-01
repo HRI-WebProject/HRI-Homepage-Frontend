@@ -12,7 +12,8 @@
 .logo {
   float: left;
   width: 120px;
-  margin: 6px 30px 16px 0;
+  height: 45px;
+  margin: 9px 30px 16px 0;
   cursor: pointer;
 }
 
