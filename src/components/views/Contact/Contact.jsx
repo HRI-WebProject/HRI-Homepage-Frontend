@@ -9,6 +9,9 @@ import { Paper, Divider, Typography } from "@mui/material";
 function Contact() {
   return (
     <div className={styles.container}>
+      <Typography variant="h5">
+        <b>Contact Us</b>
+      </Typography>
       <Paper elevation={3} className={styles.paper}>
         <Row>
           <Col span={10}>

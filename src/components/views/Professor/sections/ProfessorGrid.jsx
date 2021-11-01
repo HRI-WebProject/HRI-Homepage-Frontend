@@ -87,7 +87,9 @@ function ProfessorGrid({ professorData }) {
                           color="text.secondary"
                           paddingBottom="7%"
                         >
-                          Research Area
+                          <font style={{ color: "#2f5597" }}>
+                            <b>Research Area</b>
+                          </font>
                           <br />
                           <b>컴퓨터 비전 / 모바일 로봇 / 지능시스템응용</b>
                         </Typography>
