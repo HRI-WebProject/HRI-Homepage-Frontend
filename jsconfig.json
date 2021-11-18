@@ -4,6 +4,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@actions/*": ["./src/_actions/*"],
+      "@titlebar/*": ["./src/components/common/TitleBar/*"],
       "@board/*": ["./src/components/views/Board/*"],
       "@contact/*": ["./src/components/views/Contact/*"],
       "@footer/*": ["./src/components/views/Footer/*"],

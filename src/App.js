@@ -12,15 +12,22 @@ import Projects from "@/components/views/Projects/Projects";
 import Contact from "@/components/views/Contact/Contact";
 import Footer from "@/components/views/Footer/Footer";
 import { BackTop } from "antd";
+import { useMediaQuery } from "react-responsive";
 import "@/App.less";
 
 function App() {
+  const isDesktopOrLaptop = useMediaQuery({ minDeviceWidth: 1224 });
+  const isBigScreen = useMediaQuery({ minDeviceWidth: 1824 });
+  const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
+  const isTabletOrMobileDevice = useMediaQuery({ maxDeviceWidth: 1224 });
+  const isPortrait = useMediaQuery({ orientation: "portrait" });
+  const isRetina = useMediaQuery({ minResolution: "2dppx" });
   return (
     <BrowserRouter>
       <NavBar />
       <div
         style={{
-          padding: "100px 0px 30px 0px", // "100px 200px 30px 200px"
+          padding: "150px 0px 30px 0px", // "100px 200px 30px 200px",
           minHeight: "", // "calc(200vh - 80px)"
           backgroundColor: "#f5f5f5",
         }}
