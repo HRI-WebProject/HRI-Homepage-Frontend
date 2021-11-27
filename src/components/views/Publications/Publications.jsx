@@ -1,30 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "@publications/Publications.module.css";
 import { Paper, Typography } from "@mui/material";
+import { List, Tabs, Divider } from "antd";
 import { paperData } from "@publications/sections/PublicationsData";
 
 function Publications() {
+  const { TabPane } = Tabs;
+  const [journalList, setJournalList] = useState(paperData);
+
   return (
     <div className={styles.container}>
-      <Paper>
-        <div className={styles.contents}>
-          <Typography variant="h5" paddingTop="1%" paddingBottom="1%">
-            <b>Recent Publications</b>
+      <Tabs tabPosition="left">
+        <TabPane tab="Journal" key="1">
+          <Typography variant="h5">
+            <b>Journal</b>
           </Typography>
-          <Typography paddingBottom="1%">
-            {paperData.map((item, i) => (
-              <div key={item.idx}>
-                <Typography variant="body1" paddingBottom="0.7%">
+          <Divider orientation="left">{2021}</Divider>
+          <Paper className={styles.paper}>
+            <List
+              bordered
+              dataSource={journalList}
+              renderItem={(item, idx) => (
+                <List.Item>
                   <font style={{ color: "#2f5597" }}>
-                    <b>[{item.idx}]</b>
+                    <b>[{idx + 1}]</b>
                   </font>{" "}
-                  {item.content}
-                </Typography>
-              </div>
-            ))}
-          </Typography>
-        </div>
-      </Paper>
+                  {item.detail}
+                </List.Item>
+              )}
+            />
+          </Paper>
+        </TabPane>
+        <TabPane tab="Patent" key="2"></TabPane>
+      </Tabs>
     </div>
   );
 }
