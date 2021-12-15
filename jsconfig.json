@@ -18,7 +18,8 @@
       "@activity/*": ["./src/components/views/Activity/*"],
       "@professor/*": ["./src/components/views/Professor/*"],
       "@projects/*": ["./src/components/views/Projects/*"],
-      "@publications/*": ["./src/components/views/Publications/*"],
+      "@journal/*": ["src/components/views/Journal/*"],
+      "@patent/*": ["src/components/views/Patent/*"],
       "@researcharea/*": ["./src/components/views/ResearchArea/*"]
     }
   }
