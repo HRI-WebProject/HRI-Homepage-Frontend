@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
@@ -6,19 +6,18 @@ import ButtonBase from "@mui/material/ButtonBase";
 import { styled } from "@mui/material/styles";
 import { Row, Col } from "antd";
 import styles from "@members/Members.module.css";
-function MemberGrid({ memberData }) {
+function MemberGrid({ memberData, col_size }) {
   const Img = styled("img")({
     margin: "auto",
     display: "block",
     maxWidth: "100%",
     maxHeight: "100%",
   });
-
   return (
     <>
       <Row gutter={[16, 16]}>
         {memberData.map((item, idx) => (
-          <Col span={12} key={idx}>
+          <Col span={col_size} key={idx}>
             <Paper
               sx={{
                 p: 2,

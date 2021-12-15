@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 import { Form, Input, Button, Checkbox } from "antd";
 import { loginUser } from "@actions/user_action";
 import { withRouter } from "react-router-dom";
@@ -9,6 +10,9 @@ function Login(props) {
   const history = useHistory();
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const isSmallScreen = useMediaQuery({
+    query: "(max-width: 1100px)",
+  });
 
   const onFinish = (e) => {
     console.log("Success:", e);
@@ -35,15 +39,11 @@ function Login(props) {
     }
   };
 
-  useEffect(() => {}, []);
-
   return (
     <div className={styles.container}>
       <div className={styles.loginForm}>
         <Form
           name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 8 }}
           initialValues={{ remember: true }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
@@ -58,6 +58,7 @@ function Login(props) {
                 message: "Please input your username.",
               },
             ]}
+            className={styles.input_box}
           >
             <Input value={userId} />
           </Form.Item>
@@ -70,20 +71,20 @@ function Login(props) {
                 message: "Please input your password.",
               },
             ]}
+            className={styles.input_box}
           >
             <Input.Password value={userPassword} />
           </Form.Item>
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 8,
-            }}
-          >
-            <Button type="primary" htmlType="submit" block>
+          <div className={styles.submit}>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className={styles.submitBtn}
+            >
               Submit
             </Button>
-          </Form.Item>
-          * 관리자 계정으로만 로그인이 가능합니다.
+            <div>* 관리자 계정으로만 로그인이 가능합니다.</div>
+          </div>
         </Form>
       </div>
     </div>

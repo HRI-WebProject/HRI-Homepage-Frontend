@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
-import styles from "@board/Board.module.css";
+import styles from "@activity/Activity.module.css";
 import TitleBar from "@titlebar/TitleBar";
 import Sider from "@sider/Sider";
-import BoardList from "@board/sections/BoardList";
+import ImageDataList from "@activity/sections/ImageDataList";
 
-function Board() {
+function Activity() {
   return (
     <div className={styles.container}>
       <TitleBar title="게시판" />
       <div className={styles.ls}>
         <Sider selected_key="Board" />
       </div>
-      <div className={styles.rs}>{/* <BoardList /> */}</div>
+      <div className={styles.rs}>{/* <ImageDataList /> */}</div>
     </div>
   );
 }
 
-export default Board;
+export default Activity;

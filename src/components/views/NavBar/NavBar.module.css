@@ -9,7 +9,8 @@
   width: 100%;
   height: 50px;
   text-align: right;
-  padding: 15px 120px 13px 50px;
+  padding: 15px 0px 13px 50px;
+  padding-right: 2%;
   font-size: 0.9em;
 }
 
@@ -27,12 +28,16 @@
   width: 100%;
   height: 100px;
   margin: 0 auto;
+  font-size: 1.2em;
+}
+
+.menu:hover {
 }
 
 .logo {
   float: left;
-  width: 120px;
-  margin: 6px 30px 16px 0;
+  width: 110px;
+  margin: 9px 30px 16px 0;
   cursor: pointer;
 }
 

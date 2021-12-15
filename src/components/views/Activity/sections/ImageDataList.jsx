@@ -2,7 +2,7 @@ import React from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
-import ItemData from "@board/sections/ItemData";
+import ItemData from "@activity/sections/ItemData";
 
 function ImageDataList() {
   return (
