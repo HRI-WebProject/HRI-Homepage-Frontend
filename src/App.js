@@ -5,8 +5,10 @@ import NavBar from "@/components/views/NavBar/NavBar";
 import LoginPage from "@/components/views/Login/Login";
 import ResearchArea from "@/components/views/ResearchArea/ResearchArea";
 import Members from "@/components/views/Members/Members";
+import Alumni from "@/components/views/Alumni/Alumni";
 import Professor from "@/components/views/Professor/Professor";
 import Board from "@/components/views/Board/Board";
+import Activity from "@/components/views/Activity/Activity";
 import Publications from "@/components/views/Publications/Publications";
 import Projects from "@/components/views/Projects/Projects";
 import Contact from "@/components/views/Contact/Contact";
@@ -37,8 +39,10 @@ function App() {
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/research-area" component={ResearchArea} />
           <Route exact path="/members" component={Members} />
+          <Route exact path="/alumni" component={Alumni} />
           <Route exact path="/professor" component={Professor} />
           <Route exact path="/board" component={Board} />
+          <Route exact path="/activity" component={Activity} />
           <Route exact path="/publications" component={Publications} />
           <Route exact path="/projects" component={Projects} />
           <Route exact path="/contact" component={Contact} />

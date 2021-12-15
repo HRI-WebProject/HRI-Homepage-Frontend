@@ -3,10 +3,9 @@ import { useMediaQuery } from "react-responsive";
 import ProfessorGrid from "@professor/sections/ProfessorGrid";
 import styles from "@professor/Professor.module.css";
 import TitleBar from "@titlebar/TitleBar";
-import { Tabs } from "antd";
+import Sider from "@sider/Sider";
 
 function Professor() {
-  const { TabPane } = Tabs;
   const professorData = [];
 
   const isSmallScreen = useMediaQuery({
@@ -23,11 +22,12 @@ function Professor() {
   return (
     <div className={styles.container}>
       <TitleBar title="교수진" />
-      <Tabs tabPosition="left">
-        <TabPane tab="교수" key="1">
-          <ProfessorGrid professorData={professorData} />
-        </TabPane>
-      </Tabs>
+      <div className={styles.ls}>
+        <Sider selected_key="Professor" />
+      </div>
+      <div className={styles.rs}>
+        <ProfessorGrid professorData={professorData} />
+      </div>
     </div>
   );
 }

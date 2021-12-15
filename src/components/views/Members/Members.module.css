@@ -6,6 +6,16 @@
   margin: 0 auto;
 }
 
+.ls {
+  float: left;
+}
+
+.rs {
+  min-height: 100vh;
+  /* width: 80vw; */
+  padding-left: 180px;
+}
+
 @media (max-width: 1100px) {
   .container {
     width: 90vw;
@@ -26,32 +36,4 @@
 .hashtag {
   font-weight: bold;
   color: #2f5597;
-}
-
-.alumni_row {
-  width: 600px;
-  padding: 10px 30px 15px 30px;
-  overflow: hidden;
-}
-
-.stat {
-  width: 90px;
-  float: left;
-}
-
-.vertical_line {
-  float: left;
-  border-right: 2px solid #e9ecef;
-  width: 0.1px;
-  height: 50px;
-  margin: 5px 30px 0px 30px;
-}
-
-.workplace {
-  width: 850px;
-  padding: 10px 30px 30px 30px;
-}
-
-.workplaceImg {
-  width: 250px;
 }
