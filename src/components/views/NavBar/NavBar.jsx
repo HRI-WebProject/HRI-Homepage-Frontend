@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Menu, Dropdown, Select, Button } from "antd";
+import { Layout, Menu, Dropdown, Select, Button, Row, Col } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
 import styles from "@navbar/NavBar.module.css";
 import { useHistory } from "react-router";
@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 const { Header } = Layout;
 const { Option } = Select;
 
-function NavBar({ currentPage }) {
+function NavBar() {
   const [account, setAccount] = useState("user");
   const [language, setLanguage] = useState("한국어");
   const [page, setPage] = useState("home");
@@ -22,6 +22,7 @@ function NavBar({ currentPage }) {
     "Contact",
   ];
   const path = [
+    "/",
     "/research-area",
     "/professor",
     "/members",
@@ -31,17 +32,28 @@ function NavBar({ currentPage }) {
     "/contact",
   ];
 
-  const menu = (
+  const language_menu = (
     <Menu>
-      <Menu.Item>한국어</Menu.Item>
-      <Menu.Item>English</Menu.Item>
+      <Menu.Item style={{ width: "100px" }}>
+        <div style={{ fontSize: "1.1em" }}>한국어</div>
+      </Menu.Item>
+      <Menu.Item>
+        <div style={{ fontSize: "1.1em" }}>English</div>
+      </Menu.Item>
     </Menu>
   );
 
   const movePage = (url, idx) => {
-    history.push(url);
+    window.location.href = url;
     setPage(categories[idx]);
   };
+
+  useEffect(() => {
+    // console.log(window.location.pathname);
+    var url_idx = path.findIndex((value) => value === window.location.pathname);
+    if (url_idx === 0) setPage(categories[url_idx - 1]);
+    console.log(categories[url_idx - 1]);
+  }, []);
 
   return (
     <div className={styles.outer}>
@@ -64,20 +76,25 @@ function NavBar({ currentPage }) {
           src="/assets/logo.png"
           onClick={() => movePage("/")}
         />
-        <div className={styles.menu}>
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["0"]}>
+        <div>
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={page}
+            className={styles.menu}
+          >
             {categories.map((submenu, idx) => {
               return (
                 <Menu.Item
                   key={idx + 1}
-                  onClick={() => movePage(path[idx], idx)}
+                  onClick={() => movePage(path[idx + 1], idx)}
                 >
-                  {submenu}
+                  <div style={{ fontSize: "1.1em" }}>{submenu}</div>
                 </Menu.Item>
               );
             })}
             <Dropdown
-              overlay={menu}
+              overlay={language_menu}
               placement="bottomCenter"
               className={styles.dropdown}
             >

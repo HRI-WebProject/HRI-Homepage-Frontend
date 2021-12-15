@@ -1,0 +1,50 @@
+.container {
+  width: 1100px;
+  padding-bottom: 2%;
+  min-height: calc(65vh);
+  word-break: break-all;
+  margin: 0 auto;
+}
+
+.ls {
+  float: left;
+}
+
+.rs {
+  min-height: 100vh;
+  padding-left: 180px;
+}
+
+.paper {
+  margin-top: 20px;
+  margin-left: 10px;
+  padding: 10px 0px 10px 0px;
+}
+
+.alumni_row {
+  width: 600px;
+  padding: 10px 30px 15px 30px;
+  overflow: hidden;
+}
+
+.stat {
+  width: 90px;
+  float: left;
+}
+
+.vertical_line {
+  float: left;
+  border-right: 2px solid #e9ecef;
+  width: 0.1px;
+  height: 50px;
+  margin: 5px 30px 0px 30px;
+}
+
+.workplace {
+  width: 850px;
+  padding: 10px 30px 30px 30px;
+}
+
+.workplaceImg {
+  width: 250px;
+}
