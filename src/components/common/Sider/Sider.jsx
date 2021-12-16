@@ -44,23 +44,6 @@ function Sider({ selected_key }) {
             </Menu.Item>
           </>
         );
-      case "Publications":
-        return (
-          <>
-            <Menu.Item
-              key="publications/journal"
-              onClick={() => movePage("/publications/journal")}
-            >
-              학술지
-            </Menu.Item>
-            <Menu.Item
-              key="publications/patent"
-              onClick={() => movePage("/publications/patent")}
-            >
-              특허
-            </Menu.Item>
-          </>
-        );
     }
   };
 

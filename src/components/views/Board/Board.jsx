@@ -7,7 +7,7 @@ import BoardList from "@board/sections/BoardList";
 function Board() {
   return (
     <div className={styles.container}>
-      <TitleBar title="게시판" />
+      <TitleBar title="소식" />
       <div className={styles.ls}>
         <Sider selected_key="Board" />
       </div>

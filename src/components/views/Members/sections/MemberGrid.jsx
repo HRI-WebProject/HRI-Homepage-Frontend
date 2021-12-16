@@ -35,7 +35,7 @@ function MemberGrid({ memberData, col_size }) {
                   <Grid item xs container direction="column" spacing={2}>
                     <Grid item xs>
                       <Typography gutterBottom variant="body1" component="div">
-                        <b>{item.name}</b> ({item.english})
+                        <b>{item.name}</b>
                       </Typography>
                       <Typography variant="body1" gutterBottom>
                         <font className={styles.hashtag}>#</font>{" "}

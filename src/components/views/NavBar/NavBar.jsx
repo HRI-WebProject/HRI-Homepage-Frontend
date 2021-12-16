@@ -26,7 +26,7 @@ function NavBar() {
     "/research-area",
     "/professor",
     "/members",
-    "/publications/journal",
+    "/publications",
     "/projects",
     "/board",
     "/contact",
