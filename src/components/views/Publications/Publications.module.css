@@ -15,6 +15,7 @@
   padding-bottom: 2%;
   overflow-x: hidden;
   overflow-y: auto;
+}
 
 @media (max-width: 1100px) {
   .container {

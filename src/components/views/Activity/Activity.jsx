@@ -7,7 +7,7 @@ import ImageDataList from "@activity/sections/ImageDataList";
 function Activity() {
   return (
     <div className={styles.container}>
-      <TitleBar title="게시판" />
+      <TitleBar title="활동" />
       <div className={styles.ls}>
         <Sider selected_key="Board" />
       </div>

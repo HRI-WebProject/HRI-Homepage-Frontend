@@ -30,12 +30,12 @@ function Members() {
               <b>박사 과정</b>
             </Typography>
             <MemberGrid memberData={phdMembers} col_size={24} />
-            <Divider dashed />
+            <hr className={styles.hrline} />
             <Typography variant="h5">
               <b>석사 과정</b>
             </Typography>
             <MemberGrid memberData={masterMembers} col_size={24} />
-            <Divider dashed />
+            <hr className={styles.hrline} />
             <Typography variant="h5">
               <b>학부 연구생</b>
             </Typography>
@@ -47,12 +47,12 @@ function Members() {
               <b>박사 과정</b>
             </Typography>
             <MemberGrid memberData={phdMembers} col_size={12} />
-            <Divider dashed />
+            <hr className={styles.hrline} />
             <Typography variant="h5">
               <b>석사 과정</b>
             </Typography>
             <MemberGrid memberData={masterMembers} col_size={12} />
-            <Divider dashed />
+            <hr className={styles.hrline} />
             <Typography variant="h5">
               <b>학부 연구생</b>
             </Typography>
