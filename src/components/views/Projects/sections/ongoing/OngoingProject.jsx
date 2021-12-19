@@ -5,9 +5,9 @@ import styles from "@projects/Projects.module.css";
 import Typography from "@mui/material/Typography";
 
 function OngoingProject({ item }) {
-  useEffect(() => {
-    console.log(item);
-  }, []);
+  // useEffect(() => {
+  //   console.log(item);
+  // }, []);
   return (
     <Paper elevation={1} className={styles.paper}>
       <Row gutter={[16, 16]}>
@@ -29,9 +29,7 @@ function OngoingProject({ item }) {
           </div>
         </Col>
         <Col span={12}>
-          <div className={styles.rs}>
-            <img className={styles.project_img} src={item.src} />
-          </div>
+          <img className={styles.project_img} src={item.src} />
         </Col>
       </Row>
     </Paper>
