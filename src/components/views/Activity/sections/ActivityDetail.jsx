@@ -9,7 +9,7 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ListIcon from "@material-ui/icons/List";
 
-function BoardDetail() {
+function ActivityDetail() {
   const history = useHistory();
 
   const movePage = (url) => {
@@ -29,7 +29,7 @@ function BoardDetail() {
 
   return (
     <div className={styles.container}>
-      <TitleBar title="소식" />
+      <TitleBar title="활동" />
       <TopMenu selected_key="Board" />
       <Paper className={styles.paper}>
         <table className={styles.table_}>
@@ -62,7 +62,7 @@ function BoardDetail() {
         </table>
         <div
           className={styles.listIcon}
-          onClick={() => movePage("/board/notice")}
+          onClick={() => movePage("/board/activity")}
         >
           <ListIcon />
         </div>
@@ -73,7 +73,7 @@ function BoardDetail() {
             renderItem={(item) =>
               item.type === "prev" ? (
                 <List.Item
-                  onClick={() => movePage("/board/notice/")}
+                  onClick={() => movePage("/board/activity/")}
                   className={styles.list_item}
                 >
                   <span className={styles.prev_next_btn}>
@@ -84,7 +84,7 @@ function BoardDetail() {
                 </List.Item>
               ) : (
                 <List.Item
-                  onClick={() => movePage("/board/notice/")}
+                  onClick={() => movePage("/board/activity/")}
                   className={styles.list_item}
                 >
                   <span className={styles.prev_next_btn}>
@@ -102,4 +102,4 @@ function BoardDetail() {
   );
 }
 
-export default BoardDetail;
+export default ActivityDetail;

@@ -5,7 +5,7 @@ import { Table } from "reactstrap";
 import { Paper } from "@mui/material";
 import { Pagination } from "antd";
 
-function BoardList(props, { boardType }) {
+function ActivityList(props, { boardType }) {
   const history = useHistory();
   const [rowList, setRowList] = useState();
 
@@ -15,90 +15,90 @@ function BoardList(props, { boardType }) {
       topic: "Snow",
       author: "Jon",
       create_date: "2021/11/10",
-      boardType: "notice",
+      boardType: "activity",
     },
     {
       id: 2,
       topic: "Snow",
       author: "Jon",
       create_date: "2021/11/10",
-      boardType: "notice",
+      boardType: "activity",
     },
     {
       id: 3,
       topic: "Snow",
       author: "Jon",
       create_date: "2021/11/10",
-      boardType: "notice",
+      boardType: "activity",
     },
     {
       id: 4,
       topic: "Snow",
       author: "Jon",
       create_date: "2021/11/10",
-      boardType: "notice",
+      boardType: "activity",
     },
     {
       id: 5,
       topic: "Snow",
       author: "Jon",
       create_date: "2021/11/10",
-      boardType: "notice",
+      boardType: "activity",
     },
     {
       id: 6,
       topic: "Snow",
       author: "Jon",
       create_date: "2021/11/10",
-      boardType: "notice",
+      boardType: "activity",
     },
     {
       id: 7,
       topic: "Snow",
       author: "Jon",
       create_date: "2021/11/10",
-      boardType: "notice",
+      boardType: "activity",
     },
     {
       id: 8,
       topic: "Snow",
       author: "Jon",
       create_date: "2021/11/10",
-      boardType: "notice",
+      boardType: "activity",
     },
     {
       id: 9,
       topic: "Snow",
       author: "Jon",
       create_date: "2021/11/10",
-      boardType: "notice",
+      boardType: "activity",
     },
     {
       id: 10,
       topic: "Snow",
       author: "Jon",
       create_date: "2021/11/10",
-      boardType: "notice",
+      boardType: "activity",
     },
     {
       id: 11,
       topic: "Snow",
       author: "Jon",
       create_date: "2021/11/10",
-      boardType: "notice",
+      boardType: "activity",
     },
     {
       id: 12,
       topic: "Snow",
       author: "Jon",
       create_date: "2021/11/10",
-      boardType: "notice",
+      boardType: "activity",
     },
   ];
 
   const moveDetailPage = (data) => {
     let id = data.id;
-    if (data.boardType === "notice") history.push(`/board/notice/${id}`);
+    if (data.boardType === "activity") history.push(`/board/activity/${id}`);
   };
 
   useEffect(() => {
@@ -141,4 +141,4 @@ function BoardList(props, { boardType }) {
   );
 }
 
-export default BoardList;
+export default ActivityList;

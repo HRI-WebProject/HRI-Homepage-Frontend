@@ -10,6 +10,7 @@ import Professor from "@/components/views/Professor/Professor";
 import Board from "@/components/views/Board/Board";
 import BoardDetail from "@/components/views/Board/sections/BoardDetail";
 import Activity from "@/components/views/Activity/Activity";
+import ActivityDetail from "@/components/views/Activity/sections/ActivityDetail";
 import Journal from "@/components/views/Journal/Journal";
 import Patent from "@/components/views/Patent/Patent";
 import Projects from "@/components/views/Projects/Projects";
@@ -46,6 +47,7 @@ function App() {
           <Route exact path="/board/notice" component={Board} />
           <Route exact path="/board/notice/:id" component={BoardDetail} />
           <Route exact path="/board/activity" component={Activity} />
+          <Route exact path="/board/activity/:id" component={ActivityDetail} />
           <Route exact path="/publications/journal" component={Journal} />
           <Route exact path="/publications/patent" component={Patent} />
           <Route exact path="/projects" component={Projects} />
