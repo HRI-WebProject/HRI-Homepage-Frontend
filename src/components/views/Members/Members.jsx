@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import TitleBar from "@titlebar/TitleBar";
 import styles from "@members/Members.module.css";
-import Sider from "@sider/Sider";
+import { Paper } from "@mui/material";
+import TopMenu from "@topmenu/TopMenu";
 import { useMediaQuery } from "react-responsive";
 import Typography from "@mui/material/Typography";
 import { Tabs, Divider, Menu } from "antd";
@@ -20,12 +21,10 @@ function Members() {
   return (
     <div className={styles.container}>
       <TitleBar title="구성원" />
-      <div className={styles.ls}>
-        <Sider selected_key="Members" />
-      </div>
-      <div className={styles.rs}>
-        {isSmallScreen ? (
-          <>
+      <TopMenu selected_key="Members" />
+      {isSmallScreen ? (
+        <>
+          <Paper className={styles.paper}>
             <Typography variant="h5">
               <b>박사 과정</b>
             </Typography>
@@ -40,26 +39,26 @@ function Members() {
               <b>학부 연구생</b>
             </Typography>
             <MemberGrid memberData={undergraduate} col_size={24} />
-          </>
-        ) : (
-          <>
-            <Typography variant="h5">
-              <b>박사 과정</b>
-            </Typography>
-            <MemberGrid memberData={phdMembers} col_size={12} />
-            <hr className={styles.hrline} />
-            <Typography variant="h5">
-              <b>석사 과정</b>
-            </Typography>
-            <MemberGrid memberData={masterMembers} col_size={12} />
-            <hr className={styles.hrline} />
-            <Typography variant="h5">
-              <b>학부 연구생</b>
-            </Typography>
-            <MemberGrid memberData={undergraduate} col_size={12} />
-          </>
-        )}
-      </div>
+          </Paper>
+        </>
+      ) : (
+        <Paper className={styles.paper}>
+          <Typography variant="h5">
+            <b>박사 과정</b>
+          </Typography>
+          <MemberGrid memberData={phdMembers} col_size={12} />
+          <hr className={styles.hrline} />
+          <Typography variant="h5">
+            <b>석사 과정</b>
+          </Typography>
+          <MemberGrid memberData={masterMembers} col_size={12} />
+          <hr className={styles.hrline} />
+          <Typography variant="h5">
+            <b>학부 연구생</b>
+          </Typography>
+          <MemberGrid memberData={undergraduate} col_size={12} />
+        </Paper>
+      )}
     </div>
   );
 }

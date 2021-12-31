@@ -1,4 +1,4 @@
-export const paperData = [
+export const journalData = [
   {
     detail:
       "Jin-Woo Jung, Zeungnam Bien, and Tomomasa Sato, “Person Recognition Method using Sequential Walking Footprints via overlapped Foot Shape and Center-Of-Pressure Trajectory,” IEICE Transactions on Fundamentals of Electronics,Commnications and Computer Sciences, Vol.E87-A, No.6, pp.1393-1400, June 2004 (SCIE)",

@@ -28,14 +28,15 @@
 }
 
 .paper {
-  margin-top: 20px;
-  margin-left: 10px;
-  padding: 10px 0px 10px 0px;
+  padding: 30px;
 }
 
 .hashtag {
   font-weight: bold;
+  font-size: 1.4em;
   color: #2f5597;
+  padding-right: 12px;
+  padding-left: 2px;
 }
 
 .hrline {
@@ -47,4 +48,27 @@
   margin-top: 40px;
   padding-bottom: 20px;
   background-color: #fafafa;
+}
+
+.grid {
+  margin-top: 10px;
+  border-bottom: 1px solid #d0d0d0;
+  border-left: 1px solid #d0d0d0;
+  border-right: 1px solid #d0d0d0;
+  border-top: 3px solid #2f5597;
+}
+
+.contents {
+  padding: 20px;
+}
+
+.contents div {
+  padding-bottom: 5px;
+}
+
+.hr_tag {
+  border: none;
+  border-top: 2px dashed #3e3e3e;
+  background-color: #fff;
+  height: 1px;
 }

@@ -64,7 +64,10 @@ function BottomFooter() {
           Members
         </span>
         <span className={styles.verticlebar}>|</span>
-        <span className={styles.menu} onClick={() => movePage("/publications")}>
+        <span
+          className={styles.menu}
+          onClick={() => movePage("/publications/journal")}
+        >
           Publications
         </span>
         <span className={styles.verticlebar}>|</span>
@@ -72,7 +75,7 @@ function BottomFooter() {
           Projects
         </span>
         <span className={styles.verticlebar}>|</span>
-        <span className={styles.menu} onClick={() => movePage("/board")}>
+        <span className={styles.menu} onClick={() => movePage("/board/notice")}>
           Board
         </span>
         <span className={styles.verticlebar}>|</span>
