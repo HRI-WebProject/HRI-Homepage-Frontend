@@ -8,8 +8,10 @@ import Members from "@/components/views/Members/Members";
 import Alumni from "@/components/views/Alumni/Alumni";
 import Professor from "@/components/views/Professor/Professor";
 import Board from "@/components/views/Board/Board";
+import BoardDetail from "@/components/views/Board/sections/BoardDetail";
 import Activity from "@/components/views/Activity/Activity";
-import Publications from "@/components/views/Publications/Publications";
+import Journal from "@/components/views/Journal/Journal";
+import Patent from "@/components/views/Patent/Patent";
 import Projects from "@/components/views/Projects/Projects";
 import Contact from "@/components/views/Contact/Contact";
 import Footer from "@/components/views/Footer/Footer";
@@ -41,9 +43,11 @@ function App() {
           <Route exact path="/members" component={Members} />
           <Route exact path="/alumni" component={Alumni} />
           <Route exact path="/professor" component={Professor} />
-          <Route exact path="/board" component={Board} />
-          <Route exact path="/activity" component={Activity} />
-          <Route exact path="/publications" component={Publications} />
+          <Route exact path="/board/notice" component={Board} />
+          <Route exact path="/board/notice/:id" component={BoardDetail} />
+          <Route exact path="/board/activity" component={Activity} />
+          <Route exact path="/publications/journal" component={Journal} />
+          <Route exact path="/publications/patent" component={Patent} />
           <Route exact path="/projects" component={Projects} />
           <Route exact path="/contact" component={Contact} />
         </Switch>

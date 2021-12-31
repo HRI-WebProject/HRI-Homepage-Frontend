@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "@api/index";
 import { useMediaQuery } from "react-responsive";
 import ProfessorGrid from "@professor/sections/ProfessorGrid";
 import styles from "@professor/Professor.module.css";
 import TitleBar from "@titlebar/TitleBar";
-import Sider from "@sider/Sider";
+import { Paper } from "@mui/material";
 
 function Professor() {
   const professorData = [];
@@ -19,15 +20,23 @@ function Professor() {
       content: "descriptions",
     });
   }
+
+  useEffect(() => {
+    Axios.get("professors/").then((res) => {
+      if (res.status === 200) {
+        console.log(res);
+      } else {
+        alert("register failed");
+      }
+    });
+  }, []);
+
   return (
     <div className={styles.container}>
       <TitleBar title="교수진" />
-      <div className={styles.ls}>
-        <Sider selected_key="Professor" />
-      </div>
-      <div className={styles.rs}>
+      <Paper className={styles.paper}>
         <ProfessorGrid professorData={professorData} />
-      </div>
+      </Paper>
     </div>
   );
 }

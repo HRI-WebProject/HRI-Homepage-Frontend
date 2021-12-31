@@ -3,9 +3,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@api/*": ["./src/api/*"],
       "@actions/*": ["./src/_actions/*"],
       "@titlebar/*": ["./src/components/common/TitleBar/*"],
       "@sider/*": ["./src/components/common/Sider/*"],
+      "@topmenu/*": ["./src/components/common/TopMenu/*"],
       "@board/*": ["./src/components/views/Board/*"],
       "@contact/*": ["./src/components/views/Contact/*"],
       "@footer/*": ["./src/components/views/Footer/*"],
@@ -18,7 +20,8 @@
       "@activity/*": ["./src/components/views/Activity/*"],
       "@professor/*": ["./src/components/views/Professor/*"],
       "@projects/*": ["./src/components/views/Projects/*"],
-      "@publications/*": ["./src/components/views/Publications/*"],
+      "@journal/*": ["src/components/views/Journal/*"],
+      "@patent/*": ["src/components/views/Patent/*"],
       "@researcharea/*": ["./src/components/views/ResearchArea/*"]
     }
   }

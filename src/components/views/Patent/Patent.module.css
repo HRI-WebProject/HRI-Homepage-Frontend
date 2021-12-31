@@ -16,6 +16,16 @@
   padding-left: 180px;
 }
 
+.paper {
+  margin-bottom: 3%;
+  padding-top: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 @media (max-width: 1100px) {
   .container {
     width: 90vw;
@@ -26,34 +36,14 @@
     background-color: #f5f5f5;
   }
 }
-.datagrid {
+
+.index {
+  margin-left: -20px;
+  width: 100px;
+  text-align: center;
+  /* background-color: blue; */
+}
+
+.contents {
   width: 100%;
-}
-
-.datagrid_item {
-  cursor: pointer;
-}
-
-.paper {
-  padding: 20px;
-}
-
-.title_row {
-  height: 30px;
-}
-
-.table_row {
-  cursor: pointer;
-  /* height: 50px; */
-}
-
-table {
-  width: 100%;
-  border-top: 1px solid #444444;
-  border-collapse: collapse;
-}
-th,
-td {
-  border-bottom: 1px solid #444444;
-  padding: 10px;
 }

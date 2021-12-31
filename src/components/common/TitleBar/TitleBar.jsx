@@ -41,13 +41,23 @@ function TitleBar({ title }) {
               href="/publications/journal"
               className={styles.a_tag}
             >
-              Publications
+              Members
             </Breadcrumb.Item>
             <Breadcrumb.Item>{title}</Breadcrumb.Item>
           </>
         );
       case "소식":
       case "활동":
+        return (
+          <>
+            <Breadcrumb.Item href="/board/notice" className={styles.a_tag}>
+              Board
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>{title}</Breadcrumb.Item>
+          </>
+        );
+      case "학술지":
+      case "특허":
         return (
           <>
             <Breadcrumb.Item

@@ -1,15 +1,18 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Layout, Menu } from "antd";
 import { useHistory } from "react-router";
-import styles from "@sider/Sider.module.css";
 
-function Sider({ selected_key }) {
+function TopMenu({ selected_key }) {
   const [currentURL, setCurrentURL] = useState(window.location.pathname);
   const [key, setKey] = useState(currentURL.substr(1, currentURL.length));
   const history = useHistory();
   const { Sider } = Layout;
   const movePage = (url) => {
     history.push(url);
+  };
+
+  const handleClick = (e) => {
+    console.log(e);
   };
 
   const renderSwitch = (param) => {
@@ -71,24 +74,20 @@ function Sider({ selected_key }) {
   };
 
   useEffect(() => {
-    setCurrentURL(window.location.pathname);
-    setKey(currentURL.substr(1, currentURL.length));
-    console.log(currentURL.substr(1, currentURL.length));
+    console.log(currentURL);
+    console.log(key);
+    if (currentURL.indexOf("notice") !== -1) setKey("board/notice");
+    else if (currentURL.indexOf("activity") !== -1) setKey("board/activity");
+    console.log(key);
   }, []);
 
   return (
-    <div className={styles.sider}>
-      <Sider trigger={null} width={120}>
-        <Menu
-          defaultSelectedKeys={key}
-          mode="inline"
-          style={{ backgroundColor: "#f5f5f5", height: "500px" }}
-        >
-          <Fragment>{renderSwitch(selected_key)}</Fragment>
-        </Menu>
-      </Sider>
+    <div>
+      <Menu onClick={handleClick} defaultSelectedKeys={key} mode="horizontal">
+        <Fragment>{renderSwitch(selected_key)}</Fragment>
+      </Menu>
     </div>
   );
 }
 
-export default Sider;
+export default TopMenu;
