@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 
 function TopMenu({ selected_key }) {
   const [currentURL, setCurrentURL] = useState(window.location.pathname);
-  const [key, setKey] = useState(currentURL.substr(1, currentURL.length));
+  const [key, setKey] = useState();
   const history = useHistory();
   const { Sider } = Layout;
   const movePage = (url) => {
@@ -91,16 +91,19 @@ function TopMenu({ selected_key }) {
   };
 
   useEffect(() => {
-    setCurrentURL(window.location.pathname);
-    setKey(currentURL.substr(1, currentURL.length));
-    console.log(currentURL.substr(1, currentURL.length));
+    if (currentURL.indexOf("notice") !== -1) setKey("board/notice");
+    else if (currentURL.indexOf("activity") !== -1) setKey("board/activity");
+    else setKey(currentURL.substr(1, currentURL.length));
+    console.log(key);
   }, []);
 
   return (
     <div>
-      <Menu onClick={handleClick} defaultSelectedKeys={key} mode="horizontal">
-        <Fragment>{renderSwitch(selected_key)}</Fragment>
-      </Menu>
+      {key && (
+        <Menu onClick={handleClick} defaultSelectedKeys={key} mode="horizontal">
+          <Fragment>{renderSwitch(selected_key)}</Fragment>
+        </Menu>
+      )}
     </div>
   );
 }
