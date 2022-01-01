@@ -13,7 +13,7 @@ function NavBar() {
   const [page, setPage] = useState("home");
   const history = useHistory();
   const categories = [
-    "Research Area",
+    "Research",
     "Professor",
     "Members",
     "Publicatons",
@@ -23,7 +23,7 @@ function NavBar() {
   ];
   const path = [
     "/",
-    "/research-area",
+    "/research/researchArea",
     "/professor",
     "/members",
     "/publications/journal",

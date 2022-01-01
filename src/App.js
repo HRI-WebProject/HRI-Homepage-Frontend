@@ -4,6 +4,7 @@ import MainPage from "@/components/views/MainPage/MainPage";
 import NavBar from "@/components/views/NavBar/NavBar";
 import LoginPage from "@/components/views/Login/Login";
 import ResearchArea from "@/components/views/ResearchArea/ResearchArea";
+import Equipments from "@/components/views/ResearchArea/sections/Equipments";
 import Members from "@/components/views/Members/Members";
 import Alumni from "@/components/views/Alumni/Alumni";
 import Professor from "@/components/views/Professor/Professor";
@@ -38,7 +39,12 @@ function App() {
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/research-area" component={ResearchArea} />
+          <Route exact path="/research/researchArea" component={ResearchArea} />
+          <Route
+            exact
+            path="/research/researchEquipment"
+            component={Equipments}
+          />
           <Route exact path="/members" component={Members} />
           <Route exact path="/alumni" component={Alumni} />
           <Route exact path="/professor" component={Professor} />

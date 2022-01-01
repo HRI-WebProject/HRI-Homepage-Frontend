@@ -22,7 +22,7 @@
       "@projects/*": ["./src/components/views/Projects/*"],
       "@journal/*": ["src/components/views/Journal/*"],
       "@patent/*": ["src/components/views/Patent/*"],
-      "@researcharea/*": ["./src/components/views/ResearchArea/*"]
+      "@researcharea/*": ["src/components/views/ResearchArea/*"]
     }
   }
 }
