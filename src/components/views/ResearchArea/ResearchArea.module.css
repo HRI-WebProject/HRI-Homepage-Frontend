@@ -17,13 +17,9 @@
   }
 }
 
-.paper_upper {
-  margin-top: 1%;
+.paper {
   margin-bottom: 3%;
-  padding-top: 1%;
-  padding-left: 1%;
-  padding-right: 2%;
-  padding-bottom: 1%;
+  padding: 2%;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -46,14 +42,41 @@ ul li {
   padding-bottom: 10px;
 }
 
-.paper div {
-  padding-left: 5%;
+.equipment_card {
+  width: 100%;
+  border: 1px solid #808080;
 }
 
-.equipment_img {
-  width: 340px;
+.research_topic_title {
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
-.support_img {
-  width: 300px;
+.item {
+  padding-bottom: 20px;
+}
+
+.circle {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #2f5597;
+  color: white;
+  text-align: center;
+  line-height: 25px;
+  margin-right: 8px;
+}
+
+.item_name {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #2f5597;
+  display: inline-block;
+}
+
+.item_detail {
+  padding-left: 30px;
 }

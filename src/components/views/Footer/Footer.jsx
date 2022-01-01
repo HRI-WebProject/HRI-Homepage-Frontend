@@ -51,7 +51,7 @@ function BottomFooter() {
         </Tag>
         <span
           className={styles.menu}
-          onClick={() => movePage("/research-area")}
+          onClick={() => movePage("/research/researchArea")}
         >
           Research Area
         </span>

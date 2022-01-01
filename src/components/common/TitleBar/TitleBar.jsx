@@ -25,6 +25,18 @@ function TitleBar({ title }) {
           </>
         );
       case "연구 분야":
+      case "연구실 장비":
+        return (
+          <>
+            <Breadcrumb.Item
+              href="/research/researchArea"
+              className={styles.a_tag}
+            >
+              Research
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>{title}</Breadcrumb.Item>
+          </>
+        );
       case "교수진":
       case "프로젝트 소개":
       case "문의":
