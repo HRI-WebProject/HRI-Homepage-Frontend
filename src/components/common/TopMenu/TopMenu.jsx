@@ -17,6 +17,23 @@ function TopMenu({ selected_key }) {
 
   const renderSwitch = (param) => {
     switch (param) {
+      case "ResearchArea":
+        return (
+          <>
+            <Menu.Item
+              key="research/researchArea"
+              onClick={() => movePage("/research/researchArea")}
+            >
+              연구 분야
+            </Menu.Item>
+            <Menu.Item
+              key="research/researchEquipment"
+              onClick={() => movePage("/research/researchEquipment")}
+            >
+              연구실 장비
+            </Menu.Item>
+          </>
+        );
       case "Members":
         return (
           <>

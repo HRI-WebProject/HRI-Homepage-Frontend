@@ -8,7 +8,6 @@ import { Pagination } from "antd";
 function BoardList(props, { boardType }) {
   const history = useHistory();
   const [rowList, setRowList] = useState();
-
   const rows = [
     {
       id: 1,
