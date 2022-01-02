@@ -8,12 +8,12 @@ import Equipments from "@/components/views/ResearchArea/sections/Equipments";
 import Members from "@/components/views/Members/Members";
 import Alumni from "@/components/views/Alumni/Alumni";
 import Professor from "@/components/views/Professor/Professor";
-import Board from "@/components/views/Board/Board";
-import BoardDetail from "@/components/views/Board/sections/BoardDetail";
-import Activity from "@/components/views/Activity/Activity";
-import ActivityDetail from "@/components/views/Activity/sections/ActivityDetail";
-import Journal from "@/components/views/Journal/Journal";
-import Patent from "@/components/views/Patent/Patent";
+import Notice from "@/components/views/Board/Notice/Notice";
+import BoardDetail from "@/components/views/Board/Notice/sections/BoardDetail";
+import Activity from "@/components/views/Board/Activity/Activity";
+import ActivityDetail from "@/components/views/Board/Activity/sections/ActivityDetail";
+import Journal from "@/components/views/Publications/Journal/Journal";
+import Patent from "@/components/views/Publications/Patent/Patent";
 import Projects from "@/components/views/Projects/Projects";
 import Contact from "@/components/views/Contact/Contact";
 import Footer from "@/components/views/Footer/Footer";
@@ -50,7 +50,7 @@ function App() {
           <Route exact path="/members" component={Members} />
           <Route exact path="/alumni" component={Alumni} />
           <Route exact path="/professor" component={Professor} />
-          <Route exact path="/board/notice" component={Board} />
+          <Route exact path="/board/notice" component={Notice} />
           <Route exact path="/board/notice/:id" component={BoardDetail} />
           <Route exact path="/board/activity" component={Activity} />
           <Route exact path="/board/activity/:id" component={ActivityDetail} />

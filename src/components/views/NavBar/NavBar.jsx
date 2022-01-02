@@ -52,7 +52,6 @@ function NavBar() {
     // console.log(window.location.pathname);
     var url_idx = path.findIndex((value) => value === window.location.pathname);
     if (url_idx === 0) setPage(categories[url_idx - 1]);
-    console.log(categories[url_idx - 1]);
   }, []);
 
   return (

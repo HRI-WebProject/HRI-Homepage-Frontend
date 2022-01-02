@@ -4,7 +4,7 @@ import TitleBar from "@titlebar/TitleBar";
 import TopMenu from "@topmenu/TopMenu";
 import { List, Tabs, Divider, Row, Col } from "antd";
 import { Paper, Typography } from "@mui/material";
-import { patentData } from "@patent/sections/PatentData";
+import { patentData } from "@/components/views/Publications/Patent/sections/PatentData";
 
 function Patent() {
   const [patentList, setPatentList] = useState();
@@ -15,7 +15,7 @@ function Patent() {
       item.index = cnt--;
     });
     setPatentList(patentData);
-    console.log(patentData);
+    // console.log(patentData);
   }, []);
   return (
     <div className={styles.container}>

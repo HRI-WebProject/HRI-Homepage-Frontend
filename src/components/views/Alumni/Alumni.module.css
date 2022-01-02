@@ -47,3 +47,20 @@
 .workplaceImg {
   width: 250px;
 }
+
+.members {
+  padding: 30px;
+}
+
+.hrline {
+  border: none;
+  border-top: 2px dotted #3e3e3e;
+  color: #fff;
+  background-color: #fff;
+  height: 1px;
+  margin-top: 40px;
+  padding-bottom: 20px;
+  background-color: #fafafa;
+  padding-left: 30px;
+  padding-right: 30px;
+}

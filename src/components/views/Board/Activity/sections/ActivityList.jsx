@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Axios from "@api/index";
 import { useHistory } from "react-router";
-import styles from "@board/Board.module.css";
+import styles from "@notice/Notice.module.css";
 import { Table } from "reactstrap";
 import { Paper } from "@mui/material";
 import { Pagination } from "antd";
@@ -8,6 +9,8 @@ import { Pagination } from "antd";
 function ActivityList(props, { boardType }) {
   const history = useHistory();
   const [rowList, setRowList] = useState();
+  const [rowLength, setRowLength] = useState();
+  const [paginationId, setPaginationId] = useState();
 
   const rows = [
     {
@@ -98,10 +101,23 @@ function ActivityList(props, { boardType }) {
 
   const moveDetailPage = (data) => {
     let id = data.id;
-    if (data.boardType === "activity") history.push(`/board/activity/${id}`);
+    if (data.boardType === "activity")
+      history.push({
+        pathname: `/board/activity/${id}`,
+        state: { id: id },
+      });
   };
 
   useEffect(() => {
+    // setPaginationId("1");
+    let paginationId = "1";
+    Axios.get(`/board/ACTIVITY/page/${paginationId}`).then((res) => {
+      if (res.status === 200) {
+        console.log(res.data.data);
+      } else {
+        alert("Failed");
+      }
+    });
     setRowList(rows.reverse());
   }, []);
 

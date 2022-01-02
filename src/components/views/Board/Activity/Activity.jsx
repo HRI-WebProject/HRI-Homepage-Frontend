@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import styles from "@board/Board.module.css";
+import styles from "@activity/Activity.module.css";
 import TitleBar from "@titlebar/TitleBar";
 import TopMenu from "@topmenu/TopMenu";
-import BoardList from "@board/sections/BoardList";
+import ActivityList from "@/components/views/Board/Activity/sections/ActivityList";
 
-function Board() {
+function Activity() {
   return (
     <div className={styles.container}>
-      <TitleBar title="소식" />
+      <TitleBar title="활동" />
       <TopMenu selected_key="Board" />
-      <BoardList />
+      <ActivityList />
     </div>
   );
 }
 
-export default Board;
+export default Activity;

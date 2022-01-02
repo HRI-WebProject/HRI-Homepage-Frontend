@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Axios = axios.create({
-  baseURL: "https://hri.dongguk.edu:6006/",
+  baseURL: "http://210.94.194.146:8080",
 });
 
 export default Axios;
