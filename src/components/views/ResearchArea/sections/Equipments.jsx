@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Axios from "@api/index";
 import { useMediaQuery } from "react-responsive";
 import styles from "@researcharea/ResearchArea.module.css";
 import { Paper } from "@mui/material";
@@ -8,11 +9,13 @@ import { Row, Col, Card } from "antd";
 
 function Equipments() {
   const { Meta } = Card;
+  const [equipments, setEquipments] = useState();
 
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 1100px)",
   });
 
+  // sample data
   const equipmentList = [
     {
       name: "Mavic Mini",
@@ -32,21 +35,31 @@ function Equipments() {
     },
   ];
 
+  useEffect(() => {
+    Axios.get("/researchEquipment").then((res) => {
+      if (res.status === 200) {
+        setEquipments(res.data.data);
+      } else {
+        alert("Failed");
+      }
+    });
+  }, []);
+
   return (
     <div className={styles.container}>
       <TitleBar title="연구실 장비" />
       <TopMenu selected_key="ResearchArea" />
       <Paper className={styles.paper}>
         <Row gutter={[16, 16]}>
-          {equipmentList &&
-            equipmentList.map((item, idx) => (
+          {equipments &&
+            equipments.map((item, idx) => (
               <Col span={6}>
                 <Card
                   hoverable
                   style={{ width: 240 }}
                   cover={<img alt="example" src={item.photo} />}
                 >
-                  <Meta title={item.name} />
+                  <Meta title={item.name} description={item.engName} />
                 </Card>
               </Col>
             ))}

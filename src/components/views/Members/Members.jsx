@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Axios from "@api/index";
 import TitleBar from "@titlebar/TitleBar";
 import styles from "@members/Members.module.css";
 import { Paper } from "@mui/material";
@@ -6,17 +7,50 @@ import TopMenu from "@topmenu/TopMenu";
 import { useMediaQuery } from "react-responsive";
 import Typography from "@mui/material/Typography";
 import { Tabs, Divider, Menu } from "antd";
-import {
-  phdMembers,
-  masterMembers,
-  undergraduate,
-} from "@members/sections/MemberData.js";
 import MemberGrid from "@members/sections/MemberGrid";
 
 function Members() {
+  const [phdMembers, setPhdMembers] = useState(); // 박사
+  const [masterMembers, setMasterMembers] = useState(); // 석사
+  const [bachelorMembers, setBachelorMembers] = useState(); // 학사
+  const [undergraduate, setUndergraduate] = useState(); // 학부생
+
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 1100px)",
   });
+
+  useEffect(() => {
+    Axios.get("/members/PHD").then((res) => {
+      if (res.status === 200) {
+        let tmp = res.data.data.filter(function (item, idx) {
+          return item.graduate === false;
+        });
+        tmp && setPhdMembers(tmp);
+      } else {
+        alert("Failed");
+      }
+    });
+    Axios.get("/members/MASTER").then((res) => {
+      if (res.status === 200) {
+        let tmp = res.data.data.filter(function (item, idx) {
+          return item.graduate === false;
+        });
+        tmp && setMasterMembers(tmp);
+      } else {
+        alert("Failed");
+      }
+    });
+    Axios.get("/members/BACHELOR").then((res) => {
+      if (res.status === 200) {
+        let tmp = res.data.data.filter(function (item, idx) {
+          return item.graduate === false;
+        });
+        tmp && setBachelorMembers(tmp);
+      } else {
+        alert("Failed");
+      }
+    });
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -28,17 +62,20 @@ function Members() {
             <Typography variant="h5">
               <b>박사 과정</b>
             </Typography>
-            <MemberGrid memberData={phdMembers} col_size={24} />
+            <MemberGrid
+              memberData={phdMembers}
+              col_size={24}
+              degree="박사 과정"
+            />
             <hr className={styles.hrline} />
             <Typography variant="h5">
               <b>석사 과정</b>
             </Typography>
-            <MemberGrid memberData={masterMembers} col_size={24} />
-            <hr className={styles.hrline} />
-            <Typography variant="h5">
-              <b>학부 연구생</b>
-            </Typography>
-            <MemberGrid memberData={undergraduate} col_size={24} />
+            <MemberGrid
+              memberData={masterMembers}
+              col_size={24}
+              degree="석사 과정"
+            />
           </Paper>
         </>
       ) : (
@@ -46,17 +83,29 @@ function Members() {
           <Typography variant="h5">
             <b>박사 과정</b>
           </Typography>
-          <MemberGrid memberData={phdMembers} col_size={12} />
+          <MemberGrid
+            memberData={phdMembers}
+            col_size={12}
+            degree="박사 과정"
+          />
           <hr className={styles.hrline} />
           <Typography variant="h5">
             <b>석사 과정</b>
           </Typography>
-          <MemberGrid memberData={masterMembers} col_size={12} />
+          <MemberGrid
+            memberData={masterMembers}
+            col_size={12}
+            degree="석사 과정"
+          />
           <hr className={styles.hrline} />
           <Typography variant="h5">
-            <b>학부 연구생</b>
+            <b>학사 과정</b>
           </Typography>
-          <MemberGrid memberData={undergraduate} col_size={12} />
+          <MemberGrid
+            memberData={bachelorMembers}
+            col_size={12}
+            degree="학사 과정"
+          />
         </Paper>
       )}
     </div>

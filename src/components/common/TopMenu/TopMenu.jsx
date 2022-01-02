@@ -12,7 +12,7 @@ function TopMenu({ selected_key }) {
   };
 
   const handleClick = (e) => {
-    console.log(e);
+    // console.log(e);
   };
 
   const renderSwitch = (param) => {
@@ -94,7 +94,6 @@ function TopMenu({ selected_key }) {
     if (currentURL.indexOf("notice") !== -1) setKey("board/notice");
     else if (currentURL.indexOf("activity") !== -1) setKey("board/activity");
     else setKey(currentURL.substr(1, currentURL.length));
-    console.log(key);
   }, []);
 
   return (

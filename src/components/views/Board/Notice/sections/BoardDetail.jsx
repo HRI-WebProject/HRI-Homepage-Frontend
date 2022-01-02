@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router";
-import styles from "@board/Board.module.css";
+import Axios from "@api/index";
+import { useHistory, useLocation } from "react-router";
+import styles from "@notice/Notice.module.css";
 import { Paper } from "@mui/material";
 import TitleBar from "@titlebar/TitleBar";
 import TopMenu from "@topmenu/TopMenu";
@@ -11,9 +12,24 @@ import ListIcon from "@material-ui/icons/List";
 
 function BoardDetail() {
   const history = useHistory();
+  const location = useLocation();
+  const [pageId, setPageId] = useState(location.state.id);
+  const [boardDetail, setBoardDetail] = useState();
 
-  const movePage = (url) => {
-    history.push(url);
+  const movePage = (url, id) => {
+    if (!id) {
+      history.push({
+        pathname: `/board/notice/${id}`,
+        state: { id: id },
+      });
+    } else {
+      id = id + "";
+      history.push({
+        pathname: url + id,
+        state: { id: id },
+      });
+    }
+    setPageId(id);
   };
 
   const data = [
@@ -26,6 +42,22 @@ function BoardDetail() {
       title: "Ant Design Title 2",
     },
   ];
+
+  useEffect(() => {
+    pageId &&
+      Axios.get(`/board/NOTICE/page/${pageId + ""}`).then((res) => {
+        if (res.status === 200) {
+          // console.log(res.data.data[0]);
+          setBoardDetail(res.data.data[0]);
+          // if (res.data.data[0] === undefined) {
+          //   history.push("/board/notice");
+          //   alert("글이 존재하지 않습니다.");
+          // }
+        } else {
+          alert("Failed");
+        }
+      });
+  }, [pageId]);
 
   return (
     <div className={styles.container}>
@@ -73,7 +105,9 @@ function BoardDetail() {
             renderItem={(item) =>
               item.type === "prev" ? (
                 <List.Item
-                  onClick={() => movePage("/board/notice/")}
+                  onClick={() =>
+                    movePage(`/board/notice/`, parseInt(pageId) + 1)
+                  }
                   className={styles.list_item}
                 >
                   <span className={styles.prev_next_btn}>
@@ -84,7 +118,9 @@ function BoardDetail() {
                 </List.Item>
               ) : (
                 <List.Item
-                  onClick={() => movePage("/board/notice/")}
+                  onClick={() =>
+                    movePage(`/board/notice/`, parseInt(pageId) - 1)
+                  }
                   className={styles.list_item}
                 >
                   <span className={styles.prev_next_btn}>

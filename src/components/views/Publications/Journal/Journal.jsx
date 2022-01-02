@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react";
+import Axios from "@api/index";
 import styles from "@journal/Journal.module.css";
 import TitleBar from "@titlebar/TitleBar";
 import Sider from "@sider/Sider";
 import TopMenu from "@topmenu/TopMenu";
 import { Paper, Typography } from "@mui/material";
 import { List, Tabs, Divider, Menu } from "antd";
-import { journalData } from "@/components/views/Journal/sections/PublicationsData";
-import { Timeline, Radio } from "antd";
+import { journalData } from "@journal/sections/PublicationsData";
 
-function Publications() {
+function Journal() {
   const [journalList, setJournalList] = useState();
 
   useEffect(() => {
+    // Axios.get("/publications/JOURNAL").then((res) => {
+    //   if (res.status === 200) {
+    //     console.log(res.data.data);
+    //     setJournalList(res.data.data);
+    //   } else {
+    //     alert("Failed");
+    //   }
+    // });
     var cnt = journalData.length;
     journalData
       .sort((a, b) => b.year - a.year)
@@ -29,7 +37,6 @@ function Publications() {
       });
     }
     setJournalList(arr);
-    console.log(arr);
   }, []);
 
   return (
@@ -37,6 +44,7 @@ function Publications() {
       <TitleBar title="학술지" />
       <TopMenu selected_key="Publications" />
       <Paper className={styles.paper}>
+        {/* for year dataset */}
         {journalList &&
           journalList.map((yearset, idx1) => (
             <>
@@ -47,9 +55,9 @@ function Publications() {
                     bordered
                     dataSource={yearset}
                     renderItem={(item, idx) => (
-                      <List.Item>
+                      <List.Item key={idx}>
                         <font style={{ color: "#2f5597" }}>
-                          <b>[{item.index}]</b>
+                          <b>[{idx}]</b>
                         </font>{" "}
                         {item.detail}
                       </List.Item>
@@ -64,4 +72,4 @@ function Publications() {
   );
 }
 
-export default Publications;
+export default Journal;
