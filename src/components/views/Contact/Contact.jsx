@@ -3,8 +3,6 @@ import { useMediaQuery } from "react-responsive";
 import styles from "@contact/Contact.module.css";
 import MapContainer from "@contact/sections/MapContainer";
 import TitleBar from "@titlebar/TitleBar";
-import ContactForm from "@contact/sections/ContactForm";
-import ContactIcons from "@contact/sections/ContactIcons";
 import { Row, Col } from "antd";
 import { Paper, Divider, Typography } from "@mui/material";
 

@@ -4,7 +4,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@api/*": ["./src/api/*"],
-      "@actions/*": ["./src/_actions/*"],
+      "@actions/*": ["./src/components/redux/actions/*"],
+      "@reducers/*": ["./src/components/redux/reducers/*"],
       "@titlebar/*": ["./src/components/common/TitleBar/*"],
       "@sider/*": ["./src/components/common/Sider/*"],
       "@topmenu/*": ["./src/components/common/TopMenu/*"],

@@ -34,17 +34,19 @@ function NavBar() {
 
   const language_menu = (
     <Menu>
-      <Menu.Item style={{ width: "100px" }}>
+      <Menu.Item style={{ width: "100px" }} key="ko">
         <div style={{ fontSize: "1.1em" }}>한국어</div>
       </Menu.Item>
       <Menu.Item>
-        <div style={{ fontSize: "1.1em" }}>English</div>
+        <div style={{ fontSize: "1.1em" }} key="en">
+          English
+        </div>
       </Menu.Item>
     </Menu>
   );
 
   const movePage = (url, idx) => {
-    window.location.href = url;
+    history.push(url);
     setPage(categories[idx]);
   };
 

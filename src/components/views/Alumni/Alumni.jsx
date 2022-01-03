@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "@api/index";
 import Typography from "@mui/material/Typography";
-import { Statistic, Card, Row, Col, Button } from "antd";
+import { Statistic, Row, Col } from "antd";
 import { useMediaQuery } from "react-responsive";
 import { Paper } from "@mui/material";
 import styles from "@alumni/Alumni.module.css";

@@ -11,7 +11,7 @@ function BottomFooter() {
   };
   const menu = (
     <Menu>
-      <Menu.Item className={styles.menuItem}>
+      <Menu.Item className={styles.menuItem} key={1}>
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -21,7 +21,7 @@ function BottomFooter() {
           동국대학교
         </a>
       </Menu.Item>
-      <Menu.Item className={styles.menuItem}>
+      <Menu.Item className={styles.menuItem} key={2}>
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -31,7 +31,7 @@ function BottomFooter() {
           동국대학교 공과대학
         </a>
       </Menu.Item>
-      <Menu.Item className={styles.menuItem}>
+      <Menu.Item className={styles.menuItem} key={3}>
         <a
           target="_blank"
           rel="noopener noreferrer"
