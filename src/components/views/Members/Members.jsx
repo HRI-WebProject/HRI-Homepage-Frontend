@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Axios from "@api/index";
+import axios from "axios";
 import TitleBar from "@titlebar/TitleBar";
 import styles from "@members/Members.module.css";
 import { Paper } from "@mui/material";
@@ -20,36 +20,45 @@ function Members() {
   });
 
   useEffect(() => {
-    Axios.get("/members/PHD").then((res) => {
-      if (res.status === 200) {
-        let tmp = res.data.data.filter(function (item, idx) {
-          return item.graduate === false;
-        });
-        tmp && setPhdMembers(tmp);
-      } else {
-        alert("Failed");
-      }
-    });
-    Axios.get("/members/MASTER").then((res) => {
-      if (res.status === 200) {
-        let tmp = res.data.data.filter(function (item, idx) {
-          return item.graduate === false;
-        });
-        tmp && setMasterMembers(tmp);
-      } else {
-        alert("Failed");
-      }
-    });
-    Axios.get("/members/BACHELOR").then((res) => {
-      if (res.status === 200) {
-        let tmp = res.data.data.filter(function (item, idx) {
-          return item.graduate === false;
-        });
-        tmp && setBachelorMembers(tmp);
-      } else {
-        alert("Failed");
-      }
-    });
+    axios
+      .get("/members/PHD")
+      .then((res) => {
+        if (res.status === 200) {
+          let tmp = res.data.data.filter(function (item, idx) {
+            return item.graduate === false;
+          });
+          tmp && setPhdMembers(tmp);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    axios
+      .get("/members/MASTER")
+      .then((res) => {
+        if (res.status === 200) {
+          let tmp = res.data.data.filter(function (item, idx) {
+            return item.graduate === false;
+          });
+          tmp && setMasterMembers(tmp);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    axios
+      .get("/members/BACHELOR")
+      .then((res) => {
+        if (res.status === 200) {
+          let tmp = res.data.data.filter(function (item, idx) {
+            return item.graduate === false;
+          });
+          tmp && setBachelorMembers(tmp);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
 
   return (

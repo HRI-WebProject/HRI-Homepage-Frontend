@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Axios from "@api/index";
 import { useMediaQuery } from "react-responsive";
 import { Form, Input, Button, Checkbox } from "antd";
 import styles from "@login/Login.module.css";
@@ -27,8 +26,6 @@ function Login(props) {
         if (res.payload.status === "OK") {
           console.log(res.payload);
           props.history.push("/");
-        } else {
-          alert("Error");
         }
       })
       .catch(function (error) {

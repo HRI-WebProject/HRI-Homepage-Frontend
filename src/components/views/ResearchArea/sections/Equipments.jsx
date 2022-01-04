@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Axios from "@api/index";
+import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 import styles from "@researcharea/ResearchArea.module.css";
 import { Paper } from "@mui/material";
@@ -36,13 +36,16 @@ function Equipments() {
   ];
 
   useEffect(() => {
-    Axios.get("/researchEquipment").then((res) => {
-      if (res.status === 200) {
-        setEquipments(res.data.data);
-      } else {
-        alert("Failed");
-      }
-    });
+    axios
+      .get("/researchEquipment")
+      .then((res) => {
+        if (res.status === 200) {
+          setEquipments(res.data.data);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
 
   return (

@@ -64,5 +64,9 @@
     "transformIgnorePatterns": [
       "/node_modules/(?!antd|@ant-design|rc-.+?|@babel/runtime).+(js|jsx)$"
     ]
+  },
+  "proxy": "http://210.94.194.146:8080",
+  "devDependencies": {
+    "http-proxy-middleware": "^2.0.1"
   }
 }

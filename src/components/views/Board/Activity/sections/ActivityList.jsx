@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Axios from "@api/index";
+import axios from "axios";
 import { useHistory } from "react-router";
 import styles from "@notice/Notice.module.css";
 import { Table } from "reactstrap";
@@ -111,13 +111,16 @@ function ActivityList(props, { boardType }) {
   useEffect(() => {
     // setPaginationId("1");
     let paginationId = "1";
-    Axios.get(`/board/ACTIVITY/page/${paginationId}`).then((res) => {
-      if (res.status === 200) {
-        console.log(res.data.data);
-      } else {
-        alert("Failed");
-      }
-    });
+    axios
+      .get(`/board/ACTIVITY/page/${paginationId}`)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data.data);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     setRowList(rows.reverse());
   }, []);
 

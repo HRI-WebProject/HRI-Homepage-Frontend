@@ -27,8 +27,8 @@ function TopMenu({ selected_key }) {
               연구 분야
             </Menu.Item>
             <Menu.Item
-              key="research/researchEquipment"
-              onClick={() => movePage("/research/researchEquipment")}
+              key="research/equipments"
+              onClick={() => movePage("/research/equipments")}
             >
               연구실 장비
             </Menu.Item>

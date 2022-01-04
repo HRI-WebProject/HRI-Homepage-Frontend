@@ -8,6 +8,8 @@ import Equipments from "@/components/views/ResearchArea/sections/Equipments";
 import Members from "@/components/views/Members/Members";
 import Alumni from "@/components/views/Alumni/Alumni";
 import Professor from "@/components/views/Professor/Professor";
+import ProfessorEdit from "@/components/views/Professor/Admin/ProfessorEdit";
+import ProfessorWrite from "@/components/views/Professor/Admin/ProfessorWrite";
 import Notice from "@/components/views/Board/Notice/Notice";
 import BoardDetail from "@/components/views/Board/Notice/sections/BoardDetail";
 import Activity from "@/components/views/Board/Activity/Activity";
@@ -42,14 +44,12 @@ function App() {
           <Route exact path="/" component={MainPage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/research/researchArea" component={ResearchArea} />
-          <Route
-            exact
-            path="/research/researchEquipment"
-            component={Equipments}
-          />
+          <Route exact path="/research/equipments" component={Equipments} />
           <Route exact path="/members" component={Members} />
           <Route exact path="/alumni" component={Alumni} />
           <Route exact path="/professor" component={Professor} />
+          <Route exact path="/professor/:id/edit" component={ProfessorEdit} />
+          <Route exact path="/professor/write" component={ProfessorWrite} />
           <Route exact path="/board/notice" component={Notice} />
           <Route exact path="/board/notice/:id" component={BoardDetail} />
           <Route exact path="/board/activity" component={Activity} />

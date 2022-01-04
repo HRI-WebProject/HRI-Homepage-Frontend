@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Axios from "@api/index";
+import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 import { Row, Col, Image } from "antd";
 import { Paper } from "@mui/material";
@@ -16,14 +16,17 @@ function Projects() {
   });
 
   useEffect(() => {
-    Axios.get("/projects").then((res) => {
-      if (res.status === 200) {
-        setProjectList(res.data.data);
-        console.log(res.data.data);
-      } else {
-        alert("Failed");
-      }
-    });
+    axios
+      .get("/projects")
+      .then((res) => {
+        if (res.status === 200) {
+          setProjectList(res.data.data);
+          console.log(res.data.data);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
 
   return (

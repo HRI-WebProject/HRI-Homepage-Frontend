@@ -3,9 +3,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@api/*": ["./src/api/*"],
-      "@actions/*": ["./src/components/redux/actions/*"],
-      "@reducers/*": ["./src/components/redux/reducers/*"],
+      "@actions/*": ["src/redux/actions/*"],
+      "@reducers/*": ["src/redux/reducers/*"],
+      "@common/*": ["./src/components/common/*"],
       "@titlebar/*": ["./src/components/common/TitleBar/*"],
       "@sider/*": ["./src/components/common/Sider/*"],
       "@topmenu/*": ["./src/components/common/TopMenu/*"],

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Axios from "@api/index";
+import axios from "axios";
 import styles from "@journal/Journal.module.css";
 import TitleBar from "@titlebar/TitleBar";
 import Sider from "@sider/Sider";
@@ -12,7 +12,7 @@ function Journal() {
   const [journalList, setJournalList] = useState();
 
   useEffect(() => {
-    // Axios.get("/publications/JOURNAL").then((res) => {
+    // axios.get("/publications/JOURNAL").then((res) => {
     //   if (res.status === 200) {
     //     console.log(res.data.data);
     //     setJournalList(res.data.data);
