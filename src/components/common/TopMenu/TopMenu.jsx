@@ -27,8 +27,8 @@ function TopMenu({ selected_key }) {
               연구 분야
             </Menu.Item>
             <Menu.Item
-              key="research/researchEquipment"
-              onClick={() => movePage("/research/researchEquipment")}
+              key="research/equipments"
+              onClick={() => movePage("/research/equipments")}
             >
               연구실 장비
             </Menu.Item>
@@ -80,10 +80,22 @@ function TopMenu({ selected_key }) {
               학술지
             </Menu.Item>
             <Menu.Item
+              key="publications/conference"
+              onClick={() => movePage("/publications/conference")}
+            >
+              학술대회
+            </Menu.Item>
+            <Menu.Item
               key="publications/patent"
               onClick={() => movePage("/publications/patent")}
             >
               특허
+            </Menu.Item>
+            <Menu.Item
+              key="publications/book"
+              onClick={() => movePage("/publications/book")}
+            >
+              도서
             </Menu.Item>
           </>
         );
