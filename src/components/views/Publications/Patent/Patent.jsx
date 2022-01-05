@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styles from "@patent/Patent.module.css";
 import TitleBar from "@titlebar/TitleBar";
 import TopMenu from "@topmenu/TopMenu";
@@ -8,14 +9,21 @@ import { patentData } from "@/components/views/Publications/Patent/sections/Pate
 
 function Patent() {
   const [patentList, setPatentList] = useState();
+  const [listLen, setListLen] = useState();
 
   useEffect(() => {
-    var cnt = patentData.length;
-    patentData.reverse().map((item, idx) => {
-      item.index = cnt--;
-    });
-    setPatentList(patentData);
-    // console.log(patentData);
+    axios
+      .get("/publications/PATENT")
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data.data);
+          setPatentList(res.data.data);
+          setListLen(res.data.data.length);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
   return (
     <div className={styles.container}>
@@ -27,8 +35,8 @@ function Patent() {
             bordered
             dataSource={patentList}
             renderItem={(item, idx) => (
-              <List.Item>
-                <span className={styles.index}>{item.index}</span>
+              <List.Item key={idx}>
+                <span className={styles.index}>{listLen - idx}</span>
                 <span className={styles.contents}>
                   <div style={{ fontSize: "1.1em", fontWeight: "600" }}>
                     {item.topic}
