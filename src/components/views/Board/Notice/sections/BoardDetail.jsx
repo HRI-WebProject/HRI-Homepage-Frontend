@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Axios from "@api/index";
+import axios from "axios";
 import { useHistory, useLocation } from "react-router";
 import styles from "@notice/Notice.module.css";
 import { Paper } from "@mui/material";
@@ -45,18 +45,21 @@ function BoardDetail() {
 
   useEffect(() => {
     pageId &&
-      Axios.get(`/board/NOTICE/page/${pageId + ""}`).then((res) => {
-        if (res.status === 200) {
-          // console.log(res.data.data[0]);
-          setBoardDetail(res.data.data[0]);
-          // if (res.data.data[0] === undefined) {
-          //   history.push("/board/notice");
-          //   alert("글이 존재하지 않습니다.");
-          // }
-        } else {
-          alert("Failed");
-        }
-      });
+      axios
+        .get(`/board/NOTICE/page/${pageId + ""}`)
+        .then((res) => {
+          if (res.status === 200) {
+            // console.log(res.data.data[0]);
+            setBoardDetail(res.data.data[0]);
+            // if (res.data.data[0] === undefined) {
+            //   history.push("/board/notice");
+            //   alert("글이 존재하지 않습니다.");
+            // }
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
   }, [pageId]);
 
   return (
