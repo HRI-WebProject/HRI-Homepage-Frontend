@@ -3,8 +3,9 @@ import EmailIcon from "@material-ui/icons/Email";
 import { styled } from "@mui/material/styles";
 import { Row, Col, Image } from "antd";
 import styles from "@members/Members.module.css";
+import ButtonSet from "@common/ButtonSet/ButtonSet";
 
-function MemberGrid({ memberData, col_size, degree }) {
+function MemberGrid({ memberData, col_size, degree, isLogged }) {
   const Img = styled("img")({
     margin: "auto",
     display: "block",
@@ -52,6 +53,7 @@ function MemberGrid({ memberData, col_size, degree }) {
                   </Col>
                 </Row>
               </div>
+              {isLogged && <ButtonSet pageFeature="members" id={item.id} />}
             </Col>
           ))}
       </Row>

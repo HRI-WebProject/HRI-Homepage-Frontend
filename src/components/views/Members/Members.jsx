@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 import TitleBar from "@titlebar/TitleBar";
 import styles from "@members/Members.module.css";
 import { Paper } from "@mui/material";
@@ -8,8 +9,11 @@ import { useMediaQuery } from "react-responsive";
 import Typography from "@mui/material/Typography";
 import { Tabs, Divider, Menu } from "antd";
 import MemberGrid from "@members/sections/MemberGrid";
+import AddButton from "@common/AddButton/AddButton";
 
 function Members() {
+  const account = useSelector((state) => state.user.loginSuccess);
+  const [isLogged, setIsLogged] = useState(false);
   const [phdMembers, setPhdMembers] = useState(); // 박사
   const [masterMembers, setMasterMembers] = useState(); // 석사
   const [bachelorMembers, setBachelorMembers] = useState(); // 학사
@@ -20,9 +24,11 @@ function Members() {
   });
 
   useEffect(() => {
+    if (account && account.status === "OK") setIsLogged(true);
     axios
       .get("/members/PHD")
       .then((res) => {
+        console.log(res.data.data);
         if (res.status === 200) {
           let tmp = res.data.data.filter(function (item, idx) {
             return item.graduate === false;
@@ -68,6 +74,7 @@ function Members() {
       {isSmallScreen ? (
         <>
           <Paper className={styles.paper}>
+            {isLogged && <AddButton />}
             <Typography variant="h5">
               <b>박사 과정</b>
             </Typography>
@@ -75,6 +82,7 @@ function Members() {
               memberData={phdMembers}
               col_size={24}
               degree="박사 과정"
+              isLogged={isLogged}
             />
             <hr className={styles.hrline} />
             <Typography variant="h5">
@@ -84,11 +92,23 @@ function Members() {
               memberData={masterMembers}
               col_size={24}
               degree="석사 과정"
+              isLogged={isLogged}
+            />
+            <hr className={styles.hrline} />
+            <Typography variant="h5">
+              <b>학사 과정</b>
+            </Typography>
+            <MemberGrid
+              memberData={bachelorMembers}
+              col_size={12}
+              degree="학사 과정"
+              isLogged={isLogged}
             />
           </Paper>
         </>
       ) : (
         <Paper className={styles.paper}>
+          {isLogged && <AddButton />}
           <Typography variant="h5">
             <b>박사 과정</b>
           </Typography>
@@ -96,6 +116,7 @@ function Members() {
             memberData={phdMembers}
             col_size={12}
             degree="박사 과정"
+            isLogged={isLogged}
           />
           <hr className={styles.hrline} />
           <Typography variant="h5">
@@ -105,6 +126,7 @@ function Members() {
             memberData={masterMembers}
             col_size={12}
             degree="석사 과정"
+            isLogged={isLogged}
           />
           <hr className={styles.hrline} />
           <Typography variant="h5">
@@ -114,6 +136,7 @@ function Members() {
             memberData={bachelorMembers}
             col_size={12}
             degree="학사 과정"
+            isLogged={isLogged}
           />
         </Paper>
       )}
