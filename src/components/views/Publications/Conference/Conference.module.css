@@ -50,3 +50,18 @@
   text-align: center;
   /* background-color: blue; */
 }
+
+.link {
+  text-decoration: none;
+  color: #808080;
+}
+
+.link:visited {
+  color: #808080;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #808080;
+}

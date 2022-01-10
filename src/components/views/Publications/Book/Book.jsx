@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import styles from "@journal/Journal.module.css";
+import styles from "@conference/Conference.module.css";
 import TitleBar from "@titlebar/TitleBar";
-import Sider from "@sider/Sider";
 import TopMenu from "@topmenu/TopMenu";
+import { List, Tabs, Divider, Row, Col } from "antd";
 import { Paper, Typography } from "@mui/material";
-import { List, Tabs, Divider, Menu } from "antd";
 import AddButton from "@common/AddButton/AddButton";
 import ButtonSet from "@common/ButtonSet/ButtonSet";
 
-function Journal() {
+function Book() {
   const account = useSelector((state) => state.user.loginSuccess);
   const [isLogged, setIsLogged] = useState(false);
-  const [journalList, setJournalList] = useState();
+  const [bookList, setBookList] = useState();
   const [listLen, setListLen] = useState();
 
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
     axios
-      .get("/publications/JOURNAL")
+      .get("/publications/BOOK")
       .then((res) => {
         if (res.status === 200) {
-          setJournalList(res.data.data);
+          setBookList(res.data.data);
           setListLen(res.data.data.length);
         }
       })
@@ -33,28 +32,47 @@ function Journal() {
 
   return (
     <div className={styles.container}>
-      <TitleBar title="학술지" />
+      <TitleBar title="도서" />
       <TopMenu selected_key="Publications" />
       <Paper className={styles.paper}>
-        {isLogged && <AddButton value="학술지" />}
-        {journalList && (
+        {isLogged && <AddButton value="도서" />}
+        {bookList && (
           <List
-            style={{ marginTop: "20px" }}
             bordered
-            dataSource={journalList}
+            dataSource={bookList}
             renderItem={(item, idx) => (
               <List.Item key={idx}>
+                <span className={styles.index}>{listLen - idx}</span>
                 <span className={styles.contents}>
-                  <font style={{ color: "#2f5597" }}>[{listLen - idx}]</font>{" "}
-                  {item.topic}
-                  {item.link !== null && <div>{item.link}</div>}
+                  <div style={{ fontSize: "1.1em", fontWeight: "600" }}>
+                    {item.topic}
+                  </div>
+                  <div>
+                    {item.detail !== "" && (
+                      <div>
+                        {item.detail.split("\n").map((line, idx) => (
+                          <span key={idx}>
+                            {line}
+                            <br />
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    {item.link != "" && (
+                      <div style={{ color: "#808080" }}>
+                        <a href={item.link} className={styles.link}>
+                          {item.link}
+                        </a>
+                      </div>
+                    )}
+                  </div>
                 </span>
                 <span className={styles.buttons}>
                   {isLogged && (
                     <ButtonSet
                       pageFeature="publications"
                       id={item.id}
-                      value="학술지"
+                      value="도서"
                     />
                   )}
                 </span>
@@ -67,4 +85,4 @@ function Journal() {
   );
 }
 
-export default Journal;
+export default Book;

@@ -4,10 +4,20 @@ import { PlusOutlined } from "@ant-design/icons";
 import styles from "@common/AddButton/AddButton.module.css";
 import { useHistory } from "react-router";
 
-function AddButton() {
+function AddButton({ value }) {
   const history = useHistory();
   const moveToWritePage = () => {
-    history.push(window.location.pathname + "/write");
+    console.log(window.location.pathname.substr(1, 12));
+    if (window.location.pathname === "/alumni") {
+      history.push("/members/write");
+    } else if (window.location.pathname.substr(1, 12) === "publications") {
+      history.push({
+        pathname: "/publications/write",
+        state: { value: value },
+      });
+    } else {
+      history.push(window.location.pathname + "/write");
+    }
   };
   return (
     <div className={styles.container}>

@@ -70,6 +70,8 @@ function TitleBar({ title }) {
         );
       case "학술지":
       case "특허":
+      case "학술대회":
+      case "도서":
         return (
           <>
             <Breadcrumb.Item
