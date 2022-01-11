@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { useSelector } from "react-redux";
 import styles from "@notice/Notice.module.css";
 import { Paper } from "@mui/material";
 import { Pagination, Table } from "antd";
+import AddButton from "@common/AddButton/AddButton";
 
 function ActivityList(props, { boardType }) {
   const history = useHistory();
+  const account = useSelector((state) => state.user.loginSuccess);
+  const [isLogged, setIsLogged] = useState(false);
   const [rowList, setRowList] = useState();
   const [rowLength, setRowLength] = useState();
   const [paginationId, setPaginationId] = useState();
+  const [activityList, setActivityList] = useState();
+  const [totalPages, setTotalPages] = useState();
 
   const onPageChange = (page, pageSize) => {
     console.log(page);
@@ -48,113 +54,50 @@ function ActivityList(props, { boardType }) {
       width: "15%",
     },
   ];
-  const data = [
-    {
-      id: 12,
-      topic: "article12 topic activity",
-      createDate: "2021-12-02T17:11:44.838695",
-      author: "administrator",
-    },
-    {
-      id: 11,
-      topic: "article11 topic activity",
-      createDate: "2021-12-02T17:11:44.830419",
-      author: "administrator",
-    },
-    {
-      id: 10,
-      topic: "article10 topic activity",
-      createDate: "2021-12-02T17:11:44.82142",
-      author: "administrator",
-    },
-    {
-      id: 9,
-      topic: "article9 topic activity",
-      createDate: "2021-12-02T17:11:44.813424",
-      author: "administrator",
-    },
-    {
-      id: 8,
-      topic: "article8 topic activity",
-      createDate: "2021-12-02T17:11:44.805424",
-      author: "administrator",
-    },
-    {
-      id: 7,
-      topic: "article12 topic activity",
-      createDate: "2021-12-02T17:11:44.838695",
-      author: "administrator",
-    },
-    {
-      id: 6,
-      topic: "article11 topic activity",
-      createDate: "2021-12-02T17:11:44.830419",
-      author: "administrator",
-    },
-    {
-      id: 5,
-      topic: "article10 topic activity",
-      createDate: "2021-12-02T17:11:44.82142",
-      author: "administrator",
-    },
-    {
-      id: 4,
-      topic: "article9 topic activity",
-      createDate: "2021-12-02T17:11:44.813424",
-      author: "administrator",
-    },
-    {
-      id: 3,
-      topic: "article8 topic activity",
-      createDate: "2021-12-02T17:11:44.805424",
-      author: "administrator",
-    },
-    {
-      id: 2,
-      topic: "article9 topic activity",
-      createDate: "2021-12-02T17:11:44.813424",
-      author: "administrator",
-    },
-    {
-      id: 1,
-      topic: "article8 topic activity",
-      createDate: "2021-12-02T17:11:44.805424",
-      author: "administrator",
-    },
-  ];
 
   useEffect(() => {
+    if (account && account.status === "OK") setIsLogged(true);
     // setPaginationId("1");
-    let paginationId = "1";
-    // axios
-    //   .get(`/board/ACTIVITY/page/${paginationId}`)
-    //   .then((res) => {
-    //     if (res.status === 200) {
-    //       console.log(res.data.data);
-    //     }
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    axios
+      .get(`/board/ACTIVITY/page/0`)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data.data);
+          setActivityList(res.data.data.content);
+          setTotalPages(res.data.data.totalPages);
+          setRowLength(res.data.data.content.length);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
 
   return (
     <div className={styles.datagrid}>
       <Paper className={styles.paper}>
-        <Table
-          columns={columns}
-          dataSource={data}
-          rowClassName={styles.table_row}
-          size="middle"
-          pagination={{ position: ["none", "bottomRight"] }}
-          onRow={(record, rowIndex) => {
-            return {
-              onClick: (event) => {
-                movePage(record.id);
-              }, // click row
-            };
-          }}
-        />
+        {isLogged && <AddButton />}
+        {activityList && (
+          <Table
+            columns={columns}
+            dataSource={activityList}
+            rowClassName={styles.table_row}
+            size="middle"
+            pagination={{
+              onChange: (page, pageSize) =>
+                console.log("Pagination => onChange: ", page, pageSize),
+              position: ["none", "bottomRight"],
+            }}
+            onRow={(record, rowIndex) => {
+              return {
+                onClick: (event) => {
+                  // let index = rowLength - rowIndex + "";
+                  movePage(record.id);
+                }, // click row
+              };
+            }}
+          />
+        )}
       </Paper>
     </div>
   );
