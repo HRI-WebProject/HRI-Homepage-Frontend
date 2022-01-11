@@ -20,6 +20,8 @@
       "@activity/*": ["./src/components/views/Board/Activity/*"],
       "@professor/*": ["src/components/views/Professor/*"],
       "@projects/*": ["./src/components/views/Projects/*"],
+      "@book/*": ["src/components/views/Publications/Book/*"],
+      "@conference/*": ["src/components/views/Publications/Conference/*"],
       "@journal/*": ["src/components/views/Publications/Journal/*"],
       "@patent/*": ["src/components/views/Publications/Patent/*"],
       "@researcharea/*": ["src/components/views/ResearchArea/*"]

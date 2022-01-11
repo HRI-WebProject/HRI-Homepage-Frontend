@@ -3,16 +3,15 @@ import axios from "axios";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
-import styles from "@professor/Professor.module.css";
+import styles from "@projects/Projects.module.css";
 import TitleBar from "@titlebar/TitleBar";
 import { Form, Input, Button, Col, Row } from "antd";
 import { Paper } from "@mui/material";
 
-function ProfessorWrite() {
+function Projectswrite() {
   const history = useHistory();
   const account = useSelector((state) => state.user.loginSuccess);
   const [isLogged, setIsLogged] = useState(false);
-  const [professorData, setProfessorData] = useState();
   const [form] = Form.useForm();
 
   const isSmallScreen = useMediaQuery({
@@ -24,13 +23,14 @@ function ProfessorWrite() {
   };
 
   const onFinish = (values) => {
+    console.log(values);
     axios
-      .post("/admin/professors", values)
+      .post("/admin/projects", values)
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data);
-          alert("교수 등록이 완료되었습니다.");
-          movePage("/professor");
+          alert("프로젝트 등록이 완료되었습니다.");
+          movePage("/projects");
         }
       })
       .catch(function (error) {
@@ -52,7 +52,7 @@ function ProfessorWrite() {
 
   return (
     <div className={styles.container}>
-      <TitleBar title="교수진" />
+      <TitleBar title="프로젝트 소개" />
       <Paper className={styles.paper}>
         <Form
           name="basic"
@@ -63,30 +63,53 @@ function ProfessorWrite() {
           form={form}
         >
           <Form.Item
-            label="이름"
-            name="name"
+            label="주제"
+            name="topic"
             rules={[
               {
                 required: true,
-                message: "이름은 필수 입력 항목입니다.",
+                message: "필수 입력 항목입니다.",
               },
             ]}
           >
             <Input />
           </Form.Item>
           <Form.Item
-            label="영문이름"
-            name="engName"
+            label="주제 (영문)"
+            name="engTopic"
             rules={[
               {
                 required: true,
-                message: "영문이름은 필수 입력 항목입니다.",
+                message: "필수 입력 항목입니다.",
               },
             ]}
           >
             <Input />
           </Form.Item>
-
+          <Form.Item
+            label="소주제"
+            name="subTopic"
+            rules={[
+              {
+                required: true,
+                message: "필수 입력 항목입니다.",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="소주제 (영문)"
+            name="engSubTopic"
+            rules={[
+              {
+                required: true,
+                message: "필수 입력 항목입니다.",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
           <Form.Item
             label="사진 URL"
             name="photo"
@@ -101,48 +124,44 @@ function ProfessorWrite() {
             <Input />
           </Form.Item>
           <Form.Item
-            label="소개"
-            name="boldDetail"
-            rules={[
-              {
-                required: true,
-                message: "소개는 필수 입력 항목입니다.",
-              },
-            ]}
+            label="설명1"
+            name="detail1"
+            extra="'설명'은 순서 없는 리스트 형식으로 보여지며 일부 빈칸으로 제출도 가능합니다."
           >
-            <Input.TextArea rows={2} showCount maxLength={255} />
+            <Input.TextArea rows={2} maxLength={255} />
           </Form.Item>
-          <Form.Item
-            label="세부 정보"
-            name="detail"
-            // rules={[
-            //   {
-            //     required: true,
-            //     message: "Please input Introduction!",
-            //   },
-            // ]}
-          >
-            <Input.TextArea rows={4} showCount maxLength={255} />
+          <Form.Item label="설명2" name="detail2">
+            <Input.TextArea rows={2} maxLength={255} />
           </Form.Item>
-          <hr className={styles.hr_tag} />
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[
-              {
-                required: true,
-                message: "이메일은 필수 입력 항목입니다.",
-              },
-            ]}
-          >
-            <Input />
+          <Form.Item label="설명3" name="detail3">
+            <Input.TextArea rows={2} maxLength={255} />
+          </Form.Item>
+          <Form.Item label="설명4" name="detail4">
+            <Input.TextArea rows={2} maxLength={255} />
+          </Form.Item>
+          <Form.Item label="설명5" name="detail5">
+            <Input.TextArea rows={2} maxLength={255} />
+          </Form.Item>
+          <Form.Item label="영문 설명1" name="engDetail1">
+            <Input.TextArea rows={2} maxLength={255} />
+          </Form.Item>
+          <Form.Item label="영문 설명2" name="engDetail2">
+            <Input.TextArea rows={2} maxLength={255} />
+          </Form.Item>
+          <Form.Item label="영문 설명3" name="engDetail3">
+            <Input.TextArea rows={2} maxLength={255} />
+          </Form.Item>
+          <Form.Item label="영문 설명4" name="engDetail4">
+            <Input.TextArea rows={2} maxLength={255} />
+          </Form.Item>
+          <Form.Item label="영문 설명5" name="engDetail5">
+            <Input.TextArea rows={2} maxLength={255} />
           </Form.Item>
           {/* Bottom button set */}
           <Row>
             <Col span={12}>
-              {" "}
               <div style={{ paddingLeft: "10%" }}>
-                <Button type="text" onClick={() => movePage("/professor")}>
+                <Button type="text" onClick={() => movePage("/projects")}>
                   ← Back
                 </Button>
               </div>
@@ -176,4 +195,4 @@ function ProfessorWrite() {
   );
 }
 
-export default ProfessorWrite;
+export default Projectswrite;

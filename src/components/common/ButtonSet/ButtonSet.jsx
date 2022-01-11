@@ -18,6 +18,11 @@ function ButtonSet({ pageFeature, id, value }) {
         pathname: window.location.pathname + "/" + currentId + "/edit",
         state: { id: id, value: value },
       });
+    } else if (window.location.pathname.substr(1, 5) === "board") {
+      history.push({
+        pathname: window.location.pathname + "/edit",
+        state: { id: id, value: value },
+      });
     } else {
       history.push({
         pathname: window.location.pathname + "/" + currentId + "/edit",
@@ -56,31 +61,31 @@ function ButtonSet({ pageFeature, id, value }) {
           });
         break;
       case "researchArea":
-      // axios
-      //   .delete(`/admin/researchArea/${currentId}`)
-      //   .then((res) => {
-      //     if (res.status === 200) {
-      //       alert("해당 내용이 삭제되었습니다.");
-      //       window.location.reload();
-      //     }
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //   });
-      // break;
+        axios
+          .delete(`/admin/researchArea/${currentId}`)
+          .then((res) => {
+            if (res.status === 200) {
+              alert("해당 내용이 삭제되었습니다.");
+              window.location.reload();
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        break;
       case "researchEquipment":
-      // axios
-      //   .delete(`/admin/researchEquipment/${currentId}`)
-      //   .then((res) => {
-      //     if (res.status === 200) {
-      //       alert("해당 내용이 삭제되었습니다.");
-      //       window.location.reload();
-      //     }
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //   });
-      // break;
+        // axios
+        //   .delete(`/admin/researchEquipment/${currentId}`)
+        //   .then((res) => {
+        //     if (res.status === 200) {
+        //       alert("해당 내용이 삭제되었습니다.");
+        //       window.location.reload();
+        //     }
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   });
+        break;
       case "projects":
         axios
           .delete(`/admin/projects/${currentId}`)
@@ -97,6 +102,32 @@ function ButtonSet({ pageFeature, id, value }) {
       case "publications":
         axios
           .delete(`/admin/publications/${currentId}`)
+          .then((res) => {
+            if (res.status === 200) {
+              alert("해당 내용이 삭제되었습니다.");
+              window.location.reload();
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        break;
+      case "notice":
+        axios
+          .delete(`/admin/board/NOTICE/${currentId}`)
+          .then((res) => {
+            if (res.status === 200) {
+              alert("해당 내용이 삭제되었습니다.");
+              window.location.reload();
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        break;
+      case "activity":
+        axios
+          .delete(`/admin/board/ACTIVITY/${currentId}`)
           .then((res) => {
             if (res.status === 200) {
               alert("해당 내용이 삭제되었습니다.");

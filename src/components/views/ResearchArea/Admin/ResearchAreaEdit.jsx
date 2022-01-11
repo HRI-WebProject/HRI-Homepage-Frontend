@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
-import styles from "@professor/Professor.module.css";
+import styles from "@researcharea/ResearchArea.module.css";
 import TitleBar from "@titlebar/TitleBar";
 import { Form, Input, Button, Col, Row } from "antd";
 import { Paper } from "@mui/material";
 
-function ProfessorWrite() {
+function ResearchAreaEdit() {
   const history = useHistory();
+  const location = useLocation();
+  const currentId = location.state.id;
   const account = useSelector((state) => state.user.loginSuccess);
   const [isLogged, setIsLogged] = useState(false);
-  const [professorData, setProfessorData] = useState();
+  const [researchData, setResearchData] = useState();
   const [form] = Form.useForm();
 
   const isSmallScreen = useMediaQuery({
@@ -25,12 +27,12 @@ function ProfessorWrite() {
 
   const onFinish = (values) => {
     axios
-      .post("/admin/professors", values)
+      .put(`/admin/researchArea/${currentId + ""}`, values)
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data);
-          alert("교수 등록이 완료되었습니다.");
-          movePage("/professor");
+          alert("수정되었습니다.");
+          movePage("/research/researchArea");
         }
       })
       .catch(function (error) {
@@ -48,11 +50,31 @@ function ProfessorWrite() {
 
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
+    axios
+      .get("/researchArea")
+      .then((res) => {
+        if (res.status === 200) {
+          let tmp = res.data.data.filter(function (item, idx) {
+            return item.id === location.state.id;
+          });
+          tmp && setResearchData(tmp[0]);
+          form.setFieldsValue({
+            name: tmp[0].name,
+            engName: tmp[0].engName,
+            photo: tmp[0].photo,
+            engDetail: tmp[0].engDetail,
+            detail: tmp[0].detail,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
 
   return (
     <div className={styles.container}>
-      <TitleBar title="교수진" />
+      <TitleBar title="연구 분야" />
       <Paper className={styles.paper}>
         <Form
           name="basic"
@@ -63,24 +85,24 @@ function ProfessorWrite() {
           form={form}
         >
           <Form.Item
-            label="이름"
+            label="연구분야명"
             name="name"
             rules={[
               {
                 required: true,
-                message: "이름은 필수 입력 항목입니다.",
+                message: "필수 입력 항목입니다.",
               },
             ]}
           >
             <Input />
           </Form.Item>
           <Form.Item
-            label="영문이름"
+            label="연구분야 영문명"
             name="engName"
             rules={[
               {
                 required: true,
-                message: "영문이름은 필수 입력 항목입니다.",
+                message: "필수 입력 항목입니다.",
               },
             ]}
           >
@@ -101,48 +123,37 @@ function ProfessorWrite() {
             <Input />
           </Form.Item>
           <Form.Item
-            label="소개"
-            name="boldDetail"
+            label="설명"
+            name="detail"
             rules={[
               {
                 required: true,
-                message: "소개는 필수 입력 항목입니다.",
+                message: "필수 입력 항목입니다.",
               },
             ]}
-          >
-            <Input.TextArea rows={2} showCount maxLength={255} />
-          </Form.Item>
-          <Form.Item
-            label="세부 정보"
-            name="detail"
-            // rules={[
-            //   {
-            //     required: true,
-            //     message: "Please input Introduction!",
-            //   },
-            // ]}
           >
             <Input.TextArea rows={4} showCount maxLength={255} />
           </Form.Item>
-          <hr className={styles.hr_tag} />
           <Form.Item
-            label="Email"
-            name="email"
+            label="영문 설명"
+            name="engDetail"
             rules={[
               {
                 required: true,
-                message: "이메일은 필수 입력 항목입니다.",
+                message: "필수 입력 항목입니다.",
               },
             ]}
           >
-            <Input />
+            <Input.TextArea rows={4} showCount maxLength={255} />
           </Form.Item>
           {/* Bottom button set */}
           <Row>
             <Col span={12}>
-              {" "}
               <div style={{ paddingLeft: "10%" }}>
-                <Button type="text" onClick={() => movePage("/professor")}>
+                <Button
+                  type="text"
+                  onClick={() => movePage("/research/researchArea")}
+                >
                   ← Back
                 </Button>
               </div>
@@ -176,4 +187,4 @@ function ProfessorWrite() {
   );
 }
 
-export default ProfessorWrite;
+export default ResearchAreaEdit;

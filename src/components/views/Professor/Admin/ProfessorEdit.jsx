@@ -32,7 +32,7 @@ function ProfessorEdit() {
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data);
-          alert("교수 등록이 완료되었습니다.");
+          alert("수정 완료되었습니다.");
           movePage("/professor");
         }
       })
@@ -157,7 +157,7 @@ function ProfessorEdit() {
             <Row>
               <Col span={12}>
                 {" "}
-                <div style={{ paddingLeft: "10%", cursor: "pointer" }}>
+                <div style={{ paddingLeft: "10%" }}>
                   <Button type="text" onClick={moveBack}>
                     ← Back
                   </Button>

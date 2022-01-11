@@ -1,51 +1,26 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useMediaQuery } from "react-responsive";
+import { useSelector } from "react-redux";
 import styles from "@researcharea/ResearchArea.module.css";
 import { Paper } from "@mui/material";
 import TitleBar from "@titlebar/TitleBar";
 import TopMenu from "@topmenu/TopMenu";
 import { Row, Col, Card, Image } from "antd";
+import AddButton from "@common/AddButton/AddButton";
+import ButtonSet from "@common/ButtonSet/ButtonSet";
 
 function ResearchArea() {
+  const account = useSelector((state) => state.user.loginSuccess);
+  const [isLogged, setIsLogged] = useState(false);
   const [researchList, setResearchList] = useState();
   const { Meta } = Card;
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 1100px)",
   });
 
-  const sampleData = [
-    {
-      name: "RF/Microwave Antenna, Circuit, and System Analysis & Design",
-      eng_name: "RF/Microwave Antenna, Circuit, and System Analysis & Design",
-      photo: "path",
-      detail: "Planar and 3D PCB antenna (array) & circuits",
-    },
-    {
-      name: "Near- and Far-field Wireless Power Transfer (WPT) Technologies",
-      eng_name:
-        "Near- and Far-field Wireless Power Transfer (WPT) Technologies",
-      photo: "path",
-      detail:
-        "Item-Level ID sensing, monitoring, & positiong using RFID/IoT sensors for smart manufacturing",
-    },
-    {
-      name: "Electromagnetic Interference & Compatibility (EMI/EMC)",
-      eng_name: "Electromagnetic Interference & Compatibility (EMI/EMC)",
-      photo: "path",
-      detail:
-        "Electromagnetic interference (EMI) shielding, filtering, cabling, grounding for EMC",
-    },
-    {
-      name: "Electromagnetic Interference & Compatibility (EMI/EMC)",
-      eng_name: "Applied RF/Microwave Engineering",
-      photo: "path",
-      detail:
-        "Passive and Active Frequency selective surface (FSS) using artificial transmission lines",
-    },
-  ];
-
   useEffect(() => {
+    if (account && account.status === "OK") setIsLogged(true);
     axios
       .get("/researchArea")
       .then((res) => {
@@ -64,6 +39,7 @@ function ResearchArea() {
       <TitleBar title="연구 분야" />
       <TopMenu selected_key="ResearchArea" />
       <Paper className={styles.paper}>
+        {isLogged && <AddButton />}
         <div>
           <div className={styles.research_topic_title}>
             HRI Lab Research Topics
@@ -95,12 +71,15 @@ function ResearchArea() {
         <div style={{ paddingTop: "30px" }}>
           {researchList &&
             researchList.map((item, idx) => (
-              <div className={styles.item}>
+              <div className={styles.item} key={idx}>
                 <div>
                   <div className={styles.circle}>{idx + 1}</div>
                   <div className={styles.item_name}>{item.name}</div>
                 </div>
                 <div className={styles.item_detail}>{item.detail}</div>
+                {isLogged && (
+                  <ButtonSet pageFeature="researchArea" id={item.id} />
+                )}
               </div>
             ))}
         </div>
