@@ -1,160 +1,103 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { useSelector } from "react-redux";
 import styles from "@notice/Notice.module.css";
-import { Table } from "reactstrap";
 import { Paper } from "@mui/material";
-import { Pagination } from "antd";
+import { Pagination, Table } from "antd";
+import AddButton from "@common/AddButton/AddButton";
 
 function ActivityList(props, { boardType }) {
   const history = useHistory();
+  const account = useSelector((state) => state.user.loginSuccess);
+  const [isLogged, setIsLogged] = useState(false);
   const [rowList, setRowList] = useState();
   const [rowLength, setRowLength] = useState();
   const [paginationId, setPaginationId] = useState();
+  const [activityList, setActivityList] = useState();
+  const [totalPages, setTotalPages] = useState();
 
-  const rows = [
+  const onPageChange = (page, pageSize) => {
+    console.log(page);
+  };
+
+  const movePage = (idx) => {
+    let id = idx + "";
+    history.push({
+      pathname: `/board/activity/${id}`,
+      state: { id: id },
+    });
+  };
+
+  const columns = [
     {
-      id: 1,
-      topic: "Snow",
-      author: "Jon",
-      create_date: "2021/11/10",
-      boardType: "activity",
+      title: "번호",
+      dataIndex: "id",
+      align: "center",
+      width: "5%",
     },
     {
-      id: 2,
-      topic: "Snow",
-      author: "Jon",
-      create_date: "2021/11/10",
-      boardType: "activity",
+      title: "제목",
+      dataIndex: "topic",
+      width: "40%",
     },
     {
-      id: 3,
-      topic: "Snow",
-      author: "Jon",
-      create_date: "2021/11/10",
-      boardType: "activity",
+      title: "작성자",
+      dataIndex: "author",
+      align: "center",
+      width: "10%",
     },
     {
-      id: 4,
-      topic: "Snow",
-      author: "Jon",
-      create_date: "2021/11/10",
-      boardType: "activity",
-    },
-    {
-      id: 5,
-      topic: "Snow",
-      author: "Jon",
-      create_date: "2021/11/10",
-      boardType: "activity",
-    },
-    {
-      id: 6,
-      topic: "Snow",
-      author: "Jon",
-      create_date: "2021/11/10",
-      boardType: "activity",
-    },
-    {
-      id: 7,
-      topic: "Snow",
-      author: "Jon",
-      create_date: "2021/11/10",
-      boardType: "activity",
-    },
-    {
-      id: 8,
-      topic: "Snow",
-      author: "Jon",
-      create_date: "2021/11/10",
-      boardType: "activity",
-    },
-    {
-      id: 9,
-      topic: "Snow",
-      author: "Jon",
-      create_date: "2021/11/10",
-      boardType: "activity",
-    },
-    {
-      id: 10,
-      topic: "Snow",
-      author: "Jon",
-      create_date: "2021/11/10",
-      boardType: "activity",
-    },
-    {
-      id: 11,
-      topic: "Snow",
-      author: "Jon",
-      create_date: "2021/11/10",
-      boardType: "activity",
-    },
-    {
-      id: 12,
-      topic: "Snow",
-      author: "Jon",
-      create_date: "2021/11/10",
-      boardType: "activity",
+      title: "작성일",
+      dataIndex: "createDate",
+      align: "center",
+      width: "15%",
     },
   ];
 
-  const moveDetailPage = (data) => {
-    let id = data.id;
-    if (data.boardType === "activity")
-      history.push({
-        pathname: `/board/activity/${id}`,
-        state: { id: id },
-      });
-  };
-
   useEffect(() => {
+    if (account && account.status === "OK") setIsLogged(true);
     // setPaginationId("1");
-    let paginationId = "1";
     axios
-      .get(`/board/ACTIVITY/page/${paginationId}`)
+      .get(`/board/ACTIVITY/page/0`)
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data.data);
+          setActivityList(res.data.data.content);
+          setTotalPages(res.data.data.totalPages);
+          setRowLength(res.data.data.content.length);
         }
       })
       .catch(function (error) {
         console.log(error);
       });
-    setRowList(rows.reverse());
   }, []);
 
   return (
     <div className={styles.datagrid}>
       <Paper className={styles.paper}>
-        <Table hover className={styles.table}>
-          <thead>
-            <tr className={styles.title_row}>
-              <th style={{ width: "100px", textAlign: "center" }}>번호</th>
-              <th style={{ width: "500px", textAlign: "center" }}>제목</th>
-              <th style={{ width: "150px", textAlign: "center" }}>작성자</th>
-              <th style={{ width: "150px", textAlign: "center" }}>작성일</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rowList &&
-              rowList.map((item, idx) => (
-                <tr
-                  key={idx}
-                  onClick={() => moveDetailPage(item)}
-                  className={styles.table_row}
-                >
-                  <td scope="row" style={{ textAlign: "center" }}>
-                    {item.id}
-                  </td>
-                  <td style={{ textAlign: "left" }}>{item.topic}</td>
-                  <td style={{ textAlign: "center" }}>{item.author}</td>
-                  <td style={{ textAlign: "center" }}>{item.create_date}</td>
-                </tr>
-              ))}
-          </tbody>
-        </Table>
-        {/* <Pagination defaultCurrent={1} total={rows.length} /> */}
+        {isLogged && <AddButton />}
+        {activityList && (
+          <Table
+            columns={columns}
+            dataSource={activityList}
+            rowClassName={styles.table_row}
+            size="middle"
+            pagination={{
+              onChange: (page, pageSize) =>
+                console.log("Pagination => onChange: ", page, pageSize),
+              position: ["none", "bottomRight"],
+            }}
+            onRow={(record, rowIndex) => {
+              return {
+                onClick: (event) => {
+                  // let index = rowLength - rowIndex + "";
+                  movePage(record.id);
+                }, // click row
+              };
+            }}
+          />
+        )}
       </Paper>
     </div>
   );
