@@ -26,6 +26,8 @@ function Login(props) {
         if (res.payload.status === "OK") {
           console.log(res.payload);
           props.history.push("/");
+          localStorage.setItem("isLogin", true);
+          console.log(localStorage);
         }
       })
       .catch(function (error) {
