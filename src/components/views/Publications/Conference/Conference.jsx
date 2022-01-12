@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 import styles from "@conference/Conference.module.css";
 import TitleBar from "@titlebar/TitleBar";
 import TopMenu from "@topmenu/TopMenu";
 import { List, Tabs, Divider, Row, Col } from "antd";
 import { Paper, Typography } from "@mui/material";
-import { conferenceData } from "./conferenceData";
+import AddButton from "@common/AddButton/AddButton";
+import ButtonSet from "@common/ButtonSet/ButtonSet";
 
 function Conference() {
-  const [conferenceList, setConferenceList] = useState(conferenceData);
+  const account = useSelector((state) => state.user.loginSuccess);
+  const [isLogged, setIsLogged] = useState(false);
+  const [conferenceList, setConferenceList] = useState();
   const [listLen, setListLen] = useState();
 
   useEffect(() => {
-    setListLen(conferenceData.length);
+    if (account && account.status === "OK") setIsLogged(true);
     axios
       .get("/publications/CONFERENCE")
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data.data);
           setConferenceList(res.data.data);
           setListLen(res.data.data.length);
         }
@@ -32,6 +35,7 @@ function Conference() {
       <TitleBar title="학술대회" />
       <TopMenu selected_key="Publications" />
       <Paper className={styles.paper}>
+        {isLogged && <AddButton value="학술대회" />}
         {conferenceList && (
           <List
             bordered
@@ -62,6 +66,15 @@ function Conference() {
                       </div>
                     )}
                   </div>
+                </span>
+                <span className={styles.buttons}>
+                  {isLogged && (
+                    <ButtonSet
+                      pageFeature="publications"
+                      id={item.id}
+                      value="학술대회"
+                    />
+                  )}
                 </span>
               </List.Item>
             )}

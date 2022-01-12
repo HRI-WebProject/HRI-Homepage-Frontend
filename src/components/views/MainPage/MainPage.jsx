@@ -12,6 +12,7 @@ function MainPage() {
     "/assets/main/main2.png",
     "/assets/main/main3.png",
   ];
+
   return (
     <div className={styles.container}>
       <div className={styles.carousel}>

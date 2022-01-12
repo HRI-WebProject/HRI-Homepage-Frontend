@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 import styles from "@conference/Conference.module.css";
 import TitleBar from "@titlebar/TitleBar";
 import TopMenu from "@topmenu/TopMenu";
 import { List, Tabs, Divider, Row, Col } from "antd";
 import { Paper, Typography } from "@mui/material";
-import { bookData } from "./bookData";
+import AddButton from "@common/AddButton/AddButton";
+import ButtonSet from "@common/ButtonSet/ButtonSet";
 
 function Book() {
-  const [bookList, setBookList] = useState(bookData);
+  const account = useSelector((state) => state.user.loginSuccess);
+  const [isLogged, setIsLogged] = useState(false);
+  const [bookList, setBookList] = useState();
   const [listLen, setListLen] = useState();
 
   useEffect(() => {
-    setListLen(bookData.length);
+    if (account && account.status === "OK") setIsLogged(true);
     axios
       .get("/publications/BOOK")
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data.data);
           setBookList(res.data.data);
           setListLen(res.data.data.length);
         }
@@ -32,6 +35,7 @@ function Book() {
       <TitleBar title="도서" />
       <TopMenu selected_key="Publications" />
       <Paper className={styles.paper}>
+        {isLogged && <AddButton value="도서" />}
         {bookList && (
           <List
             bordered
@@ -62,6 +66,15 @@ function Book() {
                       </div>
                     )}
                   </div>
+                </span>
+                <span className={styles.buttons}>
+                  {isLogged && (
+                    <ButtonSet
+                      pageFeature="publications"
+                      id={item.id}
+                      value="도서"
+                    />
+                  )}
                 </span>
               </List.Item>
             )}

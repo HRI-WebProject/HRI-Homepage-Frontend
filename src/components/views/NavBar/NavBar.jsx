@@ -3,15 +3,20 @@ import { Layout, Menu, Dropdown, Select, Button, Row, Col } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
 import styles from "@navbar/NavBar.module.css";
 import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { clearUser } from "@actions/user_action";
 
 const { Header } = Layout;
 const { Option } = Select;
 
 function NavBar() {
-  const [account, setAccount] = useState("user");
+  const account = useSelector((state) => state.user.loginSuccess);
+  const [isLogged, setIsLogged] = useState(false);
   const [language, setLanguage] = useState("한국어");
   const [page, setPage] = useState("home");
   const history = useHistory();
+  const dispatch = useDispatch();
   const categories = [
     "Research",
     "Professor",
@@ -34,25 +39,37 @@ function NavBar() {
 
   const language_menu = (
     <Menu>
-      <Menu.Item style={{ width: "100px" }}>
+      <Menu.Item style={{ width: "100px" }} key="ko">
         <div style={{ fontSize: "1.1em" }}>한국어</div>
       </Menu.Item>
       <Menu.Item>
-        <div style={{ fontSize: "1.1em" }}>English</div>
+        <div style={{ fontSize: "1.1em" }} key="en">
+          English
+        </div>
       </Menu.Item>
     </Menu>
   );
 
   const movePage = (url, idx) => {
-    window.location.href = url;
+    history.push(url);
     setPage(categories[idx]);
   };
 
+  const handleLogout = () => {
+    localStorage.clear();
+    dispatch(clearUser());
+    window.location.reload();
+  };
+
   useEffect(() => {
-    // console.log(window.location.pathname);
+    if (account && account.status === "OK") setIsLogged(true);
     var url_idx = path.findIndex((value) => value === window.location.pathname);
     if (url_idx === 0) setPage(categories[url_idx - 1]);
   }, []);
+
+  useEffect(() => {
+    if (account && account.status === "OK") setIsLogged(true);
+  }, [account]);
 
   return (
     <div className={styles.outer}>
@@ -65,9 +82,19 @@ function NavBar() {
           동국대학교
         </span>
         <span className={styles.bar}>|</span>
-        <span className={styles.header_menu} onClick={() => movePage("/login")}>
-          로그인
-        </span>
+        {isLogged === true && (
+          <span className={styles.header_menu} onClick={handleLogout}>
+            로그아웃
+          </span>
+        )}
+        {isLogged === false && (
+          <span
+            className={styles.header_menu}
+            onClick={() => movePage("/login")}
+          >
+            로그인
+          </span>
+        )}
       </div>
       <Header className={styles.navbar}>
         <img

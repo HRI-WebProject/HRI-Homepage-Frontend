@@ -3,10 +3,33 @@ import ReactDOM from "react-dom";
 import "@/index.css";
 import App from "@/App";
 import "bootstrap/dist/css/bootstrap.css";
+import { Provider } from "react-redux";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
+import { applyMiddleware, createStore } from "redux";
+import promiseMiddleware from "redux-promise";
+import ReduxThunk from "redux-thunk";
+import Reducer from "@reducers";
+
+const createStoreWithMiddlware = applyMiddleware(
+  promiseMiddleware,
+  ReduxThunk
+)(createStore);
+
+const store = createStoreWithMiddlware(
+  Reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+const persistor = persistStore(store);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Form, Input, Button, Checkbox } from "antd";
-import { loginUser } from "@actions/user_action";
-import { withRouter } from "react-router-dom";
 import styles from "@login/Login.module.css";
 import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { loginUser } from "@actions/user_action";
 
 function Login(props) {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const isSmallScreen = useMediaQuery({
@@ -15,28 +16,42 @@ function Login(props) {
   });
 
   const onFinish = (e) => {
-    console.log("Success:", e);
-    setUserId(e.username);
-    setUserPassword(e.password);
+    let variables = {
+      username: e.username,
+      password: e.password,
+    };
 
-    // if (e.username === "admin") {
-    //   alert("아이디를 확인하세요.");
-    //   window.location.replace("/login");
-    // }
-    // if (e.password === "1245") {
-    //   alert("비밀번호를 확인하세요.");
-    //   history.push("/login");
-    // }
-    history.push("/");
+    dispatch(loginUser(variables))
+      .then((res) => {
+        if (res.payload.status === "OK") {
+          console.log(res.payload);
+          props.history.push("/");
+          localStorage.setItem("isLogin", true);
+          console.log(localStorage);
+        }
+      })
+      .catch(function (error) {
+        if (error.response) {
+          // 요청이 이루어졌으며 서버가 2xx의 범위를 벗어나는 상태 코드로 응답함
+          console.log(error.response.data);
+          alert("아이디, 비밀번호를 확인하세요.");
+        } else if (error.request) {
+          // 요청이 이루어 졌으나 응답을 받지 못함
+          // `error.request`는 브라우저의 XMLHttpRequest 인스턴스 또는
+          // Node.js의 http.ClientRequest 인스턴스임
+          console.log(error.request);
+          alert("서버 응답이 없습니다.");
+        } else {
+          // 오류를 발생시킨 요청을 설정하는 중에 문제가 발생함
+          console.log("Error", error.message);
+          alert("오류가 발생했습니다. 다시 시도하시기 바랍니다.");
+        }
+        window.location.reload();
+      });
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
-
-    if (userId === "admin") {
-      alert("아이디를 확인하세요.");
-      history.push("/login");
-    }
   };
 
   return (

@@ -1,0 +1,18 @@
+.container {
+  text-align: right;
+  padding-top: 15px;
+}
+
+.container_left {
+  text-align: left;
+  padding-top: 15px;
+}
+
+.edit_button {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.delete_button {
+  display: inline-block;
+}

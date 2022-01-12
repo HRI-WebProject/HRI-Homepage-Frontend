@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
-import Axios from "@api/index";
+import axios from "axios";
 import Typography from "@mui/material/Typography";
-import { Statistic, Card, Row, Col, Button } from "antd";
+import { Statistic, Row, Col, Button } from "antd";
 import { useMediaQuery } from "react-responsive";
+import { useSelector } from "react-redux";
 import { Paper } from "@mui/material";
 import styles from "@alumni/Alumni.module.css";
 import TitleBar from "@titlebar/TitleBar";
 import TopMenu from "@topmenu/TopMenu";
 import MemberGrid from "@members/sections/MemberGrid";
+import AddButton from "@common/AddButton/AddButton";
 
 function Alumni() {
+  const account = useSelector((state) => state.user.loginSuccess);
+  const [isLogged, setIsLogged] = useState(false);
   const [phdMembers, setPhdMembers] = useState(); // 박사
   const [masterMembers, setMasterMembers] = useState(); // 석사
   const [bachelorMembers, setBachelorMembers] = useState(); // 학사
@@ -28,37 +32,47 @@ function Alumni() {
   ];
 
   useEffect(() => {
+    if (account && account.status === "OK") setIsLogged(true);
     // 졸업생 리스트
-    Axios.get("/members/PHD").then((res) => {
-      if (res.status === 200) {
-        let tmp = res.data.data.filter(function (item, idx) {
-          return item.graduate === true;
-        });
-        tmp && setPhdMembers(tmp);
-      } else {
-        alert("Failed");
-      }
-    });
-    Axios.get("/members/MASTER").then((res) => {
-      if (res.status === 200) {
-        let tmp = res.data.data.filter(function (item, idx) {
-          return item.graduate === true;
-        });
-        tmp && setMasterMembers(tmp);
-      } else {
-        alert("Failed");
-      }
-    });
-    Axios.get("/members/BACHELOR").then((res) => {
-      if (res.status === 200) {
-        let tmp = res.data.data.filter(function (item, idx) {
-          return item.graduate === true;
-        });
-        tmp && setBachelorMembers(tmp);
-      } else {
-        alert("Failed");
-      }
-    });
+    axios
+      .get("/members/PHD")
+      .then((res) => {
+        if (res.status === 200) {
+          let tmp = res.data.data.filter(function (item, idx) {
+            return item.graduate === true;
+          });
+          tmp && setPhdMembers(tmp);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    axios
+      .get("/members/MASTER")
+      .then((res) => {
+        if (res.status === 200) {
+          let tmp = res.data.data.filter(function (item, idx) {
+            return item.graduate === true;
+          });
+          tmp && setMasterMembers(tmp);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    axios
+      .get("/members/BACHELOR")
+      .then((res) => {
+        if (res.status === 200) {
+          let tmp = res.data.data.filter(function (item, idx) {
+            return item.graduate === true;
+          });
+          tmp && setBachelorMembers(tmp);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
 
   return (
@@ -110,6 +124,7 @@ function Alumni() {
           {isSmallScreen ? (
             <>
               <div className={styles.members}>
+                {isLogged && <AddButton />}
                 {phdMembers.length !== 0 && (
                   <>
                     <Typography variant="h5">
@@ -119,6 +134,7 @@ function Alumni() {
                       memberData={phdMembers}
                       col_size={24}
                       degree="박사 과정"
+                      isLogged={isLogged}
                     />
                     <hr className={styles.hrline} />
                   </>
@@ -132,6 +148,7 @@ function Alumni() {
                       memberData={masterMembers}
                       col_size={24}
                       degree="석사 과정"
+                      isLogged={isLogged}
                     />
                     <hr className={styles.hrline} />{" "}
                   </>
@@ -145,6 +162,7 @@ function Alumni() {
                       memberData={bachelorMembers}
                       col_size={24}
                       degree="학사 과정"
+                      isLogged={isLogged}
                     />{" "}
                   </>
                 )}
@@ -153,6 +171,7 @@ function Alumni() {
           ) : (
             <>
               <div className={styles.members}>
+                {isLogged && <AddButton />}
                 {phdMembers.length !== 0 && (
                   <>
                     <Typography variant="h5">
@@ -162,6 +181,7 @@ function Alumni() {
                       memberData={phdMembers}
                       col_size={12}
                       degree="박사 과정"
+                      isLogged={isLogged}
                     />
                     <hr className={styles.hrline} />
                   </>
@@ -175,6 +195,7 @@ function Alumni() {
                       memberData={masterMembers}
                       col_size={12}
                       degree="석사 과정"
+                      isLogged={isLogged}
                     />
                     <hr className={styles.hrline} />{" "}
                   </>
@@ -188,6 +209,7 @@ function Alumni() {
                       memberData={bachelorMembers}
                       col_size={12}
                       degree="학사 과정"
+                      isLogged={isLogged}
                     />{" "}
                   </>
                 )}
