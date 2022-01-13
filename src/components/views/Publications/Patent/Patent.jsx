@@ -21,6 +21,7 @@ function Patent() {
       .get("/publications/PATENT")
       .then((res) => {
         if (res.status === 200) {
+          console.log(res);
           setPatentList(res.data.data);
           setListLen(res.data.data.length);
         }
@@ -47,36 +48,42 @@ function Patent() {
                     {item.topic}
                   </div>
                   <div>
-                    {item.inventor !== null && (
+                    {item.inventor && (
                       <div>
                         <font style={{ fontWeight: "400" }}>발명자 | </font>
                         {item.inventor}
                       </div>
                     )}
-                    {item.fillingNo != null && (
+                    {item.fillingNo && (
                       <>
                         <font style={{ fontWeight: "400" }}>출원번호 | </font>
                         {item.fillingNo}
                         <span style={{ paddingRight: "30px" }} />
                       </>
                     )}
-                    {item.grantedNo != null && (
-                      <>
-                        <font style={{ fontWeight: "400" }}>등록번호 | </font>
-                        {item.grantedNo}
-                        <span style={{ paddingRight: "30px" }} />
-                      </>
-                    )}
-                    {item.fillingDate != null && (
+                    {item.fillingDate && (
                       <>
                         <font style={{ fontWeight: "400" }}>출원일 | </font>
                         {item.fillingDate}
                         <span style={{ paddingRight: "30px" }} />
                       </>
                     )}
-                    {item.progress != null && (
+                    {item.grantedNo && (
                       <>
-                        <font style={{ fontWeight: "400" }}>진행상황 | </font>
+                        <font style={{ fontWeight: "400" }}>등록번호 | </font>
+                        {item.grantedNo}
+                        <span style={{ paddingRight: "30px" }} />
+                      </>
+                    )}
+                    {item.grantedDate && (
+                      <>
+                        <font style={{ fontWeight: "400" }}>등록일 | </font>
+                        {item.grantedDate}
+                        <span style={{ paddingRight: "30px" }} />
+                      </>
+                    )}
+                    {item.progress && (
+                      <>
                         {item.progress}
                         <span style={{ paddingRight: "30px" }} />
                       </>

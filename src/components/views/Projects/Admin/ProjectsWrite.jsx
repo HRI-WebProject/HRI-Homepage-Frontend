@@ -23,12 +23,10 @@ function Projectswrite() {
   };
 
   const onFinish = (values) => {
-    console.log(values);
     axios
       .post("/admin/projects", values)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           alert("프로젝트 등록이 완료되었습니다.");
           movePage("/projects");
         }

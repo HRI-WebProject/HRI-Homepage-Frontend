@@ -10,7 +10,6 @@ import TopMenu from "@topmenu/TopMenu";
 import { Row, Col, Card, Button, Form, Input } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import EquipmentAddCard from "./EquipmentAddCard";
-import ButtonSet from "@common/ButtonSet/ButtonSet";
 import EquipmentEditCard from "./EquipmentEditCard";
 
 function Equipments() {
@@ -36,45 +35,23 @@ function Equipments() {
   };
 
   const editProcess = (id) => {
-    // console.log(id);
     setCurId(id);
     setShowEditCard(!showEditCard);
   };
 
   const deleteProcess = (id) => {
-    // axios
-    //   .delete(`/admin/professors/${id}`)
-    //   .then((res) => {
-    //     if (res.status === 200) {
-    //       alert("해당 내용이 삭제되었습니다.");
-    //       window.location.reload();
-    //     }
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    axios
+      .delete(`/admin/researchEquipment/${id}`)
+      .then((res) => {
+        if (res.status === 200) {
+          alert("해당 내용이 삭제되었습니다.");
+          window.location.reload();
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
-
-  const equipmentList = [
-    {
-      id: "1",
-      engName: "Mavic Mini",
-      name: "Mavic Mini",
-      photo: "/assets/equipment/equipment1.png",
-    },
-    {
-      id: "2",
-      engName: "Robomaster S1",
-      name: "Robomaster S1",
-      photo: "/assets/equipment/equipment2.jpg",
-    },
-    {
-      id: "3",
-      engName: "Vive Pro Eye",
-      name: "Vive Pro Eye",
-      photo: "/assets/equipment/equipment3.png",
-    },
-  ];
 
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);

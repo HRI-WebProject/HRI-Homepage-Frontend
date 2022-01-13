@@ -25,7 +25,6 @@ function ResearchArea() {
       .get("/researchArea")
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data.data);
           setResearchList(res.data.data);
         }
       })

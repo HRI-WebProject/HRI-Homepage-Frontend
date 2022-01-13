@@ -86,7 +86,7 @@ function BottomFooter() {
       <div>
         <Row>
           <Col span={4} style={{ textAlign: "center" }}>
-            <img src="/assets/logo.png" className={styles.logo} />
+            <img src="/assets/logo/logo.png" className={styles.logo} />
           </Col>
           <Col span={14}>
             <div className={styles.content}>

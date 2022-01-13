@@ -8,14 +8,12 @@ function EquipmentAddCard() {
   const history = useHistory();
 
   const onFinish = (values) => {
-    console.log(values);
     axios
       .post("/admin/researchEquipment", values)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           alert("연구장비 등록이 완료되었습니다.");
-          history.push("/research/equipments");
+          window.location.reload();
         }
       })
       .catch(function (error) {

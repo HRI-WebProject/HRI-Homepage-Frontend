@@ -48,7 +48,7 @@ function Conference() {
                     {item.topic}
                   </div>
                   <div>
-                    {item.detail !== "" && (
+                    {item.detail && (
                       <div>
                         {item.detail.split("\n").map((line, idx) => (
                           <span key={idx}>
@@ -58,7 +58,7 @@ function Conference() {
                         ))}
                       </div>
                     )}
-                    {item.link != "" && (
+                    {item.link && (
                       <div style={{ color: "#808080" }}>
                         <a href={item.link} className={styles.link}>
                           {item.link}

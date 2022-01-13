@@ -73,19 +73,6 @@ function ButtonSet({ pageFeature, id, value }) {
             console.log(error);
           });
         break;
-      case "researchEquipment":
-        // axios
-        //   .delete(`/admin/researchEquipment/${currentId}`)
-        //   .then((res) => {
-        //     if (res.status === 200) {
-        //       alert("해당 내용이 삭제되었습니다.");
-        //       window.location.reload();
-        //     }
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   });
-        break;
       case "projects":
         axios
           .delete(`/admin/projects/${currentId}`)
@@ -112,22 +99,9 @@ function ButtonSet({ pageFeature, id, value }) {
             console.log(error);
           });
         break;
-      case "notice":
+      case "board":
         axios
-          .delete(`/admin/board/NOTICE/${currentId}`)
-          .then((res) => {
-            if (res.status === 200) {
-              alert("해당 내용이 삭제되었습니다.");
-              window.location.reload();
-            }
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        break;
-      case "activity":
-        axios
-          .delete(`/admin/board/ACTIVITY/${currentId}`)
+          .delete(`/admin/board/${currentId}`)
           .then((res) => {
             if (res.status === 200) {
               alert("해당 내용이 삭제되었습니다.");

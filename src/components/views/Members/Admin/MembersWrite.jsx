@@ -24,12 +24,10 @@ function MembersWrite() {
   };
 
   const onFinish = (values) => {
-    console.log(values);
     axios
       .post("/admin/members", values)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           alert("구성원 등록이 완료되었습니다.");
           movePage("/members");
         }

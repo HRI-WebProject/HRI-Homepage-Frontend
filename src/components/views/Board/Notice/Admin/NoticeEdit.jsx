@@ -8,6 +8,7 @@ import TitleBar from "@titlebar/TitleBar";
 import TopMenu from "@topmenu/TopMenu";
 import { Form, Input, Row, Col, Button } from "antd";
 import moment from "moment";
+import { ContentPasteOutlined } from "@mui/icons-material";
 
 function NoticeEdit() {
   const history = useHistory();
@@ -22,14 +23,21 @@ function NoticeEdit() {
     history.push(url);
   };
 
+  const moveBack = () => {
+    if (
+      window.confirm("변경 사항이 저장되지 않습니다. 뒤로 가시겠습니까?") ===
+      true
+    ) {
+      history.push("/board/notice");
+    }
+  };
+
   const onFinish = (values) => {
-    console.log(values);
     axios
-      .put(`/admin/board/NOTICE/${currentId}`, values)
+      .put(`/admin/board/${currentId}`, values)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
-          alert("게시글 등록이 완료되었습니다.");
+          alert("수정 완료되었습니다.");
           movePage("/board/notice");
         }
       })
@@ -50,7 +58,7 @@ function NoticeEdit() {
     if (account && account.status === "OK") setIsLogged(true);
     currentId &&
       axios
-        .get(`/board/NOTICE/${currentId + ""}`)
+        .get(`/board/${currentId}`)
         .then((res) => {
           if (res.status === 200) {
             let tmp = res.data.data;
@@ -119,7 +127,7 @@ function NoticeEdit() {
                 <tr>
                   <td className={styles.table_td_2}>
                     <Form.Item name="content">
-                      <Input.TextArea rows={15} maxLength={255} showCount />
+                      <Input.TextArea rows={25} maxLength={2500} showCount />
                     </Form.Item>
                   </td>
                 </tr>
@@ -130,10 +138,7 @@ function NoticeEdit() {
                 <Col span={12}>
                   {" "}
                   <div style={{ paddingLeft: "10%" }}>
-                    <Button
-                      type="text"
-                      onClick={() => movePage("/board/notice")}
-                    >
+                    <Button type="text" onClick={moveBack}>
                       ← Back
                     </Button>
                   </div>

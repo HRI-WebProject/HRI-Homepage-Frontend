@@ -9,14 +9,11 @@ function EquipmentEditCard({ currentId }) {
   const [equipmentData, setEquipmentData] = useState();
 
   const onFinish = (values) => {
-    console.log(values);
     let id = currentId + "";
-    console.log(`/admin/researchEquipment/${id}`);
     axios
       .put(`/admin/researchEquipment/${id}`, values)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           alert("수정완료되었습니다.");
           window.location.reload();
         }

@@ -16,22 +16,23 @@ function BoardList(props, { boardType }) {
   const [paginationId, setPaginationId] = useState();
   const [noticeList, setNoticeList] = useState();
 
-  const onPageChange = (page, pageSize) => {
-    console.log(page);
-  };
-
-  const movePage = (idx) => {
-    let id = idx + "";
+  const movePage = (item) => {
+    let id = item.id + "";
     history.push({
       pathname: `/board/notice/${id}`,
-      state: { id: id },
+      state: { id: id, prev: item.prev, next: item.next },
     });
+  };
+
+  const convertToStringDate = (param) => {
+    let result = param.substr(0, 10);
+    return result;
   };
 
   const columns = [
     {
       title: "번호",
-      dataIndex: "id",
+      dataIndex: "index",
       align: "center",
       width: "5%",
     },
@@ -50,20 +51,23 @@ function BoardList(props, { boardType }) {
       title: "작성일",
       dataIndex: "createDate",
       align: "center",
-      width: "15%",
+      width: "10%",
     },
   ];
 
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
-    // setPaginationId("1");
-    let paginationId = "1";
     axios
-      .get(`/board/NOTICE/page/0`)
+      .get(`/board/type/NOTICE`)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data.data.content);
-          setNoticeList(res.data.data.content);
+          let totalElements = res.data.data.length;
+          let tmp = res.data.data;
+          tmp.map((item, index) => {
+            item.index = totalElements - index;
+            item.createDate = convertToStringDate(item.createDate);
+          });
+          tmp && setNoticeList(tmp);
         }
       })
       .catch(function (error) {
@@ -82,14 +86,14 @@ function BoardList(props, { boardType }) {
             rowClassName={styles.table_row}
             size="middle"
             pagination={{
-              onChange: (page, pageSize) =>
-                console.log("Pagination => onChange: ", page, pageSize),
+              // onChange: (page, pageSize) =>
+              //   console.log("Pagination => onChange: ", page, pageSize),
               position: ["none", "bottomRight"],
             }}
             onRow={(record, rowIndex) => {
               return {
                 onClick: (event) => {
-                  movePage(record.id);
+                  movePage(record);
                 }, // click row
               };
             }}

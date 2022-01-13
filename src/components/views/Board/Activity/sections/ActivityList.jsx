@@ -21,18 +21,23 @@ function ActivityList(props, { boardType }) {
     console.log(page);
   };
 
-  const movePage = (idx) => {
-    let id = idx + "";
+  const movePage = (item) => {
+    let id = item.id + "";
     history.push({
       pathname: `/board/activity/${id}`,
-      state: { id: id },
+      state: { id: id, prev: item.prev, next: item.next },
     });
+  };
+
+  const convertToStringDate = (param) => {
+    let result = param.substr(0, 10);
+    return result;
   };
 
   const columns = [
     {
       title: "번호",
-      dataIndex: "id",
+      dataIndex: "index",
       align: "center",
       width: "5%",
     },
@@ -51,21 +56,24 @@ function ActivityList(props, { boardType }) {
       title: "작성일",
       dataIndex: "createDate",
       align: "center",
-      width: "15%",
+      width: "10%",
     },
   ];
 
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
-    // setPaginationId("1");
     axios
-      .get(`/board/ACTIVITY/page/0`)
+      .get(`/board/type/ACTIVITY`)
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data.data);
-          setActivityList(res.data.data.content);
-          setTotalPages(res.data.data.totalPages);
-          setRowLength(res.data.data.content.length);
+          let totalElements = res.data.data.length;
+          let tmp = res.data.data;
+          tmp.map((item, index) => {
+            item.index = totalElements - index;
+            item.createDate = convertToStringDate(item.createDate);
+          });
+          tmp && setActivityList(tmp);
         }
       })
       .catch(function (error) {
@@ -84,15 +92,14 @@ function ActivityList(props, { boardType }) {
             rowClassName={styles.table_row}
             size="middle"
             pagination={{
-              onChange: (page, pageSize) =>
-                console.log("Pagination => onChange: ", page, pageSize),
+              // onChange: (page, pageSize) =>
+              //   console.log("Pagination => onChange: ", page, pageSize),
               position: ["none", "bottomRight"],
             }}
             onRow={(record, rowIndex) => {
               return {
                 onClick: (event) => {
-                  // let index = rowLength - rowIndex + "";
-                  movePage(record.id);
+                  movePage(record);
                 }, // click row
               };
             }}

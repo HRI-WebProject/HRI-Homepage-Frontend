@@ -26,12 +26,10 @@ function AlumniEdit() {
   };
 
   const onFinish = (values) => {
-    console.log(values);
     axios
       .put(`/admin/members/${currentId}`, values)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           alert("수정완료되었습니다.");
           movePage("/members");
         }
