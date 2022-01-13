@@ -104,10 +104,10 @@ function PublicationWrite() {
                   },
                 ]}
               >
-                <TextArea rows={2} showCount maxLength={225} />
+                <TextArea rows={2} showCount maxLength={500} />
               </Form.Item>
               <Form.Item label="세부내용" name="detail">
-                <TextArea rows={4} showCount maxLength={225} />
+                <TextArea rows={10} showCount maxLength={1000} />
               </Form.Item>
               <hr className={styles.hr_tag} />
               <Form.Item label="링크" name="link">
@@ -127,7 +127,7 @@ function PublicationWrite() {
                   },
                 ]}
               >
-                <TextArea rows={4} showCount maxLength={225} />
+                <TextArea rows={5} showCount maxLength={500} />
               </Form.Item>
               <hr className={styles.hr_tag} />
               <Form.Item label="링크" name="link">
@@ -156,13 +156,13 @@ function PublicationWrite() {
                 <Input />
               </Form.Item>
               <Form.Item label="출원일" name="fillingDate">
-                <DatePicker />
+                <DatePicker format="YYYY/MM/DD" />
               </Form.Item>
               <Form.Item label="등록번호" name="grantedNo">
                 <Input />
               </Form.Item>
               <Form.Item label="등록일" name="grantedDate">
-                <DatePicker />
+                <DatePicker format="YYYY/MM/DD" />
               </Form.Item>
               <Form.Item
                 label="진행상황"

@@ -8,7 +8,6 @@ import styles from "@projects/Projects.module.css";
 import TitleBar from "@titlebar/TitleBar";
 import Typography from "@mui/material/Typography";
 import ProjectBudget from "@projects/sections/projectBudget/ProjectBudget";
-import { ongoingList } from "@projects/sections/ongoing/OngoingData";
 import AddButton from "@common/AddButton/AddButton";
 import ButtonSet from "@common/ButtonSet/ButtonSet";
 

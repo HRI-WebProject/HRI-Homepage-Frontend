@@ -19,6 +19,7 @@ function ActivityDetail() {
   const [isLogged, setIsLogged] = useState(false);
   const [pageId, setPageId] = useState(location.state.id);
   const [boardDetail, setBoardDetail] = useState();
+  const [data, setData] = useState();
 
   const movePage = (url, id) => {
     if (!id) {
@@ -35,22 +36,17 @@ function ActivityDetail() {
     setPageId(id);
   };
 
-  const data = [
-    {
-      type: "prev",
-      title: "Ant Design Title 1",
-    },
-    {
-      type: "next",
-      title: "Ant Design Title 2",
-    },
-  ];
+  const convertToStringDate = (param) => {
+    let result = param.substr(0, 10) + " " + param.substr(11, 5);
+    return result;
+  };
 
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
+    let tmp = [];
     pageId &&
       axios
-        .get(`/board/ACTIVITY/${pageId + ""}`)
+        .get(`/board/${pageId}`)
         .then((res) => {
           if (res.status === 200) {
             setBoardDetail(res.data.data);
@@ -63,6 +59,36 @@ function ActivityDetail() {
         .catch(function (error) {
           console.log(error);
         });
+
+    let data_tmp = [];
+
+    axios
+      .get(`/board/type/ACTIVITY`)
+      .then((res) => {
+        if (res.status === 200) {
+          let totalElements = res.data.data.length;
+          let tmp = res.data.data;
+          let index = tmp.findIndex((item) => item.id === parseInt(pageId));
+          if (index !== 0) {
+            data_tmp.push({
+              type: "prev",
+              title: tmp[index - 1].topic,
+              id: tmp[index - 1].id,
+            });
+          }
+          if (index !== totalElements - 1) {
+            data_tmp.push({
+              type: "next",
+              title: tmp[index + 1].topic,
+              id: tmp[index + 1].id,
+            });
+          }
+          data_tmp && setData(data_tmp);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, [pageId]);
 
   return (
@@ -71,9 +97,7 @@ function ActivityDetail() {
       <TopMenu selected_key="Board" />
       {boardDetail && (
         <Paper className={styles.paper}>
-          <div>
-            {isLogged && <ButtonSet pageFeature="activity" id={pageId} />}
-          </div>
+          <div>{isLogged && <ButtonSet pageFeature="board" id={pageId} />}</div>
           <table className={styles.table_}>
             <thead>
               <tr>
@@ -87,7 +111,8 @@ function ActivityDetail() {
                     <b>작성자</b> | {boardDetail.author}
                   </span>
                   <span>
-                    <b>작성일</b> | {boardDetail.createDate}
+                    <b>작성일</b> |{" "}
+                    {convertToStringDate(boardDetail.createDate)}
                   </span>
                 </td>
               </tr>
@@ -103,39 +128,37 @@ function ActivityDetail() {
             <ListIcon />
           </div>
           <div className={styles.list}>
-            <List
-              bordered
-              dataSource={data}
-              renderItem={(item) =>
-                item.type === "prev" ? (
-                  <List.Item
-                    onClick={() =>
-                      movePage(`/board/activity/`, parseInt(pageId) + 1)
-                    }
-                    className={styles.list_item}
-                  >
-                    <span className={styles.prev_next_btn}>
-                      <ArrowDropUpIcon />
-                      prev
-                    </span>
-                    {item.title}
-                  </List.Item>
-                ) : (
-                  <List.Item
-                    onClick={() =>
-                      movePage(`/board/activity/`, parseInt(pageId) - 1)
-                    }
-                    className={styles.list_item}
-                  >
-                    <span className={styles.prev_next_btn}>
-                      <ArrowDropDownIcon />
-                      next
-                    </span>
-                    {item.title}
-                  </List.Item>
-                )
-              }
-            />
+            {data && (
+              <List
+                bordered
+                dataSource={data}
+                renderItem={(item) =>
+                  item.type === "prev" ? (
+                    <List.Item
+                      onClick={() => movePage(`/board/activity/`, item.id)}
+                      className={styles.list_item}
+                    >
+                      <span className={styles.prev_next_btn}>
+                        <ArrowDropUpIcon />
+                        prev
+                      </span>
+                      {item.title}
+                    </List.Item>
+                  ) : (
+                    <List.Item
+                      onClick={() => movePage(`/board/activity/`, item.id)}
+                      className={styles.list_item}
+                    >
+                      <span className={styles.prev_next_btn}>
+                        <ArrowDropDownIcon />
+                        next
+                      </span>
+                      {item.title}
+                    </List.Item>
+                  )
+                }
+              />
+            )}
           </div>
         </Paper>
       )}

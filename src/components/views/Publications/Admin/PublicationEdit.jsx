@@ -155,10 +155,10 @@ function PublicationEdit() {
                     },
                   ]}
                 >
-                  <TextArea rows={2} showCount maxLength={225} />
+                  <TextArea rows={2} showCount maxLength={500} />
                 </Form.Item>
                 <Form.Item label="세부내용" name="detail">
-                  <TextArea rows={4} showCount maxLength={225} />
+                  <TextArea rows={10} showCount maxLength={1000} />
                 </Form.Item>
                 <hr className={styles.hr_tag} />
                 <Form.Item label="링크" name="link">
@@ -178,7 +178,7 @@ function PublicationEdit() {
                     },
                   ]}
                 >
-                  <TextArea rows={4} showCount maxLength={225} />
+                  <TextArea rows={5} showCount maxLength={500} />
                 </Form.Item>
                 <hr className={styles.hr_tag} />
                 <Form.Item label="링크" name="link">

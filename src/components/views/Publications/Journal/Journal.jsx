@@ -47,7 +47,7 @@ function Journal() {
                 <span className={styles.contents}>
                   <font style={{ color: "#2f5597" }}>[{listLen - idx}]</font>{" "}
                   {item.topic}
-                  {item.link !== null && <div>{item.link}</div>}
+                  {!!item.link && <div>{item.link}</div>}
                 </span>
                 <span className={styles.buttons}>
                   {isLogged && (

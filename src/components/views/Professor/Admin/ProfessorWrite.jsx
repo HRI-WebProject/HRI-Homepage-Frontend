@@ -28,7 +28,6 @@ function ProfessorWrite() {
       .post("/admin/professors", values)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           alert("교수 등록이 완료되었습니다.");
           movePage("/professor");
         }
@@ -110,19 +109,10 @@ function ProfessorWrite() {
               },
             ]}
           >
-            <Input.TextArea rows={2} showCount maxLength={255} />
+            <Input.TextArea rows={6} showCount maxLength={500} />
           </Form.Item>
-          <Form.Item
-            label="세부 정보"
-            name="detail"
-            // rules={[
-            //   {
-            //     required: true,
-            //     message: "Please input Introduction!",
-            //   },
-            // ]}
-          >
-            <Input.TextArea rows={4} showCount maxLength={255} />
+          <Form.Item label="세부 정보" name="detail">
+            <Input.TextArea rows={12} showCount maxLength={1000} />
           </Form.Item>
           <hr className={styles.hr_tag} />
           <Form.Item

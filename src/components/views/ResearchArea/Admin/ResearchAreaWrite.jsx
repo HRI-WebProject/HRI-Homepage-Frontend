@@ -23,12 +23,10 @@ function ResearchAreaWrite() {
   };
 
   const onFinish = (values) => {
-    console.log(values);
     axios
       .post("/admin/researchArea", values)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           alert("연구분야 등록이 완료되었습니다.");
           movePage("/research/researchArea");
         }
@@ -110,7 +108,7 @@ function ResearchAreaWrite() {
               },
             ]}
           >
-            <Input.TextArea rows={4} showCount maxLength={255} />
+            <Input.TextArea rows={10} showCount maxLength={1000} />
           </Form.Item>
           <Form.Item
             label="영문 설명"
@@ -122,7 +120,7 @@ function ResearchAreaWrite() {
               },
             ]}
           >
-            <Input.TextArea rows={4} showCount maxLength={255} />
+            <Input.TextArea rows={10} showCount maxLength={1000} />
           </Form.Item>
           {/* Bottom button set */}
           <Row>

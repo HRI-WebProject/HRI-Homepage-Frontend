@@ -23,13 +23,11 @@ function NoticeWrite() {
 
   const onFinish = (values) => {
     values.boardType = "NOTICE";
-    console.log(values);
     values.boardType &&
       axios
-        .post("/board", values)
+        .post("/admin/board", values)
         .then((res) => {
           if (res.status === 200) {
-            console.log(res.data);
             alert("게시글 등록이 완료되었습니다.");
             movePage("/board/notice");
           }
@@ -116,7 +114,7 @@ function NoticeWrite() {
               <tr>
                 <td className={styles.table_td_2}>
                   <Form.Item name="content">
-                    <Input.TextArea rows={15} maxLength={255} showCount />
+                    <Input.TextArea rows={25} maxLength={2500} showCount />
                   </Form.Item>
                 </td>
               </tr>

@@ -26,14 +26,12 @@ function ProjectsEdit() {
   };
 
   const onFinish = (values) => {
-    console.log(values);
     let id = currentId + "";
     id &&
       axios
         .put(`/admin/projects/${id}`, values)
         .then((res) => {
           if (res.status === 200) {
-            console.log(res.data);
             alert("수정완료되었습니다.");
             movePage("/projects");
           }

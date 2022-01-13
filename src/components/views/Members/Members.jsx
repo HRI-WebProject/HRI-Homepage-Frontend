@@ -28,7 +28,6 @@ function Members() {
     axios
       .get("/members/PHD")
       .then((res) => {
-        console.log(res.data.data);
         if (res.status === 200) {
           let tmp = res.data.data.filter(function (item, idx) {
             return item.graduate === false;

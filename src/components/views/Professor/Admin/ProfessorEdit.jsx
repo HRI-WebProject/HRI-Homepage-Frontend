@@ -26,12 +26,10 @@ function ProfessorEdit() {
   };
 
   const onFinish = (values) => {
-    console.log(values);
     axios
       .put(`/admin/professors/${currentId}`, values)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           alert("수정 완료되었습니다.");
           movePage("/professor");
         }
@@ -135,10 +133,10 @@ function ProfessorEdit() {
                 },
               ]}
             >
-              <Input.TextArea rows={2} showCount maxLength={255} />
+              <Input.TextArea rows={6} showCount maxLength={500} />
             </Form.Item>
             <Form.Item label="세부 정보" name="detail">
-              <Input.TextArea rows={4} showCount maxLength={255} />
+              <Input.TextArea rows={12} showCount maxLength={1000} />
             </Form.Item>
             <hr className={styles.hr_tag} />
             <Form.Item

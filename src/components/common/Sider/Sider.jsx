@@ -73,7 +73,6 @@ function Sider({ selected_key }) {
   useEffect(() => {
     setCurrentURL(window.location.pathname);
     setKey(currentURL.substr(1, currentURL.length));
-    console.log(currentURL.substr(1, currentURL.length));
   }, []);
 
   return (

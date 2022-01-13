@@ -7,7 +7,6 @@ import { useHistory } from "react-router";
 function AddButton({ value }) {
   const history = useHistory();
   const moveToWritePage = () => {
-    console.log(window.location.pathname.substr(1, 12));
     if (window.location.pathname === "/alumni") {
       history.push("/members/write");
     } else if (window.location.pathname.substr(1, 12) === "publications") {

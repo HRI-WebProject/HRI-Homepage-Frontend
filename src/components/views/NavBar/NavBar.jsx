@@ -99,7 +99,7 @@ function NavBar() {
       <Header className={styles.navbar}>
         <img
           className={styles.logo}
-          src="/assets/logo.png"
+          src="/assets/logo/logo.png"
           onClick={() => movePage("/")}
         />
         <div>

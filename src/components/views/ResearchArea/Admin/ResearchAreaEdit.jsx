@@ -25,12 +25,20 @@ function ResearchAreaEdit() {
     history.push(url);
   };
 
+  const moveBack = () => {
+    if (
+      window.confirm("변경 사항이 저장되지 않습니다. 뒤로 가시겠습니까?") ===
+      true
+    ) {
+      history.push("/research/researchArea");
+    }
+  };
+
   const onFinish = (values) => {
     axios
       .put(`/admin/researchArea/${currentId + ""}`, values)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           alert("수정되었습니다.");
           movePage("/research/researchArea");
         }
@@ -132,7 +140,7 @@ function ResearchAreaEdit() {
               },
             ]}
           >
-            <Input.TextArea rows={4} showCount maxLength={255} />
+            <Input.TextArea rows={10} showCount maxLength={1000} />
           </Form.Item>
           <Form.Item
             label="영문 설명"
@@ -144,16 +152,13 @@ function ResearchAreaEdit() {
               },
             ]}
           >
-            <Input.TextArea rows={4} showCount maxLength={255} />
+            <Input.TextArea rows={10} showCount maxLength={1000} />
           </Form.Item>
           {/* Bottom button set */}
           <Row>
             <Col span={12}>
               <div style={{ paddingLeft: "10%" }}>
-                <Button
-                  type="text"
-                  onClick={() => movePage("/research/researchArea")}
-                >
+                <Button type="text" onClick={moveBack}>
                   ← Back
                 </Button>
               </div>
