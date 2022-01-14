@@ -1,18 +1,13 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Layout, Menu } from "antd";
+import { Menu } from "antd";
 import { useHistory } from "react-router";
 
 function TopMenu({ selected_key }) {
-  const [currentURL, setCurrentURL] = useState(window.location.pathname);
+  const currentURL = window.location.pathname;
   const [key, setKey] = useState();
   const history = useHistory();
-  const { Sider } = Layout;
   const movePage = (url) => {
     history.push(url);
-  };
-
-  const handleClick = (e) => {
-    // console.log(e);
   };
 
   const renderSwitch = (param) => {
@@ -111,7 +106,7 @@ function TopMenu({ selected_key }) {
   return (
     <div>
       {key && (
-        <Menu onClick={handleClick} defaultSelectedKeys={key} mode="horizontal">
+        <Menu defaultSelectedKeys={key} mode="horizontal">
           <Fragment>{renderSwitch(selected_key)}</Fragment>
         </Menu>
       )}
