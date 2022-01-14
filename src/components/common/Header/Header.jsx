@@ -74,7 +74,6 @@ function Header({ title, category }) {
       case "Research":
         return (
           <>
-            <div>소개말</div>
             연구 분야와 연구실에서 활용할 수 있는 대표 장비들에 대해 소개합니다.
           </>
         );

@@ -7,7 +7,7 @@ import budgetTabledata from "@projects/sections/projectBudget/BudgetTableData";
 function BudgetTable() {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "#2f5597",
+      backgroundColor: "#231F6A",
       color: theme.palette.common.white,
       fontSize: 18,
     },
