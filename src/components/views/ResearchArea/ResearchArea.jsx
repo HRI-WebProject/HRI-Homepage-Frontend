@@ -50,7 +50,6 @@ function ResearchArea() {
                   researchList.map((item, idx) => (
                     <Col span={12}>
                       <Card
-                        hoverable
                         style={{ height: 400 }}
                         cover={
                           <Image
