@@ -31,56 +31,58 @@ function Conference() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <TitleBar title="학술대회" />
-      <TopMenu selected_key="Publications" />
-      <Paper className={styles.paper}>
-        {isLogged && <AddButton value="학술대회" />}
-        {conferenceList && (
-          <List
-            bordered
-            dataSource={conferenceList}
-            renderItem={(item, idx) => (
-              <List.Item key={idx}>
-                <span className={styles.index}>{listLen - idx}</span>
-                <span className={styles.contents}>
-                  <div style={{ fontSize: "1.1em", fontWeight: "600" }}>
-                    {item.topic}
-                  </div>
-                  <div>
-                    {item.detail && (
-                      <div>
-                        {item.detail.split("\n").map((line, idx) => (
-                          <span key={idx}>
-                            {line}
-                            <br />
-                          </span>
-                        ))}
-                      </div>
+    <div>
+      <TitleBar title="학술대회" category="Publications" />
+      <div className={styles.container}>
+        <TopMenu selected_key="Publications" />
+        <Paper elevation={0} square className={styles.paper}>
+          {isLogged && <AddButton value="학술대회" />}
+          {conferenceList && (
+            <List
+              bordered
+              dataSource={conferenceList}
+              renderItem={(item, idx) => (
+                <List.Item key={idx}>
+                  <span className={styles.index}>{listLen - idx}</span>
+                  <span className={styles.contents}>
+                    <div style={{ fontSize: "1.1em", fontWeight: "600" }}>
+                      {item.topic}
+                    </div>
+                    <div>
+                      {item.detail && (
+                        <div>
+                          {item.detail.split("\n").map((line, idx) => (
+                            <span key={idx}>
+                              {line}
+                              <br />
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      {item.link && (
+                        <div style={{ color: "#808080" }}>
+                          <a href={item.link} className={styles.link}>
+                            {item.link}
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  </span>
+                  <span className={styles.buttons}>
+                    {isLogged && (
+                      <ButtonSet
+                        pageFeature="publications"
+                        id={item.id}
+                        value="학술대회"
+                      />
                     )}
-                    {item.link && (
-                      <div style={{ color: "#808080" }}>
-                        <a href={item.link} className={styles.link}>
-                          {item.link}
-                        </a>
-                      </div>
-                    )}
-                  </div>
-                </span>
-                <span className={styles.buttons}>
-                  {isLogged && (
-                    <ButtonSet
-                      pageFeature="publications"
-                      id={item.id}
-                      value="학술대회"
-                    />
-                  )}
-                </span>
-              </List.Item>
-            )}
-          />
-        )}
-      </Paper>
+                  </span>
+                </List.Item>
+              )}
+            />
+          )}
+        </Paper>
+      </div>
     </div>
   );
 }

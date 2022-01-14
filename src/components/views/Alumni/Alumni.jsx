@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Typography from "@mui/material/Typography";
-import { Statistic, Row, Col, Button } from "antd";
+import { Statistic, Row, Col } from "antd";
 import { useMediaQuery } from "react-responsive";
 import { useSelector } from "react-redux";
 import { Paper } from "@mui/material";
@@ -76,148 +76,150 @@ function Alumni() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <TitleBar title="졸업생" />
-      <TopMenu selected_key="Members" />
-      {phdMembers && masterMembers && bachelorMembers && (
-        <Paper className={styles.paper}>
-          <div
-            style={{
-              fontSize: "1.5em",
-              fontWeight: "bold",
-              padding: "10px 0px 5px 25px",
-            }}
-          >
-            졸업생 현황
-          </div>
-          <div className={styles.alumni_row}>
-            <Statistic
-              title="박사"
-              value={phdMembers ? phdMembers.length : 0}
-              suffix="명"
-              className={styles.stat}
-            />
-            <div className={styles.vertical_line} />
-            <Statistic
-              title="석사"
-              value={masterMembers ? masterMembers.length : 0}
-              suffix="명"
-              className={styles.stat}
-            />
-            <div className={styles.vertical_line} />
-            <Statistic
-              title="학부연구생"
-              value={bachelorMembers ? bachelorMembers.length : 0}
-              suffix="명+"
-              className={styles.stat}
-            />
-          </div>
-          <div className={styles.workplace}>
-            <Row gutter={[16, 16]}>
-              {imageList.map((item, idx) => (
-                <Col span={8} key={idx}>
-                  <img className={styles.workplaceImg} src={item} />
-                </Col>
-              ))}
-            </Row>
-          </div>
-          {isSmallScreen ? (
-            <>
-              <div className={styles.members}>
-                {isLogged && <AddButton />}
-                {phdMembers.length !== 0 && (
-                  <>
-                    <Typography variant="h5">
-                      <b>박사 과정</b>
-                    </Typography>
-                    <MemberGrid
-                      memberData={phdMembers}
-                      col_size={24}
-                      degree="박사 과정"
-                      isLogged={isLogged}
-                    />
-                    <hr className={styles.hrline} />
-                  </>
-                )}
-                {masterMembers.length !== 0 && (
-                  <>
-                    <Typography variant="h5">
-                      <b>석사 과정</b>
-                    </Typography>
-                    <MemberGrid
-                      memberData={masterMembers}
-                      col_size={24}
-                      degree="석사 과정"
-                      isLogged={isLogged}
-                    />
-                    <hr className={styles.hrline} />{" "}
-                  </>
-                )}
-                {bachelorMembers.length !== 0 && (
-                  <>
-                    <Typography variant="h5">
-                      <b>학사 과정</b>
-                    </Typography>
-                    <MemberGrid
-                      memberData={bachelorMembers}
-                      col_size={24}
-                      degree="학사 과정"
-                      isLogged={isLogged}
-                    />{" "}
-                  </>
-                )}
-              </div>
-            </>
-          ) : (
-            <>
-              <div className={styles.members}>
-                {isLogged && <AddButton />}
-                {phdMembers.length !== 0 && (
-                  <>
-                    <Typography variant="h5">
-                      <b>박사 과정</b>
-                    </Typography>
-                    <MemberGrid
-                      memberData={phdMembers}
-                      col_size={12}
-                      degree="박사 과정"
-                      isLogged={isLogged}
-                    />
-                    <hr className={styles.hrline} />
-                  </>
-                )}
-                {masterMembers.length !== 0 && (
-                  <>
-                    <Typography variant="h5">
-                      <b>석사 과정</b>
-                    </Typography>
-                    <MemberGrid
-                      memberData={masterMembers}
-                      col_size={12}
-                      degree="석사 과정"
-                      isLogged={isLogged}
-                    />
-                    <hr className={styles.hrline} />{" "}
-                  </>
-                )}
-                {bachelorMembers.length !== 0 && (
-                  <>
-                    <Typography variant="h5">
-                      <b>학사 과정</b>
-                    </Typography>
-                    <MemberGrid
-                      memberData={bachelorMembers}
-                      col_size={12}
-                      degree="학사 과정"
-                      isLogged={isLogged}
-                    />{" "}
-                  </>
-                )}
-              </div>
-            </>
-          )}
-        </Paper>
-      )}
+    <div>
+      <TitleBar title="졸업생" category="Members" />
+      <div className={styles.container}>
+        <TopMenu selected_key="Members" />
+        {phdMembers && masterMembers && bachelorMembers && (
+          <Paper elevation={0} square className={styles.paper}>
+            <div
+              style={{
+                fontSize: "1.5em",
+                fontWeight: "bold",
+                padding: "10px 0px 5px 25px",
+              }}
+            >
+              졸업생 현황
+            </div>
+            <div className={styles.alumni_row}>
+              <Statistic
+                title="박사"
+                value={phdMembers ? phdMembers.length : 0}
+                suffix="명"
+                className={styles.stat}
+              />
+              <div className={styles.vertical_line} />
+              <Statistic
+                title="석사"
+                value={masterMembers ? masterMembers.length : 0}
+                suffix="명"
+                className={styles.stat}
+              />
+              <div className={styles.vertical_line} />
+              <Statistic
+                title="학부연구생"
+                value={bachelorMembers ? bachelorMembers.length : 0}
+                suffix="명+"
+                className={styles.stat}
+              />
+            </div>
+            <div className={styles.workplace}>
+              <Row gutter={[16, 16]}>
+                {imageList.map((item, idx) => (
+                  <Col span={8} key={idx}>
+                    <img className={styles.workplaceImg} src={item} />
+                  </Col>
+                ))}
+              </Row>
+            </div>
+            {isSmallScreen ? (
+              <>
+                <div className={styles.members}>
+                  {isLogged && <AddButton />}
+                  {phdMembers.length !== 0 && (
+                    <>
+                      <Typography variant="h5">
+                        <b>박사 과정</b>
+                      </Typography>
+                      <MemberGrid
+                        memberData={phdMembers}
+                        col_size={24}
+                        degree="박사 과정"
+                        isLogged={isLogged}
+                      />
+                      <hr className={styles.hrline} />
+                    </>
+                  )}
+                  {masterMembers.length !== 0 && (
+                    <>
+                      <Typography variant="h5">
+                        <b>석사 과정</b>
+                      </Typography>
+                      <MemberGrid
+                        memberData={masterMembers}
+                        col_size={24}
+                        degree="석사 과정"
+                        isLogged={isLogged}
+                      />
+                      <hr className={styles.hrline} />{" "}
+                    </>
+                  )}
+                  {bachelorMembers.length !== 0 && (
+                    <>
+                      <Typography variant="h5">
+                        <b>학사 과정</b>
+                      </Typography>
+                      <MemberGrid
+                        memberData={bachelorMembers}
+                        col_size={24}
+                        degree="학사 과정"
+                        isLogged={isLogged}
+                      />{" "}
+                    </>
+                  )}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className={styles.members}>
+                  {isLogged && <AddButton />}
+                  {phdMembers.length !== 0 && (
+                    <>
+                      <Typography variant="h5">
+                        <b>박사 과정</b>
+                      </Typography>
+                      <MemberGrid
+                        memberData={phdMembers}
+                        col_size={12}
+                        degree="박사 과정"
+                        isLogged={isLogged}
+                      />
+                      <hr className={styles.hrline} />
+                    </>
+                  )}
+                  {masterMembers.length !== 0 && (
+                    <>
+                      <Typography variant="h5">
+                        <b>석사 과정</b>
+                      </Typography>
+                      <MemberGrid
+                        memberData={masterMembers}
+                        col_size={12}
+                        degree="석사 과정"
+                        isLogged={isLogged}
+                      />
+                      <hr className={styles.hrline} />{" "}
+                    </>
+                  )}
+                  {bachelorMembers.length !== 0 && (
+                    <>
+                      <Typography variant="h5">
+                        <b>학사 과정</b>
+                      </Typography>
+                      <MemberGrid
+                        memberData={bachelorMembers}
+                        col_size={12}
+                        degree="학사 과정"
+                        isLogged={isLogged}
+                      />{" "}
+                    </>
+                  )}
+                </div>
+              </>
+            )}
+          </Paper>
+        )}
+      </div>
     </div>
   );
 }

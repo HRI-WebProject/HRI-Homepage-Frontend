@@ -32,12 +32,14 @@ function Professor() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <TitleBar title="교수진" />
-      <Paper className={styles.paper}>
-        {isLogged && <AddButton />}
-        <ProfessorGrid professorData={professorData} isLogged={isLogged} />
-      </Paper>
+    <div>
+      <TitleBar title="교수진" category="Professor" />
+      <div className={styles.container}>
+        <Paper elevation={0} square className={styles.paper}>
+          {isLogged && <AddButton />}
+          <ProfessorGrid professorData={professorData} isLogged={isLogged} />
+        </Paper>
+      </div>
     </div>
   );
 }

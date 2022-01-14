@@ -91,76 +91,80 @@ function BoardDetail() {
   }, [pageId]);
 
   return (
-    <div className={styles.container}>
-      <TitleBar title="소식" />
-      <TopMenu selected_key="Board" />
-      {boardDetail && (
-        <Paper className={styles.paper}>
-          <div>{isLogged && <ButtonSet pageFeature="board" id={pageId} />}</div>
-          <table className={styles.table_}>
-            <thead>
-              <tr>
-                <th className={styles.table_th}>{boardDetail.topic}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className={styles.table_td_1}>
-                  <span style={{ paddingRight: "50px" }}>
-                    <b>작성자</b> | {boardDetail.author}
-                  </span>
-                  <span>
-                    <b>작성일</b> |{" "}
-                    {convertToStringDate(boardDetail.createDate)}
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td className={styles.table_td_2}>{boardDetail.content}</td>
-              </tr>
-            </tbody>
-          </table>
-          <div
-            className={styles.listIcon}
-            onClick={() => movePage("/board/notice")}
-          >
-            <ListIcon />
-          </div>
-          <div className={styles.list}>
-            {data && (
-              <List
-                bordered
-                dataSource={data}
-                renderItem={(item) =>
-                  item.type === "prev" ? (
-                    <List.Item
-                      onClick={() => movePage(`/board/notice/`, item.id)}
-                      className={styles.list_item}
-                    >
-                      <span className={styles.prev_next_btn}>
-                        <ArrowDropUpIcon />
-                        prev
-                      </span>
-                      {item.title}
-                    </List.Item>
-                  ) : (
-                    <List.Item
-                      onClick={() => movePage(`/board/notice/`, item.id)}
-                      className={styles.list_item}
-                    >
-                      <span className={styles.prev_next_btn}>
-                        <ArrowDropDownIcon />
-                        next
-                      </span>
-                      {item.title}
-                    </List.Item>
-                  )
-                }
-              />
-            )}
-          </div>
-        </Paper>
-      )}
+    <div>
+      <TitleBar title="소식" category="Board" />
+      <div className={styles.container}>
+        <TopMenu selected_key="Board" />
+        {boardDetail && (
+          <Paper elevation={0} square className={styles.paper}>
+            <div>
+              {isLogged && <ButtonSet pageFeature="board" id={pageId} />}
+            </div>
+            <table className={styles.table_}>
+              <thead>
+                <tr>
+                  <th className={styles.table_th}>{boardDetail.topic}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className={styles.table_td_1}>
+                    <span style={{ paddingRight: "50px" }}>
+                      <b>작성자</b> | {boardDetail.author}
+                    </span>
+                    <span>
+                      <b>작성일</b> |{" "}
+                      {convertToStringDate(boardDetail.createDate)}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className={styles.table_td_2}>{boardDetail.content}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div
+              className={styles.listIcon}
+              onClick={() => movePage("/board/notice")}
+            >
+              <ListIcon />
+            </div>
+            <div className={styles.list}>
+              {data && data.length !== 0 && (
+                <List
+                  bordered
+                  dataSource={data}
+                  renderItem={(item) =>
+                    item.type === "prev" ? (
+                      <List.Item
+                        onClick={() => movePage(`/board/notice/`, item.id)}
+                        className={styles.list_item}
+                      >
+                        <span className={styles.prev_next_btn}>
+                          <ArrowDropUpIcon />
+                          prev
+                        </span>
+                        {item.title}
+                      </List.Item>
+                    ) : (
+                      <List.Item
+                        onClick={() => movePage(`/board/notice/`, item.id)}
+                        className={styles.list_item}
+                      >
+                        <span className={styles.prev_next_btn}>
+                          <ArrowDropDownIcon />
+                          next
+                        </span>
+                        {item.title}
+                      </List.Item>
+                    )
+                  }
+                />
+              )}
+            </div>
+          </Paper>
+        )}
+      </div>
     </div>
   );
 }

@@ -80,139 +80,140 @@ function AlumniEdit() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <TitleBar title="교수진" />
-      <Paper className={styles.paper}>
-        {memberData && (
-          <Form
-            name="basic"
-            labelCol={{ span: 3 }}
-            wrapperCol={{ span: 20 }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            form={form}
-          >
-            <Form.Item
-              label="이름"
-              name="name"
-              rules={[
-                {
-                  required: true,
-                  message: "필수 입력 항목입니다.",
-                },
-              ]}
+    <div>
+      <TitleBar title="졸업생" category="Members" />
+      <div className={styles.container}>
+        <Paper elevation={0} square className={styles.paper}>
+          {memberData && (
+            <Form
+              name="basic"
+              labelCol={{ span: 3 }}
+              wrapperCol={{ span: 20 }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              form={form}
             >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="영문이름"
-              name="engName"
-              rules={[
-                {
-                  required: true,
-                  message: "필수 입력 항목입니다.",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
+              <Form.Item
+                label="이름"
+                name="name"
+                rules={[
+                  {
+                    required: true,
+                    message: "필수 입력 항목입니다.",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                label="영문이름"
+                name="engName"
+                rules={[
+                  {
+                    required: true,
+                    message: "필수 입력 항목입니다.",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
 
-            <Form.Item
-              label="사진 URL"
-              name="photo"
-              // rules={[
-              //   {
-              //     required: true,
-              //     message: "사진은 필수 입력 항목입니다.",
-              //   },
-              // ]}
-              extra="이미지 URL 형식으로 작성이 필요합니다."
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="학위"
-              name="degree"
-              rules={[
-                {
-                  required: true,
-                  message: "필수 입력 항목입니다.",
-                },
-              ]}
-            >
-              <Radio.Group>
-                <Radio.Button value="PHD">PHD</Radio.Button>
-                <Radio.Button value="MASTER">MASTER</Radio.Button>
-                <Radio.Button value="BACHELOR">BACHELOR</Radio.Button>
-                {/* <Radio.Button value="UNDERGRADUATE">UNDERGRADUATE</Radio.Button> */}
-              </Radio.Group>
-            </Form.Item>
-            <Form.Item
-              label="졸업 여부"
-              name="graduate"
-              rules={[
-                {
-                  required: true,
-                  message: "필수 입력 항목입니다.",
-                },
-              ]}
-            >
-              <Switch checkedChildren="졸업" unCheckedChildren="재학" />
-            </Form.Item>
-            <hr className={styles.hr_tag} />
-            <Form.Item
-              label="연구분야"
-              name="researchArea"
-              rules={[
-                {
-                  required: true,
-                  message: "필수 입력 항목입니다.",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="이메일"
-              name="email"
-              rules={[
-                {
-                  required: true,
-                  message: "필수 입력 항목입니다.",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            {/* Bottom button set */}
-            <Row>
-              <Col span={12}>
-                {" "}
-                <div style={{ paddingLeft: "10%" }}>
-                  <Button type="text" onClick={moveBack}>
-                    ← Back
-                  </Button>
-                </div>
-              </Col>
-              <Col span={12}>
-                {" "}
-                <div
-                  style={{
-                    textAlign: "right",
-                    marginRight: "-10%",
-                  }}
-                >
-                  <Form.Item>
-                    <Button type="primary" htmlType="submit">
-                      Submit
+              <Form.Item
+                label="사진 URL"
+                name="photo"
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "사진은 필수 입력 항목입니다.",
+                //   },
+                // ]}
+                extra="이미지 URL 형식으로 작성이 필요합니다."
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                label="학위"
+                name="degree"
+                rules={[
+                  {
+                    required: true,
+                    message: "필수 입력 항목입니다.",
+                  },
+                ]}
+              >
+                <Radio.Group>
+                  <Radio.Button value="PHD">PHD</Radio.Button>
+                  <Radio.Button value="MASTER">MASTER</Radio.Button>
+                  <Radio.Button value="BACHELOR">BACHELOR</Radio.Button>
+                  {/* <Radio.Button value="UNDERGRADUATE">UNDERGRADUATE</Radio.Button> */}
+                </Radio.Group>
+              </Form.Item>
+              <Form.Item
+                label="졸업 여부"
+                name="graduate"
+                rules={[
+                  {
+                    required: true,
+                    message: "필수 입력 항목입니다.",
+                  },
+                ]}
+              >
+                <Switch checkedChildren="졸업" unCheckedChildren="재학" />
+              </Form.Item>
+              <hr className={styles.hr_tag} />
+              <Form.Item
+                label="연구분야"
+                name="researchArea"
+                rules={[
+                  {
+                    required: true,
+                    message: "필수 입력 항목입니다.",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                label="이메일"
+                name="email"
+                rules={[
+                  {
+                    required: true,
+                    message: "필수 입력 항목입니다.",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Row>
+                <Col span={12}>
+                  {" "}
+                  <div style={{ paddingLeft: "10%" }}>
+                    <Button type="text" onClick={moveBack}>
+                      ← Back
                     </Button>
-                  </Form.Item>
-                </div>
-              </Col>
-            </Row>
-          </Form>
-        )}
-      </Paper>
+                  </div>
+                </Col>
+                <Col span={12}>
+                  {" "}
+                  <div
+                    style={{
+                      textAlign: "right",
+                      marginRight: "-10%",
+                    }}
+                  >
+                    <Form.Item>
+                      <Button type="primary" htmlType="submit">
+                        Submit
+                      </Button>
+                    </Form.Item>
+                  </div>
+                </Col>
+              </Row>
+            </Form>
+          )}
+        </Paper>
+      </div>
     </div>
   );
 }

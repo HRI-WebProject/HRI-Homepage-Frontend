@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
-import { Row, Col, Card, Button, Form, Input } from "antd";
-import { useHistory } from "react-router";
+import { Col, Card, Button, Form, Input } from "antd";
 
 function EquipmentEditCard({ currentId }) {
   const [form] = Form.useForm();
-  const history = useHistory();
-  const [equipmentData, setEquipmentData] = useState();
 
   const onFinish = (values) => {
     let id = currentId + "";
@@ -27,8 +24,6 @@ function EquipmentEditCard({ currentId }) {
     console.log("Failed:", errorInfo);
   };
 
-  const undo = () => {};
-
   useEffect(() => {
     axios
       .get("/researchEquipment")
@@ -37,12 +32,12 @@ function EquipmentEditCard({ currentId }) {
           let tmp = res.data.data.filter(function (item, idx) {
             return item.id === parseInt(currentId);
           });
-          tmp && setEquipmentData(tmp[0]);
-          form.setFieldsValue({
-            name: tmp[0].name,
-            engName: tmp[0].engName,
-            photo: tmp[0].photo,
-          });
+          tmp &&
+            form.setFieldsValue({
+              name: tmp[0].name,
+              engName: tmp[0].engName,
+              photo: tmp[0].photo,
+            });
         }
       })
       .catch(function (error) {
@@ -85,30 +80,15 @@ function EquipmentEditCard({ currentId }) {
           >
             <Input size="small" />
           </Form.Item>
-          <Form.Item
-            label="사진 URL"
-            name="photo"
-            // rules={[
-            //   {
-            //     required: true,
-            //     message: "사진은 필수 입력 항목입니다.",
-            //   },
-            // ]}
-          >
+          <Form.Item label="사진 URL" name="photo">
             <Input size="small" />
           </Form.Item>
-          {/* Bottom button set */}
           <div
             style={{
               textAlign: "right",
               marginRight: "-20%",
             }}
           >
-            {/* <Form.Item>
-              <Button type="text" onClick={undo}>
-                ←
-              </Button>
-            </Form.Item> */}
             <Form.Item>
               <Button type="primary" htmlType="submit">
                 Submit

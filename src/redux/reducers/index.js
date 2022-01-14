@@ -5,7 +5,6 @@ import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
   key: "root",
-  // localStorage에 저장
   storage,
   whitelist: ["user"],
 };

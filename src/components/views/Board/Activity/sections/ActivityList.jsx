@@ -4,22 +4,14 @@ import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
 import styles from "@notice/Notice.module.css";
 import { Paper } from "@mui/material";
-import { Pagination, Table } from "antd";
+import { Table } from "antd";
 import AddButton from "@common/AddButton/AddButton";
 
-function ActivityList(props, { boardType }) {
+function ActivityList() {
   const history = useHistory();
   const account = useSelector((state) => state.user.loginSuccess);
   const [isLogged, setIsLogged] = useState(false);
-  const [rowList, setRowList] = useState();
-  const [rowLength, setRowLength] = useState();
-  const [paginationId, setPaginationId] = useState();
   const [activityList, setActivityList] = useState();
-  const [totalPages, setTotalPages] = useState();
-
-  const onPageChange = (page, pageSize) => {
-    console.log(page);
-  };
 
   const movePage = (item) => {
     let id = item.id + "";
@@ -83,7 +75,7 @@ function ActivityList(props, { boardType }) {
 
   return (
     <div className={styles.datagrid}>
-      <Paper className={styles.paper}>
+      <Paper elevation={0} square className={styles.paper}>
         {isLogged && <AddButton />}
         {activityList && (
           <Table

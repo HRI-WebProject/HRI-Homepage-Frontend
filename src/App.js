@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Switch } from "react-router-dom";
 import MainPage from "@/components/views/MainPage/MainPage";
 import NavBar from "@/components/views/NavBar/NavBar";
 import LoginPage from "@/components/views/Login/Login";
@@ -35,28 +35,28 @@ import Contact from "@/components/views/Contact/Contact";
 import Footer from "@/components/views/Footer/Footer";
 import PrivateRoute from "@/utils/PrivateRoute";
 import PublicRoute from "@/utils/PublicRoute";
+import ScrollToTop from "@/components/common/ScrollToTop/ScrollToTop";
 import { BackTop } from "antd";
-import { useMediaQuery } from "react-responsive";
-import { useDispatch } from "react-redux";
 import "@/App.less";
 
 function App() {
-  const isDesktopOrLaptop = useMediaQuery({ minDeviceWidth: 1224 });
-  const isBigScreen = useMediaQuery({ minDeviceWidth: 1824 });
-  const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
-  const isTabletOrMobileDevice = useMediaQuery({ maxDeviceWidth: 1224 });
-  const isPortrait = useMediaQuery({ orientation: "portrait" });
-  const isRetina = useMediaQuery({ minResolution: "2dppx" });
-  const dispatch = useDispatch();
+  // const isDesktopOrLaptop = useMediaQuery({ minDeviceWidth: 1224 });
+  // const isBigScreen = useMediaQuery({ minDeviceWidth: 1824 });
+  // const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
+  // const isTabletOrMobileDevice = useMediaQuery({ maxDeviceWidth: 1224 });
+  // const isPortrait = useMediaQuery({ orientation: "portrait" });
+  // const isRetina = useMediaQuery({ minResolution: "2dppx" });
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <NavBar />
       <div
         style={{
-          padding: "150px 0px 30px 0px", // "100px 200px 30px 200px",
+          padding: "50px 0px 30px 0px", // "100px 200px 30px 200px",
           minHeight: "", // "calc(200vh - 80px)"
           backgroundColor: "#f5f5f5",
+          width: "100vw",
         }}
       >
         <Switch>

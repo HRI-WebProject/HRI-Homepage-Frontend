@@ -1,6 +1,6 @@
 import { LOGIN_USER, CLEAR_USER } from "@actions/types";
 
-export default function (state = {}, action) {
+const user = (state = {}, action) => {
   switch (action.type) {
     case LOGIN_USER: // 로그인
       return { ...state, loginSuccess: action.payload };
@@ -9,4 +9,6 @@ export default function (state = {}, action) {
     default:
       return state;
   }
-}
+};
+
+export default user;
