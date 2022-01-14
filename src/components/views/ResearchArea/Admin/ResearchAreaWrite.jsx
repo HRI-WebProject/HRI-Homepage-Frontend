@@ -49,116 +49,118 @@ function ResearchAreaWrite() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <TitleBar title="연구 분야" />
-      <Paper className={styles.paper}>
-        <Form
-          name="basic"
-          labelCol={{ span: 3 }}
-          wrapperCol={{ span: 20 }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          form={form}
-        >
-          <Form.Item
-            label="연구분야명"
-            name="name"
-            rules={[
-              {
-                required: true,
-                message: "필수 입력 항목입니다.",
-              },
-            ]}
+    <div>
+      <TitleBar title="연구 분야" category="Research" />
+      <div className={styles.container}>
+        <Paper elevation={0} square className={styles.paper}>
+          <Form
+            name="basic"
+            labelCol={{ span: 3 }}
+            wrapperCol={{ span: 20 }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            form={form}
           >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="연구분야 영문명"
-            name="engName"
-            rules={[
-              {
-                required: true,
-                message: "필수 입력 항목입니다.",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
+            <Form.Item
+              label="연구분야명"
+              name="name"
+              rules={[
+                {
+                  required: true,
+                  message: "필수 입력 항목입니다.",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="연구분야 영문명"
+              name="engName"
+              rules={[
+                {
+                  required: true,
+                  message: "필수 입력 항목입니다.",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            label="사진 URL"
-            name="photo"
-            // rules={[
-            //   {
-            //     required: true,
-            //     message: "사진은 필수 입력 항목입니다.",
-            //   },
-            // ]}
-            extra="이미지 URL 형식으로 작성이 필요합니다."
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="설명"
-            name="detail"
-            rules={[
-              {
-                required: true,
-                message: "필수 입력 항목입니다.",
-              },
-            ]}
-          >
-            <Input.TextArea rows={10} showCount maxLength={1000} />
-          </Form.Item>
-          <Form.Item
-            label="영문 설명"
-            name="engDetail"
-            rules={[
-              {
-                required: true,
-                message: "필수 입력 항목입니다.",
-              },
-            ]}
-          >
-            <Input.TextArea rows={10} showCount maxLength={1000} />
-          </Form.Item>
-          {/* Bottom button set */}
-          <Row>
-            <Col span={12}>
-              <div style={{ paddingLeft: "10%" }}>
-                <Button
-                  type="text"
-                  onClick={() => movePage("/research/researchArea")}
-                >
-                  ← Back
-                </Button>
-              </div>
-            </Col>
-            <Col span={12}>
-              {" "}
-              <div
-                style={{
-                  textAlign: "right",
-                  marginRight: "-10%",
-                }}
-              >
-                <Form.Item>
-                  <Button type="primary" htmlType="submit">
-                    Submit
-                  </Button>
+            <Form.Item
+              label="사진 URL"
+              name="photo"
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "사진은 필수 입력 항목입니다.",
+              //   },
+              // ]}
+              extra="이미지 URL 형식으로 작성이 필요합니다."
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="설명"
+              name="detail"
+              rules={[
+                {
+                  required: true,
+                  message: "필수 입력 항목입니다.",
+                },
+              ]}
+            >
+              <Input.TextArea rows={10} showCount maxLength={1000} />
+            </Form.Item>
+            <Form.Item
+              label="영문 설명"
+              name="engDetail"
+              rules={[
+                {
+                  required: true,
+                  message: "필수 입력 항목입니다.",
+                },
+              ]}
+            >
+              <Input.TextArea rows={10} showCount maxLength={1000} />
+            </Form.Item>
+
+            <Row>
+              <Col span={12}>
+                <div style={{ paddingLeft: "10%" }}>
                   <Button
-                    htmlType="button"
-                    onClick={onReset}
-                    style={{ marginLeft: "10px" }}
+                    type="text"
+                    onClick={() => movePage("/research/researchArea")}
                   >
-                    Reset
+                    ← Back
                   </Button>
-                </Form.Item>
-              </div>
-            </Col>
-          </Row>
-        </Form>
-      </Paper>
+                </div>
+              </Col>
+              <Col span={12}>
+                {" "}
+                <div
+                  style={{
+                    textAlign: "right",
+                    marginRight: "-10%",
+                  }}
+                >
+                  <Form.Item>
+                    <Button type="primary" htmlType="submit">
+                      Submit
+                    </Button>
+                    <Button
+                      htmlType="button"
+                      onClick={onReset}
+                      style={{ marginLeft: "10px" }}
+                    >
+                      Reset
+                    </Button>
+                  </Form.Item>
+                </div>
+              </Col>
+            </Row>
+          </Form>
+        </Paper>
+      </div>
     </div>
   );
 }

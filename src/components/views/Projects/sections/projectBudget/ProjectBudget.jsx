@@ -6,7 +6,7 @@ import BudgetTable from "@projects/sections/projectBudget/BudgetTable";
 function ProjectBudget() {
   return (
     <div>
-      <Paper elevation={1} className={styles.paper_upper}>
+      <Paper elevation={0} square className={styles.paper_upper}>
         <ul className={styles.pb_ul}>
           <li>
             <div className={styles.font1}>2006~2020 45개 사업 진행</div>

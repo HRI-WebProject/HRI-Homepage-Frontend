@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import styles from "@members/Members.module.css";
 import TitleBar from "@titlebar/TitleBar";
-import { Form, Input, Button, Col, Row, Radio, Switch, DatePicker } from "antd";
+import { Form, Input, Button, Col, Row, Radio, DatePicker } from "antd";
 import { Paper } from "@mui/material";
 
 function PublicationWrite() {
@@ -36,6 +36,7 @@ function PublicationWrite() {
           else if (show === "JOURNAL") movePage("/publications/journal");
           else if (show === "CONFERENCE") movePage("/publications/conference");
           else if (show === "BOOK") movePage("/publications/book");
+          window.location.reload();
         }
       })
       .catch(function (error) {
@@ -64,152 +65,154 @@ function PublicationWrite() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <TitleBar title={typeValue} />
-      <Paper className={styles.paper}>
-        <Form
-          name="basic"
-          labelCol={{ span: 3 }}
-          wrapperCol={{ span: 20 }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          form={form}
-        >
-          <Form.Item
-            label="종류"
-            name="publication_type"
-            rules={[
-              {
-                required: true,
-                message: "필수 입력 항목입니다.",
-              },
-            ]}
+    <div>
+      <TitleBar title={typeValue} category="Publications" />
+      <div className={styles.container}>
+        <Paper elevation={0} square className={styles.paper}>
+          <Form
+            name="basic"
+            labelCol={{ span: 3 }}
+            wrapperCol={{ span: 20 }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            form={form}
           >
-            <Radio.Group onChange={onClickType}>
-              <Radio.Button value="JOURNAL">JOURNAL</Radio.Button>
-              <Radio.Button value="CONFERENCE">CONFERENCE</Radio.Button>
-              <Radio.Button value="PATENT">PATENT</Radio.Button>
-              <Radio.Button value="BOOK">BOOK</Radio.Button>
-            </Radio.Group>
-          </Form.Item>
-          {show !== 0 && show !== "PATENT" && show != "JOURNAL" && (
-            <>
-              <Form.Item
-                label="주제"
-                name="topic"
-                rules={[
-                  {
-                    required: true,
-                    message: "필수 입력 항목입니다.",
-                  },
-                ]}
-              >
-                <TextArea rows={2} showCount maxLength={500} />
-              </Form.Item>
-              <Form.Item label="세부내용" name="detail">
-                <TextArea rows={10} showCount maxLength={1000} />
-              </Form.Item>
-              <hr className={styles.hr_tag} />
-              <Form.Item label="링크" name="link">
-                <Input />
-              </Form.Item>
-            </>
-          )}
-          {show !== 0 && show === "JOURNAL" && (
-            <>
-              <Form.Item
-                label="주제"
-                name="topic"
-                rules={[
-                  {
-                    required: true,
-                    message: "필수 입력 항목입니다.",
-                  },
-                ]}
-              >
-                <TextArea rows={5} showCount maxLength={500} />
-              </Form.Item>
-              <hr className={styles.hr_tag} />
-              <Form.Item label="링크" name="link">
-                <Input />
-              </Form.Item>
-            </>
-          )}
-          {show !== 0 && show === "PATENT" && (
-            <>
-              <Form.Item
-                label="제목"
-                name="topic"
-                rules={[
-                  {
-                    required: true,
-                    message: "필수 입력 항목입니다.",
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item label="발명자" name="inventor">
-                <Input />
-              </Form.Item>
-              <Form.Item label="출원번호" name="fillingNo">
-                <Input />
-              </Form.Item>
-              <Form.Item label="출원일" name="fillingDate">
-                <DatePicker format="YYYY/MM/DD" />
-              </Form.Item>
-              <Form.Item label="등록번호" name="grantedNo">
-                <Input />
-              </Form.Item>
-              <Form.Item label="등록일" name="grantedDate">
-                <DatePicker format="YYYY/MM/DD" />
-              </Form.Item>
-              <Form.Item
-                label="진행상황"
-                name="progress"
-                extra="기술이전 / 노하우이전 / 등록 / 소프트웨어등록 / 출원 등"
-              >
-                <Input />
-              </Form.Item>
-            </>
-          )}
-          <Row>
-            <Col span={12}>
-              {" "}
-              <div style={{ paddingLeft: "10%" }}>
-                <Button
-                  type="text"
-                  onClick={() => movePage("/publications/journal")}
+            <Form.Item
+              label="종류"
+              name="publication_type"
+              rules={[
+                {
+                  required: true,
+                  message: "필수 입력 항목입니다.",
+                },
+              ]}
+            >
+              <Radio.Group onChange={onClickType}>
+                <Radio.Button value="JOURNAL">JOURNAL</Radio.Button>
+                <Radio.Button value="CONFERENCE">CONFERENCE</Radio.Button>
+                <Radio.Button value="PATENT">PATENT</Radio.Button>
+                <Radio.Button value="BOOK">BOOK</Radio.Button>
+              </Radio.Group>
+            </Form.Item>
+            {show !== 0 && show !== "PATENT" && show !== "JOURNAL" && (
+              <>
+                <Form.Item
+                  label="주제"
+                  name="topic"
+                  rules={[
+                    {
+                      required: true,
+                      message: "필수 입력 항목입니다.",
+                    },
+                  ]}
                 >
-                  ← Back
-                </Button>
-              </div>
-            </Col>
-            <Col span={12}>
-              {" "}
-              <div
-                style={{
-                  textAlign: "right",
-                  marginRight: "-10%",
-                }}
-              >
-                <Form.Item>
-                  <Button type="primary" htmlType="submit">
-                    Submit
-                  </Button>
-                  <Button
-                    htmlType="button"
-                    onClick={onReset}
-                    style={{ marginLeft: "10px" }}
-                  >
-                    Reset
-                  </Button>
+                  <TextArea rows={2} showCount maxLength={500} />
                 </Form.Item>
-              </div>
-            </Col>
-          </Row>
-        </Form>
-      </Paper>
+                <Form.Item label="세부내용" name="detail">
+                  <TextArea rows={10} showCount maxLength={1000} />
+                </Form.Item>
+                <hr className={styles.hr_tag} />
+                <Form.Item label="링크" name="link">
+                  <Input />
+                </Form.Item>
+              </>
+            )}
+            {show !== 0 && show === "JOURNAL" && (
+              <>
+                <Form.Item
+                  label="주제"
+                  name="topic"
+                  rules={[
+                    {
+                      required: true,
+                      message: "필수 입력 항목입니다.",
+                    },
+                  ]}
+                >
+                  <TextArea rows={5} showCount maxLength={500} />
+                </Form.Item>
+                <hr className={styles.hr_tag} />
+                <Form.Item label="링크" name="link">
+                  <Input />
+                </Form.Item>
+              </>
+            )}
+            {show !== 0 && show === "PATENT" && (
+              <>
+                <Form.Item
+                  label="제목"
+                  name="topic"
+                  rules={[
+                    {
+                      required: true,
+                      message: "필수 입력 항목입니다.",
+                    },
+                  ]}
+                >
+                  <Input />
+                </Form.Item>
+                <Form.Item label="발명자" name="inventor">
+                  <Input />
+                </Form.Item>
+                <Form.Item label="출원번호" name="fillingNo">
+                  <Input />
+                </Form.Item>
+                <Form.Item label="출원일" name="fillingDate">
+                  <DatePicker format="YYYY-MM-DD" />
+                </Form.Item>
+                <Form.Item label="등록번호" name="grantedNo">
+                  <Input />
+                </Form.Item>
+                <Form.Item label="등록일" name="grantedDate">
+                  <DatePicker format="YYYY-MM-DD" />
+                </Form.Item>
+                <Form.Item
+                  label="진행상황"
+                  name="progress"
+                  extra="기술이전 / 노하우이전 / 등록 / 소프트웨어등록 / 출원 등"
+                >
+                  <Input />
+                </Form.Item>
+              </>
+            )}
+            <Row>
+              <Col span={12}>
+                {" "}
+                <div style={{ paddingLeft: "10%" }}>
+                  <Button
+                    type="text"
+                    onClick={() => movePage("/publications/journal")}
+                  >
+                    ← Back
+                  </Button>
+                </div>
+              </Col>
+              <Col span={12}>
+                {" "}
+                <div
+                  style={{
+                    textAlign: "right",
+                    marginRight: "-10%",
+                  }}
+                >
+                  <Form.Item>
+                    <Button type="primary" htmlType="submit">
+                      Submit
+                    </Button>
+                    <Button
+                      htmlType="button"
+                      onClick={onReset}
+                      style={{ marginLeft: "10px" }}
+                    >
+                      Reset
+                    </Button>
+                  </Form.Item>
+                </div>
+              </Col>
+            </Row>
+          </Form>
+        </Paper>
+      </div>
     </div>
   );
 }

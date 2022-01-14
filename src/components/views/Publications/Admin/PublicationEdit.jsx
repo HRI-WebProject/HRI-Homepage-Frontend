@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import styles from "@members/Members.module.css";
 import TitleBar from "@titlebar/TitleBar";
-import { Form, Input, Button, Col, Row, Radio, Switch, DatePicker } from "antd";
+import { Form, Input, Button, Col, Row, DatePicker } from "antd";
 import { Paper } from "@mui/material";
 import moment from "moment";
 
@@ -131,127 +131,129 @@ function PublicationEdit() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <TitleBar title={typeValue} />
-      <Paper className={styles.paper}>
-        {publicationData && (
-          <Form
-            name="basic"
-            labelCol={{ span: 3 }}
-            wrapperCol={{ span: 20 }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            form={form}
-          >
-            {typeValue && typeValue !== "특허" && typeValue !== "학술지" && (
-              <>
-                <Form.Item
-                  label="주제"
-                  name="topic"
-                  rules={[
-                    {
-                      required: true,
-                      message: "필수 입력 항목입니다.",
-                    },
-                  ]}
-                >
-                  <TextArea rows={2} showCount maxLength={500} />
-                </Form.Item>
-                <Form.Item label="세부내용" name="detail">
-                  <TextArea rows={10} showCount maxLength={1000} />
-                </Form.Item>
-                <hr className={styles.hr_tag} />
-                <Form.Item label="링크" name="link">
-                  <Input />
-                </Form.Item>
-              </>
-            )}
-            {typeValue && typeValue === "학술지" && (
-              <>
-                <Form.Item
-                  label="주제"
-                  name="topic"
-                  rules={[
-                    {
-                      required: true,
-                      message: "필수 입력 항목입니다.",
-                    },
-                  ]}
-                >
-                  <TextArea rows={5} showCount maxLength={500} />
-                </Form.Item>
-                <hr className={styles.hr_tag} />
-                <Form.Item label="링크" name="link">
-                  <Input />
-                </Form.Item>
-              </>
-            )}
-            {typeValue && typeValue === "특허" && (
-              <>
-                <Form.Item
-                  label="제목"
-                  name="topic"
-                  rules={[
-                    {
-                      required: true,
-                      message: "필수 입력 항목입니다.",
-                    },
-                  ]}
-                >
-                  <TextArea rows={2} />
-                </Form.Item>
-                <Form.Item label="발명자" name="inventor">
-                  <Input />
-                </Form.Item>
-                <Form.Item label="출원번호" name="fillingNo">
-                  <Input />
-                </Form.Item>
-                <Form.Item label="출원일" name="fillingDate">
-                  <DatePicker />
-                </Form.Item>
-                <Form.Item label="등록번호" name="grantedNo">
-                  <Input />
-                </Form.Item>
-                <Form.Item label="등록일" name="grantedDate">
-                  <DatePicker />
-                </Form.Item>
-                <Form.Item
-                  label="진행상황"
-                  name="progress"
-                  extra="기술이전 / 노하우이전 / 등록 / 소프트웨어등록 / 출원 등"
-                >
-                  <Input />
-                </Form.Item>
-              </>
-            )}
-            <Row>
-              <Col span={12}>
-                {" "}
-                <div style={{ paddingLeft: "10%" }}>
-                  <Button type="text" onClick={moveBack}>
-                    ← Back
-                  </Button>
-                </div>
-              </Col>
-              <Col span={12}>
-                {" "}
-                <div
-                  style={{
-                    textAlign: "right",
-                    marginRight: "-10%",
-                  }}
-                >
-                  <Form.Item>
-                    <Button type="primary" htmlType="submit">
-                      Submit
-                    </Button>
+    <div>
+      <TitleBar title={typeValue} category="Publications" />
+      <div className={styles.container}>
+        <Paper elevation={0} square className={styles.paper}>
+          {publicationData && (
+            <Form
+              name="basic"
+              labelCol={{ span: 3 }}
+              wrapperCol={{ span: 20 }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              form={form}
+            >
+              {typeValue && typeValue !== "특허" && typeValue !== "학술지" && (
+                <>
+                  <Form.Item
+                    label="주제"
+                    name="topic"
+                    rules={[
+                      {
+                        required: true,
+                        message: "필수 입력 항목입니다.",
+                      },
+                    ]}
+                  >
+                    <TextArea rows={2} showCount maxLength={500} />
                   </Form.Item>
-                </div>
-              </Col>
-            </Row>
-          </Form>
-        )}
-      </Paper>
+                  <Form.Item label="세부내용" name="detail">
+                    <TextArea rows={10} showCount maxLength={1000} />
+                  </Form.Item>
+                  <hr className={styles.hr_tag} />
+                  <Form.Item label="링크" name="link">
+                    <Input />
+                  </Form.Item>
+                </>
+              )}
+              {typeValue && typeValue === "학술지" && (
+                <>
+                  <Form.Item
+                    label="주제"
+                    name="topic"
+                    rules={[
+                      {
+                        required: true,
+                        message: "필수 입력 항목입니다.",
+                      },
+                    ]}
+                  >
+                    <TextArea rows={5} showCount maxLength={500} />
+                  </Form.Item>
+                  <hr className={styles.hr_tag} />
+                  <Form.Item label="링크" name="link">
+                    <Input />
+                  </Form.Item>
+                </>
+              )}
+              {typeValue && typeValue === "특허" && (
+                <>
+                  <Form.Item
+                    label="제목"
+                    name="topic"
+                    rules={[
+                      {
+                        required: true,
+                        message: "필수 입력 항목입니다.",
+                      },
+                    ]}
+                  >
+                    <TextArea rows={2} />
+                  </Form.Item>
+                  <Form.Item label="발명자" name="inventor">
+                    <Input />
+                  </Form.Item>
+                  <Form.Item label="출원번호" name="fillingNo">
+                    <Input />
+                  </Form.Item>
+                  <Form.Item label="출원일" name="fillingDate">
+                    <DatePicker />
+                  </Form.Item>
+                  <Form.Item label="등록번호" name="grantedNo">
+                    <Input />
+                  </Form.Item>
+                  <Form.Item label="등록일" name="grantedDate">
+                    <DatePicker />
+                  </Form.Item>
+                  <Form.Item
+                    label="진행상황"
+                    name="progress"
+                    extra="기술이전 / 노하우이전 / 등록 / 소프트웨어등록 / 출원 등"
+                  >
+                    <Input />
+                  </Form.Item>
+                </>
+              )}
+              <Row>
+                <Col span={12}>
+                  {" "}
+                  <div style={{ paddingLeft: "10%" }}>
+                    <Button type="text" onClick={moveBack}>
+                      ← Back
+                    </Button>
+                  </div>
+                </Col>
+                <Col span={12}>
+                  {" "}
+                  <div
+                    style={{
+                      textAlign: "right",
+                      marginRight: "-10%",
+                    }}
+                  >
+                    <Form.Item>
+                      <Button type="primary" htmlType="submit">
+                        Submit
+                      </Button>
+                    </Form.Item>
+                  </div>
+                </Col>
+              </Row>
+            </Form>
+          )}
+        </Paper>
+      </div>
     </div>
   );
 }

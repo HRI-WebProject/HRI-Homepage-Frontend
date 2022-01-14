@@ -46,7 +46,8 @@ function BottomFooter() {
   return (
     <div className={styles.footer}>
       <div className={styles.quick_menu}>
-        <Tag color="default" style={{ marginRight: "50px" }}>
+        {/* <span style={{ marginRight: 8 }}>Quick menu:</span> */}
+        <Tag color="#000209" style={{ marginRight: "20px" }}>
           Quick menu
         </Tag>
         <span
@@ -88,7 +89,7 @@ function BottomFooter() {
           <Col span={4} style={{ textAlign: "center" }}>
             <img src="/assets/logo/logo.png" className={styles.logo} />
           </Col>
-          <Col span={14}>
+          <Col span={16}>
             <div className={styles.content}>
               동국대학교 공과대학 <span className={styles.verticlebar}>|</span>
               04620 서울 중구 필동로1길 30 신공학관 5125호
@@ -104,7 +105,7 @@ function BottomFooter() {
               All Right Reserved
             </div>
           </Col>
-          <Col span={6}>
+          <Col span={4}>
             <Dropdown overlay={menu} placement="topCenter">
               <div className={styles.bottom_box}>
                 관련기관

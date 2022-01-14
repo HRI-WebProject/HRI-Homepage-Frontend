@@ -1,13 +1,6 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableContainer,
-} from "@mui/material";
+import { Table, TableBody, TableHead, TableRow } from "@mui/material";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import budgetTabledata from "@projects/sections/projectBudget/BudgetTableData";
 

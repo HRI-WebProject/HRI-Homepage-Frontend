@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Menu, Dropdown, Select, Button, Row, Col } from "antd";
+import { Menu, Dropdown, Select, Button } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
 import styles from "@navbar/NavBar.module.css";
 import { useHistory } from "react-router";
@@ -7,21 +7,29 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { clearUser } from "@actions/user_action";
 
-const { Header } = Layout;
-const { Option } = Select;
-
 function NavBar() {
   const account = useSelector((state) => state.user.loginSuccess);
   const [isLogged, setIsLogged] = useState(false);
-  const [language, setLanguage] = useState("한국어");
   const [page, setPage] = useState("home");
+  const [isTop, setIsTop] = useState(true);
   const history = useHistory();
   const dispatch = useDispatch();
+  const [scrollLocation, setScrollLocation] = useState(
+    document.documentElement.scrollTop
+  );
+
+  const listener = (e) => {
+    setScrollLocation();
+    if (document.documentElement.scrollTop === 0) {
+      setIsTop(true);
+    } else setIsTop(false);
+  };
+
   const categories = [
     "Research",
     "Professor",
     "Members",
-    "Publicatons",
+    "Publications",
     "Projects",
     "Board",
     "Contact",
@@ -71,54 +79,67 @@ function NavBar() {
     if (account && account.status === "OK") setIsLogged(true);
   }, [account]);
 
+  useEffect(() => {
+    window.addEventListener("scroll", listener);
+    return () => {
+      window.removeEventListener("scroll", listener);
+    };
+  });
+
   return (
-    <div className={styles.outer}>
-      <div className={styles.header}>
-        <span className={styles.header_menu} onClick={() => movePage("/")}>
-          HOME
-        </span>
-        <span className={styles.bar}>|</span>
-        <span className={styles.header_menu} onClick={() => movePage("/")}>
-          동국대학교
-        </span>
-        <span className={styles.bar}>|</span>
-        {isLogged === true && (
-          <span className={styles.header_menu} onClick={handleLogout}>
-            로그아웃
+    <div>
+      <div className={styles.outer}>
+        <div className={styles.header}>
+          <span className={styles.header_menu} onClick={() => movePage("/")}>
+            HOME
           </span>
-        )}
-        {isLogged === false && (
-          <span
-            className={styles.header_menu}
-            onClick={() => movePage("/login")}
-          >
-            로그인
+          <span className={styles.bar}>|</span>
+          <span className={styles.header_menu}>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="http://www.dongguk.ac.kr
+          "
+            >
+              동국대학교
+            </a>
           </span>
-        )}
-      </div>
-      <Header className={styles.navbar}>
-        <img
-          className={styles.logo}
-          src="/assets/logo/logo.png"
-          onClick={() => movePage("/")}
-        />
-        <div>
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={page}
-            className={styles.menu}
-          >
-            {categories.map((submenu, idx) => {
-              return (
-                <Menu.Item
-                  key={idx + 1}
-                  onClick={() => movePage(path[idx + 1], idx)}
-                >
-                  <div style={{ fontSize: "1.1em" }}>{submenu}</div>
-                </Menu.Item>
-              );
-            })}
+          <span className={styles.bar}>|</span>
+          {isLogged === true && (
+            <span className={styles.header_menu} onClick={handleLogout}>
+              로그아웃
+            </span>
+          )}
+          {isLogged === false && (
+            <span
+              className={styles.header_menu}
+              onClick={() => movePage("/login")}
+            >
+              로그인
+            </span>
+          )}
+        </div>
+        {isTop ? (
+          <div className={styles.navbar_top}>
+            <img
+              className={styles.logo}
+              src="/assets/logo/logo.png"
+              onClick={() => movePage("/")}
+            />
+            <div className={styles.menu}>
+              {categories.map((submenu, idx) => {
+                return (
+                  <Button
+                    type="text"
+                    key={idx + 1}
+                    className={styles.menu_btn}
+                    onClick={() => movePage(path[idx + 1], idx)}
+                  >
+                    <div className={styles.menu_title}>{submenu}</div>
+                  </Button>
+                );
+              })}
+            </div>
             <Dropdown
               overlay={language_menu}
               placement="bottomCenter"
@@ -128,9 +149,40 @@ function NavBar() {
                 <GlobalOutlined />
               </div>
             </Dropdown>
-          </Menu>
-        </div>
-      </Header>
+          </div>
+        ) : (
+          <div className={styles.navbar}>
+            <img
+              className={styles.logo}
+              src="/assets/logo/logo.png"
+              onClick={() => movePage("/")}
+            />
+            <div className={styles.menu}>
+              {categories.map((submenu, idx) => {
+                return (
+                  <Button
+                    type="text"
+                    key={idx + 1}
+                    className={styles.menu_btn}
+                    onClick={() => movePage(path[idx + 1], idx)}
+                  >
+                    <div className={styles.menu_title}>{submenu}</div>
+                  </Button>
+                );
+              })}
+            </div>
+            <Dropdown
+              overlay={language_menu}
+              placement="bottomCenter"
+              className={styles.dropdown}
+            >
+              <div className={styles.language_select}>
+                <GlobalOutlined />
+              </div>
+            </Dropdown>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

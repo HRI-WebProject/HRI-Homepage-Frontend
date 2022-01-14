@@ -3,10 +3,9 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import styles from "@journal/Journal.module.css";
 import TitleBar from "@titlebar/TitleBar";
-import Sider from "@sider/Sider";
 import TopMenu from "@topmenu/TopMenu";
-import { Paper, Typography } from "@mui/material";
-import { List, Tabs, Divider, Menu } from "antd";
+import { Paper } from "@mui/material";
+import { List } from "antd";
 import AddButton from "@common/AddButton/AddButton";
 import ButtonSet from "@common/ButtonSet/ButtonSet";
 
@@ -32,37 +31,46 @@ function Journal() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <TitleBar title="학술지" />
-      <TopMenu selected_key="Publications" />
-      <Paper className={styles.paper}>
-        {isLogged && <AddButton value="학술지" />}
-        {journalList && (
-          <List
-            style={{ marginTop: "20px" }}
-            bordered
-            dataSource={journalList}
-            renderItem={(item, idx) => (
-              <List.Item key={idx}>
-                <span className={styles.contents}>
-                  <font style={{ color: "#2f5597" }}>[{listLen - idx}]</font>{" "}
-                  {item.topic}
-                  {!!item.link && <div>{item.link}</div>}
-                </span>
-                <span className={styles.buttons}>
+    <div>
+      <TitleBar title="학술지" category="Publications" />
+      <div className={styles.container}>
+        <TopMenu selected_key="Publications" />
+        <Paper elevation={0} square className={styles.paper}>
+          {isLogged && <AddButton value="학술지" />}
+          {journalList && (
+            <List
+              bordered
+              dataSource={journalList}
+              renderItem={(item, idx) => (
+                <List.Item key={idx}>
+                  <span className={styles.index}>{listLen - idx}</span>
+                  <span className={styles.contents}>
+                    <div style={{ fontSize: "1.1em" }}>{item.topic}</div>
+                    <div>
+                      {!!item.link && (
+                        <div style={{ color: "#808080" }}>
+                          <a href={item.link} className={styles.link}>
+                            {item.link}
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  </span>
                   {isLogged && (
-                    <ButtonSet
-                      pageFeature="publications"
-                      id={item.id}
-                      value="학술지"
-                    />
+                    <span className={styles.buttons}>
+                      <ButtonSet
+                        pageFeature="publications"
+                        id={item.id}
+                        value="도서"
+                      />
+                    </span>
                   )}
-                </span>
-              </List.Item>
-            )}
-          />
-        )}
-      </Paper>
+                </List.Item>
+              )}
+            />
+          )}
+        </Paper>
+      </div>
     </div>
   );
 }

@@ -1,11 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { Row, Col, Card, Button, Form, Input } from "antd";
-import { useHistory } from "react-router";
+import { Col, Card, Button, Form, Input } from "antd";
 
 function EquipmentAddCard() {
   const [form] = Form.useForm();
-  const history = useHistory();
 
   const onFinish = (values) => {
     axios
@@ -76,7 +74,7 @@ function EquipmentAddCard() {
           >
             <Input size="small" />
           </Form.Item>
-          {/* Bottom button set */}
+
           <div
             style={{
               textAlign: "right",

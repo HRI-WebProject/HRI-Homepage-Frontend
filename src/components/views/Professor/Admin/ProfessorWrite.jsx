@@ -50,118 +50,120 @@ function ProfessorWrite() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <TitleBar title="교수진" />
-      <Paper className={styles.paper}>
-        <Form
-          name="basic"
-          labelCol={{ span: 3 }}
-          wrapperCol={{ span: 20 }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          form={form}
-        >
-          <Form.Item
-            label="이름"
-            name="name"
-            rules={[
-              {
-                required: true,
-                message: "이름은 필수 입력 항목입니다.",
-              },
-            ]}
+    <div>
+      <TitleBar title="교수진" category="Professor" />
+      <div className={styles.container}>
+        <Paper elevation={0} square className={styles.paper}>
+          <Form
+            name="basic"
+            labelCol={{ span: 3 }}
+            wrapperCol={{ span: 20 }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            form={form}
           >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="영문이름"
-            name="engName"
-            rules={[
-              {
-                required: true,
-                message: "영문이름은 필수 입력 항목입니다.",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
+            <Form.Item
+              label="이름"
+              name="name"
+              rules={[
+                {
+                  required: true,
+                  message: "이름은 필수 입력 항목입니다.",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="영문이름"
+              name="engName"
+              rules={[
+                {
+                  required: true,
+                  message: "영문이름은 필수 입력 항목입니다.",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            label="사진 URL"
-            name="photo"
-            // rules={[
-            //   {
-            //     required: true,
-            //     message: "사진은 필수 입력 항목입니다.",
-            //   },
-            // ]}
-            extra="이미지 URL 형식으로 작성이 필요합니다."
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="소개"
-            name="boldDetail"
-            rules={[
-              {
-                required: true,
-                message: "소개는 필수 입력 항목입니다.",
-              },
-            ]}
-          >
-            <Input.TextArea rows={6} showCount maxLength={500} />
-          </Form.Item>
-          <Form.Item label="세부 정보" name="detail">
-            <Input.TextArea rows={12} showCount maxLength={1000} />
-          </Form.Item>
-          <hr className={styles.hr_tag} />
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[
-              {
-                required: true,
-                message: "이메일은 필수 입력 항목입니다.",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          {/* Bottom button set */}
-          <Row>
-            <Col span={12}>
-              {" "}
-              <div style={{ paddingLeft: "10%" }}>
-                <Button type="text" onClick={() => movePage("/professor")}>
-                  ← Back
-                </Button>
-              </div>
-            </Col>
-            <Col span={12}>
-              {" "}
-              <div
-                style={{
-                  textAlign: "right",
-                  marginRight: "-10%",
-                }}
-              >
-                <Form.Item>
-                  <Button type="primary" htmlType="submit">
-                    Submit
+            <Form.Item
+              label="사진 URL"
+              name="photo"
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "사진은 필수 입력 항목입니다.",
+              //   },
+              // ]}
+              extra="이미지 URL 형식으로 작성이 필요합니다."
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="소개"
+              name="boldDetail"
+              rules={[
+                {
+                  required: true,
+                  message: "소개는 필수 입력 항목입니다.",
+                },
+              ]}
+            >
+              <Input.TextArea rows={6} showCount maxLength={500} />
+            </Form.Item>
+            <Form.Item label="세부 정보" name="detail">
+              <Input.TextArea rows={12} showCount maxLength={1000} />
+            </Form.Item>
+            <hr className={styles.hr_tag} />
+            <Form.Item
+              label="Email"
+              name="email"
+              rules={[
+                {
+                  required: true,
+                  message: "이메일은 필수 입력 항목입니다.",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Row>
+              <Col span={12}>
+                {" "}
+                <div style={{ paddingLeft: "10%" }}>
+                  <Button type="text" onClick={() => movePage("/professor")}>
+                    ← Back
                   </Button>
-                  <Button
-                    htmlType="button"
-                    onClick={onReset}
-                    style={{ marginLeft: "10px" }}
-                  >
-                    Reset
-                  </Button>
-                </Form.Item>
-              </div>
-            </Col>
-          </Row>
-        </Form>
-      </Paper>
+                </div>
+              </Col>
+              <Col span={12}>
+                {" "}
+                <div
+                  style={{
+                    textAlign: "right",
+                    marginRight: "-10%",
+                  }}
+                >
+                  <Form.Item>
+                    <Button type="primary" htmlType="submit">
+                      Submit
+                    </Button>
+                    <Button
+                      htmlType="button"
+                      onClick={onReset}
+                      style={{ marginLeft: "10px" }}
+                    >
+                      Reset
+                    </Button>
+                  </Form.Item>
+                </div>
+              </Col>
+            </Row>
+          </Form>
+        </Paper>
+      </div>
     </div>
   );
 }
