@@ -57,6 +57,7 @@ function App() {
           minHeight: "", // "calc(200vh - 80px)"
           backgroundColor: "#f5f5f5",
           width: "100vw",
+          fontFamily: "Noto Sans KR",
         }}
       >
         <Switch>

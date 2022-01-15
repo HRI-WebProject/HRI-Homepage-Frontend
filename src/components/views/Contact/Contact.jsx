@@ -58,7 +58,13 @@ function Contact() {
                   </div>
                   <br />
                   <div style={{ paddingBottom: "20px" }}>
-                    http://hri.dongguk.edu
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="http://hri.dongguk.edu"
+                    >
+                      http://hri.dongguk.edu
+                    </a>
                   </div>
                   <div className={styles.content}>
                     <font>
@@ -111,7 +117,14 @@ function Contact() {
                   </div>
                   <br />
                   <div style={{ paddingBottom: "20px" }}>
-                    http://hri.dongguk.edu
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="http://hri.dongguk.edu"
+                      className={styles.link}
+                    >
+                      http://hri.dongguk.edu
+                    </a>
                   </div>
                   <div className={styles.content}>
                     <font>

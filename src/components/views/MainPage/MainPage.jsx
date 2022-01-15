@@ -30,7 +30,7 @@ function MainPage() {
     },
     {
       title: "PROFESSOR",
-      description: "연구실 소속 교수님들 소개입니다.",
+      description: "연구실 소속 교수님 소개입니다.",
       photo: "https://i.postimg.cc/nrVvvKjB/lab.png",
       path: "/professor",
     },
@@ -108,8 +108,8 @@ function MainPage() {
             <div>저희 연구실에서는 다음과 같은 지원이 가능합니다. </div>
             <div>
               등록금과 생활비 지원이 가능하며, 연구실에 배치된 다양한 연구
-              기자재를 사용하며 본인의 연구를 진행할 수 있습니다. 또한 국내외
-              다양한 학술 대회 참가를 적극 지원합니다.
+              기자재를 사용하며 본인의 연구를 진행할 수 있습니다.
+              <div>또한 국내외 다양한 학술 대회 참가를 적극 지원합니다.</div>
             </div>
           </div>
           <div className={styles.support_card}>

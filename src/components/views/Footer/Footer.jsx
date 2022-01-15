@@ -46,10 +46,7 @@ function BottomFooter() {
   return (
     <div className={styles.footer}>
       <div className={styles.quick_menu}>
-        {/* <span style={{ marginRight: 8 }}>Quick menu:</span> */}
-        <Tag color="#000209" style={{ marginRight: "20px" }}>
-          Quick menu
-        </Tag>
+        <Tag style={{ marginRight: "20px" }}>Quick menu</Tag>
         <span
           className={styles.menu}
           onClick={() => movePage("/research/researchArea")}

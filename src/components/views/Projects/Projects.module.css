@@ -57,9 +57,14 @@
   padding-right: 3%;
 }
 
+.subtitle {
+  font-size: 1.3em;
+}
+
 .title {
   color: #2f5597;
   padding-top: 3%;
+  font-size: 1.5em;
 }
 
 .text1 {

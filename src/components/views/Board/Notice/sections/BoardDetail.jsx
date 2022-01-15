@@ -119,7 +119,14 @@ function BoardDetail() {
                   </td>
                 </tr>
                 <tr>
-                  <td className={styles.table_td_2}>{boardDetail.content}</td>
+                  <td className={styles.table_td_2}>
+                    {boardDetail.content.split("\n").map((line, idx) => (
+                      <span key={idx}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
+                  </td>
                 </tr>
               </tbody>
             </table>

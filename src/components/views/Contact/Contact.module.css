@@ -51,31 +51,17 @@
 .content {
   padding-bottom: 5%;
 }
-/* .title {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 1.2em;
+
+.link {
+  text-decoration: none;
 }
 
-.contactForm {
-  margin-top: 30px;
+.link:visited {
+  color: #808080;
+  text-decoration: none;
 }
 
-.emailIcon {
-  font-size: 2.5em;
-  margin-right: 30px;
+.link:hover {
+  text-decoration: underline;
+  color: #808080;
 }
-
-.phoneIcon {
-  font-size: 2.5em;
-  margin-right: 30px;
-}
-
-.font1 {
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
-.row {
-  margin-left: 20%;
-} */

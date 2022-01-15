@@ -87,7 +87,7 @@ function Equipments() {
                   ) : (
                     <Col span={6}>
                       <Card
-                        hoverable
+                        hoverable={false}
                         style={{ width: 240 }}
                         cover={<img alt="example" src={item.photo} />}
                       >

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Typography from "@mui/material/Typography";
 import { Statistic, Row, Col } from "antd";
 import { useMediaQuery } from "react-responsive";
 import { useSelector } from "react-redux";
@@ -128,9 +127,9 @@ function Alumni() {
                   {isLogged && <AddButton />}
                   {phdMembers.length !== 0 && (
                     <>
-                      <Typography variant="h5">
+                      <div className={styles.subtitle}>
                         <b>박사 과정</b>
-                      </Typography>
+                      </div>
                       <MemberGrid
                         memberData={phdMembers}
                         col_size={24}
@@ -142,9 +141,9 @@ function Alumni() {
                   )}
                   {masterMembers.length !== 0 && (
                     <>
-                      <Typography variant="h5">
+                      <div className={styles.subtitle}>
                         <b>석사 과정</b>
-                      </Typography>
+                      </div>
                       <MemberGrid
                         memberData={masterMembers}
                         col_size={24}
@@ -156,9 +155,9 @@ function Alumni() {
                   )}
                   {bachelorMembers.length !== 0 && (
                     <>
-                      <Typography variant="h5">
+                      <div className={styles.subtitle}>
                         <b>학사 과정</b>
-                      </Typography>
+                      </div>
                       <MemberGrid
                         memberData={bachelorMembers}
                         col_size={24}
@@ -175,9 +174,9 @@ function Alumni() {
                   {isLogged && <AddButton />}
                   {phdMembers.length !== 0 && (
                     <>
-                      <Typography variant="h5">
+                      <div className={styles.subtitle}>
                         <b>박사 과정</b>
-                      </Typography>
+                      </div>
                       <MemberGrid
                         memberData={phdMembers}
                         col_size={12}
@@ -189,9 +188,9 @@ function Alumni() {
                   )}
                   {masterMembers.length !== 0 && (
                     <>
-                      <Typography variant="h5">
+                      <div className={styles.subtitle}>
                         <b>석사 과정</b>
-                      </Typography>
+                      </div>
                       <MemberGrid
                         memberData={masterMembers}
                         col_size={12}
@@ -203,9 +202,9 @@ function Alumni() {
                   )}
                   {bachelorMembers.length !== 0 && (
                     <>
-                      <Typography variant="h5">
+                      <div className={styles.subtitle}>
                         <b>학사 과정</b>
-                      </Typography>
+                      </div>
                       <MemberGrid
                         memberData={bachelorMembers}
                         col_size={12}

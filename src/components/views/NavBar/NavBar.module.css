@@ -3,6 +3,7 @@
   width: 100%;
   position: fixed;
   z-index: 1;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .header {

@@ -6,7 +6,6 @@ import styles from "@members/Members.module.css";
 import { Paper } from "@mui/material";
 import TopMenu from "@topmenu/TopMenu";
 import { useMediaQuery } from "react-responsive";
-import Typography from "@mui/material/Typography";
 import MemberGrid from "@members/sections/MemberGrid";
 import AddButton from "@common/AddButton/AddButton";
 
@@ -74,9 +73,9 @@ function Members() {
           <>
             <Paper elevation={0} square className={styles.paper}>
               {isLogged && <AddButton />}
-              <Typography variant="h5">
+              <div className={styles.subtitle}>
                 <b>박사 과정</b>
-              </Typography>
+              </div>
               <MemberGrid
                 memberData={phdMembers}
                 col_size={24}
@@ -84,9 +83,9 @@ function Members() {
                 isLogged={isLogged}
               />
               <hr className={styles.hrline} />
-              <Typography variant="h5">
+              <div className={styles.subtitle}>
                 <b>석사 과정</b>
-              </Typography>
+              </div>
               <MemberGrid
                 memberData={masterMembers}
                 col_size={24}
@@ -94,9 +93,9 @@ function Members() {
                 isLogged={isLogged}
               />
               <hr className={styles.hrline} />
-              <Typography variant="h5">
+              <div className={styles.subtitle}>
                 <b>학사 과정</b>
-              </Typography>
+              </div>
               <MemberGrid
                 memberData={bachelorMembers}
                 col_size={12}
@@ -108,9 +107,9 @@ function Members() {
         ) : (
           <Paper elevation={0} square className={styles.paper}>
             {isLogged && <AddButton />}
-            <Typography variant="h5">
+            <div className={styles.subtitle}>
               <b>박사 과정</b>
-            </Typography>
+            </div>
             <MemberGrid
               memberData={phdMembers}
               col_size={12}
@@ -118,9 +117,9 @@ function Members() {
               isLogged={isLogged}
             />
             <hr className={styles.hrline} />
-            <Typography variant="h5">
+            <div className={styles.subtitle}>
               <b>석사 과정</b>
-            </Typography>
+            </div>
             <MemberGrid
               memberData={masterMembers}
               col_size={12}
@@ -128,9 +127,9 @@ function Members() {
               isLogged={isLogged}
             />
             <hr className={styles.hrline} />
-            <Typography variant="h5">
+            <div className={styles.subtitle}>
               <b>학사 과정</b>
-            </Typography>
+            </div>
             <MemberGrid
               memberData={bachelorMembers}
               col_size={12}

@@ -76,7 +76,14 @@ function ResearchArea() {
                     <div className={styles.circle}>{idx + 1}</div>
                     <div className={styles.item_name}>{item.name}</div>
                   </div>
-                  <div className={styles.item_detail}>{item.detail}</div>
+                  <div className={styles.item_detail}>
+                    {item.detail.split("\n").map((line, idx) => (
+                      <span key={idx}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
+                  </div>
                   {isLogged && (
                     <ButtonSet pageFeature="researchArea" id={item.id} />
                   )}

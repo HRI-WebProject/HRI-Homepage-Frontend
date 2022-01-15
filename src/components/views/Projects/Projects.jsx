@@ -6,7 +6,6 @@ import { Row, Col, Image } from "antd";
 import { Paper } from "@mui/material";
 import styles from "@projects/Projects.module.css";
 import TitleBar from "@titlebar/TitleBar";
-import Typography from "@mui/material/Typography";
 import ProjectBudget from "@projects/sections/projectBudget/ProjectBudget";
 import AddButton from "@common/AddButton/AddButton";
 import ButtonSet from "@common/ButtonSet/ButtonSet";
@@ -38,9 +37,9 @@ function Projects() {
       <TitleBar title="프로젝트 소개" category="Projects" />
       <div className={styles.container}>
         <ProjectBudget />
-        <Typography variant="h6">
+        <div className={styles.subtitle}>
           <b>진행 중인 연구 프로젝트</b>
-        </Typography>
+        </div>
         <div>{isLogged && <AddButton />}</div>
         <Row gutter={[16, 16]} className={styles.out_row}>
           {projectList &&
@@ -56,11 +55,18 @@ function Projects() {
                   <Row gutter={[16, 16]}>
                     <Col span={12}>
                       <div className={styles.ls}>
-                        <Typography variant="h5" className={styles.title}>
+                        <div className={styles.title}>
                           <b>{item.topic}</b>
-                        </Typography>
+                        </div>
                         <hr style={{ color: "#2f5597", height: 3 }} />
-                        <div className={styles.text1}>{item.subTopic}</div>
+                        <div className={styles.text1}>
+                          {item.subTopic.split("\n").map((line, idx) => (
+                            <span key={idx}>
+                              {line}
+                              <br />
+                            </span>
+                          ))}
+                        </div>
                         <div className={styles.contents}>
                           <ul>
                             {!!item.detail1 && <li key="1">{item.detail1}</li>}

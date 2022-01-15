@@ -151,7 +151,7 @@ function ProjectsEdit() {
                 },
               ]}
             >
-              <Input />
+              <Input.TextArea rows={2} maxLength={255} />
             </Form.Item>
             <Form.Item
               label="소주제 (영문)"
@@ -163,7 +163,7 @@ function ProjectsEdit() {
                 },
               ]}
             >
-              <Input />
+              <Input.TextArea rows={2} maxLength={255} />
             </Form.Item>
             <Form.Item
               label="사진 URL"
