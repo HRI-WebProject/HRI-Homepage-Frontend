@@ -16,11 +16,16 @@ function Equipments() {
   const [isLogged, setIsLogged] = useState(false);
   const [showCard, setShowCard] = useState(false);
   const [showEditCard, setShowEditCard] = useState(false);
+  const [colSize, setColSize] = useState();
   const [curId, setCurId] = useState();
   const [equipments, setEquipments] = useState();
   const { Meta } = Card;
 
   const isSmallScreen = useMediaQuery({
+    query: "(max-width: 800px)",
+  });
+
+  const isMediumScreen = useMediaQuery({
     query: "(max-width: 1100px)",
   });
 
@@ -61,6 +66,12 @@ function Equipments() {
       });
   }, []);
 
+  useEffect(() => {
+    if (isSmallScreen) setColSize(12);
+    else if (isMediumScreen) setColSize(8);
+    else setColSize(6);
+  });
+
   return (
     <div>
       <TitleBar title="연구실 장비" category="Research" />
@@ -85,9 +96,9 @@ function Equipments() {
                   {showEditCard && item.id === curId ? (
                     <EquipmentEditCard currentId={curId} />
                   ) : (
-                    <Col span={6}>
+                    <Col span={colSize}>
                       <Card
-                        hoverable
+                        hoverable={false}
                         style={{ width: 240 }}
                         cover={<img alt="example" src={item.photo} />}
                       >

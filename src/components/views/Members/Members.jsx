@@ -6,7 +6,6 @@ import styles from "@members/Members.module.css";
 import { Paper } from "@mui/material";
 import TopMenu from "@topmenu/TopMenu";
 import { useMediaQuery } from "react-responsive";
-import Typography from "@mui/material/Typography";
 import MemberGrid from "@members/sections/MemberGrid";
 import AddButton from "@common/AddButton/AddButton";
 
@@ -17,9 +16,15 @@ function Members() {
   const [masterMembers, setMasterMembers] = useState(); // 석사
   const [bachelorMembers, setBachelorMembers] = useState(); // 학사
   const [undergraduate, setUndergraduate] = useState(); // 학부생
+  const [colSize, setColSize] = useState();
 
   const isSmallScreen = useMediaQuery({
-    query: "(max-width: 1100px)",
+    query: "(max-width: 600px)",
+  });
+
+  useEffect(() => {
+    if (isSmallScreen) setColSize(24);
+    else setColSize(12);
   });
 
   useEffect(() => {
@@ -70,75 +75,40 @@ function Members() {
       <TitleBar title="구성원" category="Members" />
       <div className={styles.container}>
         <TopMenu selected_key="Members" />
-        {isSmallScreen ? (
-          <>
-            <Paper elevation={0} square className={styles.paper}>
-              {isLogged && <AddButton />}
-              <Typography variant="h5">
-                <b>박사 과정</b>
-              </Typography>
-              <MemberGrid
-                memberData={phdMembers}
-                col_size={24}
-                degree="박사 과정"
-                isLogged={isLogged}
-              />
-              <hr className={styles.hrline} />
-              <Typography variant="h5">
-                <b>석사 과정</b>
-              </Typography>
-              <MemberGrid
-                memberData={masterMembers}
-                col_size={24}
-                degree="석사 과정"
-                isLogged={isLogged}
-              />
-              <hr className={styles.hrline} />
-              <Typography variant="h5">
-                <b>학사 과정</b>
-              </Typography>
-              <MemberGrid
-                memberData={bachelorMembers}
-                col_size={12}
-                degree="학사 과정"
-                isLogged={isLogged}
-              />
-            </Paper>
-          </>
-        ) : (
+        <>
           <Paper elevation={0} square className={styles.paper}>
             {isLogged && <AddButton />}
-            <Typography variant="h5">
+            <div className={styles.subtitle}>
               <b>박사 과정</b>
-            </Typography>
+            </div>
             <MemberGrid
               memberData={phdMembers}
-              col_size={12}
+              col_size={colSize}
               degree="박사 과정"
               isLogged={isLogged}
             />
             <hr className={styles.hrline} />
-            <Typography variant="h5">
+            <div className={styles.subtitle}>
               <b>석사 과정</b>
-            </Typography>
+            </div>
             <MemberGrid
               memberData={masterMembers}
-              col_size={12}
+              col_size={colSize}
               degree="석사 과정"
               isLogged={isLogged}
             />
             <hr className={styles.hrline} />
-            <Typography variant="h5">
+            <div className={styles.subtitle}>
               <b>학사 과정</b>
-            </Typography>
+            </div>
             <MemberGrid
               memberData={bachelorMembers}
-              col_size={12}
+              col_size={colSize}
               degree="학사 과정"
               isLogged={isLogged}
             />
           </Paper>
-        )}
+        </>
       </div>
     </div>
   );

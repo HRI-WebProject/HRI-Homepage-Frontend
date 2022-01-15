@@ -3,6 +3,35 @@
   width: 100%;
   position: fixed;
   z-index: 1;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    background-color: #000209;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .menu {
+    padding-top: 20px;
+    width: 100%;
+    display: none;
+  }
+
+  .menu_btn {
+    width: 100%;
+  }
+
+  .menu_select {
+    font-size: 1.4em;
+    cursor: pointer;
+    position: absolute;
+    right: 2%;
+    margin-right: 40px;
+    margin-top: -49px;
+    color: "#ffffff";
+  }
 }
 
 .header {
@@ -30,13 +59,10 @@
 }
 
 .navbar {
-  background-color: #000209;
   height: 80px;
-}
-
-.navbar_top {
-  background-color: #0b0a29;
-  height: 80px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
 }
 
 .menu {
@@ -47,9 +73,13 @@
   float: left;
   width: 120px;
   height: 45px;
-  margin: 15px 30px 16px 20px;
+  margin: 19px 30px 16px 20px;
   cursor: pointer;
   position: relative;
+}
+
+.menu_select {
+  display: none;
 }
 
 .language_select {
@@ -57,7 +87,7 @@
   cursor: pointer;
   position: absolute;
   right: 2%;
-  margin-top: -34px;
+  margin-top: -60px;
   color: white;
 }
 

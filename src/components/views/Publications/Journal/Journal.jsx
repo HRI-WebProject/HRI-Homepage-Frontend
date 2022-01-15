@@ -61,7 +61,7 @@ function Journal() {
                       <ButtonSet
                         pageFeature="publications"
                         id={item.id}
-                        value="도서"
+                        value="학술지"
                       />
                     </span>
                   )}

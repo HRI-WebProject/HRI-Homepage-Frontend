@@ -61,7 +61,6 @@ function PublicationEdit() {
 
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
-
     let value = "";
     if (typeValue === "특허") {
       setTypeEnValue("PATENT");
@@ -86,7 +85,7 @@ function PublicationEdit() {
               return item.id === location.state.id;
             });
             tmp && setPublicationData(tmp[0]);
-
+            tmp && console.log(tmp);
             tmp &&
               form.setFieldsValue({
                 topic: tmp[0].topic,

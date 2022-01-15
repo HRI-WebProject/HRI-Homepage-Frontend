@@ -98,7 +98,7 @@ function BoardDetail() {
         {boardDetail && (
           <Paper elevation={0} square className={styles.paper}>
             <div>
-              {isLogged && <ButtonSet pageFeature="board" id={pageId} />}
+              {isLogged && <ButtonSet pageFeature="notice" id={pageId} />}
             </div>
             <table className={styles.table_}>
               <thead>
@@ -119,7 +119,14 @@ function BoardDetail() {
                   </td>
                 </tr>
                 <tr>
-                  <td className={styles.table_td_2}>{boardDetail.content}</td>
+                  <td className={styles.table_td_2}>
+                    {boardDetail.content.split("\n").map((line, idx) => (
+                      <span key={idx}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
+                  </td>
                 </tr>
               </tbody>
             </table>

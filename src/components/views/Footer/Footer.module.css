@@ -3,11 +3,25 @@
   background-color: #ffffff;
   padding-top: 30px;
   padding-bottom: 5px;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .quick_menu {
   padding-left: 100px;
   padding-bottom: 30px;
+}
+
+@media (max-width: 1000px) {
+  .row {
+    margin-left: -48px;
+  }
+
+  .copyright {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    font-size: 0.9em;
+    color: #808080;
+  }
 }
 
 .menu {

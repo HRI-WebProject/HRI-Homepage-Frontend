@@ -6,7 +6,6 @@ import { Row, Col, Image } from "antd";
 import { Paper } from "@mui/material";
 import styles from "@projects/Projects.module.css";
 import TitleBar from "@titlebar/TitleBar";
-import Typography from "@mui/material/Typography";
 import ProjectBudget from "@projects/sections/projectBudget/ProjectBudget";
 import AddButton from "@common/AddButton/AddButton";
 import ButtonSet from "@common/ButtonSet/ButtonSet";
@@ -15,8 +14,9 @@ function Projects() {
   const account = useSelector((state) => state.user.loginSuccess);
   const [isLogged, setIsLogged] = useState(false);
   const [projectList, setProjectList] = useState();
+  const [colSize, setColSize] = useState();
   const isSmallScreen = useMediaQuery({
-    query: "(max-width: 1100px)",
+    query: "(max-width: 600px)",
   });
 
   useEffect(() => {
@@ -33,14 +33,19 @@ function Projects() {
       });
   }, []);
 
+  useEffect(() => {
+    if (isSmallScreen) setColSize(24);
+    else setColSize(12);
+  });
+
   return (
     <div>
       <TitleBar title="프로젝트 소개" category="Projects" />
       <div className={styles.container}>
         <ProjectBudget />
-        <Typography variant="h6">
+        <div className={styles.subtitle}>
           <b>진행 중인 연구 프로젝트</b>
-        </Typography>
+        </div>
         <div>{isLogged && <AddButton />}</div>
         <Row gutter={[16, 16]} className={styles.out_row}>
           {projectList &&
@@ -54,13 +59,20 @@ function Projects() {
                   className={styles.paper}
                 >
                   <Row gutter={[16, 16]}>
-                    <Col span={12}>
+                    <Col span={colSize}>
                       <div className={styles.ls}>
-                        <Typography variant="h5" className={styles.title}>
+                        <div className={styles.title}>
                           <b>{item.topic}</b>
-                        </Typography>
+                        </div>
                         <hr style={{ color: "#2f5597", height: 3 }} />
-                        <div className={styles.text1}>{item.subTopic}</div>
+                        <div className={styles.text1}>
+                          {item.subTopic.split("\n").map((line, idx) => (
+                            <span key={idx}>
+                              {line}
+                              <br />
+                            </span>
+                          ))}
+                        </div>
                         <div className={styles.contents}>
                           <ul>
                             {!!item.detail1 && <li key="1">{item.detail1}</li>}
@@ -72,7 +84,7 @@ function Projects() {
                         </div>
                       </div>
                     </Col>
-                    <Col span={12} className={styles.rs}>
+                    <Col span={colSize} className={styles.rs}>
                       <Image
                         preview={false}
                         width={"100%"}

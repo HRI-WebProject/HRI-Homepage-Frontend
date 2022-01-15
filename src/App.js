@@ -32,6 +32,7 @@ import Projects from "@/components/views/Projects/Projects";
 import ProjectsEdit from "@/components/views/Projects/Admin/ProjectsEdit";
 import ProjectsWrite from "@/components/views/Projects/Admin/ProjectsWrite";
 import Contact from "@/components/views/Contact/Contact";
+import NotFound from "@/components/views/NotFound/NotFound";
 import Footer from "@/components/views/Footer/Footer";
 import PrivateRoute from "@/utils/PrivateRoute";
 import PublicRoute from "@/utils/PublicRoute";
@@ -57,6 +58,8 @@ function App() {
           minHeight: "", // "calc(200vh - 80px)"
           backgroundColor: "#f5f5f5",
           width: "100vw",
+          fontFamily: "Noto Sans KR",
+          overflowX: "hidden",
         }}
       >
         <Switch>
@@ -159,7 +162,7 @@ function App() {
             exact
           />
           <PublicRoute component={Contact} path="/contact" exact />
-          {/* <Route component={NotFound} /> */}
+          <PublicRoute component={NotFound} path="*" />
         </Switch>
       </div>
       <Footer />

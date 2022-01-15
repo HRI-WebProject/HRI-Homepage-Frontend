@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Menu } from "antd";
 import { useHistory } from "react-router";
+import styles from "@topmenu/TopMenu.module.css";
 
 function TopMenu({ selected_key }) {
   const currentURL = window.location.pathname;
@@ -19,13 +20,13 @@ function TopMenu({ selected_key }) {
               key="research/researchArea"
               onClick={() => movePage("/research/researchArea")}
             >
-              연구 분야
+              <font className={styles.menuitem}>연구 분야</font>
             </Menu.Item>
             <Menu.Item
               key="research/equipments"
               onClick={() => movePage("/research/equipments")}
             >
-              연구실 장비
+              <font className={styles.menuitem}>연구실 장비</font>
             </Menu.Item>
           </>
         );
@@ -33,10 +34,10 @@ function TopMenu({ selected_key }) {
         return (
           <>
             <Menu.Item key="members" onClick={() => movePage("/members")}>
-              구성원
+              <font className={styles.menuitem}>구성원</font>
             </Menu.Item>
             <Menu.Item key="alumni" onClick={() => movePage("/alumni")}>
-              졸업생
+              <font className={styles.menuitem}> 졸업생</font>
             </Menu.Item>
           </>
         );
@@ -44,7 +45,7 @@ function TopMenu({ selected_key }) {
         return (
           <>
             <Menu.Item key="professor" onClick={() => movePage("/professor")}>
-              교수진
+              <font className={styles.menuitem}>교수진</font>
             </Menu.Item>
           </>
         );
@@ -55,13 +56,13 @@ function TopMenu({ selected_key }) {
               key="board/notice"
               onClick={() => movePage("/board/notice")}
             >
-              소식
+              <font className={styles.menuitem}>소식</font>
             </Menu.Item>
             <Menu.Item
               key="board/activity"
               onClick={() => movePage("/board/activity")}
             >
-              활동
+              <font className={styles.menuitem}>활동</font>
             </Menu.Item>
           </>
         );
@@ -72,25 +73,25 @@ function TopMenu({ selected_key }) {
               key="publications/journal"
               onClick={() => movePage("/publications/journal")}
             >
-              학술지
+              <font className={styles.menuitem}>학술지</font>
             </Menu.Item>
             <Menu.Item
               key="publications/conference"
               onClick={() => movePage("/publications/conference")}
             >
-              학술대회
+              <font className={styles.menuitem}>학술대회</font>
             </Menu.Item>
             <Menu.Item
               key="publications/patent"
               onClick={() => movePage("/publications/patent")}
             >
-              특허
+              <font className={styles.menuitem}>특허</font>
             </Menu.Item>
             <Menu.Item
               key="publications/book"
               onClick={() => movePage("/publications/book")}
             >
-              도서
+              <font className={styles.menuitem}>도서</font>
             </Menu.Item>
           </>
         );

@@ -24,7 +24,8 @@
       "@conference/*": ["src/components/views/Publications/Conference/*"],
       "@journal/*": ["src/components/views/Publications/Journal/*"],
       "@patent/*": ["src/components/views/Publications/Patent/*"],
-      "@researcharea/*": ["src/components/views/ResearchArea/*"]
+      "@researcharea/*": ["src/components/views/ResearchArea/*"],
+      "@notfound/*": ["src/components/views/NotFound/*"]
     }
   }
 }

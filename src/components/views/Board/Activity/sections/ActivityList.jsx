@@ -31,7 +31,7 @@ function ActivityList() {
       title: "번호",
       dataIndex: "index",
       align: "center",
-      width: "5%",
+      width: "6%",
     },
     {
       title: "제목",
