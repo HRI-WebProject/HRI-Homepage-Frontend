@@ -16,9 +16,10 @@ function Alumni() {
   const [phdMembers, setPhdMembers] = useState(); // 박사
   const [masterMembers, setMasterMembers] = useState(); // 석사
   const [bachelorMembers, setBachelorMembers] = useState(); // 학사
+  const [colSize, setColSize] = useState();
 
   const isSmallScreen = useMediaQuery({
-    query: "(max-width: 1100px)",
+    query: "(max-width: 600px)",
   });
 
   const imageList = [
@@ -29,6 +30,11 @@ function Alumni() {
     "/assets/alumni/workplace5.png",
     "/assets/alumni/workplace6.png",
   ];
+
+  useEffect(() => {
+    if (isSmallScreen) setColSize(24);
+    else setColSize(12);
+  });
 
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
@@ -121,101 +127,52 @@ function Alumni() {
                 ))}
               </Row>
             </div>
-            {isSmallScreen ? (
-              <>
-                <div className={styles.members}>
-                  {isLogged && <AddButton />}
-                  {phdMembers.length !== 0 && (
-                    <>
-                      <div className={styles.subtitle}>
-                        <b>박사 과정</b>
-                      </div>
-                      <MemberGrid
-                        memberData={phdMembers}
-                        col_size={24}
-                        degree="박사 과정"
-                        isLogged={isLogged}
-                      />
-                      <hr className={styles.hrline} />
-                    </>
-                  )}
-                  {masterMembers.length !== 0 && (
-                    <>
-                      <div className={styles.subtitle}>
-                        <b>석사 과정</b>
-                      </div>
-                      <MemberGrid
-                        memberData={masterMembers}
-                        col_size={24}
-                        degree="석사 과정"
-                        isLogged={isLogged}
-                      />
-                      <hr className={styles.hrline} />{" "}
-                    </>
-                  )}
-                  {bachelorMembers.length !== 0 && (
-                    <>
-                      <div className={styles.subtitle}>
-                        <b>학사 과정</b>
-                      </div>
-                      <MemberGrid
-                        memberData={bachelorMembers}
-                        col_size={24}
-                        degree="학사 과정"
-                        isLogged={isLogged}
-                      />{" "}
-                    </>
-                  )}
-                </div>
-              </>
-            ) : (
-              <>
-                <div className={styles.members}>
-                  {isLogged && <AddButton />}
-                  {phdMembers.length !== 0 && (
-                    <>
-                      <div className={styles.subtitle}>
-                        <b>박사 과정</b>
-                      </div>
-                      <MemberGrid
-                        memberData={phdMembers}
-                        col_size={12}
-                        degree="박사 과정"
-                        isLogged={isLogged}
-                      />
-                      <hr className={styles.hrline} />
-                    </>
-                  )}
-                  {masterMembers.length !== 0 && (
-                    <>
-                      <div className={styles.subtitle}>
-                        <b>석사 과정</b>
-                      </div>
-                      <MemberGrid
-                        memberData={masterMembers}
-                        col_size={12}
-                        degree="석사 과정"
-                        isLogged={isLogged}
-                      />
-                      <hr className={styles.hrline} />{" "}
-                    </>
-                  )}
-                  {bachelorMembers.length !== 0 && (
-                    <>
-                      <div className={styles.subtitle}>
-                        <b>학사 과정</b>
-                      </div>
-                      <MemberGrid
-                        memberData={bachelorMembers}
-                        col_size={12}
-                        degree="학사 과정"
-                        isLogged={isLogged}
-                      />{" "}
-                    </>
-                  )}
-                </div>
-              </>
-            )}
+            <>
+              <div className={styles.members}>
+                {isLogged && <AddButton />}
+                {phdMembers.length !== 0 && (
+                  <>
+                    <div className={styles.subtitle}>
+                      <b>박사 과정</b>
+                    </div>
+                    <MemberGrid
+                      memberData={phdMembers}
+                      col_size={colSize}
+                      degree="박사 과정"
+                      isLogged={isLogged}
+                    />
+                    <hr className={styles.hrline} />
+                  </>
+                )}
+                {masterMembers.length !== 0 && (
+                  <>
+                    <div className={styles.subtitle}>
+                      <b>석사 과정</b>
+                    </div>
+                    <MemberGrid
+                      memberData={masterMembers}
+                      col_size={colSize}
+                      degree="석사 과정"
+                      isLogged={isLogged}
+                    />
+                    <hr className={styles.hrline} />{" "}
+                  </>
+                )}
+                {bachelorMembers.length !== 0 && (
+                  <>
+                    <div className={styles.subtitle}>
+                      <b>학사 과정</b>
+                    </div>
+                    <MemberGrid
+                      memberData={bachelorMembers}
+                      col_size={colSize}
+                      degree="학사 과정"
+                      isLogged={isLogged}
+                    />
+                  </>
+                )}
+              </div>
+            </>
           </Paper>
         )}
       </div>

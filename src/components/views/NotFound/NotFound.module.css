@@ -6,3 +6,15 @@
   margin: 0 auto;
   margin-top: 120px;
 }
+
+@media (max-width: 1100px) {
+  .container {
+    width: 90vw;
+    padding-bottom: 2%;
+    min-height: calc(65vh);
+    word-break: break-all;
+    margin: 0 auto;
+    margin-top: 120px;
+    background-color: #f5f5f5;
+  }
+}

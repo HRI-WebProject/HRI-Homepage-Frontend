@@ -14,9 +14,11 @@ function ResearchArea() {
   const account = useSelector((state) => state.user.loginSuccess);
   const [isLogged, setIsLogged] = useState(false);
   const [researchList, setResearchList] = useState();
+  const [colSize, setColSize] = useState();
   const { Meta } = Card;
+
   const isSmallScreen = useMediaQuery({
-    query: "(max-width: 1100px)",
+    query: "(max-width: 800px)",
   });
 
   useEffect(() => {
@@ -33,6 +35,11 @@ function ResearchArea() {
       });
   }, []);
 
+  useEffect(() => {
+    if (isSmallScreen) setColSize(24);
+    else setColSize(12);
+  });
+
   return (
     <div>
       <TitleBar title="연구 분야" category="Research" />
@@ -48,9 +55,8 @@ function ResearchArea() {
               <Row gutter={[16, 16]}>
                 {researchList &&
                   researchList.map((item, idx) => (
-                    <Col span={12}>
+                    <Col span={colSize}>
                       <Card
-                        style={{ height: 400 }}
                         cover={
                           <Image
                             preview={false}

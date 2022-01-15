@@ -59,6 +59,7 @@ function App() {
           backgroundColor: "#f5f5f5",
           width: "100vw",
           fontFamily: "Noto Sans KR",
+          overflowX: "hidden",
         }}
       >
         <Switch>

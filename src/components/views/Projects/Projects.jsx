@@ -14,8 +14,9 @@ function Projects() {
   const account = useSelector((state) => state.user.loginSuccess);
   const [isLogged, setIsLogged] = useState(false);
   const [projectList, setProjectList] = useState();
+  const [colSize, setColSize] = useState();
   const isSmallScreen = useMediaQuery({
-    query: "(max-width: 1100px)",
+    query: "(max-width: 600px)",
   });
 
   useEffect(() => {
@@ -31,6 +32,11 @@ function Projects() {
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    if (isSmallScreen) setColSize(24);
+    else setColSize(12);
+  });
 
   return (
     <div>
@@ -53,7 +59,7 @@ function Projects() {
                   className={styles.paper}
                 >
                   <Row gutter={[16, 16]}>
-                    <Col span={12}>
+                    <Col span={colSize}>
                       <div className={styles.ls}>
                         <div className={styles.title}>
                           <b>{item.topic}</b>
@@ -78,7 +84,7 @@ function Projects() {
                         </div>
                       </div>
                     </Col>
-                    <Col span={12} className={styles.rs}>
+                    <Col span={colSize} className={styles.rs}>
                       <Image
                         preview={false}
                         width={"100%"}

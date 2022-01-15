@@ -8,7 +8,7 @@ import { Paper, Divider, Typography } from "@mui/material";
 
 function Contact() {
   const isSmallScreen = useMediaQuery({
-    query: "(max-width: 1100px)",
+    query: "(max-width: 900px)",
   });
 
   return (
@@ -62,6 +62,7 @@ function Contact() {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="http://hri.dongguk.edu"
+                      className={styles.link}
                     >
                       http://hri.dongguk.edu
                     </a>

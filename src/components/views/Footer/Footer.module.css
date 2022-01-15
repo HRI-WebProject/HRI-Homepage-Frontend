@@ -11,6 +11,19 @@
   padding-bottom: 30px;
 }
 
+@media (max-width: 1000px) {
+  .row {
+    margin-left: -48px;
+  }
+
+  .copyright {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    font-size: 0.9em;
+    color: #808080;
+  }
+}
+
 .menu {
   cursor: pointer;
 }

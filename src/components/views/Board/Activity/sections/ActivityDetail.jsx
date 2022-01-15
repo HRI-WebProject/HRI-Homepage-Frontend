@@ -99,7 +99,7 @@ function ActivityDetail() {
         {boardDetail && (
           <Paper elevation={0} square className={styles.paper}>
             <div>
-              {isLogged && <ButtonSet pageFeature="board" id={pageId} />}
+              {isLogged && <ButtonSet pageFeature="activity" id={pageId} />}
             </div>
             <table className={styles.table_}>
               <thead>

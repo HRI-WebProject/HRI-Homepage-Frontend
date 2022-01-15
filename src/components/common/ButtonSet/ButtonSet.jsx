@@ -99,13 +99,26 @@ function ButtonSet({ pageFeature, id, value }) {
             console.log(error);
           });
         break;
-      case "board":
+      case "notice":
         axios
           .delete(`/admin/board/${currentId}`)
           .then((res) => {
             if (res.status === 200) {
               alert("해당 내용이 삭제되었습니다.");
-              window.location.reload();
+              history.push("/board/notice");
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        break;
+      case "activity":
+        axios
+          .delete(`/admin/board/${currentId}`)
+          .then((res) => {
+            if (res.status === 200) {
+              alert("해당 내용이 삭제되었습니다.");
+              history.push("/board/activity");
             }
           })
           .catch(function (error) {

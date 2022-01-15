@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Menu, Dropdown, Select, Button } from "antd";
-import { GlobalOutlined } from "@ant-design/icons";
+import { Menu, Dropdown, Button } from "antd";
+import { GlobalOutlined, MenuOutlined } from "@ant-design/icons";
 import styles from "@navbar/NavBar.module.css";
+import { useMediaQuery } from "react-responsive";
 import { useHistory } from "react-router";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearUser } from "@actions/user_action";
 
 function NavBar() {
   const account = useSelector((state) => state.user.loginSuccess);
   const [isLogged, setIsLogged] = useState(false);
-  const [page, setPage] = useState("home");
   const [isTop, setIsTop] = useState(true);
+  const [navbarColor, setNavbarColor] = useState();
   const history = useHistory();
   const dispatch = useDispatch();
   const [scrollLocation, setScrollLocation] = useState(
     document.documentElement.scrollTop
   );
+
+  const isSmallScreen = useMediaQuery({
+    query: "(max-width: 900px)",
+  });
 
   const listener = (e) => {
     setScrollLocation();
@@ -25,42 +29,60 @@ function NavBar() {
     } else setIsTop(false);
   };
 
-  const categories = [
-    "Research",
-    "Professor",
-    "Members",
-    "Publications",
-    "Projects",
-    "Board",
-    "Contact",
-  ];
-  const path = [
-    "/",
-    "/research/researchArea",
-    "/professor",
-    "/members",
-    "/publications/journal",
-    "/projects",
-    "/board/notice",
-    "/contact",
+  const category_set = [
+    {
+      title: "Research",
+      path: "/research/researchArea",
+    },
+    {
+      title: "Professor",
+      path: "/professor",
+    },
+    {
+      title: "Members",
+      path: "/members",
+    },
+    {
+      title: "Publications",
+      path: "/publications/journal",
+    },
+    {
+      title: "Board",
+      path: "/board/notice",
+    },
+    {
+      title: "Contact",
+      path: "/contact",
+    },
   ];
 
   const language_menu = (
     <Menu>
-      <Menu.Item style={{ width: "100px" }} key="ko">
+      <Menu.Item style={{ width: "200px", height: "50px" }} key="ko">
         <div style={{ fontSize: "1.1em" }}>한국어</div>
       </Menu.Item>
-      <Menu.Item>
-        <div style={{ fontSize: "1.1em" }} key="en">
-          English
-        </div>
+      <Menu.Item style={{ width: "200px", height: "50px" }} key="en">
+        <div style={{ fontSize: "1.2em" }}>English</div>
       </Menu.Item>
+    </Menu>
+  );
+
+  const menu_select = (
+    <Menu>
+      {category_set.map((menu, idx) => (
+        <Menu.Item
+          style={{ width: "200px", height: "50px" }}
+          key={menu.title}
+          onClick={() => movePage(menu.path)}
+        >
+          <div style={{ fontSize: "1.2em" }}>{menu.title}</div>
+        </Menu.Item>
+      ))}
     </Menu>
   );
 
   const movePage = (url, idx) => {
     history.push(url);
-    setPage(categories[idx]);
   };
 
   const handleLogout = () => {
@@ -71,8 +93,8 @@ function NavBar() {
 
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
+    let path = category_set.map((a) => a.path);
     var url_idx = path.findIndex((value) => value === window.location.pathname);
-    if (url_idx === 0) setPage(categories[url_idx - 1]);
   }, []);
 
   useEffect(() => {
@@ -80,6 +102,8 @@ function NavBar() {
   }, [account]);
 
   useEffect(() => {
+    if (isTop) setNavbarColor("#0b0a29");
+    else setNavbarColor("#000209");
     window.addEventListener("scroll", listener);
     return () => {
       window.removeEventListener("scroll", listener);
@@ -119,69 +143,47 @@ function NavBar() {
             </span>
           )}
         </div>
-        {isTop ? (
-          <div className={styles.navbar_top}>
+        <>
+          <div
+            className={styles.navbar}
+            style={{ backgroundColor: navbarColor }}
+          >
             <img
               className={styles.logo}
               src="/assets/logo/logo.png"
               onClick={() => movePage("/")}
             />
             <div className={styles.menu}>
-              {categories.map((submenu, idx) => {
+              {category_set.map((item, idx) => {
                 return (
                   <Button
                     type="text"
                     key={idx + 1}
                     className={styles.menu_btn}
-                    onClick={() => movePage(path[idx + 1], idx)}
+                    onClick={() => movePage(category_set[idx].path, idx)}
                   >
-                    <div className={styles.menu_title}>{submenu}</div>
+                    <div className={styles.menu_title}>{item.title}</div>
                   </Button>
                 );
               })}
             </div>
-            <Dropdown
-              overlay={language_menu}
-              placement="bottomCenter"
-              className={styles.dropdown}
-            >
-              <div className={styles.language_select}>
-                <GlobalOutlined />
-              </div>
-            </Dropdown>
           </div>
-        ) : (
-          <div className={styles.navbar}>
-            <img
-              className={styles.logo}
-              src="/assets/logo/logo.png"
-              onClick={() => movePage("/")}
-            />
-            <div className={styles.menu}>
-              {categories.map((submenu, idx) => {
-                return (
-                  <Button
-                    type="text"
-                    key={idx + 1}
-                    className={styles.menu_btn}
-                    onClick={() => movePage(path[idx + 1], idx)}
-                  >
-                    <div className={styles.menu_title}>{submenu}</div>
-                  </Button>
-                );
-              })}
+          {isSmallScreen ? (
+            <Dropdown overlay={menu_select} placement="bottomCenter">
+              <MenuOutlined
+                className={styles.menu_select}
+                style={{ color: "white" }}
+              />
+            </Dropdown>
+          ) : (
+            <></>
+          )}
+          <Dropdown overlay={language_menu} placement="bottomCenter">
+            <div className={styles.language_select}>
+              <GlobalOutlined />
             </div>
-            <Dropdown
-              overlay={language_menu}
-              placement="bottomCenter"
-              className={styles.dropdown}
-            >
-              <div className={styles.language_select}>
-                <GlobalOutlined />
-              </div>
-            </Dropdown>
-          </div>
-        )}
+          </Dropdown>
+        </>
       </div>
     </div>
   );
