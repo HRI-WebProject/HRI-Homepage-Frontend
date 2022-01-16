@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Menu, Dropdown, Button } from "antd";
 import { GlobalOutlined, MenuOutlined } from "@ant-design/icons";
-import styles from "@navbar/NavBar.module.css";
+import styles from "./NavBar.module.css";
 import { useMediaQuery } from "react-responsive";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { clearUser } from "@actions/user_action";
+import { clearUser } from "../../../redux/actions/user_action";
 
 function NavBar() {
   const account = useSelector((state) => state.user.loginSuccess);

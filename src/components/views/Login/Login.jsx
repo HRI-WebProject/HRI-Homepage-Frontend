@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Form, Input, Button, Checkbox } from "antd";
-import styles from "@login/Login.module.css";
+import styles from "./Login.module.css";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
-import { loginUser } from "@actions/user_action";
+import { loginUser } from "../../../redux/actions/user_action";
 
 function Login(props) {
   const history = useHistory();

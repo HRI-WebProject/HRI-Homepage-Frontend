@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "@/index.css";
-import App from "@/App";
+import "./index.css";
+import App from "./App";
 import "bootstrap/dist/css/bootstrap.css";
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
@@ -9,7 +9,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { applyMiddleware, createStore } from "redux";
 import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
-import Reducer from "@reducers";
+import Reducer from "./redux/reducers";
 
 const createStoreWithMiddlware = applyMiddleware(
   promiseMiddleware,

@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { useHistory } from "react-router";
 import "antd/dist/antd.css";
 import { Card, Row, Col, Tag, Image } from "antd";
-import styles from "@mainpage/MainPage.module.css";
+import styles from "./MainPage.module.css";
 
 function MainPage() {
   const history = useHistory();

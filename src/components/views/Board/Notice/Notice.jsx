@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "@notice/Notice.module.css";
-import TitleBar from "@titlebar/TitleBar";
-import TopMenu from "@topmenu/TopMenu";
-import BoardList from "@/components/views/Board/Notice/sections/BoardList";
+import styles from "./Notice.module.css";
+import TitleBar from "../../../common/TitleBar/TitleBar";
+import TopMenu from "../../../common/TopMenu/TopMenu";
+import BoardList from "./sections/BoardList";
 
 function Notice() {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "@activity/Activity.module.css";
-import TitleBar from "@titlebar/TitleBar";
-import TopMenu from "@topmenu/TopMenu";
-import ActivityList from "@/components/views/Board/Activity/sections/ActivityList";
+import styles from "./Activity.module.css";
+import TitleBar from "../../../common/TitleBar/TitleBar";
+import TopMenu from "../../../common/TopMenu/TopMenu";
+import ActivityList from "./sections/ActivityList";
 
 function Activity() {
   return (

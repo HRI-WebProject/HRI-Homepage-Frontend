@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "@titlebar/TitleBar.module.css";
-import Header from "@/components/common/Header/Header";
+import styles from "./TitleBar.module.css";
+import Header from "../Header/Header";
 
 function TitleBar({ title, category }) {
   return (

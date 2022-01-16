@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useLocation } from "react-router";
 import { useSelector } from "react-redux";
-import styles from "@notice/Notice.module.css";
+import styles from "../../Notice/Notice.module.css";
 import { Paper } from "@mui/material";
-import TitleBar from "@titlebar/TitleBar";
-import TopMenu from "@topmenu/TopMenu";
+import TitleBar from "../../../../common/TitleBar/TitleBar";
+import TopMenu from "../../../../common/TopMenu/TopMenu";
 import { Form, Input, Row, Col, Button } from "antd";
 
 function ActivityEdit() {

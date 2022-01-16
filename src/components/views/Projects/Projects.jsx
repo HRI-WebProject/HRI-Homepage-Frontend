@@ -4,11 +4,11 @@ import { useMediaQuery } from "react-responsive";
 import { useSelector } from "react-redux";
 import { Row, Col, Image } from "antd";
 import { Paper } from "@mui/material";
-import styles from "@projects/Projects.module.css";
-import TitleBar from "@titlebar/TitleBar";
-import ProjectBudget from "@projects/sections/projectBudget/ProjectBudget";
-import AddButton from "@common/AddButton/AddButton";
-import ButtonSet from "@common/ButtonSet/ButtonSet";
+import styles from "./Projects.module.css";
+import TitleBar from "../../common/TitleBar/TitleBar";
+import ProjectBudget from "./sections/projectBudget/ProjectBudget";
+import AddButton from "../../common/AddButton/AddButton";
+import ButtonSet from "../../common/ButtonSet/ButtonSet";
 
 function Projects() {
   const account = useSelector((state) => state.user.loginSuccess);

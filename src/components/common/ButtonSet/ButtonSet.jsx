@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Button } from "antd";
-import styles from "@common/ButtonSet/ButtonSet.module.css";
+import styles from "./ButtonSet.module.css";
 import { useHistory } from "react-router";
 
 function ButtonSet({ pageFeature, id, value }) {

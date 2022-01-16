@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Menu } from "antd";
 import { useHistory } from "react-router";
-import styles from "@topmenu/TopMenu.module.css";
+import styles from "./TopMenu.module.css";
 
 function TopMenu({ selected_key }) {
   const currentURL = window.location.pathname;

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@common/Header/Header.module.css";
+import styles from "./Header.module.css";
 import { Breadcrumb } from "antd";
 import HomeIcon from "@mui/icons-material/Home";
 

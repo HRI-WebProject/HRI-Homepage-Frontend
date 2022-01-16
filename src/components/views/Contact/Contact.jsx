@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
-import styles from "@contact/Contact.module.css";
-import MapContainer from "@contact/sections/MapContainer";
-import TitleBar from "@titlebar/TitleBar";
+import styles from "./Contact.module.css";
+import MapContainer from "./sections/MapContainer";
+import TitleBar from "../../common/TitleBar/TitleBar";
 import { Row, Col } from "antd";
 import { Paper, Divider, Typography } from "@mui/material";
 

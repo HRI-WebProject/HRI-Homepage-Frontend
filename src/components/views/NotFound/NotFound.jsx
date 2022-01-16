@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@notfound/NotFound.module.css";
+import styles from "./NotFound.module.css";
 import { useHistory } from "react-router-dom";
 import { Result, Button } from "antd";
 

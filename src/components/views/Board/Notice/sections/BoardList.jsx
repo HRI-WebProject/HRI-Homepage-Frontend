@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
-import styles from "@notice/Notice.module.css";
+import styles from "../Notice.module.css";
 import { Paper } from "@mui/material";
 import { Table } from "antd";
-import AddButton from "@common/AddButton/AddButton";
+import AddButton from "../../../../common/AddButton/AddButton";
 
 function BoardList() {
   const history = useHistory();

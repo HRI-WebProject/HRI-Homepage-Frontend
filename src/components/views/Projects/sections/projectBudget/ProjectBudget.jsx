@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "@projects/Projects.module.css";
+import styles from "../../Projects.module.css";
 import { Paper } from "@mui/material";
-import BudgetTable from "@projects/sections/projectBudget/BudgetTable";
+import BudgetTable from "./BudgetTable";
 
 function ProjectBudget() {
   return (

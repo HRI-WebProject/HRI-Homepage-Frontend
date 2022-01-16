@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import styles from "@conference/Conference.module.css";
-import TitleBar from "@titlebar/TitleBar";
-import TopMenu from "@topmenu/TopMenu";
-import { List, Tabs, Divider, Row, Col } from "antd";
-import { Paper, Typography } from "@mui/material";
-import AddButton from "@common/AddButton/AddButton";
-import ButtonSet from "@common/ButtonSet/ButtonSet";
+import styles from "./Conference.module.css";
+import TitleBar from "../../../common/TitleBar/TitleBar";
+import TopMenu from "../../../common/TopMenu/TopMenu";
+import { List } from "antd";
+import { Paper } from "@mui/material";
+import AddButton from "../../../common/AddButton/AddButton";
+import ButtonSet from "../../../common/ButtonSet/ButtonSet";
 
 function Conference() {
   const account = useSelector((state) => state.user.loginSuccess);
