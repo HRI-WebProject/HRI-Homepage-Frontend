@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import TitleBar from "@titlebar/TitleBar";
-import styles from "@members/Members.module.css";
+import TitleBar from "../../common/TitleBar/TitleBar";
+import styles from "./Members.module.css";
 import { Paper } from "@mui/material";
-import TopMenu from "@topmenu/TopMenu";
+import TopMenu from "../../common/TopMenu/TopMenu";
 import { useMediaQuery } from "react-responsive";
-import MemberGrid from "@members/sections/MemberGrid";
-import AddButton from "@common/AddButton/AddButton";
+import MemberGrid from "./sections/MemberGrid";
+import AddButton from "../../common/AddButton/AddButton";
 
 function Members() {
   const account = useSelector((state) => state.user.loginSuccess);

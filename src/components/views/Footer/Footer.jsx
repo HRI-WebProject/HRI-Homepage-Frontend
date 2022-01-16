@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import styles from "@footer/Footer.module.css";
+import styles from "./Footer.module.css";
 import { PlusOutlined } from "@ant-design/icons";
 import { useMediaQuery } from "react-responsive";
 import { Row, Col, Tag, Menu, Dropdown } from "antd";

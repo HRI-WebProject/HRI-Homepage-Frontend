@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import EmailIcon from "@material-ui/icons/Email";
 import { styled } from "@mui/material/styles";
 import { Row, Col, Image } from "antd";
-import styles from "@members/Members.module.css";
-import ButtonSet from "@common/ButtonSet/ButtonSet";
+import styles from "../Members.module.css";
+import ButtonSet from "../../../common/ButtonSet/ButtonSet";
 
 function MemberGrid({ memberData, col_size, degree, isLogged }) {
   const Img = styled("img")({

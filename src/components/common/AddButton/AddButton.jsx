@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import styles from "@common/AddButton/AddButton.module.css";
+import styles from "./AddButton.module.css";
 import { useHistory } from "react-router";
 
 function AddButton({ value }) {

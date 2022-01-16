@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
-import ProfessorGrid from "@professor/sections/ProfessorGrid";
-import styles from "@professor/Professor.module.css";
-import TitleBar from "@titlebar/TitleBar";
+import ProfessorGrid from "./sections/ProfessorGrid";
+import styles from "./Professor.module.css";
+import TitleBar from "../../common/TitleBar/TitleBar";
 import { Paper } from "@mui/material";
-import AddButton from "@common/AddButton/AddButton";
+import AddButton from "../../common/AddButton/AddButton";
 
 function Professor() {
   const account = useSelector((state) => state.user.loginSuccess);

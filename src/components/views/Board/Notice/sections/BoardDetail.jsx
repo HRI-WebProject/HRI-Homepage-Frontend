@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useLocation } from "react-router";
 import { useSelector } from "react-redux";
-import styles from "@notice/Notice.module.css";
+import styles from "../Notice.module.css";
 import { Paper } from "@mui/material";
-import TitleBar from "@titlebar/TitleBar";
-import TopMenu from "@topmenu/TopMenu";
-import { List, Typography, Divider } from "antd";
+import TitleBar from "../../../../common/TitleBar/TitleBar";
+import TopMenu from "../../../../common/TopMenu/TopMenu";
+import { List } from "antd";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ListIcon from "@material-ui/icons/List";
-import ButtonSet from "@common/ButtonSet/ButtonSet";
+import ButtonSet from "../../../../common/ButtonSet/ButtonSet";
 
 function BoardDetail() {
   const history = useHistory();

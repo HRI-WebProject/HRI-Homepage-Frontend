@@ -3,8 +3,8 @@ import axios from "axios";
 import { useHistory, useLocation } from "react-router";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
-import styles from "@professor/Professor.module.css";
-import TitleBar from "@titlebar/TitleBar";
+import styles from "../Members.module.css";
+import TitleBar from "../../../common/TitleBar/TitleBar";
 import { Form, Input, Button, Col, Row, Radio, Switch } from "antd";
 import { Paper } from "@mui/material";
 

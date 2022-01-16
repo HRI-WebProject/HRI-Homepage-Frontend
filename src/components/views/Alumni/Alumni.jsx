@@ -4,11 +4,11 @@ import { Statistic, Row, Col } from "antd";
 import { useMediaQuery } from "react-responsive";
 import { useSelector } from "react-redux";
 import { Paper } from "@mui/material";
-import styles from "@alumni/Alumni.module.css";
-import TitleBar from "@titlebar/TitleBar";
-import TopMenu from "@topmenu/TopMenu";
-import MemberGrid from "@members/sections/MemberGrid";
-import AddButton from "@common/AddButton/AddButton";
+import styles from "./Alumni.module.css";
+import TitleBar from "../../common/TitleBar/TitleBar";
+import TopMenu from "../../common/TopMenu/TopMenu";
+import MemberGrid from "../Members/sections/MemberGrid";
+import AddButton from "../../common/AddButton/AddButton";
 
 function Alumni() {
   const account = useSelector((state) => state.user.loginSuccess);

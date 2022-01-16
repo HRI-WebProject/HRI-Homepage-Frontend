@@ -1,4 +1,4 @@
-import { LOGIN_USER, CLEAR_USER } from "@actions/types";
+import { LOGIN_USER, CLEAR_USER } from "../actions/types";
 
 const user = (state = {}, action) => {
   switch (action.type) {

@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 import { useSelector } from "react-redux";
-import styles from "@researcharea/ResearchArea.module.css";
+import styles from "./ResearchArea.module.css";
 import { Paper } from "@mui/material";
-import TitleBar from "@titlebar/TitleBar";
-import TopMenu from "@topmenu/TopMenu";
+import TitleBar from "../../common/TitleBar/TitleBar";
+import TopMenu from "../../common/TopMenu/TopMenu";
 import { Row, Col, Card, Image } from "antd";
-import AddButton from "@common/AddButton/AddButton";
-import ButtonSet from "@common/ButtonSet/ButtonSet";
+import AddButton from "../../common/AddButton/AddButton";
+import ButtonSet from "../../common/ButtonSet/ButtonSet";
 
 function ResearchArea() {
   const account = useSelector((state) => state.user.loginSuccess);
