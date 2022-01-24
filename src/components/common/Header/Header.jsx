@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Header.module.css";
 import { Breadcrumb } from "antd";
 import HomeIcon from "@mui/icons-material/Home";
+import Fade from "react-reveal/Fade";
 
 function Header({ title, category }) {
   const renderSwitch = (param) => {
@@ -73,16 +74,14 @@ function Header({ title, category }) {
     switch (param) {
       case "Research":
         return (
-          <>
-            연구 분야와 연구실에서 활용할 수 있는 대표 장비들에 대해 소개합니다.
-          </>
+          <>연구 분야와 연구실에 배치된 다양한 연구 기자재에 대해 안내합니다.</>
         );
       case "Professor":
-        return <>연구실 교수님 소개입니다.</>;
+        return <>연구실 소속 교수님 소개입니다.</>;
       case "Members":
-        return <>연구실 구성원 정보입니다.</>;
+        return <>연구실 소속 구성원 및 졸업생 정보입니다.</>;
       case "Publications":
-        return <>연구실에서 발표한 논문 및 특허 부분입니다.</>;
+        return <>연구실에서 발표한 각종 논문 및 특허 부분입니다.</>;
       case "Projects":
         return <>현재 연구실에서 진행 중인 프로젝트에 대한 소개입니다.</>;
       case "Board":
@@ -90,7 +89,7 @@ function Header({ title, category }) {
           <>연구실 행사 관련 소식을 전하고, 활동 모습에 대해 소개합니다.</>
         );
       case "Contact":
-        return <>연구실 연락처입니다.</>;
+        return <>연구실 연락 정보입니다.</>;
       default:
         break;
     }
@@ -98,21 +97,23 @@ function Header({ title, category }) {
 
   return (
     <div className={styles.header}>
-      <div className={styles.inner}>
-        <div>
-          <Breadcrumb separator="">
-            <Breadcrumb.Item href="/" className={styles.a_tag}>
-              <span style={{ color: "white" }}>
-                <HomeIcon className={styles.homeicon} fontSize="large" />
-                홈&nbsp;&nbsp;&gt;&nbsp;&nbsp;
-              </span>
-            </Breadcrumb.Item>
-            <span style={{ color: "white" }}>{renderSwitch(title)}</span>
-          </Breadcrumb>
+      <Fade bottom distance="30px">
+        <div className={styles.inner}>
+          <div>
+            <Breadcrumb separator="">
+              <Breadcrumb.Item href="/" className={styles.a_tag}>
+                <span style={{ color: "white" }}>
+                  <HomeIcon className={styles.homeicon} fontSize="large" />
+                  홈&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                </span>
+              </Breadcrumb.Item>
+              <span style={{ color: "white" }}>{renderSwitch(title)}</span>
+            </Breadcrumb>
+          </div>
+          <div className={styles.title}>{category}</div>
+          <div className={styles.subtitle}>{renderSwitchIntro(category)}</div>
         </div>
-        <div className={styles.title}>{category}</div>
-        <div className={styles.subtitle}>{renderSwitchIntro(category)}</div>
-      </div>
+      </Fade>
     </div>
   );
 }

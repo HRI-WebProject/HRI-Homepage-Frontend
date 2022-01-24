@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 import MainPage from "./components/views/MainPage/MainPage";
 import NavBar from "./components/views/NavBar/NavBar";
@@ -39,6 +39,7 @@ import PublicRoute from "./utils/PublicRoute";
 import ScrollToTop from "./components/common/ScrollToTop/ScrollToTop";
 import { BackTop } from "antd";
 import "./App.less";
+import Fade from "react-reveal/Fade";
 
 function App() {
   // const isDesktopOrLaptop = useMediaQuery({ minDeviceWidth: 1224 });

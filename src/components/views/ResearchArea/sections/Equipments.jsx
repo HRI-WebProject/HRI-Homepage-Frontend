@@ -10,6 +10,7 @@ import { Row, Col, Card, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import EquipmentAddCard from "./EquipmentAddCard";
 import EquipmentEditCard from "./EquipmentEditCard";
+import Fade from "react-reveal/Fade";
 
 function Equipments() {
   const account = useSelector((state) => state.user.loginSuccess);
@@ -97,29 +98,36 @@ function Equipments() {
                     <EquipmentEditCard currentId={curId} />
                   ) : (
                     <Col span={colSize}>
-                      <Card
-                        hoverable={false}
-                        style={{ width: 240 }}
-                        cover={<img alt="example" src={item.photo} />}
-                      >
-                        <Meta title={item.name} description={item.engName} />
-                      </Card>
-                      {isLogged && (
-                        <div className={styles.container_left}>
-                          <Button
-                            className={styles.edit_button}
-                            onClick={() => editProcess(item.id)}
+                      <Fade top distance="20px">
+                        <>
+                          <Card
+                            hoverable
+                            style={{ width: 240, cursor: "default" }}
+                            cover={<img alt="example" src={item.photo} />}
                           >
-                            Edit
-                          </Button>
-                          <Button
-                            className={styles.delete_button}
-                            onClick={() => deleteProcess(item.id)}
-                          >
-                            Delete
-                          </Button>
-                        </div>
-                      )}
+                            <Meta
+                              title={item.name}
+                              description={item.engName}
+                            />
+                          </Card>
+                          {isLogged && (
+                            <div className={styles.container_left}>
+                              <Button
+                                className={styles.edit_button}
+                                onClick={() => editProcess(item.id)}
+                              >
+                                Edit
+                              </Button>
+                              <Button
+                                className={styles.delete_button}
+                                onClick={() => deleteProcess(item.id)}
+                              >
+                                Delete
+                              </Button>
+                            </div>
+                          )}
+                        </>
+                      </Fade>
                     </Col>
                   )}
                 </>
