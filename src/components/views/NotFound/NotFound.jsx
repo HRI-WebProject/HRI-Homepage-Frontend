@@ -10,16 +10,17 @@ function NotFound() {
   };
   return (
     <div className={styles.container}>
-      <Result
-        status="404"
-        title="404"
-        subTitle="Sorry, the page you visited does not exist."
-        extra={
+      <div className={styles.box}>
+        <div className={styles.number_text}>404</div>
+        <div className={styles.eng_text}>
+          Sorry, the page you visited does not exist.
+        </div>
+        <div className={styles.but}>
           <Button type="primary" onClick={moveBack} size="large">
-            Back Home
+            Back To Home
           </Button>
-        }
-      />
+        </div>
+      </div>
     </div>
   );
 }

@@ -90,7 +90,8 @@ function NavBar() {
   };
 
   const handleLogout = () => {
-    localStorage.clear();
+    // localStorage.clear();
+    sessionStorage.clear();
     dispatch(clearUser());
     window.location.reload();
   };

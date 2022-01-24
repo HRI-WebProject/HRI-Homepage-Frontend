@@ -82,7 +82,6 @@ function MainPage() {
   ];
 
   useEffect(() => {
-    console.log(isSmallScreen);
     if (isSmallScreen) {
       setColSize(24);
       setCardWidth("80vw");
@@ -101,7 +100,7 @@ function MainPage() {
       </Fade>
       <div className={styles.inner}>
         <div className={styles.section_title}>About Lab .</div>
-        <Fade>
+        <Fade top distance="30px">
           <div className={styles.read_more_cards}>
             <Row gutter={[32, 32]}>
               {read_more_cards.map((item, idx) => (
@@ -135,7 +134,7 @@ function MainPage() {
           </div>
         </Fade>
         <div className={styles.section_title}>Support</div>
-        <Fade>
+        <Fade top distance="30px">
           <div>
             <div className={styles.support_card_title}>
               <div>저희 연구실에서는 다음과 같은 지원이 가능합니다. </div>

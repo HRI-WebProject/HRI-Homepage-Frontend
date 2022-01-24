@@ -1,5 +1,5 @@
 const isAdmin = () => {
-  return !!localStorage.getItem("isLogin");
+  return !!sessionStorage.getItem("isLogin");
 };
 
 export default isAdmin;
