@@ -50,7 +50,7 @@ function ActivityWrite() {
 
   return (
     <div>
-      <TitleBar title="활동" category="Board" />
+      <TitleBar title="activity" category="Board" />
       <div className={styles.container}>
         <TopMenu selected_key="Board" />
         <Paper elevation={0} square className={styles.paper}>

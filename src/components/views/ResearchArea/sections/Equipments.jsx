@@ -75,7 +75,7 @@ function Equipments() {
 
   return (
     <div>
-      <TitleBar title="연구실 장비" category="Research" />
+      <TitleBar title="researchEquipment" category="Research" />
       <div className={styles.container}>
         <TopMenu selected_key="ResearchArea" />
         <Paper elevation={0} square className={styles.paper}>

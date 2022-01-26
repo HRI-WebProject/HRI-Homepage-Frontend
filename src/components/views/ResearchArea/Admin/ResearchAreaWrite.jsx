@@ -50,7 +50,7 @@ function ResearchAreaWrite() {
 
   return (
     <div>
-      <TitleBar title="연구 분야" category="Research" />
+      <TitleBar title="researchArea" category="Research" />
       <div className={styles.container}>
         <Paper elevation={0} square className={styles.paper}>
           <Form

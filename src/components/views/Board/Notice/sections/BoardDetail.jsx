@@ -11,8 +11,10 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ListIcon from "@material-ui/icons/List";
 import ButtonSet from "../../../../common/ButtonSet/ButtonSet";
+import { useTranslation } from "react-i18next";
 
 function BoardDetail() {
+  const { t, i18n } = useTranslation();
   const history = useHistory();
   const location = useLocation();
   const account = useSelector((state) => state.user.loginSuccess);
@@ -92,7 +94,7 @@ function BoardDetail() {
 
   return (
     <div>
-      <TitleBar title="소식" category="Board" />
+      <TitleBar title="notice" category="Board" />
       <div className={styles.container}>
         <TopMenu selected_key="Board" />
         {boardDetail && (
@@ -110,10 +112,10 @@ function BoardDetail() {
                 <tr>
                   <td className={styles.table_td_1}>
                     <span style={{ paddingRight: "50px" }}>
-                      <b>작성자</b> | {boardDetail.author}
+                      <b>{t("board-table-author")}</b> | {boardDetail.author}
                     </span>
                     <span>
-                      <b>작성일</b> |{" "}
+                      <b>{t("board-table-date")}</b> |{" "}
                       {convertToStringDate(boardDetail.createDate)}
                     </span>
                   </td>

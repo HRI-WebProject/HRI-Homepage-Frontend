@@ -81,7 +81,7 @@ function MembersEdit() {
 
   return (
     <div>
-      <TitleBar title="구성원" category="Members" />
+      <TitleBar title="members" category="Members" />
       <div className={styles.container}>
         <Paper elevation={0} square className={styles.paper}>
           {memberData && (

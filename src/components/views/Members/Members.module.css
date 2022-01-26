@@ -2,7 +2,7 @@
   width: 1100px;
   padding-bottom: 2%;
   min-height: calc(65vh);
-  word-break: break-all;
+  word-break: keep-all;
   margin: 0 auto;
 }
 
@@ -21,7 +21,7 @@
     width: 90vw;
     padding-bottom: 2%;
     min-height: calc(65vh);
-    word-break: break-all;
+    word-break: keep-all;
     margin: 0 auto;
     background-color: #f5f5f5;
     margin-top: -500px;

@@ -51,7 +51,7 @@ function ProfessorWrite() {
 
   return (
     <div>
-      <TitleBar title="교수진" category="Professor" />
+      <TitleBar title="professor" category="Professor" />
       <div className={styles.container}>
         <Paper elevation={0} square className={styles.paper}>
           <Form

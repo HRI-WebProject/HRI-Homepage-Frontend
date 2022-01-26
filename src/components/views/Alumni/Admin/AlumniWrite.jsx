@@ -50,7 +50,7 @@ function AlumniWrite() {
 
   return (
     <div>
-      <TitleBar title="졸업생" category="Members" />
+      <TitleBar title="alumni" category="Members" />
       <div className={styles.container}>
         <Paper elevation={0} square className={styles.paper}>
           <Form

@@ -32,7 +32,7 @@ function Conference() {
 
   return (
     <div>
-      <TitleBar title="학술대회" category="Publications" />
+      <TitleBar title="conference" category="Publications" />
       <div className={styles.container}>
         <TopMenu selected_key="Publications" />
         <Paper elevation={0} square className={styles.paper}>
