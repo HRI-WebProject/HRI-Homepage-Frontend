@@ -23,12 +23,12 @@ function Alumni() {
   });
 
   const imageList = [
-    "/assets/alumni/workplace1.png",
-    "/assets/alumni/workplace2.png",
-    "/assets/alumni/workplace3.png",
-    "/assets/alumni/workplace4.png",
-    "/assets/alumni/workplace5.png",
-    "/assets/alumni/workplace6.png",
+    "/assets/alumni/workplace1.bmp",
+    "/assets/alumni/workplace2.bmp",
+    "/assets/alumni/workplace3.bmp",
+    "/assets/alumni/workplace4.bmp",
+    "/assets/alumni/workplace5.bmp",
+    "/assets/alumni/workplace6.bmp",
   ];
 
   useEffect(() => {

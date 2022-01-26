@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import "antd/dist/antd.css";
 import { Card, Row, Col, Tag, Image } from "antd";
 import styles from "./MainPage.module.css";
+import Fade from "react-reveal/Fade";
 
 function MainPage() {
   const history = useHistory();
@@ -81,7 +82,6 @@ function MainPage() {
   ];
 
   useEffect(() => {
-    console.log(isSmallScreen);
     if (isSmallScreen) {
       setColSize(24);
       setCardWidth("80vw");
@@ -93,76 +93,84 @@ function MainPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.carousel}>
-        <img src="/assets/main/main1.png" />
-      </div>
+      <Fade right>
+        <div className={styles.carousel}>
+          <img src="/assets/main/main1.bmp" />
+        </div>
+      </Fade>
       <div className={styles.inner}>
         <div className={styles.section_title}>About Lab .</div>
-        <div className={styles.read_more_cards}>
-          <Row gutter={[32, 32]}>
-            {read_more_cards.map((item, idx) => (
-              <Col span={8}>
-                <Card
-                  key={idx}
-                  hoverable
-                  onClick={() => movePage(item.path)}
-                  cover={
-                    <img
-                      alt="example"
-                      src={item.photo}
-                      style={{ height: "200px" }}
-                      preview={false}
-                    />
-                  }
-                >
-                  <div className={styles.card_meta}>
-                    <div className={styles.card_title}>{item.title}</div>
-                    <div className={styles.card_description}>
-                      {item.description}
+        <Fade top distance="30px">
+          <div className={styles.read_more_cards}>
+            <Row gutter={[32, 32]}>
+              {read_more_cards.map((item, idx) => (
+                <Col span={8}>
+                  <Card
+                    key={idx}
+                    hoverable
+                    onClick={() => movePage(item.path)}
+                    cover={
+                      <img
+                        alt="example"
+                        src={item.photo}
+                        style={{ height: "200px" }}
+                        preview={false}
+                      />
+                    }
+                  >
+                    <div className={styles.card_meta}>
+                      <div className={styles.card_title}>{item.title}</div>
+                      <div className={styles.card_description}>
+                        {item.description}
+                      </div>
+                      <div className={styles.tag}>
+                        {renderSwitch(item.title)}
+                      </div>
                     </div>
-                    <div className={styles.tag}>{renderSwitch(item.title)}</div>
-                  </div>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </div>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </div>
+        </Fade>
         <div className={styles.section_title}>Support</div>
-        <div>
-          <div className={styles.support_card_title}>
-            <div>저희 연구실에서는 다음과 같은 지원이 가능합니다. </div>
-            <div>
-              등록금과 생활비 지원이 가능하며, 연구실에 배치된 다양한 연구
-              기자재를 사용하며 본인의 연구를 진행할 수 있습니다.
-              <div>또한 국내외 다양한 학술 대회 참가를 적극 지원합니다.</div>
+        <Fade top distance="30px">
+          <div>
+            <div className={styles.support_card_title}>
+              <div>저희 연구실에서는 다음과 같은 지원이 가능합니다. </div>
+              <div>
+                등록금과 생활비 지원이 가능하며, 연구실에 배치된 다양한 연구
+                기자재를 사용하여 본인의 연구를 진행할 수 있습니다.
+                <div>또한 국내외 다양한 학술 대회 참가를 적극 지원합니다.</div>
+              </div>
+            </div>
+            <div className={styles.support_card}>
+              <Card>
+                {support_list.map((item, idx) => (
+                  <Card.Grid
+                    hoverable={false}
+                    style={{ backgroundColor: item.color }}
+                    className={styles.support_card_grid}
+                  >
+                    <Image
+                      preview={false}
+                      width={120}
+                      src={item.src}
+                      className={styles.support_card_icon}
+                    />
+                    <br />
+                    <font className={styles.support_card_content}>
+                      {item.content}
+                    </font>
+                  </Card.Grid>
+                ))}
+              </Card>
+              <Card hoverable onClick={() => movePage("/contact")}>
+                <div className={styles.contact_card}> Contact Us →</div>
+              </Card>
             </div>
           </div>
-          <div className={styles.support_card}>
-            <Card>
-              {support_list.map((item, idx) => (
-                <Card.Grid
-                  hoverable={false}
-                  style={{ backgroundColor: item.color }}
-                  className={styles.support_card_grid}
-                >
-                  <Image
-                    preview={false}
-                    width={120}
-                    src={item.src}
-                    className={styles.support_card_icon}
-                  />
-                  <br />
-                  <font className={styles.support_card_content}>
-                    {item.content}
-                  </font>
-                </Card.Grid>
-              ))}
-            </Card>
-            <Card hoverable onClick={() => movePage("/contact")}>
-              <div className={styles.contact_card}> Contact Us →</div>
-            </Card>
-          </div>
-        </div>
+        </Fade>
       </div>
     </div>
   );

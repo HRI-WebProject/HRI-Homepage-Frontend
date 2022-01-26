@@ -51,7 +51,7 @@ function BottomFooter() {
   );
 
   const quick_menu_list = [
-    { title: "Research Area", path: "/research/researchArea" },
+    { title: "Research", path: "/research/researchArea" },
     { title: "Professor", path: "/professor" },
     { title: "Members", path: "/members" },
     { title: "Publications", path: "/publications/journal" },

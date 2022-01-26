@@ -43,6 +43,10 @@ function NavBar() {
       path: "/members",
     },
     {
+      title: "Projects",
+      path: "/projects",
+    },
+    {
       title: "Publications",
       path: "/publications/journal",
     },
@@ -86,7 +90,8 @@ function NavBar() {
   };
 
   const handleLogout = () => {
-    localStorage.clear();
+    // localStorage.clear();
+    sessionStorage.clear();
     dispatch(clearUser());
     window.location.reload();
   };
@@ -148,25 +153,27 @@ function NavBar() {
             className={styles.navbar}
             style={{ backgroundColor: navbarColor }}
           >
-            <img
-              className={styles.logo}
-              src="/assets/logo/logo.png"
-              onClick={() => movePage("/")}
-            />
-            <div className={styles.menu}>
-              {category_set.map((item, idx) => {
-                return (
-                  <Button
-                    type="text"
-                    key={idx + 1}
-                    className={styles.menu_btn}
-                    onClick={() => movePage(category_set[idx].path, idx)}
-                  >
-                    <div className={styles.menu_title}>{item.title}</div>
-                  </Button>
-                );
-              })}
-            </div>
+            <>
+              <img
+                className={styles.logo}
+                src="/assets/logo/logo.png"
+                onClick={() => movePage("/")}
+              />
+              <div className={styles.menu}>
+                {category_set.map((item, idx) => {
+                  return (
+                    <Button
+                      type="text"
+                      key={idx + 1}
+                      className={styles.menu_btn}
+                      onClick={() => movePage(category_set[idx].path, idx)}
+                    >
+                      <div className={styles.menu_title}>{item.title}</div>
+                    </Button>
+                  );
+                })}
+              </div>
+            </>
           </div>
           {isSmallScreen ? (
             <Dropdown overlay={menu_select} placement="bottomCenter">

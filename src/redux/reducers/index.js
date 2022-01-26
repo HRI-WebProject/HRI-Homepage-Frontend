@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 import user from "./user_reducer";
 import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import storageSession from "redux-persist/es/storage/session";
 
 const persistConfig = {
   key: "root",
-  storage,
+  storage: storageSession,
   whitelist: ["user"],
 };
 

@@ -75,40 +75,44 @@ function Members() {
       <TitleBar title="구성원" category="Members" />
       <div className={styles.container}>
         <TopMenu selected_key="Members" />
-        <>
-          <Paper elevation={0} square className={styles.paper}>
-            {isLogged && <AddButton />}
-            <div className={styles.subtitle}>
-              <b>박사 과정</b>
-            </div>
+        <Paper elevation={0} square className={styles.paper}>
+          {isLogged && <AddButton />}
+          <div className={styles.subtitle}>
+            <b>박사 과정</b>
+          </div>
+          {phdMembers && (
             <MemberGrid
               memberData={phdMembers}
               col_size={colSize}
               degree="박사 과정"
               isLogged={isLogged}
             />
-            <hr className={styles.hrline} />
-            <div className={styles.subtitle}>
-              <b>석사 과정</b>
-            </div>
+          )}
+          <hr className={styles.hrline} />
+          <div className={styles.subtitle}>
+            <b>석사 과정</b>
+          </div>
+          {masterMembers && (
             <MemberGrid
               memberData={masterMembers}
               col_size={colSize}
               degree="석사 과정"
               isLogged={isLogged}
             />
-            <hr className={styles.hrline} />
-            <div className={styles.subtitle}>
-              <b>학사 과정</b>
-            </div>
+          )}
+          <hr className={styles.hrline} />
+          <div className={styles.subtitle}>
+            <b>학사 과정</b>
+          </div>
+          {bachelorMembers && (
             <MemberGrid
               memberData={bachelorMembers}
               col_size={colSize}
               degree="학사 과정"
               isLogged={isLogged}
             />
-          </Paper>
-        </>
+          )}
+        </Paper>
       </div>
     </div>
   );
