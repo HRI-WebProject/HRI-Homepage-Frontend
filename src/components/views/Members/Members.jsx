@@ -8,6 +8,7 @@ import TopMenu from "../../common/TopMenu/TopMenu";
 import { useMediaQuery } from "react-responsive";
 import MemberGrid from "./sections/MemberGrid";
 import AddButton from "../../common/AddButton/AddButton";
+import { useTranslation } from "react-i18next";
 
 function Members() {
   const account = useSelector((state) => state.user.loginSuccess);
@@ -17,6 +18,7 @@ function Members() {
   const [bachelorMembers, setBachelorMembers] = useState(); // 학사
   const [undergraduate, setUndergraduate] = useState(); // 학부생
   const [colSize, setColSize] = useState();
+  const { t, i18n } = useTranslation();
 
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 600px)",
@@ -72,43 +74,43 @@ function Members() {
 
   return (
     <div>
-      <TitleBar title="구성원" category="Members" />
+      <TitleBar title="members" category="Members" />
       <div className={styles.container}>
         <TopMenu selected_key="Members" />
         <Paper elevation={0} square className={styles.paper}>
           {isLogged && <AddButton />}
           <div className={styles.subtitle}>
-            <b>박사 과정</b>
+            <b>{t("phd-course")}</b>
           </div>
           {phdMembers && (
             <MemberGrid
               memberData={phdMembers}
               col_size={colSize}
-              degree="박사 과정"
+              degree={t("phd-course")}
               isLogged={isLogged}
             />
           )}
           <hr className={styles.hrline} />
           <div className={styles.subtitle}>
-            <b>석사 과정</b>
+            <b>{t("master-course")}</b>
           </div>
           {masterMembers && (
             <MemberGrid
               memberData={masterMembers}
               col_size={colSize}
-              degree="석사 과정"
+              degree={t("master-course")}
               isLogged={isLogged}
             />
           )}
           <hr className={styles.hrline} />
           <div className={styles.subtitle}>
-            <b>학사 과정</b>
+            <b>{t("bachelor-course")}</b>
           </div>
           {bachelorMembers && (
             <MemberGrid
               memberData={bachelorMembers}
               col_size={colSize}
-              degree="학사 과정"
+              degree={t("bachelor-course")}
               isLogged={isLogged}
             />
           )}

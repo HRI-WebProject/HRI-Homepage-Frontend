@@ -6,8 +6,10 @@ import styles from "../Notice.module.css";
 import { Paper } from "@mui/material";
 import { Table } from "antd";
 import AddButton from "../../../../common/AddButton/AddButton";
+import { useTranslation } from "react-i18next";
 
 function BoardList() {
+  const { t, i18n } = useTranslation();
   const history = useHistory();
   const account = useSelector((state) => state.user.loginSuccess);
   const [isLogged, setIsLogged] = useState(false);
@@ -28,24 +30,24 @@ function BoardList() {
 
   const columns = [
     {
-      title: "번호",
+      title: t("board-table-num"),
       dataIndex: "index",
       align: "center",
       width: "6%",
     },
     {
-      title: "제목",
+      title: t("board-table-title"),
       dataIndex: "topic",
       width: "40%",
     },
     {
-      title: "작성자",
+      title: t("board-table-author"),
       dataIndex: "author",
       align: "center",
       width: "10%",
     },
     {
-      title: "작성일",
+      title: t("board-table-date"),
       dataIndex: "createDate",
       align: "center",
       width: "10%",

@@ -7,7 +7,7 @@ import BoardList from "./sections/BoardList";
 function Notice() {
   return (
     <div>
-      <TitleBar title="소식" category="Board" />
+      <TitleBar title="notice" category="Board" />
       <div className={styles.container}>
         <TopMenu selected_key="Board" />
         <BoardList />

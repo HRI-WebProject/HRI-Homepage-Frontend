@@ -32,7 +32,7 @@ function Book() {
 
   return (
     <div>
-      <TitleBar title="도서" category="Publications" />
+      <TitleBar title="book" category="Publications" />
       <div className={styles.container}>
         <TopMenu selected_key="Publications" />
         <Paper elevation={0} square className={styles.paper}>

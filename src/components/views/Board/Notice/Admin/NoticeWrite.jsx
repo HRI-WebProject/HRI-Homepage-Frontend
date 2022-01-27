@@ -53,7 +53,7 @@ function NoticeWrite() {
 
   return (
     <div>
-      <TitleBar title="소식" category="Board" />
+      <TitleBar title="notice" category="Board" />
       <div className={styles.container}>
         <TopMenu selected_key="Board" />
         <Paper elevation={0} square className={styles.paper}>

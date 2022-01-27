@@ -32,7 +32,7 @@ function Journal() {
 
   return (
     <div>
-      <TitleBar title="학술지" category="Publications" />
+      <TitleBar title="journal" category="Publications" />
       <div className={styles.container}>
         <TopMenu selected_key="Publications" />
         <Paper elevation={0} square className={styles.paper}>

@@ -2,11 +2,13 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Menu } from "antd";
 import { useHistory } from "react-router";
 import styles from "./TopMenu.module.css";
+import { useTranslation } from "react-i18next";
 
 function TopMenu({ selected_key }) {
   const currentURL = window.location.pathname;
   const [key, setKey] = useState();
   const history = useHistory();
+  const { t, i18n } = useTranslation();
   const movePage = (url) => {
     history.push(url);
   };
@@ -20,13 +22,13 @@ function TopMenu({ selected_key }) {
               key="research/researchArea"
               onClick={() => movePage("/research/researchArea")}
             >
-              <font className={styles.menuitem}>연구 분야</font>
+              <font className={styles.menuitem}>{t("researchArea")}</font>
             </Menu.Item>
             <Menu.Item
               key="research/equipments"
               onClick={() => movePage("/research/equipments")}
             >
-              <font className={styles.menuitem}>연구실 장비</font>
+              <font className={styles.menuitem}>{t("researchEquipment")}</font>
             </Menu.Item>
           </>
         );
@@ -34,10 +36,10 @@ function TopMenu({ selected_key }) {
         return (
           <>
             <Menu.Item key="members" onClick={() => movePage("/members")}>
-              <font className={styles.menuitem}>구성원</font>
+              <font className={styles.menuitem}>{t("members")}</font>
             </Menu.Item>
             <Menu.Item key="alumni" onClick={() => movePage("/alumni")}>
-              <font className={styles.menuitem}> 졸업생</font>
+              <font className={styles.menuitem}> {t("alumni")}</font>
             </Menu.Item>
           </>
         );
@@ -45,7 +47,7 @@ function TopMenu({ selected_key }) {
         return (
           <>
             <Menu.Item key="professor" onClick={() => movePage("/professor")}>
-              <font className={styles.menuitem}>교수진</font>
+              <font className={styles.menuitem}>{t("professor")}</font>
             </Menu.Item>
           </>
         );
@@ -56,13 +58,13 @@ function TopMenu({ selected_key }) {
               key="board/notice"
               onClick={() => movePage("/board/notice")}
             >
-              <font className={styles.menuitem}>소식</font>
+              <font className={styles.menuitem}>{t("notice")}</font>
             </Menu.Item>
             <Menu.Item
               key="board/activity"
               onClick={() => movePage("/board/activity")}
             >
-              <font className={styles.menuitem}>활동</font>
+              <font className={styles.menuitem}>{t("activity")}</font>
             </Menu.Item>
           </>
         );
@@ -73,25 +75,25 @@ function TopMenu({ selected_key }) {
               key="publications/journal"
               onClick={() => movePage("/publications/journal")}
             >
-              <font className={styles.menuitem}>학술지</font>
+              <font className={styles.menuitem}>{t("journal")}</font>
             </Menu.Item>
             <Menu.Item
               key="publications/conference"
               onClick={() => movePage("/publications/conference")}
             >
-              <font className={styles.menuitem}>학술대회</font>
+              <font className={styles.menuitem}>{t("conference")}</font>
             </Menu.Item>
             <Menu.Item
               key="publications/patent"
               onClick={() => movePage("/publications/patent")}
             >
-              <font className={styles.menuitem}>특허</font>
+              <font className={styles.menuitem}>{t("patent")}</font>
             </Menu.Item>
             <Menu.Item
               key="publications/book"
               onClick={() => movePage("/publications/book")}
             >
-              <font className={styles.menuitem}>도서</font>
+              <font className={styles.menuitem}>{t("book")}</font>
             </Menu.Item>
           </>
         );

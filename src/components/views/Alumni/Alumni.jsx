@@ -9,6 +9,7 @@ import TitleBar from "../../common/TitleBar/TitleBar";
 import TopMenu from "../../common/TopMenu/TopMenu";
 import MemberGrid from "../Members/sections/MemberGrid";
 import AddButton from "../../common/AddButton/AddButton";
+import { useTranslation } from "react-i18next";
 
 function Alumni() {
   const account = useSelector((state) => state.user.loginSuccess);
@@ -17,6 +18,7 @@ function Alumni() {
   const [masterMembers, setMasterMembers] = useState(); // 석사
   const [bachelorMembers, setBachelorMembers] = useState(); // 학사
   const [colSize, setColSize] = useState();
+  const { t, i18n } = useTranslation();
 
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 600px)",
@@ -82,7 +84,7 @@ function Alumni() {
 
   return (
     <div>
-      <TitleBar title="졸업생" category="Members" />
+      <TitleBar title="alumni" category="Members" />
       <div className={styles.container}>
         <TopMenu selected_key="Members" />
         {phdMembers && masterMembers && bachelorMembers && (
@@ -98,21 +100,21 @@ function Alumni() {
             </div>
             <div className={styles.alumni_row}>
               <Statistic
-                title="박사"
+                title={t("phd")}
                 value={phdMembers ? phdMembers.length : 0}
                 suffix="명"
                 className={styles.stat}
               />
               <div className={styles.vertical_line} />
               <Statistic
-                title="석사"
+                title={t("master")}
                 value={masterMembers ? masterMembers.length : 0}
                 suffix="명"
                 className={styles.stat}
               />
               <div className={styles.vertical_line} />
               <Statistic
-                title="학부연구생"
+                title={t("bachelor")}
                 value={bachelorMembers ? bachelorMembers.length : 0}
                 suffix="명+"
                 className={styles.stat}
@@ -133,12 +135,12 @@ function Alumni() {
                 {phdMembers.length !== 0 && (
                   <>
                     <div className={styles.subtitle}>
-                      <b>박사 과정</b>
+                      <b>{t("phd-course")}</b>
                     </div>
                     <MemberGrid
                       memberData={phdMembers}
                       col_size={colSize}
-                      degree="박사 과정"
+                      degree={t("phd-course")}
                       isLogged={isLogged}
                     />
                     <hr className={styles.hrline} />
@@ -147,12 +149,12 @@ function Alumni() {
                 {masterMembers.length !== 0 && (
                   <>
                     <div className={styles.subtitle}>
-                      <b>석사 과정</b>
+                      <b>{t("master-course")}</b>
                     </div>
                     <MemberGrid
                       memberData={masterMembers}
                       col_size={colSize}
-                      degree="석사 과정"
+                      degree={t("master-course")}
                       isLogged={isLogged}
                     />
                     <hr className={styles.hrline} />{" "}
@@ -161,12 +163,12 @@ function Alumni() {
                 {bachelorMembers.length !== 0 && (
                   <>
                     <div className={styles.subtitle}>
-                      <b>학사 과정</b>
+                      <b>{t("bachelor-course")}</b>
                     </div>
                     <MemberGrid
                       memberData={bachelorMembers}
                       col_size={colSize}
-                      degree="학사 과정"
+                      degree={t("bachelor-course")}
                       isLogged={isLogged}
                     />
                   </>

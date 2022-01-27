@@ -106,7 +106,7 @@ function ProjectsEdit() {
 
   return (
     <div>
-      <TitleBar title="프로젝트 소개" category="Projects" />
+      <TitleBar title="projects" category="Projects" />
       <div className={styles.container}>
         <Paper elevation={0} square className={styles.paper}>
           <Form

@@ -39,7 +39,7 @@ import PublicRoute from "./utils/PublicRoute";
 import ScrollToTop from "./components/common/ScrollToTop/ScrollToTop";
 import { BackTop } from "antd";
 import "./App.less";
-import Fade from "react-reveal/Fade";
+import "./lang/i18n";
 
 function App() {
   // const isDesktopOrLaptop = useMediaQuery({ minDeviceWidth: 1224 });

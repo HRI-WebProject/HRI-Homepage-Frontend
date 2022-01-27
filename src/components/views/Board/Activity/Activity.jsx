@@ -7,7 +7,7 @@ import ActivityList from "./sections/ActivityList";
 function Activity() {
   return (
     <div>
-      <TitleBar title="활동" category="Board" />
+      <TitleBar title="activity" category="Board" />
       <div className={styles.container}>
         <TopMenu selected_key="Board" />
         <ActivityList />

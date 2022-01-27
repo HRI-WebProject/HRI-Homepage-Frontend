@@ -6,6 +6,8 @@ import { useMediaQuery } from "react-responsive";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUser } from "../../../redux/actions/user_action";
+import { useTranslation, withTranslation } from "react-i18next";
+import i18next from "../../../lang/i18n";
 
 function NavBar() {
   const account = useSelector((state) => state.user.loginSuccess);
@@ -17,6 +19,8 @@ function NavBar() {
   const [scrollLocation, setScrollLocation] = useState(
     document.documentElement.scrollTop
   );
+
+  const { t, i18n } = useTranslation();
 
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 900px)",
@@ -60,13 +64,27 @@ function NavBar() {
     },
   ];
 
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    sessionStorage.setItem("lang", lang);
+    history.push("/");
+  };
+
   const language_menu = (
     <Menu>
-      <Menu.Item style={{ width: "200px", height: "50px" }} key="ko">
-        <div style={{ fontSize: "1.1em" }}>한국어</div>
+      <Menu.Item
+        style={{ width: "100px", height: "50px" }}
+        key="ko"
+        onClick={() => changeLanguage("ko")}
+      >
+        <div style={{ fontSize: "1.1em", textAlign: "center" }}>KOREAN</div>
       </Menu.Item>
-      <Menu.Item style={{ width: "200px", height: "50px" }} key="en">
-        <div style={{ fontSize: "1.2em" }}>English</div>
+      <Menu.Item
+        style={{ width: "100px", height: "50px" }}
+        key="en"
+        onClick={() => changeLanguage("en")}
+      >
+        <div style={{ fontSize: "1.1em", textAlign: "center" }}>ENGLISH</div>
       </Menu.Item>
     </Menu>
   );
@@ -130,13 +148,13 @@ function NavBar() {
               href="http://www.dongguk.ac.kr
           "
             >
-              동국대학교
+              {t("dgu")}
             </a>
           </span>
           <span className={styles.bar}>|</span>
           {isLogged === true && (
             <span className={styles.header_menu} onClick={handleLogout}>
-              로그아웃
+              {t("logout")}
             </span>
           )}
           {isLogged === false && (
@@ -144,7 +162,7 @@ function NavBar() {
               className={styles.header_menu}
               onClick={() => movePage("/login")}
             >
-              로그인
+              {t("login")}
             </span>
           )}
         </div>
@@ -196,4 +214,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default withTranslation()(NavBar);

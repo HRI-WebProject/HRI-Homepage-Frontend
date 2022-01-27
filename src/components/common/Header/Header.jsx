@@ -3,8 +3,10 @@ import styles from "./Header.module.css";
 import { Breadcrumb } from "antd";
 import HomeIcon from "@mui/icons-material/Home";
 import Fade from "react-reveal/Fade";
+import { useTranslation } from "react-i18next";
 
 function Header({ title, category }) {
+  const { t, i18n } = useTranslation();
   const renderSwitch = (param) => {
     switch (param) {
       case "구성원":
@@ -15,7 +17,7 @@ function Header({ title, category }) {
               <font color="white">Members</font>
             </Breadcrumb.Item>
             &nbsp;&nbsp;&gt;&nbsp;&nbsp;
-            <Breadcrumb.Item>{title}</Breadcrumb.Item>
+            <Breadcrumb.Item>{t(title)}</Breadcrumb.Item>
           </>
         );
       case "연구 분야":
@@ -29,15 +31,16 @@ function Header({ title, category }) {
               <font color="white">Research</font>
             </Breadcrumb.Item>
             &nbsp;&nbsp;&gt;&nbsp;&nbsp;
-            <Breadcrumb.Item>{title}</Breadcrumb.Item>
+            <Breadcrumb.Item>{t(title)}</Breadcrumb.Item>
           </>
         );
       case "교수진":
       case "프로젝트 소개":
       case "문의":
+        console.log("여기:", t(title));
         return (
           <>
-            <Breadcrumb.Item>{title}</Breadcrumb.Item>
+            <Breadcrumb.Item>{t(title)}</Breadcrumb.Item>
           </>
         );
       case "소식":
@@ -48,7 +51,7 @@ function Header({ title, category }) {
               <font color="white">Board</font>
             </Breadcrumb.Item>
             &nbsp;&nbsp;&gt;&nbsp;&nbsp;
-            <Breadcrumb.Item>{title}</Breadcrumb.Item>
+            <Breadcrumb.Item>{t(title)}</Breadcrumb.Item>
           </>
         );
       case "학술지":
@@ -64,7 +67,7 @@ function Header({ title, category }) {
               <font color="white">Publications</font>
             </Breadcrumb.Item>
             &nbsp;&nbsp;&gt;&nbsp;&nbsp;
-            <Breadcrumb.Item>{title}</Breadcrumb.Item>
+            <Breadcrumb.Item>{t(title)}</Breadcrumb.Item>
           </>
         );
     }
@@ -73,23 +76,19 @@ function Header({ title, category }) {
   const renderSwitchIntro = (param) => {
     switch (param) {
       case "Research":
-        return (
-          <>연구 분야와 연구실에 배치된 다양한 연구 기자재에 대해 안내합니다.</>
-        );
+        return <>{t("research-header")}</>;
       case "Professor":
-        return <>연구실 소속 교수님 소개입니다.</>;
+        return <>{t("professor-header")}</>;
       case "Members":
-        return <>연구실 소속 구성원 및 졸업생 정보입니다.</>;
+        return <>{t("members-header")}</>;
       case "Publications":
-        return <>연구실에서 발표한 각종 논문 및 특허 부분입니다.</>;
+        return <>{t("pub-header")}</>;
       case "Projects":
-        return <>현재 연구실에서 진행 중인 프로젝트에 대한 소개입니다.</>;
+        return <>{t("projects-header")}</>;
       case "Board":
-        return (
-          <>연구실 행사 관련 소식을 전하고, 활동 모습에 대해 소개합니다.</>
-        );
+        return <>{t("board-header")}</>;
       case "Contact":
-        return <>연구실 연락 정보입니다.</>;
+        return <>{t("contact-header")}</>;
       default:
         break;
     }
@@ -104,7 +103,7 @@ function Header({ title, category }) {
               <Breadcrumb.Item href="/" className={styles.a_tag}>
                 <span style={{ color: "white" }}>
                   <HomeIcon className={styles.homeicon} fontSize="large" />
-                  홈&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                  Home&nbsp;&nbsp;&gt;&nbsp;&nbsp;
                 </span>
               </Breadcrumb.Item>
               <span style={{ color: "white" }}>{renderSwitch(title)}</span>

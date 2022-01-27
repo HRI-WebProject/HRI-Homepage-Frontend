@@ -24,7 +24,7 @@
   width: 1100px;
   padding-bottom: 2%;
   min-height: calc(65vh);
-  word-break: break-all;
+  word-break: keep-all;
   margin: 0 auto;
 }
 

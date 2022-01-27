@@ -4,9 +4,11 @@ import styles from "./Footer.module.css";
 import { PlusOutlined } from "@ant-design/icons";
 import { useMediaQuery } from "react-responsive";
 import { Row, Col, Tag, Menu, Dropdown } from "antd";
+import { useTranslation } from "react-i18next";
 
 function BottomFooter() {
   const history = useHistory();
+  const { t, i18n } = useTranslation();
   const movePage = (url) => {
     history.push(url);
   };
@@ -24,7 +26,7 @@ function BottomFooter() {
           href="http://www.dongguk.ac.kr
           "
         >
-          동국대학교
+          {t("footer-fs-1")}
         </a>
       </Menu.Item>
       <Menu.Item className={styles.menuItem} key={2}>
@@ -34,7 +36,7 @@ function BottomFooter() {
           href="http://engineer.dongguk.edu/
           "
         >
-          동국대학교 공과대학
+          {t("footer-fs-2")}
         </a>
       </Menu.Item>
       <Menu.Item className={styles.menuItem} key={3}>
@@ -44,7 +46,7 @@ function BottomFooter() {
           href="https://cse.dongguk.edu/
           "
         >
-          동국대학교 컴퓨터공학전공
+          {t("footer-fs-3")}
         </a>
       </Menu.Item>
     </Menu>
@@ -74,10 +76,9 @@ function BottomFooter() {
               <Col span={4} />
               <Col span={16}>
                 <div className={styles.content}>
-                  동국대학교 공과대학{" "}
+                  {t("footer-content-1")}
                   <span className={styles.verticlebar}>|</span>
-                  04620 서울 중구 필동로1길 30 신공학관 5125호
-                  인간로봇상호작용연구실
+                  {t("footer-content-2")}
                 </div>
                 <div className={styles.content}>
                   TEL&#41; 02-2290-1426
@@ -85,7 +86,7 @@ function BottomFooter() {
                   Prof. Email&#41; jwjung@dongguk.edu
                 </div>
                 <div className={styles.copyright}>
-                  © Copyright 2021 · Human Robot Interection LAB, Dongguk
+                  © Copyright 2022 · Human Robot Interection LAB, Dongguk
                   University All Right Reserved
                 </div>
               </Col>
@@ -94,7 +95,7 @@ function BottomFooter() {
               <Col span={20}>
                 <Dropdown overlay={menu} placement="topCenter">
                   <div className={styles.bottom_box}>
-                    관련기관
+                    Family Site
                     <PlusOutlined className={styles.plusIcon} />
                   </div>
                 </Dropdown>
@@ -125,10 +126,9 @@ function BottomFooter() {
               </Col>
               <Col span={16}>
                 <div className={styles.content}>
-                  동국대학교 공과대학{" "}
+                  {t("footer-content-1")}
                   <span className={styles.verticlebar}>|</span>
-                  04620 서울 중구 필동로1길 30 신공학관 5125호
-                  인간로봇상호작용연구실
+                  {t("footer-content-2")}
                 </div>
                 <div className={styles.content}>
                   TEL&#41; 02-2290-1426
@@ -143,7 +143,7 @@ function BottomFooter() {
               <Col span={4}>
                 <Dropdown overlay={menu} placement="topCenter">
                   <div className={styles.bottom_box}>
-                    관련기관
+                    Family Site
                     <PlusOutlined className={styles.plusIcon} />
                   </div>
                 </Dropdown>
