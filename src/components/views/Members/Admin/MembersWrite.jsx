@@ -89,12 +89,6 @@ function MembersWrite() {
             <Form.Item
               label="사진 URL"
               name="photo"
-              // rules={[
-              //   {
-              //     required: true,
-              //     message: "사진은 필수 입력 항목입니다.",
-              //   },
-              // ]}
               extra="이미지 URL 형식으로 작성이 필요합니다."
             >
               <Input />

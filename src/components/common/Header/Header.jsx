@@ -9,8 +9,8 @@ function Header({ title, category }) {
   const { t, i18n } = useTranslation();
   const renderSwitch = (param) => {
     switch (param) {
-      case "구성원":
-      case "졸업생":
+      case "members":
+      case "alumni":
         return (
           <>
             <Breadcrumb.Item href="/members" className={styles.a_tag}>
@@ -20,8 +20,8 @@ function Header({ title, category }) {
             <Breadcrumb.Item>{t(title)}</Breadcrumb.Item>
           </>
         );
-      case "연구 분야":
-      case "연구실 장비":
+      case "researchArea":
+      case "researchEquipment":
         return (
           <>
             <Breadcrumb.Item
@@ -34,17 +34,16 @@ function Header({ title, category }) {
             <Breadcrumb.Item>{t(title)}</Breadcrumb.Item>
           </>
         );
-      case "교수진":
-      case "프로젝트 소개":
-      case "문의":
-        console.log("여기:", t(title));
+      case "professor":
+      case "projects":
+      case "contact":
         return (
           <>
             <Breadcrumb.Item>{t(title)}</Breadcrumb.Item>
           </>
         );
-      case "소식":
-      case "활동":
+      case "notice":
+      case "activity":
         return (
           <>
             <Breadcrumb.Item href="/board/notice" className={styles.a_tag}>
@@ -54,10 +53,10 @@ function Header({ title, category }) {
             <Breadcrumb.Item>{t(title)}</Breadcrumb.Item>
           </>
         );
-      case "학술지":
-      case "특허":
-      case "학술대회":
-      case "도서":
+      case "journal":
+      case "patent":
+      case "conference":
+      case "book":
         return (
           <>
             <Breadcrumb.Item
@@ -101,7 +100,7 @@ function Header({ title, category }) {
           <div>
             <Breadcrumb separator="">
               <Breadcrumb.Item href="/" className={styles.a_tag}>
-                <span style={{ color: "white" }}>
+                <span className={styles.home_tag}>
                   <HomeIcon className={styles.homeicon} fontSize="large" />
                   Home&nbsp;&nbsp;&gt;&nbsp;&nbsp;
                 </span>

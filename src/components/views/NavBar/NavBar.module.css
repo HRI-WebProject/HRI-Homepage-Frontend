@@ -47,9 +47,19 @@
   cursor: pointer;
 }
 
+.header_menu:hover {
+  cursor: pointer;
+  color: #120f40;
+}
+
 .header_menu a {
   text-decoration: none;
   color: black;
+}
+
+.header_menu a:hover {
+  text-decoration: none;
+  color: #120f40;
 }
 
 .bar {

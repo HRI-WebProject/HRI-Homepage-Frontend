@@ -62,16 +62,7 @@ function EquipmentAddCard() {
           >
             <Input size="small" />
           </Form.Item>
-          <Form.Item
-            label="사진 URL"
-            name="photo"
-            // rules={[
-            //   {
-            //     required: true,
-            //     message: "사진은 필수 입력 항목입니다.",
-            //   },
-            // ]}
-          >
+          <Form.Item label="사진 URL" name="photo">
             <Input size="small" />
           </Form.Item>
 

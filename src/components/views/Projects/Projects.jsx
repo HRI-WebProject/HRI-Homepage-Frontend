@@ -24,7 +24,6 @@ function Projects() {
 
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
-    console.log(i18n.language);
     if (i18n.language === "ko") {
       axios
         .get("/projects")
@@ -41,7 +40,6 @@ function Projects() {
         .get("/en/projects")
         .then((res) => {
           if (res.status === 200) {
-            console.log();
             setProjectList(res.data.data);
           }
         })
@@ -54,41 +52,7 @@ function Projects() {
   useEffect(() => {
     if (isSmallScreen) setColSize(24);
     else setColSize(12);
-    // if (i18n.language === "ko") {
-    //   setLanguage("ko");
-    // } else {
-    //   setLanguage("en");
-    // }
   });
-
-  // useEffect(() => {
-  //   setProjectList();
-  //   console.log("diff");
-  //   if (i18n.language === "ko") {
-  //     axios
-  //       .get("/projects")
-  //       .then((res) => {
-  //         if (res.status === 200) {
-  //           setProjectList(res.data.data);
-  //         }
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   } else {
-  //     axios
-  //       .get("/en/projects")
-  //       .then((res) => {
-  //         if (res.status === 200) {
-  //           console.log();
-  //           setProjectList(res.data.data);
-  //         }
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   }
-  // }, [language]);
 
   return (
     <div>

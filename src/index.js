@@ -10,7 +10,7 @@ import { applyMiddleware, createStore } from "redux";
 import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
 import Reducer from "./redux/reducers";
-import "./lang/i18n";
+import "./assets/lang/i18n";
 
 const createStoreWithMiddlware = applyMiddleware(
   promiseMiddleware,

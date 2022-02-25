@@ -20,27 +20,27 @@ function BudgetTable() {
   const budgetTabledata = [
     {
       project: t("project-table-1"),
-      budget: "3300만",
+      budget: t("project-table-budget-1"),
     },
     {
       project: t("project-table-2"),
-      budget: "3000만",
+      budget: t("project-table-budget-2"),
     },
     {
       project: t("project-table-3"),
-      budget: "3억 2000만",
+      budget: t("project-table-budget-3"),
     },
     {
       project: t("project-table-4"),
-      budget: "3000만",
+      budget: t("project-table-budget-4"),
     },
     {
       project: t("project-table-5"),
-      budget: "2700만",
+      budget: t("project-table-budget-5"),
     },
     {
       project: t("project-table-6"),
-      budget: "2000만",
+      budget: t("project-table-budget-6"),
     },
   ];
 

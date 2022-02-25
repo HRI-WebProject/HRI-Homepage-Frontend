@@ -45,6 +45,15 @@
   color: white;
 }
 
+.home_tag {
+  color: white;
+}
+
 .a_tag {
   text-decoration: none;
+}
+
+.a_tag:hover {
+  text-decoration: none;
+  color: #808080;
 }

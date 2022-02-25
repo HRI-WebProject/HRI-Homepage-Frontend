@@ -28,6 +28,10 @@
   cursor: pointer;
 }
 
+.menu:hover {
+  color: #808080;
+}
+
 .verticlebar {
   padding-left: 8px;
   padding-right: 8px;
