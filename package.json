@@ -38,7 +38,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "cross-env GENERATE_SOURCEMAP=false REACT_APP_ENV=production craco build",
+    "build": "GENERATE_SOURCEMAP=false REACT_APP_ENV=production craco build",
     "test": "craco test",
     "eject": "craco eject"
   },
