@@ -12,6 +12,11 @@ import ReduxThunk from "redux-thunk";
 import Reducer from "./redux/reducers";
 import "./assets/lang/i18n";
 
+if (process.env.NODE_ENV === "production") {
+  console.log = function no_console() {};
+  console.warn = function no_console() {};
+}
+
 const createStoreWithMiddlware = applyMiddleware(
   promiseMiddleware,
   ReduxThunk

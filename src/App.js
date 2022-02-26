@@ -49,6 +49,10 @@ function App() {
   // const isPortrait = useMediaQuery({ orientation: "portrait" });
   // const isRetina = useMediaQuery({ minResolution: "2dppx" });
 
+  useEffect(() => {
+    console.log(process.env.NODE_ENV);
+  }, []);
+
   return (
     <BrowserRouter>
       <ScrollToTop />

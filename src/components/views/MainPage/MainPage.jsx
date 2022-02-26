@@ -95,7 +95,7 @@ function MainPage() {
           <div className={styles.read_more_cards}>
             <Row gutter={[32, 32]}>
               {read_more_cards.map((item, idx) => (
-                <Col span={8}>
+                <Col span={8} key={idx}>
                   <Card
                     key={idx}
                     hoverable
@@ -136,6 +136,7 @@ function MainPage() {
               <Card>
                 {support_list.map((item, idx) => (
                   <Card.Grid
+                    key={idx}
                     hoverable={false}
                     className={styles.support_card_grid}
                     style={{ backgroundColor: item.color }}

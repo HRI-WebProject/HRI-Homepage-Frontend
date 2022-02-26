@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import EmailIcon from "@material-ui/icons/Email";
 import { styled } from "@mui/material/styles";
 import { Row, Col, Image } from "antd";
@@ -19,7 +19,7 @@ function ProfessorGrid({ professorData, isLogged }) {
       <Row gutter={[16, 32]}>
         {professorData &&
           professorData.map((item, idx) => (
-            <>
+            <Fragment key={idx}>
               <Col span={24} key={idx}>
                 <Fade top distance="20px">
                   <>
@@ -95,7 +95,7 @@ function ProfessorGrid({ professorData, isLogged }) {
                   </>
                 </Fade>
               </Col>
-            </>
+            </Fragment>
           ))}
       </Row>
     </div>

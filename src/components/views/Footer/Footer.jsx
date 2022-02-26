@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import styles from "./Footer.module.css";
 import { PlusOutlined } from "@ant-design/icons";
@@ -99,7 +99,7 @@ function BottomFooter() {
           <div className={styles.quick_menu}>
             <Tag style={{ marginRight: "20px" }}>Quick menu</Tag>
             {quick_menu_list.map((item, idx) => (
-              <>
+              <Fragment key={item.title}>
                 <span
                   className={styles.menu}
                   onClick={() => movePage(item.path)}
@@ -107,7 +107,7 @@ function BottomFooter() {
                   {item.title}
                 </span>
                 {idx !== 6 && <span className={styles.verticlebar}>|</span>}
-              </>
+              </Fragment>
             ))}
           </div>
           <div>
