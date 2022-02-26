@@ -6,12 +6,14 @@ import { Card, Row, Col, Tag, Image } from "antd";
 import styles from "./MainPage.module.css";
 import Fade from "react-reveal/Fade";
 import { useTranslation } from "react-i18next";
+import { imageData } from "../../../assets/images";
 
 function MainPage() {
   const history = useHistory();
   const [colSize, setColSize] = useState();
   const [cardWidth, setCardWidth] = useState();
   const { t, i18n } = useTranslation();
+
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 1200px)",
   });
@@ -24,19 +26,19 @@ function MainPage() {
     {
       title: "RESEARCH AREA",
       description: t("research-header"),
-      photo: "https://i.postimg.cc/nrVvvKjB/lab.png",
+      photo: imageData.about_lab_img_1,
       path: "/research/researchArea",
     },
     {
       title: "PROFESSOR",
       description: t("professor-header"),
-      photo: "https://i.postimg.cc/nrVvvKjB/lab.png",
+      photo: imageData.about_lab_img_2,
       path: "/professor",
     },
     {
       title: "PROJECTS",
       description: t("projects-header"),
-      photo: "https://i.postimg.cc/nrVvvKjB/lab.png",
+      photo: imageData.about_lab_img_3,
       path: "/projects",
     },
   ];
@@ -46,8 +48,8 @@ function MainPage() {
       case "RESEARCH AREA":
         return (
           <>
-            <Tag color="#0879C4">#Computer Vision</Tag>
-            <Tag color="#08B3CF">#Intelligent System</Tag>
+            <Tag color="#0879C4">#{t("research-tag-1")}</Tag>
+            <Tag color="#08B3CF">#{t("research-tag-2")}</Tag>
           </>
         );
       case "PROFESSOR":
@@ -55,8 +57,8 @@ function MainPage() {
       case "PROJECTS":
         return (
           <>
-            <Tag color="#01B7A0">#Intelligent CCTV</Tag>
-            <Tag color="#08C441">#Mobile Robot</Tag>
+            <Tag color="#01B7A0">#{t("projects-tag-1")}</Tag>
+            <Tag color="#08C441">#{t("projects-tag-2")}</Tag>
           </>
         );
       default:
@@ -67,45 +69,33 @@ function MainPage() {
   const support_list = [
     {
       color: "#231F6A",
-      src: "https://i.postimg.cc/gJ9F4Whq/customer-question-1.png",
+      src: imageData.support_icon_1,
       content: t("support-box-1"),
     },
     {
       color: "#120F40",
-      src: "https://i.postimg.cc/WbnVjzFd/search.png",
+      src: imageData.support_icon_2,
       content: t("support-box-2"),
     },
     {
       color: "#0B0A29",
-      src: "https://i.postimg.cc/c4ZWVwHq/coding.png",
+      src: imageData.support_icon_3,
       content: t("support-box-3"),
     },
   ];
 
-  useEffect(() => {
-    if (isSmallScreen) {
-      setColSize(24);
-      setCardWidth("80vw");
-    } else {
-      setColSize(8);
-      setCardWidth(380);
-    }
-  });
-
   return (
     <div className={styles.container}>
-      <Fade right>
-        <div className={styles.carousel}>
-          <img src="/assets/main/main1.bmp" />
-        </div>
-      </Fade>
+      <div className={styles.carousel}>
+        <img src={imageData.main} />
+      </div>
       <div className={styles.inner}>
         <div className={styles.section_title}>About Lab .</div>
         <Fade top distance="30px">
           <div className={styles.read_more_cards}>
             <Row gutter={[32, 32]}>
               {read_more_cards.map((item, idx) => (
-                <Col span={8}>
+                <Col span={8} key={idx}>
                   <Card
                     key={idx}
                     hoverable
@@ -146,9 +136,10 @@ function MainPage() {
               <Card>
                 {support_list.map((item, idx) => (
                   <Card.Grid
+                    key={idx}
                     hoverable={false}
-                    style={{ backgroundColor: item.color }}
                     className={styles.support_card_grid}
+                    style={{ backgroundColor: item.color }}
                   >
                     <Image
                       preview={false}

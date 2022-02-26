@@ -40,9 +40,9 @@ function Contact() {
                 <br />
                 <div className={styles.content}>
                   <font>
-                    jwjung@dongguk.edu
+                    {t("prof-email")}
                     <br />
-                    02-2260-3812
+                    {t("prof-tel")}
                   </font>
                 </div>
                 <Divider className={styles.divider} />
@@ -55,9 +55,9 @@ function Contact() {
                 <br />
                 <div className={styles.content}>
                   <font>
-                    ktw3388@dongguk.edu
+                    {t("lab-email")}
                     <br />
-                    02-2290-1426
+                    {t("lab-tel")}
                   </font>
                 </div>
                 <Divider className={styles.divider} />
@@ -69,10 +69,10 @@ function Contact() {
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="http://hri.dongguk.edu"
+                    href={t("dgu-hri-website")}
                     className={styles.link}
                   >
-                    http://hri.dongguk.edu
+                    {t("dgu-hri-website")}
                   </a>
                 </div>
                 <div className={styles.content}>
@@ -80,7 +80,7 @@ function Contact() {
                     {t("contact-addr-1")} <br />
                     {t("contact-addr-2")}
                     <br />
-                    02-2290-1426
+                    {t("lab-tel")}
                   </font>
                 </div>
               </Col>

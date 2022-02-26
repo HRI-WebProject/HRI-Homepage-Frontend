@@ -51,10 +51,6 @@ function BoardDetail() {
         .then((res) => {
           if (res.status === 200) {
             setBoardDetail(res.data.data);
-            // if (res.data.data[0] === undefined) {
-            //   history.push("/board/notice");
-            //   alert("글이 존재하지 않습니다.");
-            // }
           }
         })
         .catch(function (error) {

@@ -26,6 +26,7 @@ function MembersEdit() {
   };
 
   const onFinish = (values) => {
+    console.log(values);
     axios
       .put(`/admin/members/${currentId}`, values)
       .then((res) => {
@@ -121,12 +122,6 @@ function MembersEdit() {
               <Form.Item
                 label="사진 URL"
                 name="photo"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "사진은 필수 입력 항목입니다.",
-                //   },
-                // ]}
                 extra="이미지 URL 형식으로 작성이 필요합니다."
               >
                 <Input />
@@ -157,35 +152,17 @@ function MembersEdit() {
                     message: "필수 입력 항목입니다.",
                   },
                 ]}
+                valuePropName="checked"
               >
                 <Switch checkedChildren="졸업" unCheckedChildren="재학" />
               </Form.Item>
               <hr className={styles.hr_tag} />
-              <Form.Item
-                label="연구분야"
-                name="researchArea"
-                rules={[
-                  {
-                    required: true,
-                    message: "필수 입력 항목입니다.",
-                  },
-                ]}
-              >
+              <Form.Item label="연구분야" name="researchArea">
                 <Input />
               </Form.Item>
-              <Form.Item
-                label="이메일"
-                name="email"
-                rules={[
-                  {
-                    required: true,
-                    message: "필수 입력 항목입니다.",
-                  },
-                ]}
-              >
+              <Form.Item label="이메일" name="email">
                 <Input />
               </Form.Item>
-
               <Row>
                 <Col span={12}>
                   {" "}

@@ -56,7 +56,7 @@ function ResearchArea() {
               <Row gutter={[16, 16]}>
                 {researchList &&
                   researchList.map((item, idx) => (
-                    <Col span={colSize}>
+                    <Col span={colSize} key={idx}>
                       <Card
                         cover={
                           <Image

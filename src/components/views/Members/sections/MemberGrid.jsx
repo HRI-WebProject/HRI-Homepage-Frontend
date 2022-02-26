@@ -41,19 +41,27 @@ function MemberGrid({ memberData, col_size, degree, isLogged }) {
                         <div>{degree}</div>
 
                         <hr className={styles.hr_tag} />
-                        <div style={{ fontSize: "0.9em" }}>
-                          <span className={styles.hashtag}>#</span>
-                          {item.researchArea}
-                        </div>
-                        <div style={{ fontSize: "0.9em" }}>
-                          <EmailIcon
-                            className={styles.emailIcon}
-                            style={{ fontSize: "1.2em", color: "#2f5597" }}
-                          />
-                          <span style={{ paddingLeft: "10px" }}>
-                            {item.email}
-                          </span>
-                        </div>
+                        {item.researchArea ? (
+                          <div style={{ fontSize: "0.9em" }}>
+                            <span className={styles.hashtag}>#</span>
+                            {item.researchArea}
+                          </div>
+                        ) : (
+                          <div>&nbsp;</div>
+                        )}
+                        {item.email ? (
+                          <div style={{ fontSize: "0.9em" }}>
+                            <EmailIcon
+                              className={styles.emailIcon}
+                              style={{ fontSize: "1.2em", color: "#2f5597" }}
+                            />
+                            <span style={{ paddingLeft: "10px" }}>
+                              {item.email}
+                            </span>
+                          </div>
+                        ) : (
+                          <div>&nbsp;</div>
+                        )}
                       </Col>
                     </Row>
                   </div>

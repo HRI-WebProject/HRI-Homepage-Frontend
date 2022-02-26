@@ -39,7 +39,7 @@ import PublicRoute from "./utils/PublicRoute";
 import ScrollToTop from "./components/common/ScrollToTop/ScrollToTop";
 import { BackTop } from "antd";
 import "./App.less";
-import "./lang/i18n";
+import "./assets/lang/i18n";
 
 function App() {
   // const isDesktopOrLaptop = useMediaQuery({ minDeviceWidth: 1224 });
@@ -49,14 +49,18 @@ function App() {
   // const isPortrait = useMediaQuery({ orientation: "portrait" });
   // const isRetina = useMediaQuery({ minResolution: "2dppx" });
 
+  useEffect(() => {
+    console.log(process.env.NODE_ENV);
+  }, []);
+
   return (
     <BrowserRouter>
       <ScrollToTop />
       <NavBar />
       <div
         style={{
-          padding: "50px 0px 30px 0px", // "100px 200px 30px 200px",
-          minHeight: "", // "calc(200vh - 80px)"
+          padding: "50px 0px 30px 0px",
+          minHeight: "",
           backgroundColor: "#f5f5f5",
           width: "100vw",
           fontFamily: "Noto Sans KR",

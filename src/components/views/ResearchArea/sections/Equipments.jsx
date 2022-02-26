@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 import { useSelector } from "react-redux";
@@ -93,7 +93,7 @@ function Equipments() {
           <Row gutter={[16, 16]}>
             {equipments &&
               equipments.map((item, idx) => (
-                <>
+                <Fragment key={idx}>
                   {showEditCard && item.id === curId ? (
                     <EquipmentEditCard currentId={curId} />
                   ) : (
@@ -130,7 +130,7 @@ function Equipments() {
                       </Fade>
                     </Col>
                   )}
-                </>
+                </Fragment>
               ))}
             {showCard && ( // + Button 클릭 시
               <EquipmentAddCard />

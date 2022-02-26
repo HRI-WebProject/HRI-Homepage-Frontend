@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUser } from "../../../redux/actions/user_action";
 import { useTranslation, withTranslation } from "react-i18next";
-import i18next from "../../../lang/i18n";
+import { imageData } from "../../../assets/images";
 
 function NavBar() {
   const account = useSelector((state) => state.user.loginSuccess);
@@ -108,7 +108,6 @@ function NavBar() {
   };
 
   const handleLogout = () => {
-    // localStorage.clear();
     sessionStorage.clear();
     dispatch(clearUser());
     window.location.reload();
@@ -145,8 +144,7 @@ function NavBar() {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="http://www.dongguk.ac.kr
-          "
+              href={t("dgu-website")}
             >
               {t("dgu")}
             </a>
@@ -174,7 +172,7 @@ function NavBar() {
             <>
               <img
                 className={styles.logo}
-                src="/assets/logo/logo.png"
+                src={imageData.logo}
                 onClick={() => movePage("/")}
               />
               <div className={styles.menu}>

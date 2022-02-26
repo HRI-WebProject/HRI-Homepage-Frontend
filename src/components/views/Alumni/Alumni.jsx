@@ -10,6 +10,7 @@ import TopMenu from "../../common/TopMenu/TopMenu";
 import MemberGrid from "../Members/sections/MemberGrid";
 import AddButton from "../../common/AddButton/AddButton";
 import { useTranslation } from "react-i18next";
+import { workspaceList } from "../../../assets/images";
 
 function Alumni() {
   const account = useSelector((state) => state.user.loginSuccess);
@@ -23,15 +24,6 @@ function Alumni() {
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 600px)",
   });
-
-  const imageList = [
-    "/assets/alumni/workplace1.bmp",
-    "/assets/alumni/workplace2.bmp",
-    "/assets/alumni/workplace3.bmp",
-    "/assets/alumni/workplace4.bmp",
-    "/assets/alumni/workplace5.bmp",
-    "/assets/alumni/workplace6.bmp",
-  ];
 
   useEffect(() => {
     if (isSmallScreen) setColSize(24);
@@ -122,7 +114,7 @@ function Alumni() {
             </div>
             <div className={styles.workplace}>
               <Row gutter={[16, 16]}>
-                {imageList.map((item, idx) => (
+                {workspaceList.map((item, idx) => (
                   <Col span={8} key={idx}>
                     <img className={styles.workplaceImg} src={item} />
                   </Col>
@@ -130,50 +122,52 @@ function Alumni() {
               </Row>
             </div>
             <>
-              <div className={styles.members}>
-                {isLogged && <AddButton />}
-                {phdMembers.length !== 0 && (
-                  <>
-                    <div className={styles.subtitle}>
-                      <b>{t("phd-course")}</b>
-                    </div>
-                    <MemberGrid
-                      memberData={phdMembers}
-                      col_size={colSize}
-                      degree={t("phd-course")}
-                      isLogged={isLogged}
-                    />
-                    <hr className={styles.hrline} />
-                  </>
-                )}
-                {masterMembers.length !== 0 && (
-                  <>
-                    <div className={styles.subtitle}>
-                      <b>{t("master-course")}</b>
-                    </div>
-                    <MemberGrid
-                      memberData={masterMembers}
-                      col_size={colSize}
-                      degree={t("master-course")}
-                      isLogged={isLogged}
-                    />
-                    <hr className={styles.hrline} />{" "}
-                  </>
-                )}
-                {bachelorMembers.length !== 0 && (
-                  <>
-                    <div className={styles.subtitle}>
-                      <b>{t("bachelor-course")}</b>
-                    </div>
-                    <MemberGrid
-                      memberData={bachelorMembers}
-                      col_size={colSize}
-                      degree={t("bachelor-course")}
-                      isLogged={isLogged}
-                    />
-                  </>
-                )}
-              </div>
+              {isLogged && (
+                <div className={styles.members}>
+                  <AddButton />
+                  {phdMembers.length !== 0 && (
+                    <>
+                      <div className={styles.subtitle}>
+                        <b>{t("phd-course")}</b>
+                      </div>
+                      <MemberGrid
+                        memberData={phdMembers}
+                        col_size={colSize}
+                        degree={t("phd-course")}
+                        isLogged={isLogged}
+                      />
+                      <hr className={styles.hrline} />
+                    </>
+                  )}
+                  {masterMembers.length !== 0 && (
+                    <>
+                      <div className={styles.subtitle}>
+                        <b>{t("master-course")}</b>
+                      </div>
+                      <MemberGrid
+                        memberData={masterMembers}
+                        col_size={colSize}
+                        degree={t("master-course")}
+                        isLogged={isLogged}
+                      />
+                      <hr className={styles.hrline} />{" "}
+                    </>
+                  )}
+                  {bachelorMembers.length !== 0 && (
+                    <>
+                      <div className={styles.subtitle}>
+                        <b>{t("bachelor-course")}</b>
+                      </div>
+                      <MemberGrid
+                        memberData={bachelorMembers}
+                        col_size={colSize}
+                        degree={t("bachelor-course")}
+                        isLogged={isLogged}
+                      />
+                    </>
+                  )}
+                </div>
+              )}
             </>
           </Paper>
         )}

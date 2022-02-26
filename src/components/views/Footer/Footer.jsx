@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import styles from "./Footer.module.css";
 import { PlusOutlined } from "@ant-design/icons";
 import { useMediaQuery } from "react-responsive";
 import { Row, Col, Tag, Menu, Dropdown } from "antd";
 import { useTranslation } from "react-i18next";
+import { imageData } from "../../../assets/images";
 
 function BottomFooter() {
   const history = useHistory();
@@ -20,12 +21,7 @@ function BottomFooter() {
   const menu = (
     <Menu>
       <Menu.Item className={styles.menuItem} key={1}>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="http://www.dongguk.ac.kr
-          "
-        >
+        <a target="_blank" rel="noopener noreferrer" href={t("dgu-website")}>
           {t("footer-fs-1")}
         </a>
       </Menu.Item>
@@ -33,8 +29,7 @@ function BottomFooter() {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="http://engineer.dongguk.edu/
-          "
+          href={t("dgu-engineer-website")}
         >
           {t("footer-fs-2")}
         </a>
@@ -43,8 +38,7 @@ function BottomFooter() {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://cse.dongguk.edu/
-          "
+          href={t("dgu-cse-website")}
         >
           {t("footer-fs-3")}
         </a>
@@ -70,7 +64,7 @@ function BottomFooter() {
             <Row>
               <Col span={4} />
               <Col span={16} style={{ textAlign: "left" }}>
-                <img src="/assets/logo/logo.png" className={styles.logo} />
+                <img src={imageData.logo} className={styles.logo} />
               </Col>
               <Col span={4} />
               <Col span={4} />
@@ -81,14 +75,11 @@ function BottomFooter() {
                   {t("footer-content-2")}
                 </div>
                 <div className={styles.content}>
-                  TEL&#41; 02-2290-1426
+                  TEL&#41; {t("lab-tel")}
                   <span className={styles.verticlebar}>|</span>
-                  Prof. Email&#41; jwjung@dongguk.edu
+                  Email&#41;&nbsp;{t("prof-email")}
                 </div>
-                <div className={styles.copyright}>
-                  © Copyright 2022 · Human Robot Interection LAB, Dongguk
-                  University All Right Reserved
-                </div>
+                <div className={styles.copyright}>{t("footer-copyright")}</div>
               </Col>
               <Col span={4} />
               <Col span={4} />
@@ -108,7 +99,7 @@ function BottomFooter() {
           <div className={styles.quick_menu}>
             <Tag style={{ marginRight: "20px" }}>Quick menu</Tag>
             {quick_menu_list.map((item, idx) => (
-              <>
+              <Fragment key={item.title}>
                 <span
                   className={styles.menu}
                   onClick={() => movePage(item.path)}
@@ -116,13 +107,13 @@ function BottomFooter() {
                   {item.title}
                 </span>
                 {idx !== 6 && <span className={styles.verticlebar}>|</span>}
-              </>
+              </Fragment>
             ))}
           </div>
           <div>
             <Row>
               <Col span={4} style={{ textAlign: "center" }}>
-                <img src="/assets/logo/logo.png" className={styles.logo} />
+                <img src={imageData.logo} className={styles.logo} />
               </Col>
               <Col span={16}>
                 <div className={styles.content}>
@@ -131,14 +122,11 @@ function BottomFooter() {
                   {t("footer-content-2")}
                 </div>
                 <div className={styles.content}>
-                  TEL&#41; 02-2290-1426
+                  TEL&#41; {t("lab-tel")}
                   <span className={styles.verticlebar}>|</span>
-                  Prof. Email&#41; jwjung@dongguk.edu
+                  Email&#41;&nbsp;{t("prof-email")}
                 </div>
-                <div className={styles.copyright}>
-                  © Copyright 2021 · Human Robot Interection LAB, Dongguk
-                  University All Right Reserved
-                </div>
+                <div className={styles.copyright}>{t("footer-copyright")}</div>
               </Col>
               <Col span={4}>
                 <Dropdown overlay={menu} placement="topCenter">

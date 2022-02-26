@@ -16,10 +16,7 @@ function ProjectBudget() {
               <div className={styles.font1}>{t("projects-intro-1")}</div>
             </li>
             <li>
-              <div className={styles.font1}>
-                {t("projects-intro-2")}
-                {/* 2020년 사업비 <font color="#ED7D31">약 4.5억원</font> */}
-              </div>
+              <div className={styles.font1}>{t("projects-intro-2")}</div>
             </li>
           </ul>
           <BudgetTable />

@@ -83,11 +83,11 @@ function NoticeEdit() {
         <Paper elevation={0} square className={styles.paper}>
           {noticeDetail && (
             <Form
-              name="basic"
+              labelCol={{ span: 2 }}
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
-              layout="inline"
               form={form}
+              style={{ paddingRight: "40px" }}
             >
               <table className={styles.table_}>
                 <thead>
@@ -108,25 +108,28 @@ function NoticeEdit() {
                       </Form.Item>
                     </th>
                   </tr>
+                  <tr>
+                    <th className={styles.table_th_2}>
+                      {" "}
+                      <Form.Item
+                        label="작성자"
+                        name="author"
+                        rules={[
+                          {
+                            required: true,
+                            message: "필수 입력 항목입니다.",
+                          },
+                        ]}
+                      >
+                        <Input />
+                      </Form.Item>
+                    </th>
+                  </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td className={styles.table_td_1_write}>
-                      <span style={{ paddingRight: "50px" }}>
-                        <Form.Item name="author">
-                          <b>작성자</b> |
-                          <Input
-                            style={{ width: "150px", marginLeft: "10px" }}
-                            defaultValue="administrator"
-                            disabled
-                          />
-                        </Form.Item>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
                     <td className={styles.table_td_2}>
-                      <Form.Item name="content">
+                      <Form.Item label="내용" name="content">
                         <Input.TextArea rows={25} maxLength={2500} showCount />
                       </Form.Item>
                     </td>
