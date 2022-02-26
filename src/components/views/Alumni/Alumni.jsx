@@ -122,50 +122,52 @@ function Alumni() {
               </Row>
             </div>
             <>
-              <div className={styles.members}>
-                {isLogged && <AddButton />}
-                {phdMembers.length !== 0 && (
-                  <>
-                    <div className={styles.subtitle}>
-                      <b>{t("phd-course")}</b>
-                    </div>
-                    <MemberGrid
-                      memberData={phdMembers}
-                      col_size={colSize}
-                      degree={t("phd-course")}
-                      isLogged={isLogged}
-                    />
-                    <hr className={styles.hrline} />
-                  </>
-                )}
-                {masterMembers.length !== 0 && (
-                  <>
-                    <div className={styles.subtitle}>
-                      <b>{t("master-course")}</b>
-                    </div>
-                    <MemberGrid
-                      memberData={masterMembers}
-                      col_size={colSize}
-                      degree={t("master-course")}
-                      isLogged={isLogged}
-                    />
-                    <hr className={styles.hrline} />{" "}
-                  </>
-                )}
-                {bachelorMembers.length !== 0 && (
-                  <>
-                    <div className={styles.subtitle}>
-                      <b>{t("bachelor-course")}</b>
-                    </div>
-                    <MemberGrid
-                      memberData={bachelorMembers}
-                      col_size={colSize}
-                      degree={t("bachelor-course")}
-                      isLogged={isLogged}
-                    />
-                  </>
-                )}
-              </div>
+              {isLogged && (
+                <div className={styles.members}>
+                  <AddButton />
+                  {phdMembers.length !== 0 && (
+                    <>
+                      <div className={styles.subtitle}>
+                        <b>{t("phd-course")}</b>
+                      </div>
+                      <MemberGrid
+                        memberData={phdMembers}
+                        col_size={colSize}
+                        degree={t("phd-course")}
+                        isLogged={isLogged}
+                      />
+                      <hr className={styles.hrline} />
+                    </>
+                  )}
+                  {masterMembers.length !== 0 && (
+                    <>
+                      <div className={styles.subtitle}>
+                        <b>{t("master-course")}</b>
+                      </div>
+                      <MemberGrid
+                        memberData={masterMembers}
+                        col_size={colSize}
+                        degree={t("master-course")}
+                        isLogged={isLogged}
+                      />
+                      <hr className={styles.hrline} />{" "}
+                    </>
+                  )}
+                  {bachelorMembers.length !== 0 && (
+                    <>
+                      <div className={styles.subtitle}>
+                        <b>{t("bachelor-course")}</b>
+                      </div>
+                      <MemberGrid
+                        memberData={bachelorMembers}
+                        col_size={colSize}
+                        degree={t("bachelor-course")}
+                        isLogged={isLogged}
+                      />
+                    </>
+                  )}
+                </div>
+              )}
             </>
           </Paper>
         )}

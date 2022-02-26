@@ -13,6 +13,7 @@ function MainPage() {
   const [colSize, setColSize] = useState();
   const [cardWidth, setCardWidth] = useState();
   const { t, i18n } = useTranslation();
+
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 1200px)",
   });
@@ -83,16 +84,6 @@ function MainPage() {
     },
   ];
 
-  useEffect(() => {
-    if (isSmallScreen) {
-      setColSize(24);
-      setCardWidth("80vw");
-    } else {
-      setColSize(8);
-      setCardWidth(380);
-    }
-  });
-
   return (
     <div className={styles.container}>
       <div className={styles.carousel}>
@@ -146,8 +137,8 @@ function MainPage() {
                 {support_list.map((item, idx) => (
                   <Card.Grid
                     hoverable={false}
-                    style={{ backgroundColor: item.color }}
                     className={styles.support_card_grid}
+                    style={{ backgroundColor: item.color }}
                   >
                     <Image
                       preview={false}

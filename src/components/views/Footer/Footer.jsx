@@ -77,7 +77,7 @@ function BottomFooter() {
                 <div className={styles.content}>
                   TEL&#41; {t("lab-tel")}
                   <span className={styles.verticlebar}>|</span>
-                  Prof. Email&#41;{t("prof-email")}
+                  Email&#41;&nbsp;{t("prof-email")}
                 </div>
                 <div className={styles.copyright}>{t("footer-copyright")}</div>
               </Col>
@@ -124,7 +124,7 @@ function BottomFooter() {
                 <div className={styles.content}>
                   TEL&#41; {t("lab-tel")}
                   <span className={styles.verticlebar}>|</span>
-                  Prof. Email&#41; {t("prof-email")}
+                  Email&#41;&nbsp;{t("prof-email")}
                 </div>
                 <div className={styles.copyright}>{t("footer-copyright")}</div>
               </Col>
