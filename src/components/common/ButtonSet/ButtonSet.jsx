@@ -10,7 +10,7 @@ function ButtonSet({ pageFeature, id, value }) {
     let currentId = id + "";
     if (window.location.pathname === "/alumni") {
       history.push({
-        pathname: "members" + "/" + currentId + "/edit",
+        pathname: "members/" + currentId + "/edit",
         state: { id: id },
       });
     } else if (window.location.pathname.substr(1, 12) === "publications") {
