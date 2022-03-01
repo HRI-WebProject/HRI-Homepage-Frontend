@@ -10,10 +10,10 @@ export const imageData = {
 };
 
 export const workspaceList = [
-  "https://i.postimg.cc/VLSQtnBp/workplace1.png",
-  "https://i.postimg.cc/xCjB1z1s/workplace2.png",
-  "https://i.postimg.cc/d0YzgXPc/workplace3.png",
-  "https://i.postimg.cc/K8L6qbW5/workplace4.png",
-  "https://i.postimg.cc/MKhkmH9T/workplace5.png",
-  "https://i.postimg.cc/xd3WQRnJ/workplace6.png",
+  "https://i.postimg.cc/qRxD7K6v/1.png",
+  "https://i.postimg.cc/gkTSrmj8/2.png",
+  "https://i.postimg.cc/FzFWkK0g/3.png",
+  "https://i.postimg.cc/WpSfLMP9/4.png",
+  "https://i.postimg.cc/fyHHchK4/5.png",
+  "https://i.postimg.cc/Wb3Y2hNs/6.png",
 ];
