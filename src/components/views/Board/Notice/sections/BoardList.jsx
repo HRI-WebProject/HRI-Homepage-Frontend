@@ -57,7 +57,7 @@ function BoardList() {
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
     axios
-      .get(`/board/type/NOTICE`)
+      .get(`/api/board/type/NOTICE`)
       .then((res) => {
         if (res.status === 200) {
           let totalElements = res.data.data.length;

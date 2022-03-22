@@ -36,7 +36,7 @@ function ButtonSet({ pageFeature, id, value }) {
     switch (param) {
       case "professor":
         axios
-          .delete(`/admin/professors/${currentId}`)
+          .delete(`/api/admin/professors/${currentId}`)
           .then((res) => {
             if (res.status === 200) {
               alert("해당 내용이 삭제되었습니다.");
@@ -49,7 +49,7 @@ function ButtonSet({ pageFeature, id, value }) {
         break;
       case "members":
         axios
-          .delete(`/admin/members/${currentId}`)
+          .delete(`/api/admin/members/${currentId}`)
           .then((res) => {
             if (res.status === 200) {
               alert("해당 내용이 삭제되었습니다.");
@@ -62,7 +62,7 @@ function ButtonSet({ pageFeature, id, value }) {
         break;
       case "researchArea":
         axios
-          .delete(`/admin/researchArea/${currentId}`)
+          .delete(`/api/admin/researchArea/${currentId}`)
           .then((res) => {
             if (res.status === 200) {
               alert("해당 내용이 삭제되었습니다.");
@@ -75,7 +75,7 @@ function ButtonSet({ pageFeature, id, value }) {
         break;
       case "projects":
         axios
-          .delete(`/admin/projects/${currentId}`)
+          .delete(`/api/admin/projects/${currentId}`)
           .then((res) => {
             if (res.status === 200) {
               alert("해당 내용이 삭제되었습니다.");
@@ -88,7 +88,7 @@ function ButtonSet({ pageFeature, id, value }) {
         break;
       case "publications":
         axios
-          .delete(`/admin/publications/${currentId}`)
+          .delete(`/api/admin/publications/${currentId}`)
           .then((res) => {
             if (res.status === 200) {
               alert("해당 내용이 삭제되었습니다.");
@@ -101,7 +101,7 @@ function ButtonSet({ pageFeature, id, value }) {
         break;
       case "notice":
         axios
-          .delete(`/admin/board/${currentId}`)
+          .delete(`/api/admin/board/${currentId}`)
           .then((res) => {
             if (res.status === 200) {
               alert("해당 내용이 삭제되었습니다.");
@@ -114,7 +114,7 @@ function ButtonSet({ pageFeature, id, value }) {
         break;
       case "activity":
         axios
-          .delete(`/admin/board/${currentId}`)
+          .delete(`/api/admin/board/${currentId}`)
           .then((res) => {
             if (res.status === 200) {
               alert("해당 내용이 삭제되었습니다.");

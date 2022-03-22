@@ -8,7 +8,7 @@ function EquipmentEditCard({ currentId }) {
   const onFinish = (values) => {
     let id = currentId + "";
     axios
-      .put(`/admin/researchEquipment/${id}`, values)
+      .put(`/api/admin/researchEquipment/${id}`, values)
       .then((res) => {
         if (res.status === 200) {
           alert("수정완료되었습니다.");
@@ -26,7 +26,7 @@ function EquipmentEditCard({ currentId }) {
 
   useEffect(() => {
     axios
-      .get("/researchEquipment")
+      .get("/api/researchEquipment")
       .then((res) => {
         if (res.status === 200) {
           let tmp = res.data.data.filter(function (item, idx) {

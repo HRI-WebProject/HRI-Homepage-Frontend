@@ -27,7 +27,7 @@ function ProfessorEdit() {
 
   const onFinish = (values) => {
     axios
-      .put(`/admin/professors/${currentId}`, values)
+      .put(`/api/admin/professors/${currentId}`, values)
       .then((res) => {
         if (res.status === 200) {
           alert("수정 완료되었습니다.");
@@ -56,7 +56,7 @@ function ProfessorEdit() {
     if (account && account.status === "OK") setIsLogged(true);
 
     axios
-      .get("/professors")
+      .get("/api/professors")
       .then((res) => {
         if (res.status === 200) {
           let tmp = res.data.data.filter(function (item, idx) {

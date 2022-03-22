@@ -57,7 +57,7 @@ function ActivityList() {
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
     axios
-      .get(`/board/type/ACTIVITY`)
+      .get(`/api/board/type/ACTIVITY`)
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data.data);

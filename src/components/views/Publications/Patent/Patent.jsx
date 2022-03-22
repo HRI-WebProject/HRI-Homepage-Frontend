@@ -18,7 +18,7 @@ function Patent() {
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
     axios
-      .get("/publications/PATENT")
+      .get("/api/publications/PATENT")
       .then((res) => {
         if (res.status === 200) {
           setPatentList(res.data.data);

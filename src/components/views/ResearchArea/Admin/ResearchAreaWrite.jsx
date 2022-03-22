@@ -24,7 +24,7 @@ function ResearchAreaWrite() {
 
   const onFinish = (values) => {
     axios
-      .post("/admin/researchArea", values)
+      .post("/api/admin/researchArea", values)
       .then((res) => {
         if (res.status === 200) {
           alert("연구분야 등록이 완료되었습니다.");

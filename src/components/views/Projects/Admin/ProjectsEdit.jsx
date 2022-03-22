@@ -28,7 +28,7 @@ function ProjectsEdit() {
     let id = currentId + "";
     id &&
       axios
-        .put(`/admin/projects/${id}`, values)
+        .put(`/api/admin/projects/${id}`, values)
         .then((res) => {
           if (res.status === 200) {
             alert("수정완료되었습니다.");
@@ -57,7 +57,7 @@ function ProjectsEdit() {
     if (account && account.status === "OK") setIsLogged(true);
 
     axios
-      .get("/projects")
+      .get("/api/projects")
       .then((res) => {
         if (res.status === 200) {
           let tmp = res.data.data.filter(function (item, idx) {
@@ -81,7 +81,7 @@ function ProjectsEdit() {
       });
 
     axios
-      .get("/en/projects")
+      .get("/api/en/projects")
       .then((res) => {
         if (res.status === 200) {
           let tmp = res.data.data.filter(function (item, idx) {

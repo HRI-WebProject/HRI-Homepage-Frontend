@@ -24,7 +24,7 @@ function Projectswrite() {
 
   const onFinish = (values) => {
     axios
-      .post("/admin/projects", values)
+      .post("/api/admin/projects", values)
       .then((res) => {
         if (res.status === 200) {
           alert("프로젝트 등록이 완료되었습니다.");

@@ -48,7 +48,7 @@ function ActivityDetail() {
     let tmp = [];
     pageId &&
       axios
-        .get(`/board/${pageId}`)
+        .get(`/api/board/${pageId}`)
         .then((res) => {
           if (res.status === 200) {
             setBoardDetail(res.data.data);
@@ -61,7 +61,7 @@ function ActivityDetail() {
     let data_tmp = [];
 
     axios
-      .get(`/board/type/ACTIVITY`)
+      .get(`/api/board/type/ACTIVITY`)
       .then((res) => {
         if (res.status === 200) {
           let totalElements = res.data.data.length;

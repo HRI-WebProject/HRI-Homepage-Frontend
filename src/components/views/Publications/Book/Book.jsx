@@ -18,7 +18,7 @@ function Book() {
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
     axios
-      .get("/publications/BOOK")
+      .get("/api/publications/BOOK")
       .then((res) => {
         if (res.status === 200) {
           setBookList(res.data.data);

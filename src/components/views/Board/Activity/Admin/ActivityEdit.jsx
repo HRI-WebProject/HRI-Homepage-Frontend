@@ -33,7 +33,7 @@ function ActivityEdit() {
   const onFinish = (values) => {
     values.boardType = "ACTIVITY";
     axios
-      .put(`/admin/board/${currentId}`, values)
+      .put(`/api/admin/board/${currentId}`, values)
       .then((res) => {
         if (res.status === 200) {
           alert("수정 완료되었습니다.");
@@ -57,7 +57,7 @@ function ActivityEdit() {
     if (account && account.status === "OK") setIsLogged(true);
     currentId &&
       axios
-        .get(`/board/${currentId}`)
+        .get(`/api/board/${currentId}`)
         .then((res) => {
           if (res.status === 200) {
             let tmp = res.data.data;

@@ -26,7 +26,7 @@ function Projects() {
     if (account && account.status === "OK") setIsLogged(true);
     if (i18n.language === "ko") {
       axios
-        .get("/projects")
+        .get("/api/projects")
         .then((res) => {
           if (res.status === 200) {
             setProjectList(res.data.data);
@@ -37,7 +37,7 @@ function Projects() {
         });
     } else {
       axios
-        .get("/en/projects")
+        .get("/api/en/projects")
         .then((res) => {
           if (res.status === 200) {
             setProjectList(res.data.data);
@@ -69,13 +69,7 @@ function Projects() {
               <Col span={24} key={idx}>
                 <Fade top distance="30px">
                   <>
-                    <Paper
-                      elevation={0}
-                      square
-                      elevation={0}
-                      square
-                      className={styles.paper}
-                    >
+                    <Paper elevation={0} square className={styles.paper}>
                       <Row gutter={[16, 16]}>
                         <Col span={colSize}>
                           <div className={styles.ls}>

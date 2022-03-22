@@ -34,7 +34,7 @@ function PublicationEdit() {
     let id = currentId + "";
     id &&
       axios
-        .put(`/admin/publications/${id}`, values)
+        .put(`/api/admin/publications/${id}`, values)
         .then((res) => {
           if (res.status === 200) {
             alert("수정완료되었습니다.");
@@ -78,7 +78,7 @@ function PublicationEdit() {
 
     if (location.state.value === "특허") {
       axios
-        .get("/publications/PATENT")
+        .get("/api/publications/PATENT")
         .then((res) => {
           if (res.status === 200) {
             let tmp = res.data.data.filter(function (item, idx) {
@@ -107,7 +107,7 @@ function PublicationEdit() {
     } else {
       value &&
         axios
-          .get(`/publications/${value}`)
+          .get(`/api/publications/${value}`)
           .then((res) => {
             if (res.status === 200) {
               let tmp = res.data.data.filter(function (item, idx) {

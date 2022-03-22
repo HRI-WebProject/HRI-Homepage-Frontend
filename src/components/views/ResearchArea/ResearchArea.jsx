@@ -25,7 +25,7 @@ function ResearchArea() {
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
     axios
-      .get("/researchArea")
+      .get("/api/researchArea")
       .then((res) => {
         if (res.status === 200) {
           setResearchList(res.data.data);

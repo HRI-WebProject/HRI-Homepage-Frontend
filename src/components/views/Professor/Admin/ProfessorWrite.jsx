@@ -25,7 +25,7 @@ function ProfessorWrite() {
 
   const onFinish = (values) => {
     axios
-      .post("/admin/professors", values)
+      .post("/api/admin/professors", values)
       .then((res) => {
         if (res.status === 200) {
           alert("교수 등록이 완료되었습니다.");

@@ -18,7 +18,7 @@ function Conference() {
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
     axios
-      .get("/publications/CONFERENCE")
+      .get("/api/publications/CONFERENCE")
       .then((res) => {
         if (res.status === 200) {
           setConferenceList(res.data.data);

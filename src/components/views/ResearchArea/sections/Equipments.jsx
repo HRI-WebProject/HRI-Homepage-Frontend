@@ -41,7 +41,7 @@ function Equipments() {
 
   const deleteProcess = (id) => {
     axios
-      .delete(`/admin/researchEquipment/${id}`)
+      .delete(`/api/admin/researchEquipment/${id}`)
       .then((res) => {
         if (res.status === 200) {
           alert("해당 내용이 삭제되었습니다.");
@@ -56,7 +56,7 @@ function Equipments() {
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
     axios
-      .get("/researchEquipment")
+      .get("/api/researchEquipment")
       .then((res) => {
         if (res.status === 200) {
           setEquipments(res.data.data);

@@ -21,7 +21,7 @@ function ActivityWrite() {
   const onFinish = (values) => {
     values.boardType = "ACTIVITY";
     axios
-      .post("/admin/board", values)
+      .post("/api/admin/board", values)
       .then((res) => {
         if (res.status === 200) {
           alert("게시글 등록이 완료되었습니다.");

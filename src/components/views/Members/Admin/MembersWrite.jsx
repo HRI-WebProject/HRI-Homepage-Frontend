@@ -24,7 +24,7 @@ function MembersWrite() {
 
   const onFinish = (values) => {
     axios
-      .post("/admin/members", values)
+      .post("/api/admin/members", values)
       .then((res) => {
         if (res.status === 200) {
           alert("구성원 등록이 완료되었습니다.");

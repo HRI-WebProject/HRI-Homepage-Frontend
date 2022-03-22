@@ -35,7 +35,7 @@ function ResearchAreaEdit() {
 
   const onFinish = (values) => {
     axios
-      .put(`/admin/researchArea/${currentId + ""}`, values)
+      .put(`/api/admin/researchArea/${currentId + ""}`, values)
       .then((res) => {
         if (res.status === 200) {
           alert("수정되었습니다.");
@@ -58,7 +58,7 @@ function ResearchAreaEdit() {
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
     axios
-      .get("/researchArea")
+      .get("/api/researchArea")
       .then((res) => {
         if (res.status === 200) {
           let tmp = res.data.data.filter(function (item, idx) {

@@ -28,7 +28,7 @@ function MembersEdit() {
   const onFinish = (values) => {
     console.log(values);
     axios
-      .put(`/admin/members/${currentId}`, values)
+      .put(`/api/admin/members/${currentId}`, values)
       .then((res) => {
         if (res.status === 200) {
           alert("수정완료되었습니다.");
@@ -57,7 +57,7 @@ function MembersEdit() {
     if (account && account.status === "OK") setIsLogged(true);
 
     axios
-      .get("/members")
+      .get("/api/members")
       .then((res) => {
         if (res.status === 200) {
           let tmp = res.data.data.filter(function (item, idx) {

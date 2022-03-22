@@ -20,7 +20,7 @@ function Professor() {
     if (account && account.status === "OK") setIsLogged(true);
 
     axios
-      .get("/professors")
+      .get("/api/professors")
       .then((res) => {
         if (res.status === 200) {
           setProfessorData(res.data.data);

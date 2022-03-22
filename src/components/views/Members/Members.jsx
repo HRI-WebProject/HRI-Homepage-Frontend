@@ -32,7 +32,7 @@ function Members() {
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
     axios
-      .get("/members/PHD")
+      .get("/api/members/PHD")
       .then((res) => {
         if (res.status === 200) {
           let tmp = res.data.data.filter(function (item, idx) {
@@ -45,7 +45,7 @@ function Members() {
         console.log(error);
       });
     axios
-      .get("/members/MASTER")
+      .get("/api/members/MASTER")
       .then((res) => {
         if (res.status === 200) {
           let tmp = res.data.data.filter(function (item, idx) {
@@ -58,7 +58,7 @@ function Members() {
         console.log(error);
       });
     axios
-      .get("/members/BACHELOR")
+      .get("/api/members/BACHELOR")
       .then((res) => {
         if (res.status === 200) {
           let tmp = res.data.data.filter(function (item, idx) {

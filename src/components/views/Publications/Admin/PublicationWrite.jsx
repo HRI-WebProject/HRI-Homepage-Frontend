@@ -28,7 +28,7 @@ function PublicationWrite() {
 
   const onFinish = (values) => {
     axios
-      .post("/admin/publications", values)
+      .post("/api/admin/publications", values)
       .then((res) => {
         if (res.status === 200) {
           alert("등록이 완료되었습니다.");

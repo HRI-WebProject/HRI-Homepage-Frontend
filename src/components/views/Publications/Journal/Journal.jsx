@@ -18,7 +18,7 @@ function Journal() {
   useEffect(() => {
     if (account && account.status === "OK") setIsLogged(true);
     axios
-      .get("/publications/JOURNAL")
+      .get("/api/publications/JOURNAL")
       .then((res) => {
         if (res.status === 200) {
           setJournalList(res.data.data);
