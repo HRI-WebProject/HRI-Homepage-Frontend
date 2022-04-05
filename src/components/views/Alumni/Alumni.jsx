@@ -128,12 +128,12 @@ function Alumni() {
                   {phdMembers.length !== 0 && (
                     <>
                       <div className={styles.subtitle}>
-                        <b>{t("phd-course")}</b>
+                        <b>{t("phd")}</b>
                       </div>
                       <MemberGrid
                         memberData={phdMembers}
                         col_size={colSize}
-                        degree={t("phd-course")}
+                        degree={t("phd")}
                         isLogged={isLogged}
                       />
                       <hr className={styles.hrline} />
@@ -142,12 +142,12 @@ function Alumni() {
                   {masterMembers.length !== 0 && (
                     <>
                       <div className={styles.subtitle}>
-                        <b>{t("master-course")}</b>
+                        <b>{t("master")}</b>
                       </div>
                       <MemberGrid
                         memberData={masterMembers}
                         col_size={colSize}
-                        degree={t("master-course")}
+                        degree={t("master")}
                         isLogged={isLogged}
                       />
                       <hr className={styles.hrline} />{" "}
@@ -156,12 +156,12 @@ function Alumni() {
                   {bachelorMembers.length !== 0 && (
                     <>
                       <div className={styles.subtitle}>
-                        <b>{t("bachelor-course")}</b>
+                        <b>{t("bachelor")}</b>
                       </div>
                       <MemberGrid
                         memberData={bachelorMembers}
                         col_size={colSize}
-                        degree={t("bachelor-course")}
+                        degree={t("bachelor")}
                         isLogged={isLogged}
                       />
                     </>

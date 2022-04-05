@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import styles from "../Projects.module.css";
 import TitleBar from "../../../common/TitleBar/TitleBar";
-import { Form, Input, Button, Col, Row } from "antd";
+import { Form, Input, Button, Col, Row, Switch } from "antd";
 import { Paper } from "@mui/material";
 
 function Projectswrite() {
@@ -110,6 +110,19 @@ function Projectswrite() {
               <Input.TextArea rows={2} maxLength={255} />
             </Form.Item>
             <Form.Item
+              label="진행 여부"
+              name="onGoing"
+              rules={[
+                {
+                  required: true,
+                  message: "필수 입력 항목입니다.",
+                },
+              ]}
+              valuePropName="checked"
+            >
+              <Switch checkedChildren="종료" unCheckedChildren="진행 중" />
+            </Form.Item>
+            <Form.Item
               label="사진 URL"
               name="photo"
               extra="이미지 URL 형식으로 작성이 필요합니다."
@@ -150,7 +163,6 @@ function Projectswrite() {
             <Form.Item label="영문 설명5" name="engDetail5">
               <Input.TextArea rows={2} maxLength={255} />
             </Form.Item>
-
             <Row>
               <Col span={12}>
                 <div style={{ paddingLeft: "10%" }}>

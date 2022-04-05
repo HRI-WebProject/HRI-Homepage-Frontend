@@ -143,7 +143,7 @@ function PublicationEdit() {
               onFinishFailed={onFinishFailed}
               form={form}
             >
-              {typeValue && typeValue !== "특허" && typeValue !== "학술지" && (
+              {typeValue && typeValue !== "특허" && (
                 <>
                   <Form.Item
                     label="주제"
@@ -159,26 +159,6 @@ function PublicationEdit() {
                   </Form.Item>
                   <Form.Item label="세부내용" name="detail">
                     <TextArea rows={10} showCount maxLength={1000} />
-                  </Form.Item>
-                  <hr className={styles.hr_tag} />
-                  <Form.Item label="링크" name="link">
-                    <Input />
-                  </Form.Item>
-                </>
-              )}
-              {typeValue && typeValue === "학술지" && (
-                <>
-                  <Form.Item
-                    label="주제"
-                    name="topic"
-                    rules={[
-                      {
-                        required: true,
-                        message: "필수 입력 항목입니다.",
-                      },
-                    ]}
-                  >
-                    <TextArea rows={5} showCount maxLength={500} />
                   </Form.Item>
                   <hr className={styles.hr_tag} />
                   <Form.Item label="링크" name="link">

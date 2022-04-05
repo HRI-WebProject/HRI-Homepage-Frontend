@@ -29,6 +29,10 @@
   z-index: 0;
 }
 
+.edit_button {
+  float: right;
+}
+
 .col2 {
   padding-left: 3%;
   padding-right: 3%;
@@ -36,6 +40,12 @@
 
 .part {
   font-size: 1.4em;
+  font-weight: 700;
+  color: #2f5597;
+}
+
+.edit_part {
+  font-size: 1.6em;
   font-weight: 700;
   color: #2f5597;
 }

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import styles from "../Projects.module.css";
 import TitleBar from "../../../common/TitleBar/TitleBar";
-import { Form, Input, Button, Col, Row } from "antd";
+import { Form, Input, Button, Col, Row, Switch } from "antd";
 import { Paper } from "@mui/material";
 
 function ProjectsEdit() {
@@ -67,6 +67,7 @@ function ProjectsEdit() {
             form.setFieldsValue({
               topic: tmp[0].topic,
               subTopic: tmp[0].subTopic,
+              onGoing: tmp[0].onGoing,
               photo: tmp[0].photo,
               detail1: tmp[0].detail1,
               detail2: tmp[0].detail2,
@@ -91,6 +92,7 @@ function ProjectsEdit() {
             form.setFieldsValue({
               engTopic: tmp[0].engTopic,
               engSubTopic: tmp[0].engSubTopic,
+              onGoing: tmp[0].onGoing,
               engDetail1: tmp[0].engDetail1,
               engDetail2: tmp[0].engDetail2,
               engDetail3: tmp[0].engDetail3,
@@ -164,6 +166,19 @@ function ProjectsEdit() {
               ]}
             >
               <Input.TextArea rows={2} maxLength={255} />
+            </Form.Item>
+            <Form.Item
+              label="종료 여부"
+              name="onGoing"
+              rules={[
+                {
+                  required: true,
+                  message: "필수 입력 항목입니다.",
+                },
+              ]}
+              valuePropName="checked"
+            >
+              <Switch checkedChildren="종료" unCheckedChildren="진행 중" />
             </Form.Item>
             <Form.Item
               label="사진 URL"

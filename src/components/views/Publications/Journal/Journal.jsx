@@ -45,9 +45,21 @@ function Journal() {
                 <List.Item key={idx}>
                   <span className={styles.index}>{listLen - idx}</span>
                   <span className={styles.contents}>
-                    <div style={{ fontSize: "1.1em" }}>{item.topic}</div>
+                    <div style={{ fontSize: "1.1em", fontWeight: "600" }}>
+                      {item.topic}
+                    </div>
                     <div>
-                      {!!item.link && (
+                      {item.detail && (
+                        <div>
+                          {item.detail.split("\n").map((line, idx) => (
+                            <span key={idx}>
+                              {line}
+                              <br />
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      {item.link && (
                         <div style={{ color: "#808080" }}>
                           <a href={item.link} className={styles.link}>
                             {item.link}

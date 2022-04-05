@@ -94,7 +94,7 @@ function PublicationWrite() {
                 <Radio.Button value="BOOK">BOOK</Radio.Button>
               </Radio.Group>
             </Form.Item>
-            {show !== 0 && show !== "PATENT" && show !== "JOURNAL" && (
+            {show !== 0 && show !== "PATENT" && (
               <>
                 <Form.Item
                   label="주제"
@@ -110,26 +110,6 @@ function PublicationWrite() {
                 </Form.Item>
                 <Form.Item label="세부내용" name="detail">
                   <TextArea rows={10} showCount maxLength={1000} />
-                </Form.Item>
-                <hr className={styles.hr_tag} />
-                <Form.Item label="링크" name="link">
-                  <Input />
-                </Form.Item>
-              </>
-            )}
-            {show !== 0 && show === "JOURNAL" && (
-              <>
-                <Form.Item
-                  label="주제"
-                  name="topic"
-                  rules={[
-                    {
-                      required: true,
-                      message: "필수 입력 항목입니다.",
-                    },
-                  ]}
-                >
-                  <TextArea rows={5} showCount maxLength={500} />
                 </Form.Item>
                 <hr className={styles.hr_tag} />
                 <Form.Item label="링크" name="link">
